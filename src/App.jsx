@@ -13,6 +13,7 @@ export const App = () => {
   const [page, setPage] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAlertNewPortfolio, setShowAlertNewPortfolio] = useState(true);
 
   useEffect(() => {
     const uploadedImage02 = new Image();
@@ -40,6 +41,22 @@ export const App = () => {
 
   return (
     <div>
+      {showAlertNewPortfolio && (
+        <div className="alert_new_portfolio">
+          <div className="alert_new_portfolio_container">
+            <p className="alert_new_portfolio_text">
+              ¡Hola! Este es mi antiguo portafolio. Si quieres ver el nuevo, puedes hacerlo
+              <a className="alert_new_portfolio_btn" href="https://portfolio-3d-giulianoconti.vercel.app/" target="_blank" rel="noreferrer">
+                aquí
+              </a>
+            </p>
+            <button className="alert_new_portfolio_btn" onClick={() => setShowAlertNewPortfolio(false)}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+
       <div>
         <div className="absolute card-main-container">
           <h1 className="card-main-title">GIULIANO CONTI</h1>
@@ -102,27 +119,19 @@ export const App = () => {
         </div>
       </div>
 
-      <section
-        className={`page absolute container-img container-img-intro ${page === 0 ? "show-page" : "hidden-page"}`}
-      >
+      <section className={`page absolute container-img container-img-intro ${page === 0 ? "show-page" : "hidden-page"}`}>
         <IntroScreen setPage={setPage} />
       </section>
 
-      <section
-        className={`page absolute container-img container-img-about ${page === 1 ? "show-page" : "hidden-page"}`}
-      >
+      <section className={`page absolute container-img container-img-about ${page === 1 ? "show-page" : "hidden-page"}`}>
         <AboutScreen setPage={setPage} />
       </section>
 
-      <section
-        className={`page absolute container-img container-img-projects ${page === 2 ? "show-page" : "hidden-page"}`}
-      >
+      <section className={`page absolute container-img container-img-projects ${page === 2 ? "show-page" : "hidden-page"}`}>
         <ProjectScreen />
       </section>
 
-      <section
-        className={`page absolute container-img container-img-contact ${page === 3 ? "show-page" : "hidden-page"}`}
-      >
+      <section className={`page absolute container-img container-img-contact ${page === 3 ? "show-page" : "hidden-page"}`}>
         <ContactScreen />
       </section>
     </div>
