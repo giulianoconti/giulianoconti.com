@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="CV Web de Giuliano Conti" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>Giuliano Conti - CV</title>
   </head>
@@ -17,20 +20,54 @@
       </a>
       <ul class="nav_list">
         <li class="nav_item">
-          <a class="nav_link active" id="home_link" href="#home" aria-label="Navegar al Inicio" onclick="toggleMenu()">Inicio</a>
+          <a
+            class="nav_link active"
+            id="home_link"
+            href="#home"
+            aria-label="Navegar al Inicio"
+            onclick="toggleMenu()"
+            >Inicio</a
+          >
         </li>
         <li class="nav_item">
-          <a class="nav_link" id="about_link" href="#about" aria-label="Navegar al Sobre mí" onclick="toggleMenu()">Sobre mí</a>
+          <a
+            class="nav_link"
+            id="about_link"
+            href="#about"
+            aria-label="Navegar al Sobre mí"
+            onclick="toggleMenu()"
+            >Sobre mí</a
+          >
         </li>
         <li class="nav_item">
-          <a class="nav_link" id="projects_link" href="#projects" aria-label="Navegar al Proyectos" onclick="toggleMenu()">Proyectos</a>
+          <a
+            class="nav_link"
+            id="projects_link"
+            href="#projects"
+            aria-label="Navegar al Proyectos"
+            onclick="toggleMenu()"
+            >Proyectos</a
+          >
         </li>
         <li class="nav_item">
-          <a class="nav_link" id="contact_link" href="#contact" aria-label="Navegar al Contacto" onclick="toggleMenu()">Contacto</a>
+          <a
+            class="nav_link"
+            id="contact_link"
+            href="#contact"
+            aria-label="Navegar al Contacto"
+            onclick="toggleMenu()"
+            >Contacto</a
+          >
         </li>
       </ul>
       <button class="menu_btn" onclick="toggleMenu()">
-        <svg width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+        <svg
+          width="20px"
+          height="20px"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+        >
           <path
             fill-rule="evenodd"
             d="M1.75 2.5a.75.75 0 000 1.5h12.5a.75.75 0 100-1.5H1.75zM1.75 7.5a.75.75 0 000 1.5h12.5a.75.75 0 100-1.5H1.75zM1.75 12.5a.75.75 0 000 1.5h12.5a.75.75 0 100-1.5H1.75z"
@@ -44,7 +81,13 @@
         <h1 class="home_title">Giuliano Conti</h1>
         <h2 class="home_subtitle">Desarrollador Web</h2>
         <a class="home_btn" href="assets/Giuliano_Conti_CV.pdf" download="Giuliano_Conti_CV.pdf">
-          <svg width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+          <svg
+            width="20px"
+            height="20px"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+          >
             <path
               d="M8.75 1.75a.75.75 0 00-1.5 0v6.59L5.3 6.24a.75.75 0 10-1.1 1.02L7.45 10.76a.78.78 0 00.038.038.748.748 0 001.063-.037l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V1.75z"
             ></path>
@@ -91,8 +134,10 @@
               <p>
                 Empecé a estudiar programación en 2021, iniciando por HTML, CSS y JavaScript.<br />
                 Creé proyectos pequeños con arduino utilizando C++.<br />
-                En el año 2022 me enfoqué principalmente en el desarrollo Front-End utilizando React.<br />
-                Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con amigos, jugar padel, los videojuegos y andar en bici.
+                En el año 2022 me enfoqué principalmente en el desarrollo Front-End utilizando
+                React.<br />
+                Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con
+                amigos, jugar padel, los videojuegos y andar en bici.
               </p>
             </div>
           </div>
@@ -135,11 +180,22 @@
           <form class="contact_form" action="https://formspree.io/f/mgeqglaq" method="POST">
             <label class="contact_label">
               Email:
-              <input class="contact_input" type="email" name="email" placeholder="email_ejemplo@gmail.com" required />
+              <input
+                class="contact_input"
+                type="email"
+                name="email"
+                placeholder="email_ejemplo@gmail.com"
+                required
+              />
             </label>
             <label class="contact_label">
               Mensaje:
-              <textarea class="contact_textarea" name="message" placeholder="Buenas, me gustaría contactarme con usted para..." required></textarea>
+              <textarea
+                class="contact_textarea"
+                name="message"
+                placeholder="Buenas, me gustaría contactarme con usted para..."
+                required
+              ></textarea>
             </label>
             <button class="contact_btn" type="submit">Enviar</button>
           </form>
@@ -151,10 +207,22 @@
             "
               target="_blank"
             >
-              <img class="contact_social_img" src="assets/icon_z_linkedin.svg" alt="linkedin icon" />
+              <img
+                class="contact_social_img"
+                src="assets/icon_z_linkedin.svg"
+                alt="linkedin icon"
+              />
             </a>
-            <a class="contact_social_link" href="https://www.instagram.com/giulianocontii/" target="_blank">
-              <img class="contact_social_img" src="assets/icon_z_instagram.svg" alt="instagram icon" />
+            <a
+              class="contact_social_link"
+              href="https://www.instagram.com/giulianocontii/"
+              target="_blank"
+            >
+              <img
+                class="contact_social_img"
+                src="assets/icon_z_instagram.svg"
+                alt="instagram icon"
+              />
             </a>
             <a class="contact_social_link" href="https://github.com/GiuliannT" target="_blank">
               <img class="contact_social_img" src="assets/icon_z_github.svg" alt="github icon" />
