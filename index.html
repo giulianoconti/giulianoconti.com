@@ -60,7 +60,7 @@
           >
         </li>
       </ul>
-      <button class="menu_btn" onclick="toggleMenu()">
+      <button class="menu_btn" aria-label="Menu Button" onclick="toggleMenu()">
         <svg
           width="20px"
           height="20px"
@@ -178,33 +178,27 @@
       <section id="contact">
         <div class="contact_container">
           <form class="contact_form" action="https://formspree.io/f/mgeqglaq" method="POST">
-            <label class="contact_label">
-              Email:
-              <input
-                class="contact_input"
-                type="email"
-                name="email"
-                placeholder="email_ejemplo@gmail.com"
-                required
-              />
-            </label>
-            <label class="contact_label">
-              Mensaje:
-              <textarea
-                class="contact_textarea"
-                name="message"
-                placeholder="Buenas, me gustaría contactarme con usted para..."
-                required
-              ></textarea>
-            </label>
+            <label class="contact_label"> Email: </label>
+            <input
+              class="contact_input"
+              type="email"
+              name="email"
+              placeholder="email_ejemplo@gmail.com"
+              required
+            />
+            <label class="contact_label"> Mensaje: </label>
+            <textarea
+              class="contact_textarea"
+              name="message"
+              placeholder="Buenas, me gustaría contactarme con usted para..."
+              required
+            ></textarea>
             <button class="contact_btn" type="submit">Enviar</button>
           </form>
           <div class="contact_social">
             <a
               class="contact_social_link"
-              href="
-            https://www.linkedin.com/in/giulianoconti/
-            "
+              href="https://www.linkedin.com/in/giulianoconti/"
               target="_blank"
             >
               <img

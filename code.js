@@ -17,26 +17,31 @@ let showMenu = false;
 const activeMenu = () => {
   const scrollY = window.pageYOffset;
   if (scrollY < aboutSection.offsetTop - aboutSection.offsetTop / 4) {
+    removeAllActive();
     homeMenu.classList.add("active");
-    aboutMenu.classList.remove("active");
     return;
   } else if (scrollY < projectsSection.offsetTop - projectsSection.offsetTop / 4) {
+    removeAllActive();
     aboutMenu.classList.add("active");
-    homeMenu.classList.remove("active");
-    projectsMenu.classList.remove("active");
     return;
   } else if (scrollY < contactSection.offsetTop - contactSection.offsetTop / 4) {
+    removeAllActive();
     projectsMenu.classList.add("active");
-    aboutMenu.classList.remove("active");
-    contactMenu.classList.remove("active");
     return;
   } else {
+    removeAllActive();
     contactMenu.classList.add("active");
-    projectsMenu.classList.remove("active");
     return;
   }
 };
 window.addEventListener("scroll", activeMenu);
+
+const removeAllActive = () => {
+  homeMenu.classList.remove("active");
+  aboutMenu.classList.remove("active");
+  projectsMenu.classList.remove("active");
+  contactMenu.classList.remove("active");
+};
 
 /* navbar menu btn toggle */
 const toggleMenu = () => {
@@ -108,6 +113,11 @@ const handleNext = () => {
     }
   }
 };
+
+/* if resize */
+window.addEventListener("resize", () => {
+  projectsList.scrollLeft = 0;
+});
 
 /* fetch projects */
 fetch("https://giuliannt.github.io/api/myProjects.json")
