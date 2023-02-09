@@ -10,6 +10,7 @@ const projectsSection = document.querySelector("#projects");
 const contactSection = document.querySelector("#contact");
 const menu = document.querySelector(".nav_list");
 const projectsList = document.querySelector(".projects_list");
+const contactForm = document.querySelector(".contact_form");
 let prevOrNextSectionRunning = false;
 let showMenu = false;
 
@@ -154,3 +155,8 @@ fetch("https://giuliannt.github.io/api/myProjects.json")
       projectsList.appendChild(projectDiv);
     });
   });
+
+  // reset contact form on page refresh
+  window.onbeforeunload = () => {
+    contactForm.reset();
+  }

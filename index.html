@@ -180,16 +180,18 @@
       <section id="contact">
         <div class="contact_container">
           <form class="contact_form" action="https://formspree.io/f/mgeqglaq" method="POST">
-            <label class="contact_label"> Email: </label>
+            <label class="contact_label" for="emailInput">Email:</label>
             <input
+              id="emailInput"
               class="contact_input"
               type="email"
               name="email"
-              placeholder="email_ejemplo@gmail.com"
+              placeholder="ejemplo@gmail.com"
               required
             />
-            <label class="contact_label"> Mensaje: </label>
+            <label class="contact_label" for="messageTextarea">Mensaje:</label>
             <textarea
+              id="messageTextarea"
               class="contact_textarea"
               name="message"
               placeholder="Buenas, me gustaría contactarme con usted para..."
