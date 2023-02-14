@@ -82,7 +82,6 @@ const handleMyAge = () => {
 const handleNextPrev = (type) => {
   if (!prevOrNextSectionRunning) {
     prevOrNextSectionRunning = true;
-    console.log(projectsList.clientWidth);
     if (type === "prev") {
       // If user is on the first project, scroll to the last project
       if (projectsList.scrollLeft === 0) {
