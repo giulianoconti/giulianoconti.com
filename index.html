@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="CV Web de Giuliano Conti" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
     <link rel="stylesheet" href="styles.css" />
     <title>Giuliano Conti - CV</title>
   </head>
@@ -166,10 +163,10 @@
             <!-- Projects in js -->
           </div>
           <div class="projects_buttons_container">
-            <button class="projects_button" onClick="handlePrev()">
+            <button class="projects_button" onClick="handleNextPrev('prev')">
               <img class="projects_button_img" src="assets/arrow_left.svg" alt="prev icon" />
             </button>
-            <button class="projects_button" onClick="handleNext()">
+            <button class="projects_button" onClick="handleNextPrev('next')">
               <img class="projects_button_img" src="assets/arrow_right.svg" alt="next icon" />
             </button>
           </div>
@@ -231,11 +228,4 @@
 
     <script src="code.js"></script>
   </body>
-  <noscript>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
-      type="text/css"
-    />
-  </noscript>
 </html>
