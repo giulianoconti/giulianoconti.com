@@ -41,6 +41,21 @@ body {
   width: 100%;
 }
 
+.nav_logo {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin-left: 8px;
+  width: 100px;
+}
+
+.nav_logo_img {
+  height: 100%;
+  width: 56px;
+  margin-right: auto;
+}
+
 .nav_list {
   align-items: center;
   display: flex;
@@ -48,7 +63,6 @@ body {
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 56px 0 0;
 }
 
 .nav_item {
@@ -73,6 +87,18 @@ body {
 .active {
   border-top: 2px solid rgb(0, 0, 0);
   scale: 1.1;
+}
+
+.nav_langs {
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  height: 100%;
+  justify-content: center;
+  margin-right: 8px;
+  width: 100px;
 }
 
 .menu_btn {
@@ -115,20 +141,6 @@ body {
   margin-bottom: 16px;
 }
 
-.nav_logo {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  margin-left: 8px;
-  width: 48px;
-}
-
-.nav_logo_img {
-  height: 100%;
-  width: 100%;
-}
-
 .home_btn {
   align-items: center;
   background-color: rgb(255, 255, 255);
@@ -146,7 +158,6 @@ body {
   padding: 8px 16px;
   text-decoration: none;
   transition: all 0.3s ease;
-  width: 200px;
 }
 
 .home_btn_text {
@@ -196,13 +207,20 @@ body {
   line-height: 2;
 }
 
-.about_left_info p {
-  margin-left: 8px;
+.about_left_item {
+  display: flex;
+  align-items: center;
 }
 
-.about_left_info p span {
+.about_left_info p {
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.about_left_info h3 {
   font-size: 20px;
   font-weight: 500;
+  margin-left: 4px;
 }
 
 .about_left_img {
@@ -637,6 +655,13 @@ body {
     background-color: rgb(220, 220, 220);
     border-top: 2px solid transparent;
     scale: 1;
+  }
+
+  .nav_langs {
+    background-color: rgb(220, 220, 220);
+    margin: 16px auto 0 16px;
+    height: 40px;
+    width: auto;
   }
 
   .menu_btn {
