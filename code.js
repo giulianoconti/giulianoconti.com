@@ -15,7 +15,6 @@ const contactForm = document.querySelector(".contact_form");
 let prevOrNextSectionRunning = false;
 let showMenu = false;
 let isMobile = false;
-
 const navbarHome = document.querySelector(".navbar_home");
 const navbarAbout = document.querySelector(".navbar_about");
 const navbarProjects = document.querySelector(".navbar_projects");
@@ -240,7 +239,6 @@ const fetchProjects = async (lang = "es") => {
   const data = await response.json();
   projectsList.innerHTML = "";
   data.forEach((project) => {
-    console.log(project);
     const projectDiv = document.createElement("div");
     projectDiv.className = "project";
     projectDiv.innerHTML = `
