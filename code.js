@@ -235,7 +235,7 @@ const handleNextPrev = (type) => {
 };
 
 const fetchProjects = async (lang = "es") => {
-  const response = await fetch(`https://giuliannt.github.io/api/myProjects-${lang}.json`);
+  const response = await fetch(`https://giulianoconti.github.io/api/myProjects-${lang}.json`);
   const data = await response.json();
   projectsList.innerHTML = "";
   data.forEach((project) => {
