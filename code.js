@@ -311,7 +311,7 @@ window.addEventListener("resize", () => {
   }
 });
 
-window.onbeforeunload = () => {
+window.onunload = window.onbeforeunload = () => {
   // reset contact form on page refresh
   contactForm.reset();
 };
