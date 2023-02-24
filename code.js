@@ -11,7 +11,6 @@ const contactSection = document.querySelector("#contact");
 const menu = document.querySelector(".nav_list");
 const projectsList = document.querySelector(".projects_list");
 const projectsButtonsContainer = document.querySelector(".projects_buttons_container");
-const contactForm = document.querySelector(".contact_form");
 let prevOrNextSectionRunning = false;
 let showMenu = false;
 let isMobile = false;
@@ -161,9 +160,9 @@ const toggleMenu = () => {
 };
 
 const removeMenu = () => {
-  // if menu is shown and the window is narrow
+  // If menu is shown and the window is narrow
   if (showMenu && window.innerWidth <= 790) {
-    // hide the menu
+    // Hide the menu
     menu.classList.remove("nav_list_active");
     menuBtn.classList.remove("d_none");
     showMenu = false;
@@ -312,8 +311,10 @@ window.addEventListener("resize", () => {
 });
 
 window.onunload = window.onbeforeunload = () => {
-  // reset contact form on page refresh
-  contactForm.reset();
+  // Reset contact form on page refresh
+  for (const form of document.getElementsByTagName("form")) {
+    form.reset();
+  }
 };
 
 handleMyAge();
