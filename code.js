@@ -31,6 +31,7 @@ const projectsTitle = document.querySelector(".projects_title");
 const contactInput = document.querySelector(".contact_input");
 const contactMessage = document.querySelector(".contact_message");
 const contactTextarea = document.querySelector(".contact_textarea");
+let windowWidth = window.innerWidth;
 
 const languages = {
   en: {
@@ -299,10 +300,16 @@ window.mobileAndTabletCheck = function () {
 window.addEventListener("scroll", activeMenu);
 
 window.addEventListener("resize", () => {
-  // reset the scroll position
-  projectsList.scrollLeft = 0;
-  // detect if the device is mobile
-  isMobileOrNot();
+  // Check if the window width has changed
+  if (windowWidth !== window.innerWidth) {
+    console.log("resize width")
+    // Update the window width for the next resize event
+    windowWidth = window.innerWidth;
+    // Reset the scroll position
+    projectsList.scrollLeft = 0;
+    // Detect if the device is mobile
+    isMobileOrNot();
+  }
 });
 
 window.onbeforeunload = () => {
