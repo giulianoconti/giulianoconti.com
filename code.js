@@ -302,7 +302,6 @@ window.addEventListener("scroll", activeMenu);
 window.addEventListener("resize", () => {
   // Check if the window width has changed
   if (windowWidth !== window.innerWidth) {
-    console.log("resize width")
     // Update the window width for the next resize event
     windowWidth = window.innerWidth;
     // Reset the scroll position
