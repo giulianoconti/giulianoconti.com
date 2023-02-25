@@ -133,19 +133,18 @@ const languages = {
 };
 
 const activeMenu = () => {
-  const scrollY = window.scrollY;
-  if (scrollY < aboutSection.offsetTop - aboutSection.offsetTop / 3) {
-    removeAllActive();
-    homeMenu.classList.add("active");
-  } else if (scrollY < projectsSection.offsetTop - projectsSection.offsetTop / 3) {
-    removeAllActive();
-    aboutMenu.classList.add("active");
-  } else if (scrollY < contactSection.offsetTop - contactSection.offsetTop / 4.5) {
-    removeAllActive();
-    projectsMenu.classList.add("active");
-  } else {
+  if (window.scrollY + window.innerHeight === document.documentElement.scrollHeight) {
     removeAllActive();
     contactMenu.classList.add("active");
+  } else if (window.scrollY < aboutSection.offsetTop - aboutSection.offsetTop / 3) {
+    removeAllActive();
+    homeMenu.classList.add("active");
+  } else if (window.scrollY < projectsSection.offsetTop - projectsSection.offsetTop / 3) {
+    removeAllActive();
+    aboutMenu.classList.add("active");
+  } else {
+    removeAllActive();
+    projectsMenu.classList.add("active");
   }
 };
 
