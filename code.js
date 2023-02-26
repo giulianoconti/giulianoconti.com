@@ -133,7 +133,7 @@ const languages = {
 };
 
 const activeMenu = () => {
-  if (window.scrollY + window.innerHeight === document.documentElement.scrollHeight) {
+  if (window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 100) {
     removeAllActive();
     contactMenu.classList.add("active");
   } else if (window.scrollY < aboutSection.offsetTop - aboutSection.offsetTop / 3) {
