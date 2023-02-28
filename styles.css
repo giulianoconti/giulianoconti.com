@@ -14,6 +14,15 @@ body {
   height: 100%;
 }
 
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+  border-radius: 4px;
+}
+
 /* ---------------------------------- ( NAVBAR ) ---------------------------------- */
 
 #navbar {
@@ -46,15 +55,14 @@ body {
   align-items: center;
   display: flex;
   height: 100%;
-  justify-content: center;
+  justify-content: start;
   margin-left: 8px;
-  width: 100px;
+  width: 156px;
 }
 
 .nav_logo_img {
   height: 100%;
   width: 56px;
-  margin-right: auto;
 }
 
 .nav_list {
@@ -64,6 +72,7 @@ body {
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
+  z-index: 10;
 }
 
 .nav_item {
@@ -88,6 +97,46 @@ body {
 .active {
   border-top: 2px solid rgb(0, 0, 0);
   scale: 1.1;
+}
+
+.nav_right_container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  margin-right: 8px;
+}
+
+.nav_btn_darkmode {
+  align-items: center;
+  background-color: rgb(255, 165, 0);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  height: 24px;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  width: 48px;
+}
+
+.nav_svg_moon {
+  margin-left: 3px;
+  fill: rgb(0, 0, 0);
+}
+
+.nav_svg_sun {
+  margin-right: 3px;
+  fill: rgb(255, 255, 0);
+}
+
+.nav_moon_or_sun {
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 50%);
+  height: 20px;
+  position: absolute;
+  transition: all 0.3s ease;
+  width: 20px;
 }
 
 .nav_langs {
@@ -626,6 +675,7 @@ body {
 @media screen and (max-width: 790px) {
   #navbar {
     background-color: transparent;
+    justify-content: space-between;
   }
 
   #navbar::after {
@@ -677,10 +727,23 @@ body {
     scale: 1;
   }
 
+  .nav_right_container {
+    margin: 0 0 0 16px;
+    height: 40px;
+  }
+
+  .nav_btn_darkmode {
+    position: absolute;
+    right: 0;
+    top: 16px;
+    left: 0;
+    margin: 0 auto;
+  }
+
   .nav_langs {
     background-color: rgb(220, 220, 220);
-    margin: 16px auto 0 16px;
     height: 40px;
+    margin: 0;
     width: auto;
   }
 
@@ -689,9 +752,7 @@ body {
     cursor: pointer;
     display: block;
     height: 40px;
-    position: absolute;
-    right: 16px;
-    top: 16px;
+    margin: 0 16px 0 0;
     width: 40px;
     z-index: 10;
   }
@@ -756,4 +817,32 @@ body {
 
 .d_none {
   display: none;
+}
+
+.dark {
+  filter: invert(1);
+}
+
+.dark .contact_social_link,
+.dark .about_right_img,
+.dark .about_left_img,
+.dark .project_img,
+.dark::-webkit-scrollbar {
+  filter: invert(1);
+}
+
+.dark body {
+  background-color: rgb(0, 0, 0);
+}
+
+.dark body::-webkit-scrollbar {
+  background-color: rgb(0, 0, 0);
+}
+
+.dark body::-webkit-scrollbar-thumb {
+  background-color: rgb(100, 100, 100);
+}
+
+.dark .nav_moon_or_sun {
+  transform: translateX(28px);
 }

@@ -13,7 +13,7 @@ const projectsList = document.querySelector(".projects_list");
 const projectsButtonsContainer = document.querySelector(".projects_buttons_container");
 const contactForm = document.querySelector(".contact_form");
 const contactStatus = document.querySelector(".contact_status");
-let prevOrNextSectionRunning = false;
+let isScrollingProjects = false;
 let showMenu = false;
 let isMobile = false;
 let windowWidth = window.innerWidth;
@@ -23,6 +23,7 @@ const navbarAbout = document.querySelector(".navbar_about");
 const navbarProjects = document.querySelector(".navbar_projects");
 const navbarContact = document.querySelector(".navbar_contact");
 const navbarSubtitle = document.querySelector(".home_subtitle");
+const homeBtn = document.querySelector(".home_btn");
 const homeBtnText = document.querySelector(".home_btn_text");
 const aboutTitle = document.querySelector(".about_left_title");
 const aboutName = document.querySelector(".about_name");
@@ -31,10 +32,14 @@ const aboutNacionality = document.querySelector(".about_nacionality");
 const aboutCity = document.querySelector(".about_city");
 const aboutLeftAbout = document.querySelector(".about_left_text");
 const projectsTitle = document.querySelector(".projects_title");
+const projectsButton = document.getElementsByClassName("projects_button");
+const projectsButtonPrevious = projectsButton[0];
+const projectsButtonNext = projectsButton[1];
 const contactInput = document.querySelector(".contact_input");
 const contactMessage = document.querySelector(".contact_message");
 const contactTextarea = document.querySelector(".contact_textarea");
-let currentLanguage = "es";
+const contactBtn = document.querySelector(".contact_btn");
+const navLangsSelect = document.querySelector(".nav_langs");
 
 const languages = {
   en: {
@@ -59,6 +64,8 @@ const languages = {
     },
     projects: {
       title: "My projects",
+      previous: "Previous",
+      next: "Next",
     },
     contact: {
       emailInput: "example@gmail.com",
@@ -66,6 +73,7 @@ const languages = {
       messageInput: "Hello, I would like to contact you for...",
       statusTextOk: "Thanks for your submission!",
       statusTextError: "Oops! There was a problem submitting your form.",
+      send: "Send",
     },
   },
   es: {
@@ -90,6 +98,8 @@ const languages = {
     },
     projects: {
       title: "Mis Proyectos",
+      previous: "Anterior",
+      next: "Siguiente",
     },
     contact: {
       emailInput: "ejemplo@gmail.com",
@@ -97,6 +107,7 @@ const languages = {
       messageInput: "Buenas, me gustaría contactar contigo para...",
       statusTextOk: "¡Gracias por tu envío!",
       statusTextError: "¡Ups! Hubo un problema al enviar tu formulario.",
+      send: "Enviar",
     },
   },
   pt: {
@@ -121,6 +132,8 @@ const languages = {
     },
     projects: {
       title: "Meus Projetos",
+      previous: "Anterior",
+      next: "Próximo",
     },
     contact: {
       emailInput: "exemplo@gmail.com",
@@ -128,21 +141,27 @@ const languages = {
       messageInput: "Olá, gostaria de entrar em contato com você para...",
       statusTextOk: "Obrigado pelo seu envio!",
       statusTextError: "Ops! Houve um problema ao enviar seu formulário.",
+      send: "Enviar",
     },
   },
 };
 
 const activeMenu = () => {
+  // This function adds the active class to the menu item that corresponds to the section that is currently visible on the screen
   if (window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 100) {
+    // If the scroll is at the bottom of the page, the contact menu item is active
     removeAllActive();
     contactMenu.classList.add("active");
   } else if (window.scrollY < aboutSection.offsetTop - aboutSection.offsetTop / 3) {
+    // If the scroll is at the top of the page, the home menu item is active
     removeAllActive();
     homeMenu.classList.add("active");
   } else if (window.scrollY < projectsSection.offsetTop - projectsSection.offsetTop / 3) {
+    // If the scroll is in the about section, the about menu item is active
     removeAllActive();
     aboutMenu.classList.add("active");
   } else {
+    // Otherwise, the projects menu item is active
     removeAllActive();
     projectsMenu.classList.add("active");
   }
@@ -178,16 +197,34 @@ const removeMenu = () => {
   }
 };
 
+const handleDarkModeBtn = () => {
+  // This function toggles the dark mode
+  const isDarkMode = localStorage.getItem("darkMode") === "true";
+  localStorage.setItem("darkMode", !isDarkMode);
+  handleDarkModeSaved();
+};
+
+const handleDarkModeSaved = () => {
+  // This function checks if dark mode is saved in localStorage
+  const isDarkMode = localStorage.getItem("darkMode") === "true";
+  document.querySelector("html").classList.toggle("dark", isDarkMode);
+};
+
 const handleLang = (lang = "es") => {
   // This function changes the language of the page
-  currentLanguage = lang;
-  fetchProjects(lang);
+  navLangsSelect.value = lang;
+  localStorage.setItem("language", lang);
   navbarHome.textContent = languages[lang].navbar.home;
+  navbarHome.title = languages[lang].navbar.home;
   navbarAbout.textContent = languages[lang].navbar.about;
+  navbarAbout.title = languages[lang].navbar.about;
   navbarProjects.textContent = languages[lang].navbar.projects;
+  navbarProjects.title = languages[lang].navbar.projects;
   navbarContact.textContent = languages[lang].navbar.contact;
+  navbarContact.title = languages[lang].navbar.contact;
   navbarSubtitle.textContent = languages[lang].home.subtitle;
   homeBtnText.textContent = languages[lang].home.downloadBtn;
+  homeBtn.title = languages[lang].home.downloadBtn;
   aboutTitle.textContent = languages[lang].about.title;
   aboutName.textContent = languages[lang].about.name;
   aboutAge.textContent = languages[lang].about.age;
@@ -195,9 +232,19 @@ const handleLang = (lang = "es") => {
   aboutCity.textContent = languages[lang].about.city;
   aboutLeftAbout.innerHTML = languages[lang].about.description;
   projectsTitle.textContent = languages[lang].projects.title;
+  projectsButtonPrevious.title = languages[lang].projects.previous;
+  projectsButtonNext.title = languages[lang].projects.next;
   contactInput.placeholder = languages[lang].contact.emailInput;
   contactMessage.textContent = languages[lang].contact.message;
   contactTextarea.placeholder = languages[lang].contact.messageInput;
+  contactBtn.textContent = languages[lang].contact.send;
+  contactBtn.title = languages[lang].contact.send;
+  fetchProjects(lang);
+};
+
+const handleLangSaved = () => {
+  // This function gets the language saved in localStorage
+  handleLang(localStorage.getItem("language") || "es");
 };
 
 const handleMyAge = () => {
@@ -217,8 +264,8 @@ const handleMyAge = () => {
 };
 
 const handleNextPrev = (type) => {
-  if (!prevOrNextSectionRunning) {
-    prevOrNextSectionRunning = true;
+  if (!isScrollingProjects) {
+    isScrollingProjects = true;
     if (type === "prev") {
       // If user is on the first project, scroll to the last project
       if (projectsList.scrollLeft === 0) {
@@ -236,7 +283,7 @@ const handleNextPrev = (type) => {
     }
     setTimeout(
       () => {
-        prevOrNextSectionRunning = false;
+        isScrollingProjects = false;
       },
       (projectsList.scrollLeft === 0 && type === "prev") || (projectsList.scrollWidth - projectsList.scrollLeft === projectsList.clientWidth && type === "next")
         ? 900
@@ -246,9 +293,11 @@ const handleNextPrev = (type) => {
 };
 
 const fetchProjects = async (lang = "es") => {
+  // This function fetches the projects from the API
   const response = await fetch(`https://giulianoconti.github.io/api/myProjects-${lang}.json`);
   const data = await response.json();
   projectsList.innerHTML = "";
+  // For each project, create a div and append it to the projects list
   data.forEach((project) => {
     const projectDiv = document.createElement("div");
     projectDiv.className = "project";
@@ -282,45 +331,46 @@ const fetchProjects = async (lang = "es") => {
 };
 
 const handleSubmit = async (e) => {
+  // Prevent the default form submit behavior
   e.preventDefault();
+  const currentLanguage = localStorage.getItem("language") || "es";
+  // Get the form data
   const data = new FormData(e.target);
-  fetch(e.target.action, {
-    method: contactForm.method,
-    body: data,
-    headers: {
-      Accept: "application/json",
-    },
-  })
-    .then((response) => {
-      if (response.ok) {
-        contactStatus.innerHTML = languages[currentLanguage].contact.statusTextOk;
-        contactForm.reset();
-      } else {
-        response.json().then((data) => {
-          if (Object.hasOwn(data, "errors")) {
-            contactStatus.innerHTML = data["errors"].map((error) => error["message"]).join(", ");
-          } else {
-            contactStatus.innerHTML = languages[currentLanguage].contact.statusTextError;
-          }
-        });
-      }
-    })
-    .catch((error) => {
-      contactStatus.innerHTML = languages[currentLanguage].contact.statusTextError;
+  // Send a POST request
+  try {
+    const response = await fetch(e.target.action, {
+      method: contactForm.method,
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
     });
+    if (response.ok) {
+      // If successful, show the success message and reset the form
+      contactStatus.innerHTML = languages[currentLanguage].contact.statusTextOk;
+      contactForm.reset();
+    } else {
+      // If not successful, show the error message
+      contactStatus.innerHTML = languages[currentLanguage].contact.statusTextError;
+    }
+  } catch (error) {
+    // If there is an error, show the error message
+    contactStatus.innerHTML = languages[currentLanguage].contact.statusTextError;
+  }
 };
 
 const isMobileOrNot = () => {
+  // Check if the device is mobile
   if (mobileAndTabletCheck()) {
+    // Add the mobile class to the projects list
     projectsList.classList.add("projects_list_mobile");
     projectsButtonsContainer.classList.add("d_none");
   } else if (projectsList.classList.contains("projects_list_mobile")) {
+    // Remove the mobile class from the projects list
     projectsList.classList.remove("projects_list_mobile");
     projectsButtonsContainer.classList.remove("d_none");
   }
 };
-
-contactForm.addEventListener("submit", handleSubmit);
 
 window.addEventListener("scroll", activeMenu);
 
@@ -337,6 +387,7 @@ window.addEventListener("resize", () => {
 });
 
 window.mobileAndTabletCheck = function () {
+  // Check if the device is mobile or tablet
   let check = false;
   (function (a) {
     if (
@@ -352,9 +403,11 @@ window.mobileAndTabletCheck = function () {
   return check;
 };
 
-handleMyAge();
+handleDarkModeSaved();
 
-fetchProjects("es");
+handleLangSaved();
+
+handleMyAge();
 
 isMobileOrNot();
 
