@@ -1,15 +1,16 @@
 const myAge = document.getElementById("myAge");
 const menuBtn = document.querySelector(".menu_btn");
-const homeMenu = document.querySelector("#home_link");
-const aboutMenu = document.querySelector("#about_link");
-const projectsMenu = document.querySelector("#projects_link");
-const contactMenu = document.querySelector("#contact_link");
+const homeLink = document.querySelector("#home_link");
+const aboutLink = document.querySelector("#about_link");
+const projectsLink = document.querySelector("#projects_link");
+const contactLink = document.querySelector("#contact_link");
 const homeSection = document.querySelector("#home");
 const aboutSection = document.querySelector("#about");
 const projectsSection = document.querySelector("#projects");
 const contactSection = document.querySelector("#contact");
 const menu = document.querySelector(".nav_list");
 const projectsList = document.querySelector(".projects_list");
+const projectsTouchScrollAnimation = document.querySelector(".projects_touch_scroll_animation");
 const projectsButtonsContainer = document.querySelector(".projects_buttons_container");
 const contactForm = document.querySelector(".contact_form");
 const contactStatus = document.querySelector(".contact_status");
@@ -22,7 +23,9 @@ const navbarHome = document.querySelector(".navbar_home");
 const navbarAbout = document.querySelector(".navbar_about");
 const navbarProjects = document.querySelector(".navbar_projects");
 const navbarContact = document.querySelector(".navbar_contact");
-const navbarSubtitle = document.querySelector(".home_subtitle");
+const navLangsSelect = document.querySelector(".nav_langs");
+const navBtnDarkmode = document.querySelector(".nav_btn_darkmode");
+const homeSubtitle = document.querySelector(".home_subtitle");
 const homeBtn = document.querySelector(".home_btn");
 const homeBtnText = document.querySelector(".home_btn_text");
 const aboutTitle = document.querySelector(".about_left_title");
@@ -39,7 +42,6 @@ const contactInput = document.querySelector(".contact_input");
 const contactMessage = document.querySelector(".contact_message");
 const contactTextarea = document.querySelector(".contact_textarea");
 const contactBtn = document.querySelector(".contact_btn");
-const navLangsSelect = document.querySelector(".nav_langs");
 
 const languages = {
   en: {
@@ -48,6 +50,8 @@ const languages = {
       about: "About",
       projects: "Projects",
       contact: "Contact",
+      languages: "Languages",
+      darkMode: "Dark Mode",
     },
     home: {
       subtitle: "Web developer",
@@ -82,6 +86,8 @@ const languages = {
       about: "Sobre mí",
       projects: "Proyectos",
       contact: "Contacto",
+      languages: "Idiomas",
+      darkMode: "Modo Oscuro",
     },
     home: {
       subtitle: "Desarrollador Web",
@@ -116,6 +122,8 @@ const languages = {
       about: "Sobre mim",
       projects: "Projetos",
       contact: "Contato",
+      languages: "Idiomas",
+      darkMode: "Modo Escuro",
     },
     home: {
       subtitle: "Desenvolvedor Web",
@@ -151,19 +159,19 @@ const activeMenu = () => {
   if (window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 100) {
     // If the scroll is at the bottom of the page, the contact menu item is active
     removeAllActive();
-    contactMenu.classList.add("active");
+    contactLink.classList.add("active");
   } else if (window.scrollY < aboutSection.offsetTop - aboutSection.offsetTop / 3) {
     // If the scroll is at the top of the page, the home menu item is active
     removeAllActive();
-    homeMenu.classList.add("active");
+    homeLink.classList.add("active");
   } else if (window.scrollY < projectsSection.offsetTop - projectsSection.offsetTop / 3) {
     // If the scroll is in the about section, the about menu item is active
     removeAllActive();
-    aboutMenu.classList.add("active");
+    aboutLink.classList.add("active");
   } else {
     // Otherwise, the projects menu item is active
     removeAllActive();
-    projectsMenu.classList.add("active");
+    projectsLink.classList.add("active");
   }
 };
 
@@ -222,7 +230,9 @@ const handleLang = (lang = "es") => {
   navbarProjects.title = languages[lang].navbar.projects;
   navbarContact.textContent = languages[lang].navbar.contact;
   navbarContact.title = languages[lang].navbar.contact;
-  navbarSubtitle.textContent = languages[lang].home.subtitle;
+  navLangsSelect.title = languages[lang].navbar.languages;
+  navBtnDarkmode.title = languages[lang].navbar.darkMode;
+  homeSubtitle.textContent = languages[lang].home.subtitle;
   homeBtnText.textContent = languages[lang].home.downloadBtn;
   homeBtn.title = languages[lang].home.downloadBtn;
   aboutTitle.textContent = languages[lang].about.title;
@@ -359,6 +369,13 @@ const handleSubmit = async (e) => {
   }
 };
 
+const removeScrollAnimationAndEventListener = () => {
+  // Remove div with project_touch_scroll_animation class
+  projectsTouchScrollAnimation.classList.add("d_none");
+  // Remove event listener
+  projectsList.removeEventListener("scroll", () => {});
+};
+
 const isMobileOrNot = () => {
   // Check if the device is mobile
   if (mobileAndTabletCheck()) {
@@ -371,6 +388,8 @@ const isMobileOrNot = () => {
     projectsButtonsContainer.classList.remove("d_none");
   }
 };
+
+projectsList.addEventListener("scroll", removeScrollAnimationAndEventListener);
 
 window.addEventListener("scroll", activeMenu);
 

@@ -608,6 +608,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width: 1020px) {
+  .home_title {
+    font-size: 32px;
+  }
+
+  .home_subtitle {
+    font-size: 20px;
+  }
+
+  .about_left_title {
+    font-size: 24px;
+  }
+
   #about {
     padding-top: 48px;
   }
@@ -620,6 +632,8 @@ body::-webkit-scrollbar-thumb {
     border-left: 4px solid rgb(230, 235, 230);
     border-right: 4px solid rgb(230, 235, 230);
     max-width: 964px;
+    overflow: hidden;
+    position: relative;
   }
 
   .project {
@@ -642,18 +656,6 @@ body::-webkit-scrollbar-thumb {
     width: calc(100vw - 40px);
   }
 
-  .home_title {
-    font-size: 32px;
-  }
-
-  .home_subtitle {
-    font-size: 20px;
-  }
-
-  .about_left_title {
-    font-size: 24px;
-  }
-
   .projects_title {
     font-size: 24px;
   }
@@ -673,6 +675,45 @@ body::-webkit-scrollbar-thumb {
   .project_link_svg {
     height: 48px;
     width: 48px;
+  }
+
+  .projects_touch_scroll_animation {
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-name: scroll;
+    animation-timing-function: ease-out;
+    background-color: rgba(255, 255, 255, 0.7);
+    background-image: url(assets/touch.svg);
+    border-radius: 50%;
+    bottom: 48px;
+    cursor: pointer;
+    height: 48px;
+    margin: auto 0;
+    opacity: 0;
+    position: absolute;
+    right: 16px;
+    top: 0;
+    width: 48px;
+    z-index: 100;
+  }
+
+  @keyframes scroll {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    20% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    60% {
+      opacity: 0;
+      transform: translateX(-110vw);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-110vw);
+    }
   }
 }
 
