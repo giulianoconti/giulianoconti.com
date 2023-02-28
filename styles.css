@@ -584,21 +584,25 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   display: flex;
   flex-direction: column;
+  gap: 32px;
   justify-content: center;
   max-width: 500px;
   width: 100%;
 }
 
 .contact_social_link {
-  font-size: 16px;
+  /* font-size: 16px;
   font-weight: 700;
   margin: 8px 0;
-  text-decoration: none;
+  text-decoration: none; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .contact_social_img {
   height: 60px;
-  margin: 8px;
+  /* margin: 8px; */
   transition: all 0.3s ease;
   width: 60px;
 }
@@ -779,6 +783,7 @@ body::-webkit-scrollbar-thumb {
 
   .contact_social {
     flex-direction: row;
+    margin-top: 16px;
   }
 }
 
