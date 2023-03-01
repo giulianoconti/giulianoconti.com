@@ -369,32 +369,9 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
   justify-content: center;
   max-width: 960px;
+  overflow: hidden;
+  position: relative;
   width: calc(100vw - 32px);
-}
-
-.projects_buttons_container {
-  display: flex;
-  justify-content: space-between;
-  margin: 16px 0;
-  width: 100%;
-}
-
-.projects_button {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(220, 220, 220);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  height: 48px;
-  margin: 0 16px;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.projects_button_img {
-  height: 100%;
-  width: 96px;
 }
 
 .projects_title {
@@ -406,18 +383,19 @@ body::-webkit-scrollbar-thumb {
 
 .projects_list {
   background-color: rgb(230, 235, 230);
+  cursor: grab;
   display: flex;
   list-style: none;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: scroll;
+  overscroll-behavior-x: contain;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   width: 100%;
 }
 
-.projects_list_mobile {
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
+.projects_list::-webkit-scrollbar {
+  display: none;
 }
 
 .project {
@@ -428,7 +406,9 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   margin: 16px;
   max-width: 960px;
+  position: relative;
   scroll-snap-align: center;
+  user-select: none;
   width: calc(100vw - 32px);
 }
 
@@ -436,6 +416,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 4px 0 0 4px;
   height: 410px;
   max-width: 728px;
+  pointer-events: none;
   width: 100vw;
 }
 
@@ -447,6 +428,12 @@ body::-webkit-scrollbar-thumb {
   max-width: 200px;
   padding: 16px;
   width: 50vw;
+}
+
+.project_number {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .project_title {
@@ -474,6 +461,45 @@ body::-webkit-scrollbar-thumb {
   height: 40px;
   transition: all 0.3s ease;
   width: 40px;
+}
+
+.projects_touch_scroll_animation {
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-name: scroll;
+  animation-timing-function: ease-out;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url(assets/touch.svg);
+  border-radius: 50%;
+  bottom: 0;
+  cursor: pointer;
+  height: 48px;
+  margin: auto 0;
+  opacity: 0;
+  position: absolute;
+  right: 224px;
+  top: 0;
+  width: 48px;
+  z-index: 100;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  80% {
+    opacity: 0;
+    transform: translateX(-110vw);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-110vw);
+  }
 }
 
 /* ---------------------------------- SECTION 4 ( CONTACT ) ---------------------------------- */
@@ -632,8 +658,6 @@ body::-webkit-scrollbar-thumb {
     border-left: 4px solid rgb(230, 235, 230);
     border-right: 4px solid rgb(230, 235, 230);
     max-width: 964px;
-    overflow: hidden;
-    position: relative;
   }
 
   .project {
@@ -653,6 +677,7 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     max-width: 956px;
     padding: 8px;
+    position: relative;
     width: calc(100vw - 40px);
   }
 
@@ -668,52 +693,14 @@ body::-webkit-scrollbar-thumb {
     font-size: 16px;
   }
 
-  .projects_buttons_container {
-    margin: 0 0 8px 0;
-  }
-
   .project_link_svg {
     height: 48px;
     width: 48px;
   }
 
   .projects_touch_scroll_animation {
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-name: scroll;
-    animation-timing-function: ease-out;
-    background-color: rgba(255, 255, 255, 0.7);
-    background-image: url(assets/touch.svg);
-    border-radius: 50%;
     bottom: 48px;
-    cursor: pointer;
-    height: 48px;
-    margin: auto 0;
-    opacity: 0;
-    position: absolute;
     right: 16px;
-    top: 0;
-    width: 48px;
-    z-index: 100;
-  }
-
-  @keyframes scroll {
-    0% {
-      opacity: 0;
-      transform: translateX(0);
-    }
-    20% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    60% {
-      opacity: 0;
-      transform: translateX(-110vw);
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(-110vw);
-    }
   }
 }
 
@@ -844,8 +831,8 @@ body::-webkit-scrollbar-thumb {
     scale: 1.1;
   }
 
-  .projects_button:hover {
-    scale: 1.1;
+  .projects_list:active {
+    cursor: grabbing;
   }
 
   .project_link_svg:hover {

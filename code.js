@@ -1,47 +1,47 @@
-const myAge = document.getElementById("myAge");
-const menuBtn = document.querySelector(".menu_btn");
-const homeLink = document.querySelector("#home_link");
-const aboutLink = document.querySelector("#about_link");
-const projectsLink = document.querySelector("#projects_link");
-const contactLink = document.querySelector("#contact_link");
-const homeSection = document.querySelector("#home");
-const aboutSection = document.querySelector("#about");
-const projectsSection = document.querySelector("#projects");
-const contactSection = document.querySelector("#contact");
-const menu = document.querySelector(".nav_list");
-const projectsList = document.querySelector(".projects_list");
-const projectsTouchScrollAnimation = document.querySelector(".projects_touch_scroll_animation");
-const projectsButtonsContainer = document.querySelector(".projects_buttons_container");
-const contactForm = document.querySelector(".contact_form");
-const contactStatus = document.querySelector(".contact_status");
-let isScrollingProjects = false;
-let showMenu = false;
-let isMobile = false;
-let windowWidth = window.innerWidth;
-// consts for change language
-const navbarHome = document.querySelector(".navbar_home");
-const navbarAbout = document.querySelector(".navbar_about");
-const navbarProjects = document.querySelector(".navbar_projects");
-const navbarContact = document.querySelector(".navbar_contact");
-const navLangsSelect = document.querySelector(".nav_langs");
-const navBtnDarkmode = document.querySelector(".nav_btn_darkmode");
-const homeSubtitle = document.querySelector(".home_subtitle");
-const homeBtn = document.querySelector(".home_btn");
-const homeBtnText = document.querySelector(".home_btn_text");
-const aboutTitle = document.querySelector(".about_left_title");
-const aboutName = document.querySelector(".about_name");
-const aboutAge = document.querySelector(".about_age");
-const aboutNacionality = document.querySelector(".about_nacionality");
-const aboutCity = document.querySelector(".about_city");
-const aboutLeftAbout = document.querySelector(".about_left_text");
-const projectsTitle = document.querySelector(".projects_title");
-const projectsButton = document.getElementsByClassName("projects_button");
-const projectsButtonPrevious = projectsButton[0];
-const projectsButtonNext = projectsButton[1];
-const contactInput = document.querySelector(".contact_input");
-const contactMessage = document.querySelector(".contact_message");
-const contactTextarea = document.querySelector(".contact_textarea");
-const contactBtn = document.querySelector(".contact_btn");
+const myAge = document.getElementById("myAge"),
+  menuBtn = document.querySelector(".menu_btn"),
+  homeLink = document.querySelector("#home_link"),
+  aboutLink = document.querySelector("#about_link"),
+  projectsLink = document.querySelector("#projects_link"),
+  contactLink = document.querySelector("#contact_link"),
+  homeSection = document.querySelector("#home"),
+  aboutSection = document.querySelector("#about"),
+  projectsSection = document.querySelector("#projects"),
+  contactSection = document.querySelector("#contact"),
+  menu = document.querySelector(".nav_list"),
+  projectsList = document.querySelector(".projects_list"),
+  projectsTouchScrollAnimation = document.querySelector(".projects_touch_scroll_animation"),
+  projectsButtonsContainer = document.querySelector(".projects_buttons_container"),
+  contactForm = document.querySelector(".contact_form"),
+  contactStatus = document.querySelector(".contact_status"),
+  // consts for change language
+  navbarHome = document.querySelector(".navbar_home"),
+  navbarAbout = document.querySelector(".navbar_about"),
+  navbarProjects = document.querySelector(".navbar_projects"),
+  navbarContact = document.querySelector(".navbar_contact"),
+  navLangsSelect = document.querySelector(".nav_langs"),
+  navBtnDarkmode = document.querySelector(".nav_btn_darkmode"),
+  homeSubtitle = document.querySelector(".home_subtitle"),
+  homeBtn = document.querySelector(".home_btn"),
+  homeBtnText = document.querySelector(".home_btn_text"),
+  aboutTitle = document.querySelector(".about_left_title"),
+  aboutName = document.querySelector(".about_name"),
+  aboutAge = document.querySelector(".about_age"),
+  aboutNacionality = document.querySelector(".about_nacionality"),
+  aboutCity = document.querySelector(".about_city"),
+  aboutLeftAbout = document.querySelector(".about_left_text"),
+  projectsTitle = document.querySelector(".projects_title"),
+  contactInput = document.querySelector(".contact_input"),
+  contactMessage = document.querySelector(".contact_message"),
+  contactTextarea = document.querySelector(".contact_textarea"),
+  contactBtn = document.querySelector(".contact_btn");
+
+let isScrollingProjects = false,
+  showMenu = false,
+  startX,
+  currentX,
+  scrollLeft,
+  isDown = false;
 
 const languages = {
   en: {
@@ -68,8 +68,6 @@ const languages = {
     },
     projects: {
       title: "My projects",
-      previous: "Previous",
-      next: "Next",
     },
     contact: {
       emailInput: "example@gmail.com",
@@ -104,8 +102,6 @@ const languages = {
     },
     projects: {
       title: "Mis Proyectos",
-      previous: "Anterior",
-      next: "Siguiente",
     },
     contact: {
       emailInput: "ejemplo@gmail.com",
@@ -140,8 +136,6 @@ const languages = {
     },
     projects: {
       title: "Meus Projetos",
-      previous: "Anterior",
-      next: "Próximo",
     },
     contact: {
       emailInput: "exemplo@gmail.com",
@@ -242,8 +236,6 @@ const handleLang = (lang = "es") => {
   aboutCity.textContent = languages[lang].about.city;
   aboutLeftAbout.innerHTML = languages[lang].about.description;
   projectsTitle.textContent = languages[lang].projects.title;
-  projectsButtonPrevious.title = languages[lang].projects.previous;
-  projectsButtonNext.title = languages[lang].projects.next;
   contactInput.placeholder = languages[lang].contact.emailInput;
   contactMessage.textContent = languages[lang].contact.message;
   contactTextarea.placeholder = languages[lang].contact.messageInput;
@@ -273,35 +265,6 @@ const handleMyAge = () => {
   myAge.innerHTML = age;
 };
 
-const handleNextPrev = (type) => {
-  if (!isScrollingProjects) {
-    isScrollingProjects = true;
-    if (type === "prev") {
-      // If user is on the first project, scroll to the last project
-      if (projectsList.scrollLeft === 0) {
-        projectsList.scrollLeft = projectsList.scrollWidth - projectsList.clientWidth;
-      } else {
-        projectsList.scrollLeft -= projectsList.clientWidth;
-      }
-    } else {
-      // If user is on the last project, scroll to the first project
-      if (projectsList.scrollWidth - projectsList.scrollLeft === projectsList.clientWidth) {
-        projectsList.scrollLeft = 0;
-      } else {
-        projectsList.scrollLeft += projectsList.clientWidth;
-      }
-    }
-    setTimeout(
-      () => {
-        isScrollingProjects = false;
-      },
-      (projectsList.scrollLeft === 0 && type === "prev") || (projectsList.scrollWidth - projectsList.scrollLeft === projectsList.clientWidth && type === "next")
-        ? 900
-        : 500
-    );
-  }
-};
-
 const fetchProjects = async (lang = "es") => {
   // This function fetches the projects from the API
   const response = await fetch(`https://giulianoconti.github.io/api/myProjects-${lang}.json`);
@@ -314,6 +277,7 @@ const fetchProjects = async (lang = "es") => {
     projectDiv.innerHTML = `
     <img class="project_img" src="${project.img}" alt="${project.title}"></img>
     <div class="project_info">
+      <p class="project_number">${project.id} / ${data.length}</p>
       <h3 class="project_title">${project.title}</h3>
       <p class="project_description">${project.description}</p>
       <div class="project_links">
@@ -376,34 +340,39 @@ const removeScrollAnimationAndEventListener = () => {
   projectsList.removeEventListener("scroll", () => {});
 };
 
-const isMobileOrNot = () => {
-  // Check if the device is mobile
-  if (mobileAndTabletCheck()) {
-    // Add the mobile class to the projects list
-    projectsList.classList.add("projects_list_mobile");
-    projectsButtonsContainer.classList.add("d_none");
-  } else if (projectsList.classList.contains("projects_list_mobile")) {
-    // Remove the mobile class from the projects list
-    projectsList.classList.remove("projects_list_mobile");
-    projectsButtonsContainer.classList.remove("d_none");
+projectsList.addEventListener("mousedown", (e) => {
+  // Catch the initial position of the mouse in projectsList
+  isDown = true;
+  startX = e.touches?.[0]?.pageX || e.pageX;
+  scrollLeft = projectsList.scrollLeft;
+});
+
+projectsList.addEventListener("mousemove", (e) => {
+  // Catch the current position of the mouse in projectsList
+  e.preventDefault();
+  if (!isDown) return;
+  currentX = e.touches?.[0]?.pageX || e.pageX;
+  const distanceX = currentX - startX;
+  projectsList.scrollLeft = scrollLeft - distanceX;
+});
+
+projectsList.addEventListener("mouseup", () => {
+  // Check if the mouse has moved more than 50px
+  isDown = false;
+  if (Math.abs(currentX - startX) > 50) {
+    if (currentX > startX) {
+      projectsList.scrollLeft -= projectsList.offsetWidth;
+    } else {
+      projectsList.scrollLeft += projectsList.offsetWidth;
+    }
   }
-};
+});
+
+projectsList.addEventListener("mouseleave", () => (isDown = false));
 
 projectsList.addEventListener("scroll", removeScrollAnimationAndEventListener);
 
 window.addEventListener("scroll", activeMenu);
-
-window.addEventListener("resize", () => {
-  // Check if the window width has changed
-  if (windowWidth !== window.innerWidth) {
-    // Update the window width for the next resize event
-    windowWidth = window.innerWidth;
-    // Reset the scroll position
-    projectsList.scrollLeft = 0;
-    // Detect if the device is mobile
-    isMobileOrNot();
-  }
-});
 
 window.mobileAndTabletCheck = function () {
   // Check if the device is mobile or tablet
@@ -427,8 +396,6 @@ handleDarkModeSaved();
 handleLangSaved();
 
 handleMyAge();
-
-isMobileOrNot();
 
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register("/sw.js");
