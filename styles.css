@@ -480,7 +480,7 @@ body::-webkit-scrollbar-thumb {
   right: 224px;
   top: 0;
   width: 48px;
-  z-index: 100;
+  z-index: 5;
 }
 
 @keyframes scroll {
