@@ -464,41 +464,41 @@ body::-webkit-scrollbar-thumb {
 }
 
 .projects_touch_scroll_animation {
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  animation-name: scroll;
-  animation-timing-function: ease-out;
-  background-color: rgba(255, 255, 255, 0.7);
-  background-image: url(assets/touch.svg);
+  animation: scroll 4s ease-out infinite;
+  background: rgba(255, 255, 255, 0.7) url(assets/grab.svg) center/38px no-repeat;
   border-radius: 50%;
   bottom: 0;
   cursor: grab;
   height: 48px;
-  margin: auto 0;
-  opacity: 0;
+  margin: auto;
+  pointer-events: none;
   position: absolute;
-  right: 224px;
-  top: 0;
+  right: 324px;
+  top: 48px;
   width: 48px;
   z-index: 5;
 }
 
 @keyframes scroll {
-  0% {
-    opacity: 0;
-    transform: translateX(0);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  80% {
-    opacity: 0;
-    transform: translateX(-110vw);
-  }
+  0%,
+  15%,
   100% {
-    opacity: 0;
-    transform: translateX(-110vw);
+    background-image: url(assets/grab.svg);
+    transform: translateX(0);
+  }
+  30%,
+  45% {
+    background-image: url(assets/grabbing.svg);
+    transform: translateX(0);
+  }
+  60% {
+    background-image: url(assets/grabbing.svg);
+    transform: translateX(-458px);
+  }
+  75%,
+  90% {
+    background-image: url(assets/grab.svg);
+    transform: translateX(-458px);
   }
 }
 
@@ -699,8 +699,26 @@ body::-webkit-scrollbar-thumb {
   }
 
   .projects_touch_scroll_animation {
+    animation-duration: 2.5s;
+    background-image: url(assets/touch.svg);
     bottom: 48px;
     right: 16px;
+    top: 0;
+  }
+
+  @keyframes scroll {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    30% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    80%,
+    100% {
+      transform: translateX(-110vw);
+    }
   }
 }
 
