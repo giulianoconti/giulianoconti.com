@@ -387,10 +387,11 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   list-style: none;
   margin: 0 auto;
-  overflow: scroll;
+  overflow-x: scroll;
   overscroll-behavior-x: contain;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   width: 100%;
 }
 
