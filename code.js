@@ -242,6 +242,7 @@ const handleLang = (lang = "es") => {
   contactBtn.textContent = languages[lang].contact.send;
   contactBtn.title = languages[lang].contact.send;
   fetchProjects(lang);
+  document.querySelector("html").lang = lang;
 };
 
 const handleLangSaved = () => {
