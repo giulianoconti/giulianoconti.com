@@ -1,17 +1,17 @@
 * {
   border: none;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-  outline: none;
   box-shadow: none;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  outline: none;
+  padding: 0;
 }
 
 html,
 body {
-  scroll-behavior: smooth;
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
@@ -32,18 +32,18 @@ body::-webkit-scrollbar-thumb {
   height: 56px;
   justify-content: center;
   left: 0;
+  padding: 0 calc((100vw - 1200px) / 2);
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0 calc((100vw - 1200px) / 2);
   z-index: 100;
 }
 
 #navbar::after {
   background: url("assets/bg.svg") bottom center;
   color: rgb(0, 136, 255);
-  fill: rgb(26, 136, 231);
   content: "";
+  fill: rgb(26, 136, 231);
   height: 20px;
   left: 0;
   position: absolute;
@@ -119,13 +119,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .nav_svg_moon {
-  margin-left: 3px;
   fill: rgb(0, 0, 0);
+  margin-left: 3px;
 }
 
 .nav_svg_sun {
-  margin-right: 3px;
   fill: rgb(255, 255, 0);
+  margin-right: 3px;
 }
 
 .nav_moon_or_sun {
@@ -192,8 +192,8 @@ body::-webkit-scrollbar-thumb {
 .home_btn {
   align-items: center;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(220, 220, 220);
   border-radius: 4px;
+  border: 1px solid rgb(220, 220, 220);
   color: rgb(0, 0, 0);
   cursor: pointer;
   display: flex;
@@ -250,14 +250,14 @@ body::-webkit-scrollbar-thumb {
 
 .about_left_info {
   display: flex;
+  line-height: 2;
   margin-bottom: 16px;
   width: 100%;
-  line-height: 2;
 }
 
 .about_left_item {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .about_left_info p {
@@ -316,21 +316,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 .about_right_img {
+  animation: breathe 2s ease-in-out infinite;
   height: 100px;
   margin: 16px;
   width: 100px;
-  animation: breathe 2s ease-in-out infinite;
 }
 
 @keyframes breathe {
-  0% {
-    transform: scale(1);
+  0%,
+  100% {
+    scale: 1;
   }
   50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
+    scale: 1.05;
   }
 }
 
@@ -615,10 +613,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contact_social_link {
-  /* font-size: 16px;
-  font-weight: 700;
-  margin: 8px 0;
-  text-decoration: none; */
   align-items: center;
   display: flex;
   justify-content: center;
@@ -745,7 +739,7 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     top: 0;
     transform: translateX(-140%);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
     width: 100%;
   }
 
@@ -761,9 +755,9 @@ body::-webkit-scrollbar-thumb {
   .nav_link {
     align-items: center;
     display: flex;
+    height: 100%;
     justify-content: center;
     margin: 0;
-    height: 100%;
     padding: 16px;
     width: 100%;
   }
@@ -775,16 +769,16 @@ body::-webkit-scrollbar-thumb {
   }
 
   .nav_right_container {
-    margin: 0 0 0 16px;
     height: 40px;
+    margin: 0 0 0 16px;
   }
 
   .nav_btn_darkmode {
+    left: 0;
+    margin: 0 auto;
     position: absolute;
     right: 0;
     top: 16px;
-    left: 0;
-    margin: 0 auto;
   }
 
   .nav_langs {
@@ -830,7 +824,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-@media screen and (max-width: 610px) {
+@media screen and (max-width: 430px) {
   .about_left_info {
     align-items: center;
     flex-direction: column;
@@ -910,7 +904,6 @@ body::-webkit-scrollbar-thumb {
 .dark #navbar,
 .dark .nav_list,
 .dark option,
-.dark .nav_langs,
 .dark #home,
 .dark .home_btn,
 .dark #projects,
@@ -919,7 +912,12 @@ body::-webkit-scrollbar-thumb {
 .dark .contact_input,
 .dark .contact_textarea,
 .dark .contact_btn {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
+  color: rgb(250, 250, 250);
+}
+
+.dark .nav_langs {
+  background-color: transparent;
   color: rgb(250, 250, 250);
 }
 
@@ -940,16 +938,16 @@ body::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(0, 0, 0) 100%);
 }
 
-.dark #contact {
-  background-color: rgb(22, 22, 22);
-}
-
 .dark .about_skills_bar {
   background-color: rgb(55, 55, 55);
 }
 
 .dark .about_skills_bar_fill {
   background-color: rgb(250, 250, 250);
+}
+
+.dark #contact {
+  background-color: rgb(22, 22, 22);
 }
 
 .dark .nav_logo_img,
@@ -966,8 +964,12 @@ body::-webkit-scrollbar-thumb {
   }
 
   .dark .active {
-    border: none;
     background-color: rgb(35, 35, 35);
+    border: none;
+  }
+
+  .dark .nav_langs {
+    background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(22, 22, 22) 100%);
   }
 
   .projects_container {
