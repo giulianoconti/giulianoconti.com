@@ -34,15 +34,15 @@ body::-webkit-scrollbar-thumb {
   left: 0;
   position: fixed;
   top: 0;
-  transition: background-color 0.6s ease;
   width: 100%;
   padding: 0 calc((100vw - 1200px) / 2);
   z-index: 100;
 }
 
 #navbar::after {
-  background-size: 150%;
   background: url("assets/bg.svg") bottom center;
+  color: rgb(0, 136, 255);
+  fill: rgb(26, 136, 231);
   content: "";
   height: 20px;
   left: 0;
@@ -91,7 +91,7 @@ body::-webkit-scrollbar-thumb {
   margin: 8px 0;
   padding: 0 10px;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: scale 0.3s ease;
 }
 
 .active {
@@ -115,7 +115,6 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   height: 24px;
   justify-content: space-between;
-  transition: all 0.3s ease;
   width: 48px;
 }
 
@@ -135,7 +134,7 @@ body::-webkit-scrollbar-thumb {
   box-shadow: 0 0 5px 0 rgb(0 0 0 / 50%);
   height: 20px;
   position: absolute;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
   width: 20px;
 }
 
@@ -169,7 +168,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 #home::after {
-  background-size: 150%;
   background: url("assets/bg.svg") bottom center;
   content: "";
   height: 20px;
@@ -207,7 +205,7 @@ body::-webkit-scrollbar-thumb {
   outline: none;
   padding: 8px 16px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: scale 0.3s ease;
 }
 
 .home_btn_text {
@@ -244,7 +242,7 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
-.about_left_title {
+.about_title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 16px;
@@ -350,7 +348,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 #projects::after {
-  background-size: 150%;
   background: url("assets/bg.svg") bottom center;
   content: "";
   height: 20px;
@@ -460,7 +457,7 @@ body::-webkit-scrollbar-thumb {
 .project_link_svg {
   color: rgb(0, 0, 0);
   height: 40px;
-  transition: all 0.3s ease;
+  transition: scale 0.3s ease;
   width: 40px;
 }
 
@@ -603,7 +600,7 @@ body::-webkit-scrollbar-thumb {
   max-height: 48px;
   outline: none;
   padding: 8px 16px;
-  transition: all 0.3s ease;
+  transition: scale 0.3s ease;
   width: 40%;
 }
 
@@ -629,8 +626,7 @@ body::-webkit-scrollbar-thumb {
 
 .contact_social_img {
   height: 60px;
-  /* margin: 8px; */
-  transition: all 0.3s ease;
+  transition: scale 0.3s ease;
   width: 60px;
 }
 
@@ -643,7 +639,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
   }
 
-  .about_left_title {
+  .about_title {
     font-size: 24px;
   }
 
@@ -871,18 +867,6 @@ body::-webkit-scrollbar-thumb {
   display: none;
 }
 
-.dark {
-  filter: invert(1);
-}
-
-.dark .contact_social_link,
-.dark .about_right_img,
-.dark .about_left_img,
-.dark .project_img,
-.dark::-webkit-scrollbar {
-  filter: invert(1);
-}
-
 .dark body {
   background-color: rgb(0, 0, 0);
 }
@@ -895,6 +879,99 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(100, 100, 100);
 }
 
+.dark .nav_link,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark p,
+.dark svg,
+.dark .home_btn,
+.dark .about_title,
+.dark .about_subtitle {
+  color: rgb(250, 250, 250);
+}
+
+.dark .active {
+  border-top: 2px solid rgb(250, 250, 250);
+}
+
 .dark .nav_moon_or_sun {
   transform: translateX(28px);
+}
+
+.dark .nav_svg_moon {
+  fill: rgb(250, 250, 250);
+}
+
+.dark .nav_btn_darkmode {
+  background-color: rgb(0, 90, 255);
+}
+
+.dark #navbar,
+.dark .nav_list,
+.dark option,
+.dark .nav_langs,
+.dark #home,
+.dark .home_btn,
+.dark #projects,
+.dark .project,
+.dark .contact_form,
+.dark .contact_input,
+.dark .contact_textarea,
+.dark .contact_btn {
+  background-color: black;
+  color: rgb(250, 250, 250);
+}
+
+.dark .home_btn,
+.dark .contact_input,
+.dark .contact_textarea,
+.dark .contact_btn {
+  border: 1px solid rgb(35, 35, 35);
+}
+
+.dark .menu_btn,
+.dark .projects_container,
+.dark .projects_list {
+  background-color: rgb(22, 22, 22);
+}
+
+.dark #about {
+  background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(0, 0, 0) 100%);
+}
+
+.dark #contact {
+  background-color: rgb(22, 22, 22);
+}
+
+.dark .about_skills_bar {
+  background-color: rgb(55, 55, 55);
+}
+
+.dark .about_skills_bar_fill {
+  background-color: rgb(250, 250, 250);
+}
+
+.dark .nav_logo_img,
+.dark #navbar::after,
+.dark #home::after,
+.dark #projects::after {
+  filter: invert(1);
+}
+
+@media screen and (max-width: 790px) {
+  .dark #navbar {
+    background-color: transparent;
+    justify-content: space-between;
+  }
+
+  .dark .active {
+    border: none;
+    background-color: rgb(35, 35, 35);
+  }
+
+  .projects_container {
+    border-left: 4px solid rgb(22, 22, 22);
+    border-right: 4px solid rgb(22, 22, 22);
+  }
 }
