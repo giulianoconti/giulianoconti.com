@@ -2,22 +2,25 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "CV Web de Giuliano Conti",
   "short_name": "CV",
-  "start_url": "/",
+  "start_url": "https://giulianoconti.site/",
   "display": "standalone",
   "background_color": "#ffffff",
   "description": "CV Web de Giuliano Conti",
   "theme_color": "#ffffff",
+  "prefer_related_applications": false,
   "purpose": "any maskable",
   "icons": [
     {
       "src": "assets/favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/favicon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

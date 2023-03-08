@@ -141,6 +141,7 @@ body::-webkit-scrollbar-thumb {
 .nav_langs {
   align-items: center;
   background-color: transparent;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   display: flex;
   font-size: 16px;
@@ -151,6 +152,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .menu_btn {
+  display: none;
+}
+
+.menu_btn_line {
   display: none;
 }
 
@@ -790,6 +795,7 @@ body::-webkit-scrollbar-thumb {
 
   .menu_btn {
     background-color: rgb(220, 220, 220);
+    color: rgb(0, 0, 0);
     cursor: pointer;
     display: block;
     height: 40px;
@@ -917,7 +923,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark .nav_langs {
-  background-color: transparent;
+  background-color: rgb(22, 22, 22);
   color: rgb(250, 250, 250);
 }
 
@@ -932,6 +938,7 @@ body::-webkit-scrollbar-thumb {
 .dark .projects_container,
 .dark .projects_list {
   background-color: rgb(22, 22, 22);
+  fill: rgb(250, 250, 250);
 }
 
 .dark #about {
@@ -975,7 +982,7 @@ body::-webkit-scrollbar-thumb {
     border: none;
   }
 
-  .dark .nav_langs {
+  /*  .dark .nav_langs {
     background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(22, 22, 22) 100%);
-  }
+  } */
 }
