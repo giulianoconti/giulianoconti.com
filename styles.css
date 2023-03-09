@@ -923,7 +923,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark .nav_langs {
-  background-color: rgb(22, 22, 22);
   color: rgb(250, 250, 250);
 }
 
@@ -982,7 +981,7 @@ body::-webkit-scrollbar-thumb {
     border: none;
   }
 
-  /*  .dark .nav_langs {
-    background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(22, 22, 22) 100%);
-  } */
+  .dark .nav_langs {
+    background-color: rgb(22, 22, 22);
+  }
 }
