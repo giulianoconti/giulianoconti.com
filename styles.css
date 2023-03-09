@@ -183,12 +183,14 @@ body::-webkit-scrollbar-thumb {
 }
 
 .home_title {
+  color: rgb(0, 0, 0);
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .home_subtitle {
+  color: rgb(0, 0, 0);
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 16px;
@@ -248,6 +250,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .about_title {
+  color: rgb(0, 0, 0);
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 16px;
@@ -266,11 +269,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .about_left_info p {
+  color: rgb(0, 0, 0);
   margin-left: 8px;
   margin-top: 4px;
 }
 
 .about_left_info h3 {
+  color: rgb(0, 0, 0);
   font-size: 20px;
   font-weight: 500;
   margin-left: 4px;
@@ -375,6 +380,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .projects_title {
+  color: rgb(0, 0, 0);
   font-size: 32px;
   font-weight: 700;
   margin-top: 16px;
@@ -432,18 +438,21 @@ body::-webkit-scrollbar-thumb {
 }
 
 .project_number {
+  color: rgb(0, 0, 0);
   position: absolute;
   right: 0;
   top: 0;
 }
 
 .project_title {
+  color: rgb(0, 0, 0);
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .project_description {
+  color: rgb(0, 0, 0);
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 16px;
@@ -540,6 +549,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contact_title {
+  color: rgb(0, 0, 0);
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 8px;
@@ -547,6 +557,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contact_label {
+  color: rgb(0, 0, 0);
   font-size: 16px;
   font-weight: 500;
 }
@@ -554,6 +565,7 @@ body::-webkit-scrollbar-thumb {
 .contact_input {
   border-radius: 4px;
   border: 1px solid rgb(220, 220, 220);
+  color: rgb(0, 0, 0);
   font-size: 16px;
   font-weight: 400;
   height: 20%;
@@ -596,6 +608,7 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(255, 255, 255);
   border-radius: 4px;
   border: 1px solid rgb(220, 220, 220);
+  color: rgb(0, 0, 0);
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
@@ -885,6 +898,7 @@ body::-webkit-scrollbar-thumb {
 .dark h3,
 .dark p,
 .dark svg,
+.dark label,
 .dark .home_btn,
 .dark .about_title,
 .dark .about_subtitle {
