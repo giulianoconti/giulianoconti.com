@@ -31,6 +31,9 @@ const myAge = document.getElementById("myAge"),
   aboutCity = document.querySelector(".about_city"),
   aboutText = document.querySelector(".about_text"),
   projectsTitle = document.querySelector(".projects_title"),
+  projectsButton = document.getElementsByClassName("projects_button"),
+  projectsButtonPrevious = projectsButton[0],
+  projectsButtonNext = projectsButton[1],
   contactInput = document.querySelector(".contact_input"),
   contactMessage = document.querySelector(".contact_message"),
   contactTextarea = document.querySelector(".contact_textarea"),
@@ -68,6 +71,8 @@ const languages = {
     },
     projects: {
       title: "My projects",
+      previous: "Previous",
+      next: "Next",
     },
     contact: {
       emailInput: "example@gmail.com",
@@ -102,6 +107,8 @@ const languages = {
     },
     projects: {
       title: "Mis Proyectos",
+      previous: "Anterior",
+      next: "Siguiente",
     },
     contact: {
       emailInput: "ejemplo@gmail.com",
@@ -136,6 +143,8 @@ const languages = {
     },
     projects: {
       title: "Meus Projetos",
+      previous: "Anterior",
+      next: "Próximo",
     },
     contact: {
       emailInput: "exemplo@gmail.com",
@@ -236,6 +245,8 @@ const handleLang = (lang = "es") => {
   aboutCity.textContent = languages[lang].about.city;
   aboutText.innerHTML = languages[lang].about.description;
   projectsTitle.textContent = languages[lang].projects.title;
+  projectsButtonPrevious.title = languages[lang].projects.previous;
+  projectsButtonNext.title = languages[lang].projects.next;
   contactInput.placeholder = languages[lang].contact.emailInput;
   contactMessage.textContent = languages[lang].contact.message;
   contactTextarea.placeholder = languages[lang].contact.messageInput;
@@ -341,6 +352,24 @@ const removeScrollAnimationAndEventListener = () => {
   projectsList.removeEventListener("scroll", () => {});
 };
 
+const previousProject = () => {
+  // Scroll to the previous project
+  if (projectsList.scrollLeft === 0) {
+    projectsList.scrollLeft = projectsList.scrollWidth - projectsList.offsetWidth;
+  } else {
+    projectsList.scrollLeft -= projectsList.offsetWidth;
+  }
+};
+
+const nextProject = () => {
+  // Scroll to the next project
+  if (projectsList.scrollLeft === projectsList.scrollWidth - projectsList.offsetWidth) {
+    projectsList.scrollLeft = 1;
+  } else {
+    projectsList.scrollLeft += projectsList.offsetWidth;
+  }
+};
+
 projectsList.addEventListener("mousedown", (e) => {
   // Catch the initial position of the mouse in projectsList
   isDown = true;
@@ -362,9 +391,9 @@ projectsList.addEventListener("mouseup", () => {
   isDown = false;
   if (Math.abs(currentX - startX) > 50) {
     if (currentX > startX) {
-      projectsList.scrollLeft -= projectsList.offsetWidth;
+      previousProject();
     } else {
-      projectsList.scrollLeft += projectsList.offsetWidth;
+      nextProject();
     }
   }
 });

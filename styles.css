@@ -480,13 +480,36 @@ body::-webkit-scrollbar-thumb {
   bottom: 0;
   cursor: grab;
   height: 48px;
-  margin: auto;
   pointer-events: none;
   position: absolute;
   right: 324px;
-  top: 48px;
+  top: 248px;
   width: 48px;
   z-index: 5;
+}
+
+.projects_buttons_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px 16px 16px;
+  width: 100%;
+}
+
+.projects_button {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  height: 48px;
+  outline: none;
+  transition: scale 0.3s ease;
+}
+
+.projects_button_img {
+  height: 100%;
+  width: 96px;
 }
 
 @keyframes scroll {
@@ -632,8 +655,10 @@ body::-webkit-scrollbar-thumb {
 
 .contact_social_link {
   align-items: center;
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
+  text-decoration: none;
 }
 
 .contact_social_img {
@@ -710,9 +735,12 @@ body::-webkit-scrollbar-thumb {
   .projects_touch_scroll_animation {
     animation-duration: 2.5s;
     background-image: url(assets/touch.svg);
-    bottom: 48px;
     right: 16px;
-    top: 0;
+    top: 128px;
+  }
+
+  .projects_buttons_container {
+    padding: 0 0 8px 0;
   }
 
   @keyframes scroll {
@@ -839,7 +867,12 @@ body::-webkit-scrollbar-thumb {
 
   .contact_social {
     flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 16px;
+  }
+
+  .contact_social_link:nth-child(4) {
+    width: 100%;
   }
 }
 
@@ -867,12 +900,20 @@ body::-webkit-scrollbar-thumb {
     scale: 1.1;
   }
 
+  .projects_button:hover {
+    scale: 1.1;
+  }
+
   .contact_social_img:hover {
     scale: 1.1;
   }
 
   .contact_btn:hover {
     scale: 1.05;
+  }
+
+  .contact_social_link:hover {
+    color: rgb(0, 0, 0, 0.5);
   }
 }
 
@@ -928,6 +969,7 @@ body::-webkit-scrollbar-thumb {
 .dark .home_btn,
 .dark #projects,
 .dark .project,
+.dark .projects_button,
 .dark .contact_form,
 .dark .contact_input,
 .dark .contact_textarea,
@@ -936,11 +978,13 @@ body::-webkit-scrollbar-thumb {
   color: rgb(250, 250, 250);
 }
 
-.dark .nav_langs {
+.dark .nav_langs,
+.dark .contact_social_link {
   color: rgb(250, 250, 250);
 }
 
 .dark .home_btn,
+.dark .projects_button,
 .dark .contact_input,
 .dark .contact_textarea,
 .dark .contact_btn {
@@ -971,6 +1015,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark .nav_logo_img,
+.dark .projects_button_img,
 .dark #navbar::after,
 .dark #home::after,
 .dark #projects::after {
