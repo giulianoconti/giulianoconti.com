@@ -393,7 +393,7 @@ const previousProject = () => {
 
 const nextProject = () => {
   // Scroll to the next project
-  if (projectsList.scrollLeft === projectsList.scrollWidth - projectsList.offsetWidth) {
+  if (projectsList.scrollLeft > projectsList.scrollWidth - projectsList.offsetWidth - 100) {
     projectsList.scrollLeft = 1;
   } else {
     projectsList.scrollLeft += projectsList.offsetWidth;
