@@ -430,7 +430,7 @@ body::-webkit-scrollbar-thumb {
 .project_info {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 340px;
   justify-content: center;
   max-width: 200px;
   padding: 16px;
@@ -449,6 +449,12 @@ body::-webkit-scrollbar-thumb {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 8px;
+}
+
+.project_technologies {
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .project_description {
@@ -1034,6 +1040,7 @@ body::-webkit-scrollbar-thumb {
 
 .dark .nav_logo_img,
 .dark .projects_button_img,
+.dark .project_technology_img,
 .dark #navbar::after,
 .dark #home::after,
 .dark #projects::after {

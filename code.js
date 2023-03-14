@@ -224,7 +224,10 @@ const handleDarkModeBtn = () => {
 const handleDarkModeSaved = () => {
   // This function checks if dark mode is saved in localStorage
   const isDarkMode = localStorage.getItem("darkMode") === "true";
+  // Add or remove dark class to html
   document.querySelector("html").classList.toggle("dark", isDarkMode);
+  // Change theme-color meta tag
+  document.querySelector('meta[name="theme-color"]').setAttribute("content", isDarkMode ? "#000000" : "#ffffff");
 };
 
 const handleLang = (lang = "es") => {
@@ -296,6 +299,17 @@ const fetchProjects = async (lang = "es") => {
     <img class="project_img" src="${project.img}" alt="${project.title}"></img>
     <div class="project_info">
       <p class="project_number">${project.id} / ${data.length}</p>
+      ${
+        project.technologies
+          ? `
+          <div class="project_technologies">
+            ${project.technologies
+              .map((tech) => `<img class="project_technology_img" src="${tech.img}" title="${tech.title}" alt="${tech.title}"></img>`)
+              .join("")}
+          </div>
+          `
+          : ""
+      }
       <h3 class="project_title">${project.title}</h3>
       <p class="project_description">${project.description}</p>
       <div class="project_links">
