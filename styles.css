@@ -462,14 +462,27 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: space-between;
   list-style: none;
-  margin: auto 8px 0 8px;
+  margin: auto 0 0 0;
   padding: 0;
+}
+
+.project_link {
+  align-items: center;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 400;
+  justify-content: center;
+  max-width: 64px;
+  text-align: center;
+  text-decoration: none;
+  transition: scale 0.3s ease;
 }
 
 .project_link_svg {
   color: rgb(0, 0, 0);
   height: 40px;
-  transition: scale 0.3s ease;
   width: 40px;
 }
 
@@ -896,7 +909,7 @@ body::-webkit-scrollbar-thumb {
     cursor: grabbing;
   }
 
-  .project_link_svg:hover {
+  .project_link:hover {
     scale: 1.1;
   }
 
@@ -946,7 +959,8 @@ body::-webkit-scrollbar-thumb {
 .dark label,
 .dark .home_btn,
 .dark .about_title,
-.dark .about_subtitle {
+.dark .about_subtitle,
+.dark .project_link {
   color: rgb(250, 250, 250);
 }
 
