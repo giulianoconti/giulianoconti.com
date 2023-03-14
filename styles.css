@@ -913,7 +913,11 @@ body::-webkit-scrollbar-thumb {
   }
 
   .contact_social_link:hover {
-    color: rgb(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0, 0.6);
+  }
+
+  .dark .contact_social_link:hover {
+    color: rgba(255, 255, 255, 0.6);
   }
 }
 
