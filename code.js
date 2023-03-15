@@ -276,7 +276,7 @@ const handleLang = (lang = "es") => {
   projectsButtonPrevious.title = languages[lang].projects.previous;
   projectsTitle.textContent = languages[lang].projects.title;
   document.querySelector("html").lang = lang;
-  showOrHideOptions();
+  navOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
   fetchProjects(lang);
 };
 
