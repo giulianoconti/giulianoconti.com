@@ -107,6 +107,58 @@ body::-webkit-scrollbar-thumb {
   margin-right: 8px;
 }
 
+.nav_select_menu {
+  cursor: pointer;
+  margin-right: 8px;
+  position: relative;
+  width: 100px;
+  z-index: 10;
+}
+
+.nav_select {
+  align-items: center;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  height: 100%;
+  justify-content: flex-end;
+  transition: scale 0.3s ease;
+  width: 100px;
+}
+
+.nav_select_img {
+  height: 24px;
+  width: 24px;
+}
+
+.nav_options_list {
+  background-color: #f9f9f9;
+  height: 0;
+  margin-top: 14px;
+  overflow-y: auto;
+  overflow: hidden;
+  padding: 0 20px;
+  position: absolute;
+}
+
+.nav_option {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 0;
+  transition: scale 0.3s ease;
+}
+
+.nav_option.selected {
+  font-weight: 700;
+  scale: 1.1;
+}
+
+.activeLanguage {
+  height: auto;
+}
+
 .nav_btn_darkmode {
   align-items: center;
   background-color: rgb(255, 165, 0);
@@ -136,19 +188,6 @@ body::-webkit-scrollbar-thumb {
   position: absolute;
   transition: transform 0.3s ease;
   width: 20px;
-}
-
-.nav_langs {
-  align-items: center;
-  background-color: transparent;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  display: flex;
-  font-size: 16px;
-  height: 100%;
-  justify-content: center;
-  margin-right: 8px;
-  width: 100px;
 }
 
 .menu_btn {
@@ -852,11 +891,20 @@ body::-webkit-scrollbar-thumb {
     top: 16px;
   }
 
-  .nav_langs {
+  .nav_select_menu {
+    width: auto;
+    z-index: 1;
+  }
+
+  .nav_select {
     background-color: rgb(220, 220, 220);
     height: 40px;
-    margin: 0;
+    padding: 0 4px 0 8px;
     width: auto;
+  }
+
+  .nav_options_list {
+    background-color: rgb(220, 220, 220);
   }
 
   .menu_btn {
@@ -909,32 +957,19 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (pointer: fine) {
-  .nav_link:hover {
-    scale: 1.1;
-  }
-
-  .home_btn:hover {
+  .nav_link:hover,
+  .nav_select:hover,
+  .nav_option:hover,
+  .home_btn:hover,
+  .project_link:hover,
+  .projects_button:hover,
+  .contact_btn:hover,
+  .contact_social_img:hover {
     scale: 1.1;
   }
 
   .projects_list:active {
     cursor: grabbing;
-  }
-
-  .project_link:hover {
-    scale: 1.1;
-  }
-
-  .projects_button:hover {
-    scale: 1.1;
-  }
-
-  .contact_social_img:hover {
-    scale: 1.1;
-  }
-
-  .contact_btn:hover {
-    scale: 1.05;
   }
 
   .contact_social_link:hover {
@@ -994,7 +1029,7 @@ body::-webkit-scrollbar-thumb {
 
 .dark #navbar,
 .dark .nav_list,
-.dark option,
+.dark .nav_select,
 .dark #home,
 .dark .home_btn,
 .dark #projects,
@@ -1008,7 +1043,6 @@ body::-webkit-scrollbar-thumb {
   color: rgb(250, 250, 250);
 }
 
-.dark .nav_langs,
 .dark .contact_social_link {
   color: rgb(250, 250, 250);
 }
@@ -1021,7 +1055,6 @@ body::-webkit-scrollbar-thumb {
   border: 1px solid rgb(35, 35, 35);
 }
 
-.dark .menu_btn,
 .dark .projects_container,
 .dark .projects_list {
   background-color: rgb(22, 22, 22);
@@ -1032,6 +1065,9 @@ body::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(0, 0, 0) 100%);
 }
 
+.dark .menu_btn,
+.dark .nav_options_list,
+.dark .nav_option,
 .dark .about_skills_bar {
   background-color: rgb(55, 55, 55);
 }
@@ -1045,6 +1081,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark .nav_logo_img,
+.dark .nav_select_img,
 .dark .projects_button_img,
 .dark .project_technology_img,
 .dark #navbar::after,
@@ -1071,7 +1108,7 @@ body::-webkit-scrollbar-thumb {
     border: none;
   }
 
-  .dark .nav_langs {
-    background-color: rgb(22, 22, 22);
+  .dark .nav_select {
+    background-color: rgb(55, 55, 55);
   }
 }

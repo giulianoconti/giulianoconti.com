@@ -41,11 +41,17 @@
         </li>
       </ul>
       <div class="nav_right_container">
-        <select class="nav_langs" title="Idiomas" aria-label="Select Language" onchange="handleLang(this.value)">
-          <option value="es">Español</option>
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-        </select>
+        <div class="nav_select_menu">
+          <div class="nav_select" onclick="showOrHideOptions()">
+            <span class="nav_select_span">Español</span>
+            <img class="nav_select_img" src="assets/arrow_down.svg" alt="Arrow Down" />
+          </div>
+          <div class="nav_options_list">
+            <div class="nav_option" onclick="handleLang('es')">Español</div>
+            <div class="nav_option" onclick="handleLang('en')">English</div>
+            <div class="nav_option" onclick="handleLang('pt')">Português</div>
+          </div>
+        </div>
         <button class="nav_btn_darkmode" title="Modo Oscuro" aria-label="Toggle Dark Mode" onclick="handleDarkModeBtn()">
           <svg class="nav_svg_moon ml-[3px] fill-black" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -70,7 +76,7 @@
       </button>
     </nav>
 
-    <main onclick="removeMenu()">
+    <main onclick="removeMenuAndLanguage()">
       <section id="home">
         <h1 class="home_title">Giuliano Conti</h1>
         <h2 class="home_subtitle">Desarrollador Web</h2>

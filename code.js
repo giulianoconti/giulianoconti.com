@@ -1,50 +1,53 @@
-const myAge = document.getElementById("myAge"),
-  menuBtn = document.querySelector(".menu_btn"),
-  homeLink = document.querySelector("#home_link"),
+const aboutAge = document.querySelector(".about_age"),
+  aboutCity = document.querySelector(".about_city"),
   aboutLink = document.querySelector("#about_link"),
-  projectsLink = document.querySelector("#projects_link"),
-  contactLink = document.querySelector("#contact_link"),
-  homeSection = document.querySelector("#home"),
+  aboutNacionality = document.querySelector(".about_nacionality"),
+  aboutName = document.querySelector(".about_name"),
   aboutSection = document.querySelector("#about"),
-  projectsSection = document.querySelector("#projects"),
-  contactSection = document.querySelector("#contact"),
-  menu = document.querySelector(".nav_list"),
-  projectsList = document.querySelector(".projects_list"),
-  projectsTouchScrollAnimation = document.querySelector(".projects_touch_scroll_animation"),
-  projectsButtonsContainer = document.querySelector(".projects_buttons_container"),
+  aboutText = document.querySelector(".about_text"),
+  aboutTitle = document.querySelector(".about_title"),
+  contactBtn = document.querySelector(".contact_btn"),
   contactForm = document.querySelector(".contact_form"),
+  contactInput = document.querySelector(".contact_input"),
+  contactLink = document.querySelector("#contact_link"),
+  contactMessage = document.querySelector(".contact_message"),
+  contactSection = document.querySelector("#contact"),
   contactStatus = document.querySelector(".contact_status"),
-  // consts for change language
-  navbarHome = document.querySelector(".navbar_home"),
-  navbarAbout = document.querySelector(".navbar_about"),
-  navbarProjects = document.querySelector(".navbar_projects"),
-  navbarContact = document.querySelector(".navbar_contact"),
-  navLangsSelect = document.querySelector(".nav_langs"),
-  navBtnDarkmode = document.querySelector(".nav_btn_darkmode"),
-  homeSubtitle = document.querySelector(".home_subtitle"),
+  contactTextarea = document.querySelector(".contact_textarea"),
   homeBtn = document.querySelector(".home_btn"),
   homeBtnText = document.querySelector(".home_btn_text"),
-  aboutTitle = document.querySelector(".about_title"),
-  aboutName = document.querySelector(".about_name"),
-  aboutAge = document.querySelector(".about_age"),
-  aboutNacionality = document.querySelector(".about_nacionality"),
-  aboutCity = document.querySelector(".about_city"),
-  aboutText = document.querySelector(".about_text"),
-  projectsTitle = document.querySelector(".projects_title"),
+  homeLink = document.querySelector("#home_link"),
+  homeSection = document.querySelector("#home"),
+  homeSubtitle = document.querySelector(".home_subtitle"),
+  menu = document.querySelector(".nav_list"),
+  menuBtn = document.querySelector(".menu_btn"),
+  myAge = document.getElementById("myAge"),
+  navbarAbout = document.querySelector(".navbar_about"),
+  navbarContact = document.querySelector(".navbar_contact"),
+  navbarHome = document.querySelector(".navbar_home"),
+  navbarProjects = document.querySelector(".navbar_projects"),
+  navBtnDarkmode = document.querySelector(".nav_btn_darkmode"),
+  NavOptions = document.querySelectorAll(".nav_option"),
+  NavOptions_list = document.querySelector(".nav_options_list"),
+  NavSelect = document.querySelector(".nav_select"),
+  NavSelectImg = document.querySelector(".nav_select_img"),
+  NavSelectSpan = document.querySelector(".nav_select_span"),
   projectsButton = document.getElementsByClassName("projects_button"),
-  projectsButtonPrevious = projectsButton[0],
   projectsButtonNext = projectsButton[1],
-  contactInput = document.querySelector(".contact_input"),
-  contactMessage = document.querySelector(".contact_message"),
-  contactTextarea = document.querySelector(".contact_textarea"),
-  contactBtn = document.querySelector(".contact_btn");
+  projectsButtonPrevious = projectsButton[0],
+  projectsButtonsContainer = document.querySelector(".projects_buttons_container"),
+  projectsLink = document.querySelector("#projects_link"),
+  projectsList = document.querySelector(".projects_list"),
+  projectsSection = document.querySelector("#projects"),
+  projectsTitle = document.querySelector(".projects_title"),
+  projectsTouchScrollAnimation = document.querySelector(".projects_touch_scroll_animation");
 
-let isScrollingProjects = false,
-  showMenu = false,
-  startX,
-  currentX,
+let currentX,
+  isDown = false,
   scrollLeft,
-  isDown = false;
+  selectedOption = null,
+  startX,
+  showMenu = false;
 
 const languages = {
   en: {
@@ -53,7 +56,7 @@ const languages = {
       about: "About",
       projects: "Projects",
       contact: "Contact",
-      languages: "Languages",
+      languages: "English",
       darkMode: "Dark Mode",
     },
     home: {
@@ -91,7 +94,7 @@ const languages = {
       about: "Sobre mí",
       projects: "Proyectos",
       contact: "Contacto",
-      languages: "Idiomas",
+      languages: "Español",
       darkMode: "Modo Oscuro",
     },
     home: {
@@ -129,7 +132,7 @@ const languages = {
       about: "Sobre mim",
       projects: "Projetos",
       contact: "Contato",
-      languages: "Idiomas",
+      languages: "Português",
       darkMode: "Modo Escuro",
     },
     home: {
@@ -202,15 +205,28 @@ const toggleMenu = () => {
     menuBtn.classList.remove("d_none");
     showMenu = false;
   }
+  NavOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
 };
 
-const removeMenu = () => {
+const showOrHideOptions = () => {
+  // Show & hide options list
+  const isActive = NavOptions_list.classList.contains("activeLanguage");
+  NavOptions_list.classList.toggle("activeLanguage", !isActive);
+  NavSelectImg.src = isActive ? "/assets/arrow_down.svg" : "/assets/arrow_up.svg";
+};
+
+const removeMenuAndLanguage = () => {
   // If menu is shown and the window is narrow
   if (showMenu && window.innerWidth <= 790) {
     // Hide the menu
     menu.classList.remove("nav_list_active");
     menuBtn.classList.remove("d_none");
     showMenu = false;
+  }
+  if (NavOptions_list.classList.contains("activeLanguage")) {
+    // If options list is shown, hide it
+    NavOptions_list.classList.remove("activeLanguage");
+    NavSelectImg.src = "/assets/arrow_down.svg";
   }
 };
 
@@ -232,7 +248,6 @@ const handleDarkModeSaved = () => {
 
 const handleLang = (lang = "es") => {
   // This function changes the language of the page
-  navLangsSelect.value = lang;
   localStorage.setItem("language", lang);
   navbarHome.textContent = languages[lang].navbar.home;
   navbarHome.title = languages[lang].navbar.home;
@@ -242,7 +257,8 @@ const handleLang = (lang = "es") => {
   navbarProjects.title = languages[lang].navbar.projects;
   navbarContact.textContent = languages[lang].navbar.contact;
   navbarContact.title = languages[lang].navbar.contact;
-  navLangsSelect.title = languages[lang].navbar.languages;
+  NavSelectSpan.textContent = languages[lang].navbar.languages;
+  NavSelectSpan.title = languages[lang].navbar.languages;
   navBtnDarkmode.title = languages[lang].navbar.darkMode;
   homeSubtitle.textContent = languages[lang].home.subtitle;
   homeBtnText.textContent = languages[lang].home.downloadBtn;
@@ -399,6 +415,20 @@ const nextProject = () => {
     projectsList.scrollLeft += projectsList.offsetWidth;
   }
 };
+
+NavOptions.forEach((option) => {
+  // Select option
+  option.addEventListener("click", () => {
+    if (selectedOption) {
+      selectedOption.classList.remove("selected");
+    }
+    if (!option.classList.contains("selected")) {
+      option.classList.add("selected");
+    }
+    selectedOption = option;
+    showOrHideOptions();
+  });
+});
 
 projectsList.addEventListener("mousedown", (e) => {
   // Catch the initial position of the mouse in projectsList
