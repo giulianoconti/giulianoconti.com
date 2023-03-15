@@ -11,13 +11,11 @@ const aboutAge = document.querySelector(".about_age"),
   contactInput = document.querySelector(".contact_input"),
   contactLink = document.querySelector("#contact_link"),
   contactMessage = document.querySelector(".contact_message"),
-  contactSection = document.querySelector("#contact"),
   contactStatus = document.querySelector(".contact_status"),
   contactTextarea = document.querySelector(".contact_textarea"),
   homeBtn = document.querySelector(".home_btn"),
   homeBtnText = document.querySelector(".home_btn_text"),
   homeLink = document.querySelector("#home_link"),
-  homeSection = document.querySelector("#home"),
   homeSubtitle = document.querySelector(".home_subtitle"),
   menu = document.querySelector(".nav_list"),
   menuBtn = document.querySelector(".menu_btn"),
@@ -27,15 +25,13 @@ const aboutAge = document.querySelector(".about_age"),
   navbarHome = document.querySelector(".navbar_home"),
   navbarProjects = document.querySelector(".navbar_projects"),
   navBtnDarkmode = document.querySelector(".nav_btn_darkmode"),
-  NavOptions = document.querySelectorAll(".nav_option"),
-  NavOptions_list = document.querySelector(".nav_options_list"),
-  NavSelect = document.querySelector(".nav_select"),
-  NavSelectImg = document.querySelector(".nav_select_img"),
-  NavSelectSpan = document.querySelector(".nav_select_span"),
+  navOptions = document.querySelectorAll(".nav_option"),
+  navOptions_list = document.querySelector(".nav_options_list"),
+  navSelectImg = document.querySelector(".nav_select_img"),
+  navSelectSpan = document.querySelector(".nav_select_span"),
   projectsButton = document.getElementsByClassName("projects_button"),
   projectsButtonNext = projectsButton[1],
   projectsButtonPrevious = projectsButton[0],
-  projectsButtonsContainer = document.querySelector(".projects_buttons_container"),
   projectsLink = document.querySelector("#projects_link"),
   projectsList = document.querySelector(".projects_list"),
   projectsSection = document.querySelector("#projects"),
@@ -45,7 +41,6 @@ const aboutAge = document.querySelector(".about_age"),
 let currentX,
   isDown = false,
   scrollLeft,
-  selectedOption = null,
   startX,
   showMenu = false;
 
@@ -56,7 +51,8 @@ const languages = {
       about: "About",
       projects: "Projects",
       contact: "Contact",
-      languages: "English",
+      languages: "Languages",
+      language: "English",
       darkMode: "Dark Mode",
     },
     home: {
@@ -94,7 +90,8 @@ const languages = {
       about: "Sobre mí",
       projects: "Proyectos",
       contact: "Contacto",
-      languages: "Español",
+      languages: "Idiomas",
+      language: "Español",
       darkMode: "Modo Oscuro",
     },
     home: {
@@ -132,7 +129,8 @@ const languages = {
       about: "Sobre mim",
       projects: "Projetos",
       contact: "Contato",
-      languages: "Português",
+      languages: "Idiomas",
+      language: "Português",
       darkMode: "Modo Escuro",
     },
     home: {
@@ -205,14 +203,14 @@ const toggleMenu = () => {
     menuBtn.classList.remove("d_none");
     showMenu = false;
   }
-  NavOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
+  navOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
 };
 
 const showOrHideOptions = () => {
   // Show & hide options list
-  const isActive = NavOptions_list.classList.contains("activeLanguage");
-  NavOptions_list.classList.toggle("activeLanguage", !isActive);
-  NavSelectImg.src = isActive ? "/assets/arrow_down.svg" : "/assets/arrow_up.svg";
+  const isActive = navOptions_list.classList.contains("activeLanguage");
+  navOptions_list.classList.toggle("activeLanguage", !isActive);
+  navSelectImg.src = isActive ? "/assets/arrow_down.svg" : "/assets/arrow_up.svg";
 };
 
 const removeMenuAndLanguage = () => {
@@ -223,10 +221,10 @@ const removeMenuAndLanguage = () => {
     menuBtn.classList.remove("d_none");
     showMenu = false;
   }
-  if (NavOptions_list.classList.contains("activeLanguage")) {
+  if (navOptions_list.classList.contains("activeLanguage")) {
     // If options list is shown, hide it
-    NavOptions_list.classList.remove("activeLanguage");
-    NavSelectImg.src = "/assets/arrow_down.svg";
+    navOptions_list.classList.remove("activeLanguage");
+    navSelectImg.src = "/assets/arrow_down.svg";
   }
 };
 
@@ -249,36 +247,37 @@ const handleDarkModeSaved = () => {
 const handleLang = (lang = "es") => {
   // This function changes the language of the page
   localStorage.setItem("language", lang);
-  navbarHome.textContent = languages[lang].navbar.home;
-  navbarHome.title = languages[lang].navbar.home;
-  navbarAbout.textContent = languages[lang].navbar.about;
-  navbarAbout.title = languages[lang].navbar.about;
-  navbarProjects.textContent = languages[lang].navbar.projects;
-  navbarProjects.title = languages[lang].navbar.projects;
-  navbarContact.textContent = languages[lang].navbar.contact;
-  navbarContact.title = languages[lang].navbar.contact;
-  NavSelectSpan.textContent = languages[lang].navbar.languages;
-  NavSelectSpan.title = languages[lang].navbar.languages;
-  navBtnDarkmode.title = languages[lang].navbar.darkMode;
-  homeSubtitle.textContent = languages[lang].home.subtitle;
-  homeBtnText.textContent = languages[lang].home.downloadBtn;
-  homeBtn.title = languages[lang].home.downloadBtn;
-  aboutTitle.textContent = languages[lang].about.title;
-  aboutName.textContent = languages[lang].about.name;
   aboutAge.textContent = languages[lang].about.age;
-  aboutNacionality.textContent = languages[lang].about.nationality;
   aboutCity.textContent = languages[lang].about.city;
+  aboutNacionality.textContent = languages[lang].about.nationality;
+  aboutName.textContent = languages[lang].about.name;
   aboutText.innerHTML = languages[lang].about.description;
-  projectsTitle.textContent = languages[lang].projects.title;
-  projectsButtonPrevious.title = languages[lang].projects.previous;
-  projectsButtonNext.title = languages[lang].projects.next;
+  aboutTitle.textContent = languages[lang].about.title;
+  contactBtn.textContent = languages[lang].contact.send;
+  contactBtn.title = languages[lang].contact.send;
   contactInput.placeholder = languages[lang].contact.emailInput;
   contactMessage.textContent = languages[lang].contact.message;
   contactTextarea.placeholder = languages[lang].contact.messageInput;
-  contactBtn.textContent = languages[lang].contact.send;
-  contactBtn.title = languages[lang].contact.send;
-  fetchProjects(lang);
+  homeBtn.title = languages[lang].home.downloadBtn;
+  homeBtnText.textContent = languages[lang].home.downloadBtn;
+  homeSubtitle.textContent = languages[lang].home.subtitle;
+  navbarAbout.textContent = languages[lang].navbar.about;
+  navbarAbout.title = languages[lang].navbar.about;
+  navbarContact.textContent = languages[lang].navbar.contact;
+  navbarContact.title = languages[lang].navbar.contact;
+  navbarHome.textContent = languages[lang].navbar.home;
+  navbarHome.title = languages[lang].navbar.home;
+  navbarProjects.textContent = languages[lang].navbar.projects;
+  navbarProjects.title = languages[lang].navbar.projects;
+  navBtnDarkmode.title = languages[lang].navbar.darkMode;
+  navSelectSpan.textContent = languages[lang].navbar.language;
+  navSelectSpan.title = languages[lang].navbar.languages;
+  projectsButtonNext.title = languages[lang].projects.next;
+  projectsButtonPrevious.title = languages[lang].projects.previous;
+  projectsTitle.textContent = languages[lang].projects.title;
   document.querySelector("html").lang = lang;
+  showOrHideOptions();
+  fetchProjects(lang);
 };
 
 const handleLangSaved = () => {
@@ -415,20 +414,6 @@ const nextProject = () => {
     projectsList.scrollLeft += projectsList.offsetWidth;
   }
 };
-
-NavOptions.forEach((option) => {
-  // Select option
-  option.addEventListener("click", () => {
-    if (selectedOption) {
-      selectedOption.classList.remove("selected");
-    }
-    if (!option.classList.contains("selected")) {
-      option.classList.add("selected");
-    }
-    selectedOption = option;
-    showOrHideOptions();
-  });
-});
 
 projectsList.addEventListener("mousedown", (e) => {
   // Catch the initial position of the mouse in projectsList
