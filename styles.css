@@ -737,12 +737,16 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
   }
 
+  #about {
+    padding-top: 48px;
+  }
+
   .about_title {
     font-size: 24px;
   }
 
-  #about {
-    padding-top: 48px;
+  .about_experience_title {
+    font-size: 24px;
   }
 
   #projects {
