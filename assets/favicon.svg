@@ -1,6 +1,34 @@
-<svg viewBox="0 0 500 500"
+<svg class="nav_logo_img" viewBox="0 0 56 56"
   xmlns="http://www.w3.org/2000/svg">
-  <ellipse style="fill: none;" cx="250" cy="250" rx="250" ry="250"></ellipse>
-  <text style="white-space: pre; fill: rgb(20, 20, 20); font-family: Arial, sans-serif; font-size: 424px;" x="26.239" y="346.932" font-weight="700" transform="matrix(1.094574, 0, 0, 1, -10.502035, 0)">G</text>
-  <text style="white-space: pre; fill: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 424px;" x="136.334" y="441.088" font-weight="1000" transform="matrix(0.662414, 0, 0, 0.476647, 141.378952, 237.073883)">C</text>
+  <rect x="91.025" y="15.838" width="19.566" height="4.319" fill="currentColor" transform="matrix(0.93131774, 0.36420772, 0, 1.0737474, -79.38494873, -42.05726242)"></rect>
+  <rect x="20.417" y="69.831" width="4.253" height="18.718" fill="currentColor" transform="matrix(0.93131774, 0.36420772, 0, 1.0737474, -17.59068489, -71.16725922)"></rect>
+  <rect x="21.267" y="15.838" width="4.253" height="4.319" fill="currentColor" transform="matrix(0.93131784, 0.36420747, 0, 1.07374728, -14.42476463, 3.5299511)"></rect>
+  <rect x="91.025" y="15.838" width="19.566" height="4.319" fill="currentColor" transform="matrix(0.93131774, 0.36420772, 0, 1.0737474, -79.3911972, -17.24702454)"></rect>
+  <rect x="21.268" y="15.838" width="4.254" height="4.319" fill="currentColor" transform="matrix(0.93131774, 0.36420772, 0, 1.0737474, -0.15094404, -6.44147015)"></rect>
+  <rect x="21.267" y="15.838" width="4.253" height="4.319" fill="currentColor" transform="matrix(0.93131774, 0.36420772, 0, 1.0737474, -0.15491037, 9.106493)"></rect>
+  <rect x="21.24" y="31.571" width="4.248" height="8.61" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, 3.86664701, -10.90060425)"></rect>
+  <rect x="21.24" y="31.543" width="4.248" height="8.603" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, 3.87227535, 9.3220253)"></rect>
+  <rect x="21.24" y="15.858" width="4.248" height="4.325" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, -10.39086914, 20.62033844)"></rect>
+  <rect x="21.24" y="15.858" width="4.248" height="4.325" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, -10.46001434, 5.07208443)"></rect>
+  <rect x="21.273" y="11.615" width="4.255" height="2.903" fill="currentColor" transform="matrix(0.92898714, -0.370112, 1.3613205, 0.53408592, -30.1918335, 29.95275116)"></rect>
+  <rect x="21.24" y="11.533" width="4.248" height="2.883" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 1.36132085, 0.53408587, -15.74620533, 35.57778168)"></rect>
+  <rect x="21.405" y="54.13" width="4.281" height="13.356" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 1.36132079, 0.53408589, -88.18639374, -12.88350201)"></rect>
+  <rect x="21.24" y="11.533" width="4.248" height="2.883" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 1.36132085, 0.53408587, -34.01189423, 12.95980072)"></rect>
+  <rect x="21.24" y="30.791" width="4.248" height="7.895" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 1.36132099, 0.53408582, -52.7589798, 25.74946213)"></rect>
+  <rect x="21.24" y="53.317" width="4.248" height="14.81" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, -14.34876633, -37.18688965)"></rect>
+  <rect x="20.417" y="69.34" width="4.253" height="18.586" fill="currentColor" transform="matrix(0.93131779, 0.36420759, 0, 1.07374734, 11.64918804, -67.67236328)"></rect>
+  <rect x="21.267" y="31.304" width="4.253" height="8.537" fill="currentColor" transform="matrix(0.93131786, 0.36420742, 0, 1.07374726, 14.79280186, -10.13038254)"></rect>
+  <rect x="21.268" y="15.838" width="4.254" height="4.319" fill="currentColor" transform="matrix(0.93131774, 0.36420772, 0, 1.0737474, 18.75358582, 17.19014168)"></rect>
+  <rect x="21.267" y="31.139" width="4.253" height="8.492" fill="currentColor" transform="matrix(0.93131779, 0.36420759, 0, 1.07374734, 22.74354935, -6.80949306)"></rect>
+  <rect x="19.813" y="69.831" width="4.128" height="18.718" fill="currentColor" transform="matrix(0.93131778, 0.36420762, 0, 1.07374735, 28.13771439, -62.36963654)"></rect>
+  <rect x="21.099" y="11.611" width="4.22" height="2.902" fill="currentColor" transform="matrix(0.92898703, -0.37011227, 1.36131999, 0.53408579, -4.74054527, 15.83500481)"></rect>
+  <rect x="20.881" y="11.376" width="4.176" height="2.844" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 1.36132072, 0.53408592, 11.69647312, 21.48616028)"></rect>
+  <rect x="21.148" y="11.701" width="4.229" height="2.925" fill="currentColor" transform="matrix(0.92898701, -0.37011232, 1.36131979, 0.5340858, -1.00269246, 32.80857086)"></rect>
+  <rect x="21.24" y="11.598" width="4.248" height="2.899" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 1.36132085, 0.53408587, 7.0305109, 36.03909302)"></rect>
+  <rect x="21.259" y="11.746" width="4.252" height="2.937" fill="currentColor" transform="matrix(0.92898715, -0.37011197, 1.36132073, 0.53408586, 2.81939244, 43.53746796)"></rect>
+  <rect x="21.24" y="51.043" width="4.248" height="14.356" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, 14.84665585, -31.29542732)"></rect>
+  <rect x="21.24" y="31.717" width="4.248" height="8.65" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, 26.77194214, 9.44827461)"></rect>
+  <rect x="21.24" y="15.858" width="4.248" height="4.325" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, 22.76992416, 34.29160309)"></rect>
+  <rect x="21.116" y="31.204" width="4.223" height="8.51" fill="currentColor" transform="matrix(0.92898717, -0.37011192, 0, 1.07644113, 18.94423103, 7.01123238)"></rect>
+  <rect x="21.452" y="60.45" width="4.29" height="17.001" fill="currentColor" transform="matrix(0.92898716, -0.37011195, 0, 1.07644114, 30.40881348, -35.74249268)"></rect>
 </svg>

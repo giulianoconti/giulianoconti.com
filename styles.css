@@ -318,11 +318,14 @@ body::-webkit-scrollbar-thumb {
 .about_left_img {
   border-radius: 4px;
   height: 200px;
-  margin-bottom: 16px;
   width: 182px;
 }
 
-.about_skills_container {
+.about_text {
+  margin-bottom: 32px;
+}
+
+.about_experience_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -330,39 +333,39 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
-.about_skills_title {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.about_skills_bar {
-  background-color: rgb(200, 200, 200);
-  border-radius: 4px;
-  height: 8px;
+.about_experience_title {
+  color: rgb(0, 0, 0);
+  font-size: 32px;
+  font-weight: 700;
   margin-bottom: 16px;
-  width: 100%;
 }
 
-.about_skills_bar_fill {
-  background-color: rgb(0, 0, 0);
-  border-radius: 4px;
-  height: 8px;
-  width: 100%;
+.about_experience_text {
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 12px 16px 0;
+}
+
+.about_experience_text_bold {
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .about_right_container {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 500px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  max-width: 232px;
   width: 100%;
 }
 
 .about_right_img {
   animation: breathe 2s ease-in-out infinite;
   height: 100px;
-  margin: 16px;
   width: 100px;
 }
 
@@ -708,8 +711,6 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   gap: 32px;
   justify-content: center;
-  max-width: 500px;
-  width: 100%;
 }
 
 .contact_social_link {
@@ -718,6 +719,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   text-decoration: none;
+  width: 232px;
 }
 
 .contact_social_img {
@@ -918,10 +920,15 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
   }
 
+  .about_right_container {
+    flex-direction: row;
+    gap: 16px;
+    max-width: 304px;
+  }
+
   .about_right_img {
-    height: 64px;
-    margin: 16px;
     width: 64px;
+    height: 64px;
   }
 
   .contact_container {
@@ -939,6 +946,10 @@ body::-webkit-scrollbar-thumb {
     margin-top: 16px;
   }
 
+  .contact_social_link {
+    width: auto;
+  }
+
   .contact_social_link:nth-child(4) {
     width: 100%;
   }
@@ -948,6 +959,10 @@ body::-webkit-scrollbar-thumb {
   .about_left_info {
     align-items: center;
     flex-direction: column;
+  }
+
+  .about_left_img {
+    margin-bottom: 16px;
   }
 }
 
@@ -1062,13 +1077,8 @@ body::-webkit-scrollbar-thumb {
 
 .dark .menu_btn,
 .dark .nav_options_list,
-.dark .nav_option,
-.dark .about_skills_bar {
+.dark .nav_option {
   background-color: rgb(55, 55, 55);
-}
-
-.dark .about_skills_bar_fill {
-  background-color: rgb(250, 250, 250);
 }
 
 .dark #contact {
@@ -1077,6 +1087,7 @@ body::-webkit-scrollbar-thumb {
 
 .dark .nav_logo_img,
 .dark .nav_select_img,
+.dark .about_right_img:nth-child(2),
 .dark .projects_button_img,
 .dark .project_technology_img,
 .dark #navbar::after,
