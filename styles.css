@@ -711,6 +711,7 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   gap: 32px;
   justify-content: center;
+  width: 232px;
 }
 
 .contact_social_link {
@@ -719,7 +720,6 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  width: 232px;
 }
 
 .contact_social_img {
@@ -948,6 +948,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 16px;
+    width: auto;
   }
 
   .contact_social_link {
