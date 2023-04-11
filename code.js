@@ -59,7 +59,7 @@ const languages = {
       darkMode: "Dark Mode",
     },
     home: {
-      subtitle: "Web developer",
+      subtitle: "Frontend Developer",
       downloadBtn: "Download Resume",
     },
     about: {
@@ -102,7 +102,7 @@ const languages = {
       darkMode: "Modo Oscuro",
     },
     home: {
-      subtitle: "Desarrollador Web",
+      subtitle: "Desarrollador Frontend",
       downloadBtn: "Descargar CV",
     },
     about: {
@@ -145,7 +145,7 @@ const languages = {
       darkMode: "Modo Escuro",
     },
     home: {
-      subtitle: "Desenvolvedor Web",
+      subtitle: "Desenvolvedor Frontend",
       downloadBtn: "Baixar CV",
     },
     about: {
