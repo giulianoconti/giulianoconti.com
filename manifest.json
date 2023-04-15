@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "CV Web de Giuliano Conti",
   "short_name": "CV",
-  "start_url": "https://giulianoconti.site/",
+  "start_url": "https://giulianoconti.com/",
   "display": "standalone",
   "background_color": "#ffffff",
   "description": "CV Web de Giuliano Conti",
