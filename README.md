@@ -2,7 +2,7 @@
   <a href="https://www.linkedin.com/in/giulianoconti/"><img width="100" src="https://raw.githubusercontent.com/giulianoconti/api/main/svgs/linkedin.svg" alt="LinkedIn"></a>
   <a href="https://github.com/giulianoconti"><img width="100" src="https://raw.githubusercontent.com/giulianoconti/api/main/svgs/github.svg" alt="GitHub"></a>
   <a href="https://www.instagram.com/giulianocontii/"><img width="100" src="https://raw.githubusercontent.com/giulianoconti/api/main/svgs/instagram.svg" alt="Instagram">
-  <a href="https://giulianoconti.site/"><img width="100" src="https://raw.githubusercontent.com/giulianoconti/api/main/svgs/portfolio.png" alt="Portfolio">
+  <a href="https://giulianoconti.com/"><img width="100" src="https://raw.githubusercontent.com/giulianoconti/api/main/svgs/portfolio.png" alt="Portfolio">
 </a>
   <a href="mailto:giuliconti1@gmail.com"><img width="100" src="https://raw.githubusercontent.com/giulianoconti/api/main/svgs/gmail.png" alt="Mail"></a>
 </p>
@@ -15,10 +15,10 @@ Información personal.
 
 ### Tecnologías Utilizadas
 
-* [HTML](https://giulianoconti.site/)
-* [CSS](https://giulianoconti.site/)
-* [JavaScript](https://giulianoconti.site/)
+* [HTML](https://giulianoconti.com/)
+* [CSS](https://giulianoconti.com/)
+* [JavaScript](https://giulianoconti.com/)
 
 ### Link
 
-https://giulianoconti.site/
+https://giulianoconti.com/
