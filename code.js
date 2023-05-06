@@ -61,6 +61,8 @@ const languages = {
     home: {
       subtitle: "Frontend Developer",
       downloadBtn: "Download Resume",
+      downloadBtnHref: "assets/Giuliano_Conti_CV-en.pdf",
+      downloadBtnDownload: "Giuliano_Conti_CV-en.pdf",
     },
     about: {
       title: "About Me",
@@ -104,6 +106,8 @@ const languages = {
     home: {
       subtitle: "Desarrollador Frontend",
       downloadBtn: "Descargar CV",
+      downloadBtnHref: "assets/Giuliano_Conti_CV.pdf",
+      downloadBtnDownload: "Giuliano_Conti_CV.pdf",
     },
     about: {
       title: "Sobre Mí",
@@ -147,6 +151,8 @@ const languages = {
     home: {
       subtitle: "Desenvolvedor Frontend",
       downloadBtn: "Baixar CV",
+      downloadBtnHref: "assets/Giuliano_Conti_CV-pt.pdf",
+      downloadBtnDownload: "Giuliano_Conti_CV-pt.pdf",
     },
     about: {
       title: "Sobre Mim",
@@ -276,6 +282,8 @@ const handleLang = (lang = "es") => {
   contactInput.placeholder = languages[lang].contact.emailInput;
   contactMessage.textContent = languages[lang].contact.message;
   contactTextarea.placeholder = languages[lang].contact.messageInput;
+  homeBtn.download = languages[lang].home.downloadBtnDownload;
+  homeBtn.href = languages[lang].home.downloadBtnHref;
   homeBtn.title = languages[lang].home.downloadBtn;
   homeBtnText.textContent = languages[lang].home.downloadBtn;
   homeSubtitle.textContent = languages[lang].home.subtitle;
