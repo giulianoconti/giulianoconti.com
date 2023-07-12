@@ -25,18 +25,46 @@
       </a>
       <ul class="nav_list">
         <li class="nav_item">
-          <a class="nav_link active navbar_home" title="Inicio" id="home_link" href="#home" aria-label="Navigate to Home" onclick="toggleMenu()">Inicio</a>
+          <a
+            class="nav_link active navbar_home"
+            title="Inicio"
+            id="home_link"
+            href="#home"
+            aria-label="Navigate to Home"
+            onclick="toggleMenu()"
+            >Inicio</a
+          >
         </li>
         <li class="nav_item">
-          <a class="nav_link navbar_about" title="Sobre mí" id="about_link" href="#about" aria-label="Navigate to About" onclick="toggleMenu()">Sobre mí</a>
+          <a
+            class="nav_link navbar_about"
+            title="Sobre mí"
+            id="about_link"
+            href="#about"
+            aria-label="Navigate to About"
+            onclick="toggleMenu()"
+            >Sobre mí</a
+          >
         </li>
         <li class="nav_item">
-          <a class="nav_link navbar_projects" title="Proyectos" id="projects_link" href="#projects" aria-label="Navigate to Projects" onclick="toggleMenu()"
+          <a
+            class="nav_link navbar_projects"
+            title="Proyectos"
+            id="projects_link"
+            href="#projects"
+            aria-label="Navigate to Projects"
+            onclick="toggleMenu()"
             >Proyectos</a
           >
         </li>
         <li class="nav_item">
-          <a class="nav_link navbar_contact" title="Contacto" id="contact_link" href="#contact" aria-label="Navigate to Contact" onclick="toggleMenu()"
+          <a
+            class="nav_link navbar_contact"
+            title="Contacto"
+            id="contact_link"
+            href="#contact"
+            aria-label="Navigate to Contact"
+            onclick="toggleMenu()"
             >Contacto</a
           >
         </li>
@@ -53,7 +81,12 @@
             <div class="nav_option" onclick="handleLang('pt')">Português</div>
           </div>
         </div>
-        <button class="nav_btn_darkmode" title="Modo Oscuro" aria-label="Toggle Dark Mode" onclick="handleDarkModeBtn()">
+        <button
+          class="nav_btn_darkmode"
+          title="Modo Oscuro"
+          aria-label="Toggle Dark Mode"
+          onclick="handleDarkModeBtn()"
+        >
           <svg class="nav_svg_moon ml-[3px] fill-black" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"
@@ -124,17 +157,9 @@
               Empecé a estudiar programación en 2021, iniciando por HTML, CSS y JavaScript.<br />
               Creé proyectos pequeños con arduino utilizando C++.<br />
               En el año 2022 me enfoqué principalmente en el desarrollo Front-End usando React.<br />
-              Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con amigos, jugar padel, los videojuegos y andar en bici.
+              Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con amigos, jugar padel, los
+              videojuegos y andar en bici.
             </p>
-
-            <div class="about_experience_container">
-              <p class="about_experience_title">Experiencia</p>
-              <p class="about_experience_text_bold">DESARROLLADOR FRONTEND SSR | XLABS | 2022 - ACTUAL</p>
-              <p class="about_experience_text">
-                Desarrollé componentes reutilizables. Diseñé y actualicé diseños. Resolví problemas técnicos. Produje sitios web compatibles con múltiples
-                navegadores.
-              </p>
-            </div>
           </div>
 
           <div class="about_right_container">
@@ -174,9 +199,21 @@
 
       <section id="contact">
         <div class="contact_container">
-          <form class="contact_form" action="https://formspree.io/f/mgeqglaq" method="POST" onsubmit="handleSubmit(event)">
+          <form
+            class="contact_form"
+            action="https://formspree.io/f/mgeqglaq"
+            method="POST"
+            onsubmit="handleSubmit(event)"
+          >
             <label class="contact_label" for="emailInput">Email:</label>
-            <input id="emailInput" class="contact_input" type="email" name="email" placeholder="ejemplo@gmail.com" required />
+            <input
+              id="emailInput"
+              class="contact_input"
+              type="email"
+              name="email"
+              placeholder="ejemplo@gmail.com"
+              required
+            />
             <label class="contact_label contact_message" for="messageTextarea">Mensaje:</label>
             <textarea
               id="messageTextarea"
@@ -191,16 +228,28 @@
             </div>
           </form>
           <div class="contact_social">
-            <a class="contact_social_link" title="LinkedIn" href="https://www.linkedin.com/in/giulianoconti/" target="_blank">
+            <a
+              class="contact_social_link"
+              title="LinkedIn"
+              href="https://www.linkedin.com/in/giulianoconti/"
+              target="_blank"
+            >
               <img class="contact_social_img" src="assets/icon_z_linkedin.svg" alt="linkedin icon" />
             </a>
-            <a class="contact_social_link" title="Instagram" href="https://www.instagram.com/giulianocontii/" target="_blank">
+            <a
+              class="contact_social_link"
+              title="Instagram"
+              href="https://www.instagram.com/giulianocontii/"
+              target="_blank"
+            >
               <img class="contact_social_img" src="assets/icon_z_instagram.svg" alt="instagram icon" />
             </a>
             <a class="contact_social_link" title="Github" href="https://github.com/giulianoconti" target="_blank">
               <img class="contact_social_img" src="assets/icon_z_github.svg" alt="github icon" />
             </a>
-            <a class="contact_social_link" title="Mail" href="mailto:giuliconti1@gmail.com" target="_blank">giuliconti1@gmail.com</a>
+            <a class="contact_social_link" title="Mail" href="mailto:giuliconti1@gmail.com" target="_blank"
+              >giuliconti1@gmail.com</a
+            >
           </div>
         </div>
       </section>
