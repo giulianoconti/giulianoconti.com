@@ -347,8 +347,26 @@ body::-webkit-scrollbar-thumb {
 }
 
 .about_experience_text_bold {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 4px;
+}
+
+.about_experience_container_link {
+  align-items: center;
+  display: flex;
+  height: 16px;
+  margin: 0 8px;
+  text-decoration: none;
+  width: 16px;
+}
+
+.about_experience_container_icon {
+  height: 16px;
+  transition: scale 0.3s ease;
+  width: 16px;
 }
 
 .about_right_container {
@@ -976,6 +994,7 @@ body::-webkit-scrollbar-thumb {
   .nav_select:hover,
   .nav_option:hover,
   .home_btn:hover,
+  .about_experience_container_icon:hover,
   .project_link:hover,
   .projects_button:hover,
   .contact_btn:hover,

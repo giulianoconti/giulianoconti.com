@@ -5,6 +5,9 @@ const aboutAge = document.querySelector(".about_age"),
   aboutName = document.querySelector(".about_name"),
   aboutSection = document.querySelector("#about"),
   aboutText = document.querySelector(".about_text"),
+  aboutExperienceTitle = document.querySelector(".about_experience_title"),
+  aboutExperienceTextBold = document.querySelector(".about_experience_text_bold"),
+  aboutExperienceText = document.querySelector(".about_experience_text"),
   aboutTitle = document.querySelector(".about_title"),
   contactBtn = document.querySelector(".contact_btn"),
   contactForm = document.querySelector(".contact_form"),
@@ -58,8 +61,6 @@ const languages = {
     home: {
       subtitle: "Frontend Developer",
       downloadBtn: "Download Resume",
-      downloadBtnHref: "assets/Giuliano_Conti_CV-en.pdf",
-      downloadBtnDownload: "Giuliano_Conti_CV-en.pdf",
     },
     about: {
       title: "About Me",
@@ -69,6 +70,10 @@ const languages = {
       city: "City:",
       description:
         "I started studying programming in 2021, starting with HTML, CSS, and JavaScript.<br /> I created small projects with arduino using C++.<br /> In the year 2022 I mainly focused on Front-End development using React.<br /> I like programming, designing in Blender, creating 3D plans in SketchUp, going out with friends, playing paddle tennis, video games and riding my bike.",
+      experienceTitle: "Experience",
+      experienceTextBold: `FRONTEND DEVELOPER | XLABS <a class="about_experience_container_link" href="https://www.linkedin.com/company/xlabsxyz/"><img class="about_experience_container_icon" src="assets/xLabs.webp" alt="xLabs" /></a> | 2023 - CURRENT`,
+      experienceText:
+        "I developed reusable components. I designed and updated designs. I solved technical problems. I Produced cross-browser compatible websites.",
     },
     projects: {
       title: "My projects",
@@ -99,8 +104,6 @@ const languages = {
     home: {
       subtitle: "Desarrollador Frontend",
       downloadBtn: "Descargar CV",
-      downloadBtnHref: "assets/Giuliano_Conti_CV.pdf",
-      downloadBtnDownload: "Giuliano_Conti_CV.pdf",
     },
     about: {
       title: "Sobre Mí",
@@ -110,6 +113,10 @@ const languages = {
       city: "Ciudad:",
       description:
         "Empecé a estudiar programación en 2021, iniciando por HTML, CSS y JavaScript.<br /> Creé proyectos pequeños con arduino utilizando C++.<br /> En el año 2022 me enfoqué principalmente en el desarrollo Front-End usando React.<br /> Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con amigos, jugar padel, los videojuegos y andar en bici.",
+      experienceTitle: "Experiencia",
+      experienceTextBold: `DESARROLLADOR FRONTEND | XLABS <a class="about_experience_container_link" href="https://www.linkedin.com/company/xlabsxyz/"><img class="about_experience_container_icon" src="assets/xLabs.webp" alt="xLabs" /></a> | 2023 - ACTUAL`,
+      experienceText:
+        "Desarrollé componentes reutilizables. Diseñé y actualicé diseños. Resolví problemas técnicos. Produje sitios web compatibles con múltiples navegadores.",
     },
     projects: {
       title: "Mis Proyectos",
@@ -140,8 +147,6 @@ const languages = {
     home: {
       subtitle: "Desenvolvedor Frontend",
       downloadBtn: "Baixar CV",
-      downloadBtnHref: "assets/Giuliano_Conti_CV-pt.pdf",
-      downloadBtnDownload: "Giuliano_Conti_CV-pt.pdf",
     },
     about: {
       title: "Sobre Mim",
@@ -151,6 +156,10 @@ const languages = {
       city: "Cidade:",
       description:
         "Comecei a estudar programação em 2021, iniciando por HTML, CSS e JavaScript.<br /> Criei projetos pequenos com arduino utilizando C++.<br /> No ano de 2022 me concentrei principalmente no desenvolvimento Front-End usando React.<br /> Gosto de programar, desenhar no Blender, criar planos 3D no SketchUp, sair com amigos, jogar padel, jogos de vídeo e andar de bicicleta.",
+      experienceTitle: "Experiência",
+      experienceTextBold: `DESENVOLVEDOR FRONTEND | XLABS <a class="about_experience_container_link" href="https://www.linkedin.com/company/xlabsxyz/"><img class="about_experience_container_icon" src="assets/xLabs.webp" alt="xLabs" /></a> | 2023 - ATUAL`,
+      experienceText:
+        "Desenvolvi componentes reutilizáveis. Desenhei e atualizei projetos. Resolvi problemas técnicos. Produzi sites compatíveis com vários navegadores.",
     },
     projects: {
       title: "Meus Projetos",
@@ -255,6 +264,9 @@ const handleLang = (lang = "es") => {
   localStorage.setItem("language", lang);
   aboutAge.textContent = languages[lang].about.age;
   aboutCity.textContent = languages[lang].about.city;
+  aboutExperienceText.innerHTML = languages[lang].about.experienceText;
+  aboutExperienceTextBold.innerHTML = languages[lang].about.experienceTextBold;
+  aboutExperienceTitle.textContent = languages[lang].about.experienceTitle;
   aboutNacionality.textContent = languages[lang].about.nationality;
   aboutName.textContent = languages[lang].about.name;
   aboutText.innerHTML = languages[lang].about.description;
@@ -264,8 +276,6 @@ const handleLang = (lang = "es") => {
   contactInput.placeholder = languages[lang].contact.emailInput;
   contactMessage.textContent = languages[lang].contact.message;
   contactTextarea.placeholder = languages[lang].contact.messageInput;
-  homeBtn.download = languages[lang].home.downloadBtnDownload;
-  homeBtn.href = languages[lang].home.downloadBtnHref;
   homeBtn.title = languages[lang].home.downloadBtn;
   homeBtnText.textContent = languages[lang].home.downloadBtn;
   homeSubtitle.textContent = languages[lang].home.subtitle;
@@ -327,7 +337,10 @@ const fetchProjects = async (lang = "es") => {
           ? `
           <div class="project_technologies">
             ${project.technologies
-              .map((tech) => `<img class="project_technology_img" src="${tech.img}" title="${tech.title}" alt="${tech.title}"></img>`)
+              .map(
+                (tech) =>
+                  `<img class="project_technology_img" src="${tech.img}" title="${tech.title}" alt="${tech.title}"></img>`
+              )
               .join("")}
           </div>
           `
@@ -336,9 +349,9 @@ const fetchProjects = async (lang = "es") => {
       <h3 class="project_title">${project.title}</h3>
       <p class="project_description">${project.description}</p>
       <div class="project_links">
-        <a class="project_link" href="${project.hrefGithub}" title="Github" target="_blank" rel="noreferrer" aria-label="link to ${
-      project.title
-    } github repository">
+        <a class="project_link" href="${
+          project.hrefGithub
+        }" title="Github" target="_blank" rel="noreferrer" aria-label="link to ${project.title} github repository">
           <svg class="project_link_svg" fill="currentColor" viewBox="0 0 24 24">
             <path
               fillRule="evenodd"
