@@ -181,8 +181,8 @@ const languages = {
   },
 };
 
+// This function adds the active class to the menu item that corresponds to the section that is currently visible on the screen
 const activeMenu = () => {
-  // This function adds the active class to the menu item that corresponds to the section that is currently visible on the screen
   if (window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 100) {
     // If the scroll is at the bottom of the page, the contact menu item is active
     removeAllActive();
@@ -202,8 +202,8 @@ const activeMenu = () => {
   }
 };
 
+// This function removes the active class from all menu items
 const removeAllActive = () => {
-  // This function removes the active class from all menu items
   const menuItems = document.querySelectorAll(".nav_link");
   menuItems.forEach(item => item.classList.remove("active"));
 };
@@ -223,8 +223,8 @@ const toggleMenu = () => {
   navOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
 };
 
+// Show & hide options list
 const showOrHideOptions = () => {
-  // Show & hide options list
   const isActive = navOptions_list.classList.contains("activeLanguage");
   navOptions_list.classList.toggle("activeLanguage", !isActive);
   navSelectImg.src = isActive ? "/assets/arrow_down.svg" : "/assets/arrow_up.svg";
@@ -281,8 +281,8 @@ const handleDarkModeBtn = () => {
   }
 };
 
+// This function changes the language of the page
 const handleLang = (lang = "es") => {
-  // This function changes the language of the page
   localStorage.setItem("language", lang);
   aboutAge.textContent = languages[lang].about.age;
   aboutCity.textContent = languages[lang].about.city;
@@ -320,9 +320,17 @@ const handleLang = (lang = "es") => {
   fetchProjects(lang);
 };
 
+// Detect your language
+const detectLanguage = () => {
+  const supportedLanguages = ["es", "en", "pt"];
+  const userLanguage = (navigator.language || navigator.userLanguage).substr(0, 2);
+
+  return supportedLanguages.includes(userLanguage) ? userLanguage : "es";
+};
+
+// This function gets the language saved in localStorage or detects the language of the browser
 const handleLangSaved = () => {
-  // This function gets the language saved in localStorage
-  handleLang(localStorage.getItem("language") || "es");
+  handleLang(localStorage.getItem("language") || detectLanguage());
 };
 
 const handleMyAge = () => {
@@ -341,8 +349,8 @@ const handleMyAge = () => {
   myAge.innerHTML = age;
 };
 
+// This function fetches the projects from the API
 const fetchProjects = async (lang = "es") => {
-  // This function fetches the projects from the API
   const response = await fetch(`https://giulianoconti.github.io/api/myProjects-${lang}.json`);
   const data = await response.json();
   projectsList.innerHTML = "";
@@ -442,8 +450,8 @@ const removeScrollAnimationAndEventListener = () => {
   projectsList.removeEventListener("scroll", () => {});
 };
 
+// Scroll to the previous project
 const previousProject = () => {
-  // Scroll to the previous project
   if (projectsList.scrollLeft === 0) {
     projectsList.scrollLeft = projectsList.scrollWidth - projectsList.offsetWidth;
   } else {
@@ -451,8 +459,8 @@ const previousProject = () => {
   }
 };
 
+// Scroll to the next project
 const nextProject = () => {
-  // Scroll to the next project
   if (projectsList.scrollLeft > projectsList.scrollWidth - projectsList.offsetWidth - 100) {
     projectsList.scrollLeft = 1;
   } else {
@@ -460,15 +468,15 @@ const nextProject = () => {
   }
 };
 
+// Catch the initial position of the mouse in projectsList
 projectsList.addEventListener("mousedown", e => {
-  // Catch the initial position of the mouse in projectsList
   isDown = true;
   startX = e.touches?.[0]?.pageX || e.pageX;
   scrollLeft = projectsList.scrollLeft;
 });
 
+// Catch the current position of the mouse in projectsList
 projectsList.addEventListener("mousemove", e => {
-  // Catch the current position of the mouse in projectsList
   e.preventDefault();
   if (!isDown) return;
   currentX = e.touches?.[0]?.pageX || e.pageX;
@@ -476,8 +484,8 @@ projectsList.addEventListener("mousemove", e => {
   projectsList.scrollLeft = scrollLeft - distanceX;
 });
 
+// Check if the mouse has moved more than 50px
 projectsList.addEventListener("mouseup", () => {
-  // Check if the mouse has moved more than 50px
   isDown = false;
   if (Math.abs(currentX - startX) > 50) {
     if (currentX > startX) {
@@ -494,8 +502,8 @@ projectsList.addEventListener("scroll", removeScrollAnimationAndEventListener);
 
 window.addEventListener("scroll", activeMenu);
 
+// Check if the device is mobile or tablet
 window.mobileAndTabletCheck = function () {
-  // Check if the device is mobile or tablet
   let check = false;
   (function (a) {
     if (
