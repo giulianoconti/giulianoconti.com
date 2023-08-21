@@ -270,7 +270,6 @@ body::-webkit-scrollbar-thumb {
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 16px;
   width: 100%;
 }
 
@@ -290,15 +289,21 @@ body::-webkit-scrollbar-thumb {
 }
 
 .about_left_info {
+  align-items: center;
   display: flex;
   line-height: 2;
   margin-bottom: 16px;
   width: 100%;
 }
 
+.about_left_list {
+  margin-bottom: auto;
+}
+
 .about_left_item {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .about_left_info p {
@@ -316,8 +321,10 @@ body::-webkit-scrollbar-thumb {
 
 .about_left_img {
   border-radius: 4px;
-  height: 200px;
-  width: 182px;
+  height: calc(35vw * 1.1);
+  max-height: 200px;
+  max-width: 182px;
+  width: 35vw;
 }
 
 .about_text {
@@ -536,9 +543,9 @@ body::-webkit-scrollbar-thumb {
 .project_description {
   color: rgb(0, 0, 0);
   font-size: 16px;
-  text-wrap: balance;
   font-weight: 400;
   margin-bottom: 16px;
+  text-wrap: balance;
 }
 
 .project_links {
@@ -965,7 +972,6 @@ body::-webkit-scrollbar-thumb {
   }
 
   .about_right_container {
-    gap: 10vw;
     max-width: 500px;
   }
 
@@ -1001,16 +1007,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-@media screen and (max-width: 430px) {
-  .about_left_info {
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .about_left_img {
-    margin-bottom: 16px;
-  }
-
+@media screen and (max-width: 460px) {
   .about_experience_container_span_compa {
     border-left: 0;
     padding-left: 0;
