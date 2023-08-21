@@ -11,14 +11,14 @@
   "purpose": "any maskable",
   "icons": [
     {
-      "src": "assets/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "assets/favicon_light.png",
+      "sizes": "144x144",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/favicon.png",
-      "sizes": "512x512",
+      "src": "assets/favicon_dark.png",
+      "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     }
