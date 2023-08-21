@@ -201,8 +201,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 50vh;
-  padding: 76px 16px 16px 16px;
+  padding: 176px 16px 112px 16px;
   position: relative;
 }
 
@@ -261,7 +260,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  min-height: 100vh;
+  padding: 112px 16px;
 }
 
 .about_container {
@@ -422,8 +421,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 60vh;
-  padding: 80px 16px;
+  padding: 112px 16px;
   position: relative;
 }
 
@@ -641,7 +639,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  min-height: 50vh;
+  padding: 32px 16px;
 }
 
 .contact_container {
@@ -661,7 +659,7 @@ body::-webkit-scrollbar-thumb {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 400px;
   justify-content: center;
   max-width: 500px;
   min-height: 300px;
