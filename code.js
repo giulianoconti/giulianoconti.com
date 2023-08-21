@@ -28,6 +28,7 @@ const aboutAge = document.querySelector(".about_age"),
   navbarAbout = document.querySelector(".navbar_about"),
   navbarContact = document.querySelector(".navbar_contact"),
   navbarHome = document.querySelector(".navbar_home"),
+  navbarLogo = document.querySelector(".nav_logo_img"),
   navbarProjects = document.querySelector(".navbar_projects"),
   navBtnDarkmode = document.querySelector(".nav_btn_darkmode"),
   navOptions = document.querySelectorAll(".nav_option"),
@@ -73,7 +74,23 @@ const languages = {
       description:
         "I started studying programming in 2021, starting with HTML, CSS, and JavaScript.<br /> I created small projects with arduino using C++.<br /> In the year 2022 I mainly focused on Front-End development using React.<br /> I like programming, designing in Blender, creating 3D plans in SketchUp, going out with friends, playing paddle tennis, video games and riding my bike.",
       experienceTitle: "Experience",
-      experienceTextBold: `FRONTEND DEVELOPER | XLABS <a class="about_experience_container_link" href="https://www.linkedin.com/company/xlabsxyz/"><img class="about_experience_container_icon" src="assets/xLabs.webp" alt="xLabs" /></a> | 2023 - CURRENT`,
+      experienceTextBold: `
+      <span class="about_experience_text_bold_span">FRONTEND DEVELOPER</span>
+      <span class="about_experience_text_bold_span">
+        <span class="about_experience_container_span_compa">
+        XLABS
+          <a
+            class="about_experience_container_link"
+            href="https://www.linkedin.com/company/xlabsxyz/"
+            ><img
+              class="about_experience_container_icon"
+              src="assets/xLabs.webp"
+              alt="xLabs"
+          /></a>
+        </span>
+        2023 - CURRENT
+      </span>
+      `,
       experienceText:
         "I developed reusable components. I designed and updated designs. I solved technical problems. I Produced cross-browser compatible websites.",
     },
@@ -116,7 +133,21 @@ const languages = {
       description:
         "Empecé a estudiar programación en 2021, iniciando por HTML, CSS y JavaScript.<br /> Creé proyectos pequeños con arduino utilizando C++.<br /> En el año 2022 me enfoqué principalmente en el desarrollo Front-End usando React.<br /> Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con amigos, jugar padel, los videojuegos y andar en bici.",
       experienceTitle: "Experiencia",
-      experienceTextBold: `DESARROLLADOR FRONTEND | XLABS <a class="about_experience_container_link" href="https://www.linkedin.com/company/xlabsxyz/"><img class="about_experience_container_icon" src="assets/xLabs.webp" alt="xLabs" /></a> | 2023 - ACTUAL`,
+      experienceTextBold: `<span class="about_experience_text_bold_span">DESARROLLADOR FRONTEND</span>
+      <span class="about_experience_text_bold_span">
+        <span class="about_experience_container_span_compa">
+        XLABS
+          <a
+            class="about_experience_container_link"
+            href="https://www.linkedin.com/company/xlabsxyz/"
+            ><img
+              class="about_experience_container_icon"
+              src="assets/xLabs.webp"
+              alt="xLabs"
+          /></a>
+        </span>
+        2023 - ACTUAL
+      </span>`,
       experienceText:
         "Desarrollé componentes reutilizables. Diseñé y actualicé diseños. Resolví problemas técnicos. Produje sitios web compatibles con múltiples navegadores.",
     },
@@ -159,7 +190,21 @@ const languages = {
       description:
         "Comecei a estudar programação em 2021, iniciando por HTML, CSS e JavaScript.<br /> Criei projetos pequenos com arduino utilizando C++.<br /> No ano de 2022 me concentrei principalmente no desenvolvimento Front-End usando React.<br /> Gosto de programar, desenhar no Blender, criar planos 3D no SketchUp, sair com amigos, jogar padel, jogos de vídeo e andar de bicicleta.",
       experienceTitle: "Experiência",
-      experienceTextBold: `DESENVOLVEDOR FRONTEND | XLABS <a class="about_experience_container_link" href="https://www.linkedin.com/company/xlabsxyz/"><img class="about_experience_container_icon" src="assets/xLabs.webp" alt="xLabs" /></a> | 2023 - ATUAL`,
+      experienceTextBold: `<span class="about_experience_text_bold_span">DESENVOLVEDOR FRONTEND</span>
+      <span class="about_experience_text_bold_span">
+        <span class="about_experience_container_span_compa">
+        XLABS
+          <a
+            class="about_experience_container_link"
+            href="https://www.linkedin.com/company/xlabsxyz/"
+            ><img
+              class="about_experience_container_icon"
+              src="assets/xLabs.webp"
+              alt="xLabs"
+          /></a>
+        </span>
+        2023 - ATUAL
+      </span>`,
       experienceText:
         "Desenvolvi componentes reutilizáveis. Desenhei e atualizei projetos. Resolvi problemas técnicos. Produzi sites compatíveis com vários navegadores.",
     },
@@ -265,6 +310,7 @@ const initializeTheme = () => {
 const setTheme = theme => {
   const isDarkMode = theme === "dark";
   html.classList.replace(isDarkMode ? "light" : "dark", theme);
+  navbarLogo.src = isDarkMode ? "/assets/favicon_light.png" : "/assets/favicon_dark.png";
   metaThemeColor.setAttribute("content", isDarkMode ? "#000000" : "#ffffff");
 };
 
