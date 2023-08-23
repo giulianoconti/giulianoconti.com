@@ -360,6 +360,7 @@ body::-webkit-scrollbar-thumb {
   font-weight: 700;
   gap: 4px;
   margin-bottom: 4px;
+  text-wrap: balance;
 }
 
 .about_experience_text_bold_span {
@@ -451,6 +452,7 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
   justify-content: center;
   max-width: 960px;
+  min-height: 530px;
   overflow: hidden;
   position: relative;
   width: calc(100vw - 32px);
@@ -656,7 +658,6 @@ body::-webkit-scrollbar-thumb {
   justify-content: space-between;
   margin-top: 16px;
   max-width: 1200px;
-  padding: 16px;
   width: 100%;
 }
 
