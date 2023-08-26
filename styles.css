@@ -226,7 +226,15 @@ body::-webkit-scrollbar-thumb {
   color: rgb(0, 0, 0);
   font-size: 24px;
   font-weight: 400;
+}
+
+.home_social {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
   margin-bottom: 16px;
+  scale: 0.5;
 }
 
 .home_btn {
@@ -865,7 +873,7 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 790px) {
   .home_title {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .home_subtitle {
@@ -1136,6 +1144,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dark .nav_select_img,
+.dark .home_social,
 .dark .about_right_img:nth-child(2),
 .dark .projects_button_img,
 .dark .project_technology_img,
