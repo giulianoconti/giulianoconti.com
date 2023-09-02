@@ -231,10 +231,23 @@ body::-webkit-scrollbar-thumb {
 .home_social {
   align-items: center;
   display: flex;
-  gap: 16px;
+  gap: 8px;
   justify-content: center;
-  margin-bottom: 16px;
-  scale: 0.5;
+  margin-top: 16px;
+}
+
+.home_social_link {
+  align-items: center;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.home_social_img {
+  height: 32px;
+  transition: scale 0.3s ease;
+  width: 32px;
 }
 
 .home_btn {
@@ -1027,6 +1040,7 @@ body::-webkit-scrollbar-thumb {
   .nav_link:hover,
   .nav_select:hover,
   .nav_option:hover,
+  .home_social_img:hover,
   .home_btn:hover,
   .about_experience_container_icon:hover,
   .project_link:hover,
