@@ -1019,6 +1019,11 @@ button {
     width: 40px;
   }
 
+  .menu_btn2 {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
   .nav_mobile_mask {
     background-color: rgba(0, 0, 0, 0.9);
     height: 100vh;
