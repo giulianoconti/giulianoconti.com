@@ -81,6 +81,7 @@ button {
   z-index: 10;
 }
 
+.nav_header_mobile,
 .nav_logo_mobile {
   display: none;
 }
@@ -194,11 +195,8 @@ button {
   width: 20px;
 }
 
-.menu_btn {
-  display: none;
-}
-
-.menu_btn_line {
+.menu_btn,
+.menu_btn2 {
   display: none;
 }
 
@@ -925,6 +923,12 @@ button {
     width: 100%;
   }
 
+  .menu_btn2 {
+    display: block;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
   .nav_list {
     align-items: flex-start;
     background-color: rgb(245, 248, 245);
@@ -1017,11 +1021,6 @@ button {
     height: 40px;
     margin: 0 16px 0 0;
     width: 40px;
-  }
-
-  .menu_btn2 {
-    color: rgb(0, 0, 0);
-    cursor: pointer;
   }
 
   .nav_mobile_mask {
