@@ -263,6 +263,7 @@ const toggleMenu = () => {
     navBtnDarkmode.classList.add("d_none");
     navRightContainer.classList.add("d_none");
     navMobileMask.classList.add("nav_mobile_mask_active");
+    document.body.style.overflow = "hidden";
     showMenu = true;
   } else {
     // Otherwise, hide menu
@@ -271,6 +272,7 @@ const toggleMenu = () => {
     navBtnDarkmode.classList.remove("d_none");
     navRightContainer.classList.remove("d_none");
     navMobileMask.classList.remove("nav_mobile_mask_active");
+    document.body.style.overflow = "auto";
     showMenu = false;
   }
   navOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
