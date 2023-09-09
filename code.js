@@ -28,10 +28,12 @@ const aboutAge = document.querySelector(".about_age"),
   navbarAbout = document.querySelector(".navbar_about"),
   navbarContact = document.querySelector(".navbar_contact"),
   navbarHome = document.querySelector(".navbar_home"),
-  navbarLogo = document.querySelector(".nav_logo_img"),
+  navbarLogo = document.querySelectorAll(".nav_logo_img"),
   navbarProjects = document.querySelector(".navbar_projects"),
   navBtnDarkmode = document.querySelector(".nav_btn_darkmode"),
+  navMobileMask = document.querySelector(".nav_mobile_mask"),
   navOptions = document.querySelectorAll(".nav_option"),
+  navRightContainer = document.querySelector(".nav_right_container"),
   navOptions_list = document.querySelector(".nav_options_list"),
   navSelectImg = document.querySelector(".nav_select_img"),
   navSelectSpan = document.querySelector(".nav_select_span"),
@@ -258,11 +260,17 @@ const toggleMenu = () => {
   if (window.innerWidth <= 790 && !showMenu) {
     menu.classList.add("nav_list_active");
     menuBtn.classList.add("d_none");
+    navBtnDarkmode.classList.add("d_none");
+    navRightContainer.classList.add("d_none");
+    navMobileMask.classList.add("nav_mobile_mask_active");
     showMenu = true;
   } else {
     // Otherwise, hide menu
     menu.classList.remove("nav_list_active");
     menuBtn.classList.remove("d_none");
+    navBtnDarkmode.classList.remove("d_none");
+    navRightContainer.classList.remove("d_none");
+    navMobileMask.classList.remove("nav_mobile_mask_active");
     showMenu = false;
   }
   navOptions_list.classList.contains("activeLanguage") && showOrHideOptions();
@@ -273,21 +281,6 @@ const showOrHideOptions = () => {
   const isActive = navOptions_list.classList.contains("activeLanguage");
   navOptions_list.classList.toggle("activeLanguage", !isActive);
   navSelectImg.src = isActive ? "/assets/arrow_down.svg" : "/assets/arrow_up.svg";
-};
-
-const removeMenuAndLanguage = () => {
-  // If menu is shown and the window is narrow
-  if (showMenu && window.innerWidth <= 790) {
-    // Hide the menu
-    menu.classList.remove("nav_list_active");
-    menuBtn.classList.remove("d_none");
-    showMenu = false;
-  }
-  if (navOptions_list.classList.contains("activeLanguage")) {
-    // If options list is shown, hide it
-    navOptions_list.classList.remove("activeLanguage");
-    navSelectImg.src = "/assets/arrow_down.svg";
-  }
 };
 
 // Function to initialize the mode based on user preference or localStorage.
@@ -310,7 +303,10 @@ const initializeTheme = () => {
 const setTheme = theme => {
   const isDarkMode = theme === "dark";
   html.classList.replace(isDarkMode ? "light" : "dark", theme);
-  navbarLogo.src = isDarkMode ? "/assets/favicon_light.png" : "/assets/favicon_dark.png";
+  navbarLogo.forEach(navbarLogo => {
+    navbarLogo.src = isDarkMode ? "/assets/favicon_light.png" : "/assets/favicon_dark.png";
+  });
+
   metaThemeColor.setAttribute("content", isDarkMode ? "#000000" : "#ffffff");
 };
 

@@ -26,11 +26,33 @@
     <title>Giuliano Conti - CV</title>
   </head>
   <body>
+    <label class="nav_mobile_mask" onclick="toggleMenu()"></label>
     <nav id="navbar">
       <a class="nav_logo" href="#home">
         <img class="nav_logo_img" src="assets/favicon_light.png" alt="Giuliano Conti" />
       </a>
       <ul class="nav_list">
+        <div class="nav_header_mobile">
+          <a class="nav_logo_mobile" href="#home">
+            <img class="nav_logo_img" src="assets/favicon_light.png" alt="Giuliano Conti" />
+          </a>
+          <button aria-label="Menu Button" onclick="toggleMenu()">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
         <li class="nav_item">
           <a
             class="nav_link active navbar_home"
@@ -76,6 +98,7 @@
           >
         </li>
       </ul>
+
       <div class="nav_right_container">
         <div class="nav_select_menu">
           <div class="nav_select" onclick="showOrHideOptions()">
@@ -123,7 +146,7 @@
       </button>
     </nav>
 
-    <main onclick="removeMenuAndLanguage()">
+    <main>
       <section id="home">
         <h1 class="home_title">Giuliano Conti</h1>
         <h2 class="home_subtitle">Desarrollador Frontend</h2>
