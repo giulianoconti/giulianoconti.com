@@ -267,6 +267,7 @@ button {
   display: flex;
   font-size: 16px;
   font-weight: 700;
+  gap: 8px;
   height: 48px;
   justify-content: center;
   margin-top: 32px;
@@ -274,10 +275,6 @@ button {
   padding: 8px 16px;
   text-decoration: none;
   transition: scale 0.3s ease;
-}
-
-.home_btn_text {
-  margin-left: 8px;
 }
 
 /* ---------------------------------- SECTION 2 ( ABOUT ) ---------------------------------- */
@@ -349,9 +346,9 @@ button {
 
 .about_left_img {
   border-radius: 4px;
-  height: calc(35vw * 1.1);
+  height: 35vw;
   max-height: 200px;
-  max-width: 182px;
+  max-width: 200px;
   width: 35vw;
 }
 
@@ -389,6 +386,7 @@ button {
   gap: 4px;
   margin-bottom: 4px;
   text-wrap: balance;
+  width: 90%;
 }
 
 .about_experience_text_bold_span {
@@ -898,6 +896,10 @@ button {
 
   .home_subtitle {
     font-size: 20px;
+  }
+
+  .home_social {
+    gap: 12px;
   }
 
   #navbar {
