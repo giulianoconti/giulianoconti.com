@@ -176,7 +176,7 @@ button {
 }
 
 .nav_svg_moon {
-  fill: rgb(0, 0, 0);
+  fill: rgb(250, 250, 250);
   margin-left: 3px;
 }
 
@@ -1151,10 +1151,6 @@ button {
 
 .dark .nav_moon_or_sun {
   transform: translateX(28px);
-}
-
-.dark .nav_svg_moon {
-  fill: rgb(250, 250, 250);
 }
 
 .dark .nav_btn_darkmode {
