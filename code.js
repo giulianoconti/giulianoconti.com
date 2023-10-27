@@ -64,7 +64,7 @@ const languages = {
       darkMode: "Dark Mode",
     },
     home: {
-      subtitle: "Frontend Developer",
+      subtitle: "Frontend Engineer",
       resumeBtn: "Resume",
     },
     about: {
@@ -77,7 +77,7 @@ const languages = {
         "I started studying programming in 2021, starting with HTML, CSS, and JavaScript.<br /> I created small projects with arduino using C++.<br /> In the year 2022 I mainly focused on Front-End development using React.<br /> I like programming, designing in Blender, creating 3D plans in SketchUp, going out with friends, playing paddle tennis, video games and riding my bike.",
       experienceTitle: "Experience",
       experienceTextBold: `
-      <span class="about_experience_text_bold_span">FRONTEND DEVELOPER</span>
+      <span class="about_experience_text_bold_span">FRONTEND ENGINEER</span>
       <span class="about_experience_text_bold_span">
         <span class="about_experience_container_span_compa">
         XLABS
@@ -85,9 +85,10 @@ const languages = {
             class="about_experience_container_link"
             href="https://www.linkedin.com/company/xlabsxyz/"
             ><img
+              alt="xLabs"
               class="about_experience_container_icon"
               src="assets/xLabs.webp"
-              alt="xLabs"
+              title="xLabs"
           /></a>
         </span>
         2023 - CURRENT
@@ -143,9 +144,10 @@ const languages = {
             class="about_experience_container_link"
             href="https://www.linkedin.com/company/xlabsxyz/"
             ><img
+              alt="xLabs"
               class="about_experience_container_icon"
               src="assets/xLabs.webp"
-              alt="xLabs"
+              title="xLabs"
           /></a>
         </span>
         2023 - ACTUAL
@@ -200,9 +202,10 @@ const languages = {
             class="about_experience_container_link"
             href="https://www.linkedin.com/company/xlabsxyz/"
             ><img
+              alt="xLabs"
               class="about_experience_container_icon"
               src="assets/xLabs.webp"
-              alt="xLabs"
+              title="xLabs"
           /></a>
         </span>
         2023 - ATUAL
@@ -326,7 +329,10 @@ const handleDarkModeBtn = () => {
 };
 
 // This function changes the language of the page
-const handleLang = (lang = "es") => {
+const handleLang = (lang = "en") => {
+  lang !== "en"
+    ? history.pushState(null, null, `?lang=${lang}`)
+    : history.pushState(null, null, "/");
   localStorage.setItem("language", lang);
   aboutAge.textContent = languages[lang].about.age;
   aboutCity.textContent = languages[lang].about.city;
@@ -370,12 +376,15 @@ const detectLanguage = () => {
   const supportedLanguages = ["es", "en", "pt"];
   const userLanguage = (navigator.language || navigator.userLanguage).substr(0, 2);
 
-  return supportedLanguages.includes(userLanguage) ? userLanguage : "es";
+  return supportedLanguages.includes(userLanguage) ? userLanguage : "en";
 };
 
 // This function gets the language saved in localStorage or detects the language of the browser
 const handleLangSaved = () => {
-  handleLang(localStorage.getItem("language") || detectLanguage());
+  const urlParams = new URLSearchParams(window.location.search);
+  const lang = urlParams.get("lang");
+
+  handleLang(lang || localStorage.getItem("language") || detectLanguage());
 };
 
 const handleMyAge = () => {
@@ -395,7 +404,7 @@ const handleMyAge = () => {
 };
 
 // This function fetches the projects from the API
-const fetchProjects = async (lang = "es") => {
+const fetchProjects = async (lang = "en") => {
   try {
     const response = await fetch(`https://giulianoconti.github.io/api/myProjects-${lang}.json`);
     if (!response.ok) {
@@ -470,7 +479,7 @@ const fetchProjects = async (lang = "es") => {
 const handleSubmit = async e => {
   // Prevent the default form submit behavior
   e.preventDefault();
-  const currentLanguage = localStorage.getItem("language") || "es";
+  const currentLanguage = localStorage.getItem("language") || "en";
   // Get the form data
   const data = new FormData(e.target);
   // Send a POST request

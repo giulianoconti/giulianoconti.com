@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google" content="notranslate" />
     <meta name="theme-color" content="#ffffff" />
+    <meta name="author" content="Giuliano Conti" />
     <meta
       name="description"
-      content="Giuliano Conti - Desarrollador Frontend | Con experiencia en el desarrollo de aplicaciones web utilizando la tecnología React. Soy un apasionado por la creación de interfaces de usuario eficientes y elegantes. Visita mi portafolio para más detalles."
+      content="Giuliano Conti - Frontend Engineer | With experience in web application development using React technology. I'm passionate about creating efficient and elegant user interfaces. Visit my portfolio for more details."
     />
-    <meta name="google-site-verification" content="XKTqhBBdIyzHxEBo1Yc5FyGQHlvyAa9eyAqTkFFd-bE" />
     <meta name="google-site-verification" content="OlKxSTim_H5JxcqBLtaqQ9EWgnK3Y5947Rqyti3AsCw" />
+    <link rel="alternate" href="https://giulianoconti.com" hreflang="es" />
+    <link rel="alternate" href="https://giulianoconti.com?lang=en" hreflang="en" />
+    <link rel="alternate" href="https://giulianoconti.com?lang=pt" hreflang="pt" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/assets/favicon.png" />
     <link rel="icon" href="/assets/favicon_light.png" media="(prefers-color-scheme: dark)" />
@@ -23,6 +26,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="canonical" href="https://giulianoconti.com" />
     <title>Giuliano Conti - CV</title>
   </head>
   <body>
@@ -56,45 +60,45 @@
         <li class="nav_item">
           <a
             class="nav_link active navbar_home"
-            title="Inicio"
+            title="Home"
             id="home_link"
             href="#home"
             aria-label="Navigate to Home"
             onclick="toggleMenu()"
-            >Inicio</a
+            >Home</a
           >
         </li>
         <li class="nav_item">
           <a
             class="nav_link navbar_about"
-            title="Sobre mí"
+            title="About"
             id="about_link"
             href="#about"
             aria-label="Navigate to About"
             onclick="toggleMenu()"
-            >Sobre mí</a
+            >About</a
           >
         </li>
         <li class="nav_item">
           <a
             class="nav_link navbar_projects"
-            title="Proyectos"
+            title="Projects"
             id="projects_link"
             href="#projects"
             aria-label="Navigate to Projects"
             onclick="toggleMenu()"
-            >Proyectos</a
+            >Projects</a
           >
         </li>
         <li class="nav_item">
           <a
             class="nav_link navbar_contact"
-            title="Contacto"
+            title="Contact"
             id="contact_link"
             href="#contact"
             aria-label="Navigate to Contact"
             onclick="toggleMenu()"
-            >Contacto</a
+            >Contact</a
           >
         </li>
       </ul>
@@ -102,7 +106,7 @@
       <div class="nav_right_container">
         <div class="nav_select_menu">
           <div class="nav_select" onclick="showOrHideOptions()">
-            <span class="nav_select_span">Español</span>
+            <span class="nav_select_span" title="Languages">English</span>
             <img class="nav_select_img" src="assets/arrow_down.svg" alt="Arrow Down" />
           </div>
           <div class="nav_options_list">
@@ -113,7 +117,7 @@
         </div>
         <button
           class="nav_btn_darkmode"
-          title="Modo Oscuro"
+          title="Dark Mode"
           aria-label="Toggle Dark Mode"
           onclick="handleDarkModeBtn()"
         >
@@ -149,7 +153,7 @@
     <main>
       <section id="home">
         <h1 class="home_title">Giuliano Conti</h1>
-        <h2 class="home_subtitle">Desarrollador Frontend</h2>
+        <h2 class="home_subtitle">Frontend Engineer</h2>
         <div class="home_social">
           <a
             class="home_social_link"
@@ -202,64 +206,67 @@
               d="M5 19l2.757 -7.351a1 1 0 0 1 .936 -.649h12.307a1 1 0 0 1 .986 1.164l-.996 5.211a2 2 0 0 1 -1.964 1.625h-14.026a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2"
             ></path>
           </svg>
-          <p class="home_btn_text">Currículum</p>
+          <p class="home_btn_text" title="Resume">Resume</p>
         </a>
       </section>
 
       <section id="about">
         <div class="about_container">
           <div class="about_left_container">
-            <h2 class="about_title">Sobre Mí</h2>
+            <h2 class="about_title">About Me</h2>
             <div class="about_left_info">
               <img class="about_left_img" src="assets/profile.webp" alt="Giuliano Conti" />
               <ul class="about_left_list">
                 <li class="about_left_item">
-                  <p class="about_name">Nombre:</p>
+                  <p class="about_name">Name:</p>
                   <h3>Giuliano Conti</h3>
                 </li>
                 <li class="about_left_item">
-                  <p class="about_age">Edad:</p>
+                  <p class="about_age">Age:</p>
                   <h3 id="myAge"><!-- handleMyAge() --></h3>
                 </li>
                 <li class="about_left_item">
-                  <p class="about_nacionality">Nacionalidad:</p>
+                  <p class="about_nacionality">Nationality:</p>
                   <h3>Argentina</h3>
                 </li>
                 <li class="about_left_item">
-                  <p class="about_city">Ciudad:</p>
+                  <p class="about_city">City:</p>
                   <h3>Resistencia</h3>
                 </li>
               </ul>
             </div>
 
             <p class="about_text">
-              Empecé a estudiar programación en 2021, iniciando por HTML, CSS y JavaScript.<br />
-              Creé proyectos pequeños con arduino utilizando C++.<br />
-              En el año 2022 me enfoqué principalmente en el desarrollo Front-End usando React.<br />
-              Me gusta programar, diseñar en Blender, crear planos 3D en SketchUp, juntarme con
-              amigos, jugar padel, los videojuegos y andar en bici.
+              I started studying programming in 2021, starting with HTML, CSS, and JavaScript.<br />
+              I created small projects with arduino using C++.<br />
+              In the year 2022 I mainly focused on Front-End development using React.<br />
+              I like programming, designing in Blender, creating 3D plans in SketchUp, going out
+              with friends, playing paddle tennis, video games and riding my bike.
             </p>
 
             <div class="about_experience_container">
-              <p class="about_experience_title">Experiencia</p>
+              <p class="about_experience_title">Experience</p>
               <p class="about_experience_text_bold">
-                <span> DESARROLLADOR FRONTEND </span>
-                <span>
-                  | XLABS
-                  <a
-                    class="about_experience_container_link"
-                    href="https://www.linkedin.com/company/xlabsxyz/"
-                    ><img
-                      class="about_experience_container_icon"
-                      src="assets/xLabs.webp"
-                      alt="xLabs"
-                  /></a>
-                  | 2023 - ACTUAL
+                <span class="about_experience_text_bold_span">FRONTEND ENGINEER</span>
+                <span class="about_experience_text_bold_span">
+                  <span class="about_experience_container_span_compa">
+                    XLABS
+                    <a
+                      class="about_experience_container_link"
+                      href="https://www.linkedin.com/company/xlabsxyz/"
+                      ><img
+                        alt="xLabs"
+                        class="about_experience_container_icon"
+                        src="assets/xLabs.webp"
+                        title="xLabs"
+                    /></a>
+                  </span>
+                  2023 - CURRENT
                 </span>
               </p>
               <p class="about_experience_text">
-                Desarrollé componentes reutilizables. Diseñé y actualicé diseños. Resolví problemas
-                técnicos. Produje sitios web compatibles con múltiples navegadores.
+                I developed reusable components. I designed and updated designs. I solved technical
+                problems. I Produced cross-browser compatible websites.
               </p>
             </div>
           </div>
@@ -282,17 +289,17 @@
 
       <section id="projects">
         <div class="projects_container">
-          <h2 class="projects_title">Mis Proyectos</h2>
+          <h2 class="projects_title">My projects</h2>
 
           <div class="projects_touch_scroll_animation"></div>
           <div class="projects_list">
             <!-- Projects in code.js -->
           </div>
           <div class="projects_buttons_container">
-            <button class="projects_button" title="Anterior" onClick="previousProject()">
+            <button class="projects_button" title="Previous" onClick="previousProject()">
               <img class="projects_button_img" src="assets/arrow_left.svg" alt="prev icon" />
             </button>
-            <button class="projects_button" title="Siguiente" onClick="nextProject()">
+            <button class="projects_button" title="Next" onClick="nextProject()">
               <img class="projects_button_img" src="assets/arrow_right.svg" alt="next icon" />
             </button>
           </div>
@@ -313,21 +320,23 @@
               class="contact_input"
               id="emailInput"
               name="email"
-              placeholder="ejemplo@gmail.com"
+              placeholder="example@gmail.com"
               required
               type="email"
             />
-            <label class="contact_label contact_message" for="messageTextarea">Mensaje:</label>
+            <label class="contact_label contact_message" for="messageTextarea">Message:</label>
             <textarea
               id="messageTextarea"
               class="contact_textarea"
               name="message"
-              placeholder="Buenas, me gustaría contactar contigo para..."
+              placeholder="Hello, I would like to contact you for..."
               required
             ></textarea>
             <div class="contact_status_btn_container">
-              <p class="contact_status"></p>
-              <button class="contact_btn" title="Enviar" type="submit">Enviar</button>
+              <p class="contact_status">
+                <!-- Thanks for your submission! / Oops! There was a problem submitting your form. -->
+              </p>
+              <button class="contact_btn" title="Send" type="submit">Send</button>
             </div>
           </form>
           <div class="contact_social">
