@@ -12,13 +12,13 @@
   "icons": [
     {
       "src": "assets/favicon_light.png",
-      "sizes": "144x144",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
       "src": "assets/favicon_dark.png",
-      "sizes": "144x144",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
