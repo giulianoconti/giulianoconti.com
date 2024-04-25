@@ -233,7 +233,8 @@ span,
 }
 
 .nav-logo {
-  aspect-ratio: 1 / 1;
+  align-items: center;
+  display: flex;
   height: 80%;
 }
 
@@ -700,7 +701,8 @@ span,
 
 .projects-container-info-tools {
   display: flex;
-  gap: 0 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .projects-container-info-tools span,
