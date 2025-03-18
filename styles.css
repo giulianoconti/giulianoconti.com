@@ -184,24 +184,128 @@ h2 {
   font-family: Biennale, sans-serif;
   font-size: 2rem;
   font-weight: 500;
-
-  animation: show linear both;
-  animation-range: cover 5% cover 35%;
-  animation-timeline: view(block);
 }
 
-h3:not(.more-projects-container-tooltip h3),
+h2,
+h3:not(.tooltip-container h3),
 h4,
 h5,
-p:not(.nav p, .home p, .more-projects-container-tooltip p, .footer p),
-a:not(.nav a, .home a, .more-projects-container-tooltip a, .footer a),
+p:not(.nav p, .home p, .tooltip-container p, .footer p),
+a:not(.nav a, .home a, .experience a, .tooltip-container a, .footer a),
 span,
 .experience-container-company,
 .experience-container-info,
+.experience-container-info-content-text,
 .contact-container-chat {
   animation: show linear both;
-  animation-range: cover 5% cover 20%;
-  animation-timeline: view(block);
+  animation-range: 0 30svh;
+  animation-timeline: view();
+}
+
+.tooltip {
+  display: inline;
+  margin: 0 auto;
+  max-width: max-content;
+  position: relative;
+}
+
+.tooltip:hover > .tooltip-container {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-container {
+  border-radius: 0.5rem;
+  color: var(--neutral-white-100);
+  display: flex;
+  font-size: 0.8rem;
+  height: 12rem;
+  left: 50%;
+  opacity: 0.01;
+  padding-bottom: 1rem;
+  position: absolute;
+  top: -188px;
+  transition: opacity 0.3s ease, visibility 0s;
+  translate: -50% 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.tooltip-container-arrow {
+  border: 0.5rem solid transparent;
+  border-top-color: var(--neutral-gray5-100);
+  bottom: 1px;
+  left: 50%;
+  position: absolute;
+  translate: -50% 0;
+}
+
+.tooltip-container-content {
+  background-color: var(--neutral-gray5-100);
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0 0.5rem;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.tooltip-container-content-image {
+  height: 100%;
+  max-width: 284px;
+  overflow: hidden;
+  position: relative;
+  width: 50vw;
+}
+
+.tooltip-container-content-image img {
+  aspect-ratio: 16 / 9;
+  background-color: var(--neutral-gray5-100);
+  border-radius: 0.25rem 0 0 0.25rem;
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  translate: -50% 0;
+}
+
+.tooltip-container-content-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 10rem;
+}
+
+.tooltip-container-content-info-icon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.tooltip-container-content-info-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.tooltip-container-content-info-description {
+  color: var(--neutral-gray2-100);
+  font-size: 0.8rem;
+}
+
+.tooltip-container-content-info-links {
+  display: flex;
+  gap: 0 0.5rem;
+  justify-content: flex-end;
+  margin-top: auto;
+  width: 100%;
+}
+
+.tooltip-container-content-info-links > a {
+  color: var(--neutral-gray3-100);
+  height: 24px;
+  transition: color 0.3s ease;
+}
+
+.tooltip-container-content-info-links > a:hover {
+  color: var(--primary-green-100);
 }
 
 .nav {
@@ -610,16 +714,15 @@ span,
   text-wrap: pretty;
 }
 
-.experience-container-info-content > p > a {
+.experience-container-info-content .tooltip-text {
   color: var(--primary-green-100);
   text-decoration: underline;
   text-decoration-color: var(--primary-green-40);
   text-underline-offset: 0.2rem;
 }
 
-.experience-container-info-content > p > a:hover {
-  text-decoration: underline;
-  color: var(--primary-green-100);
+.experience-container-info-content .tooltip:hover .tooltip-text {
+  text-decoration-color: var(--primary-green-100);
 }
 /* ---------- ⬆️ EXPERIENCE ⬆️ ---------- */
 
@@ -774,7 +877,7 @@ span,
   z-index: 2;
 
   animation: animation-message linear both;
-  animation-range: cover 5% cover 35%;
+  animation-range: 0 30svh;
   animation-timeline: view(block);
 }
 
@@ -798,7 +901,7 @@ span,
   z-index: 2;
 
   animation: animation-cat linear both;
-  animation-range: cover 5% cover 35%;
+  animation-range: 0 30svh;
   animation-timeline: view(block);
 }
 
@@ -929,7 +1032,7 @@ span,
   width: 5rem;
 
   animation: animation-rocket linear both;
-  animation-range: cover 5% cover 45%;
+  animation-range: 0 50svh;
   animation-timeline: view(block);
 }
 /* ---------- ⬆️ CONTACT ⬆️ ---------- */
@@ -953,126 +1056,16 @@ span,
   width: 100%;
 }
 
-.more-projects-container > div {
-  color: var(--neutral-gray3-100);
-  display: flex;
-  font-size: 1.3rem;
-  margin: 0 auto;
-  max-width: max-content;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.more-projects-container > div:hover .more-projects-container-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-.more-projects-container > div:hover > a {
-  color: var(--primary-green-100);
-}
-
-.more-projects-container-tooltip {
-  align-items: center;
-  border-radius: 0.5rem;
-  bottom: 2rem;
-  color: var(--neutral-white-100);
-  display: flex;
-  font-size: 0.8rem;
-  height: 12rem;
-  left: 50%;
-  opacity: 0.01;
-  padding-bottom: 1rem;
-  position: absolute;
-  transition: opacity 0.3s ease, visibility 0s;
-  translate: -50% 0;
-  visibility: hidden;
-  z-index: 1;
-}
-
-.more-projects-container-tooltip-arrow {
-  border: 0.5rem solid transparent;
-  border-top-color: var(--neutral-gray5-100);
-  bottom: 0;
-  left: 50%;
-  position: absolute;
-  translate: -50% 0;
-}
-
-.more-projects-container-tooltip > div {
-  background-color: var(--neutral-gray5-100);
-  border-radius: 0.5rem;
-  display: flex;
-  gap: 0 0.5rem;
-  height: 100%;
-  padding: 0.5rem;
-}
-
-.more-projects-container-tooltip > div > div:not(:first-of-type) {
-  display: flex;
-  flex-direction: column;
-  width: 10rem;
-  height: 100%;
-}
-
-.more-projects-container-tooltip-image {
-  height: 100%;
-  max-width: 284px;
-  overflow: hidden;
-  position: relative;
-  width: 50vw;
-}
-
-.more-projects-container-tooltip-image img {
-  aspect-ratio: 16 / 9;
-  background-color: var(--neutral-gray5-100);
-  border-radius: 0.25rem 0 0 0.25rem;
-  height: 100%;
-  left: 50%;
-  position: absolute;
-  translate: -50% 0;
-}
-
-.more-projects-container-tooltip-icon {
-  height: 1rem;
-  width: 1rem;
-}
-
-.more-projects-container-tooltip-title {
-  font-size: 1rem;
-  font-weight: 5600;
-  margin-bottom: 0.2rem;
-}
-
-.more-projects-container-tooltip-description {
-  color: var(--neutral-gray2-100);
-  font-size: 0.8rem;
-}
-
-.more-projects-container-tooltip-links {
-  align-items: center;
-  display: flex;
-  gap: 0 0.5rem;
-  justify-content: flex-end;
-  margin-top: auto;
-  width: 100%;
-}
-
-.more-projects-container-tooltip a {
-  color: var(--neutral-gray3-100);
-  height: 24px;
-  transition: color 0.3s ease;
-}
-
-.more-projects-container-tooltip a:hover {
-  color: var(--primary-green-100);
-}
-
-.more-projects-container-item > a {
+.more-projects .tooltip-text {
   color: var(--neutral-gray3-100);
   font-size: 1.3rem;
   transition: color 0.3s ease;
 }
+
+.more-projects .tooltip:hover .tooltip-text {
+  color: var(--primary-green-100);
+}
+
 /* ---------- ⬆️ MORE PROJECTS ⬆️ ---------- */
 
 /* ---------- ⬇️ FOOTER ⬇️ ---------- */
@@ -1303,31 +1296,29 @@ span,
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .more-projects-container-tooltip {
+  .tooltip-container {
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    bottom: 2.2rem;
+    top: -188px;
   }
 
-  .more-projects-container-tooltip.tooltip-bottom {
-    top: 2.2rem;
+  .tooltip-bottom .tooltip-container {
+    top: 100%;
     padding: 1rem 0 0 0;
   }
 
-  .more-projects-container-tooltip.tooltip-bottom .more-projects-container-tooltip-arrow {
+  .tooltip-bottom .tooltip-container .tooltip-container-arrow {
     border-top-color: transparent;
     border-bottom-color: var(--neutral-gray5-100);
     bottom: unset;
     top: 0;
   }
 
-  .more-projects-container-tooltip-image {
+  .tooltip-container-content-image {
     width: 20vw;
   }
 
-  .more-projects-container-item > a {
+  .more-projects .tooltip-text {
     font-size: 1.5rem;
-    margin: 0 auto;
-    width: max-content;
   }
   /* ---------- ⬆️ MORE PROJECTS ⬆️ ---------- */
 }
