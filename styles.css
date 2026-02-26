@@ -491,19 +491,6 @@ span,
   z-index: 40;
 }
 
-.nav-container-button:hover + .nav-container-menu {
-  translate: 0 0;
-}
-
-.nav-container-menu:hover {
-  translate: 0 0;
-}
-
-.nav-container-menu:hover + .mask {
-  opacity: 0.5;
-  visibility: visible;
-}
-
 .mask {
   visibility: hidden;
   background-color: var(--neutral-black-100);
@@ -519,11 +506,6 @@ span,
     visibility 0.05s ease;
   width: 100%;
   z-index: 45;
-}
-
-.nav-container-button:hover ~ .mask {
-  opacity: 0.5;
-  visibility: visible;
 }
 
 @media (max-width: 768px) {
@@ -1270,14 +1252,6 @@ span,
     display: none;
   }
 
-  .nav-container-menu:hover + .mask {
-    opacity: unset;
-    visibility: unset;
-  }
-
-  .nav-container-menu:hover {
-    translate: unset;
-  }
   /* ---------- ⬆️ NAVBAR ⬆️ ---------- */
 
   /* ---------- ⬇️ HOME ⬇️ ---------- */
