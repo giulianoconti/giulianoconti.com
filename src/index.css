@@ -28,21 +28,21 @@
 
 @font-face {
   font-family: "Codec cold";
-  src: url("fonts/Codec-Cold-Bold.woff") format("woff");
+  src: url("/fonts/Codec-Cold-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Codec cold";
-  src: url("fonts/Codec-Cold-Light.woff") format("woff");
+  src: url("/fonts/Codec-Cold-Light.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Biennale";
-  src: url("fonts/Biennale-Medium.otf") format("opentype");
+  src: url("/fonts/Biennale-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -339,29 +339,7 @@ span,
   width: 100%;
 }
 
-/* Visually hidden but still focusable/toggleable for label and a11y */
-.nav-toggle {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-  opacity: 0;
-}
-
-.nav-toggle:checked ~ .nav-container-menu {
-  translate: 0 0;
-}
-
-.nav-toggle:checked ~ .mask {
-  opacity: 0.5;
-  visibility: visible;
-}
+/* Mobile menu visibility is controlled by body.nav-menu-open (see below) */
 
 .nav-logo {
   align-items: center;
@@ -389,13 +367,23 @@ span,
   font-weight: 600;
 }
 
+.nav-lang-link,
+.nav-lang button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
 .nav-lang-link {
   color: var(--neutral-gray3-100);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.nav-lang-link:hover {
+.nav-lang-link:hover,
+.nav-lang button.nav-lang-link:hover {
   color: var(--primary-green-100);
 }
 
@@ -511,6 +499,15 @@ span,
 @media (max-width: 768px) {
   body.nav-menu-open {
     overflow: hidden;
+  }
+
+  body.nav-menu-open .nav-container-menu {
+    translate: 0 0;
+  }
+
+  body.nav-menu-open .mask {
+    opacity: 0.5;
+    visibility: visible;
   }
 }
 
@@ -788,6 +785,10 @@ span,
 
 .experience-container-info-content .tooltip:hover .tooltip-text {
   text-decoration-color: var(--primary-green-100);
+}
+
+.experience-container-info-content .tooltip-container {
+  pointer-events: none;
 }
 /* ---------- ⬆️ EXPERIENCE ⬆️ ---------- */
 

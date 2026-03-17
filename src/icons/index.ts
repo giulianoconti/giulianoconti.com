@@ -1,0 +1,10 @@
+export { default as ExampleIcon } from "./ExampleIcon";
+export { default as MenuIcon } from "./MenuIcon";
+export { default as HomeIcon } from "./HomeIcon";
+export { default as BriefcaseIcon } from "./BriefcaseIcon";
+export { default as FolderIcon } from "./FolderIcon";
+export { default as MailIcon } from "./MailIcon";
+export { default as LinkedInIcon } from "./LinkedInIcon";
+export { default as GithubIcon } from "./GithubIcon";
+export { default as InstagramIcon } from "./InstagramIcon";
+export { default as WorldIcon } from "./WorldIcon";
