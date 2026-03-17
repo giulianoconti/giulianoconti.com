@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/es.html", "destination": "/?lang=es", "permanent": true },
+    { "source": "/pt.html", "destination": "/?lang=pt", "permanent": true },
+    { "source": "/en.html", "destination": "/?lang=en", "permanent": true }
+  ]
+}
