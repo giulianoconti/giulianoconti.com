@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 
 export type Locale = "en" | "es" | "pt";
 
@@ -229,15 +229,41 @@ type LocaleContextValue = {
   t: Translations;
 };
 
+const LOCALE_PARAM = "lang";
+const VALID_LOCALES: Locale[] = ["en", "es", "pt"];
+
+function getLocaleFromUrl(): Locale {
+  if (typeof window === "undefined") return "en";
+  const lang = new URLSearchParams(window.location.search).get(LOCALE_PARAM)?.toLowerCase();
+  return VALID_LOCALES.includes(lang as Locale) ? (lang as Locale) : "en";
+}
+
+function setLocaleInUrl(locale: Locale) {
+  const url = new URL(window.location.href);
+  url.searchParams.set(LOCALE_PARAM, locale);
+  window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+}
+
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
-  const setLocale = useCallback((next: Locale) => setLocaleState(next), []);
+  const [locale, setLocaleState] = useState<Locale>(getLocaleFromUrl);
+  const setLocale = useCallback((next: Locale) => {
+    setLocaleState(next);
+    setLocaleInUrl(next);
+  }, []);
+
+  useEffect(() => {
+    if (!new URLSearchParams(window.location.search).has(LOCALE_PARAM)) {
+      setLocaleInUrl(getLocaleFromUrl());
+    }
+  }, []);
+
   const t = translations[locale];
   return <LocaleContext.Provider value={{ locale, setLocale, t }}>{children}</LocaleContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- context hook is used with LocaleProvider
 export function useLocale(): LocaleContextValue {
   const ctx = useContext(LocaleContext);
   if (!ctx) throw new Error("useLocale must be used within LocaleProvider");
