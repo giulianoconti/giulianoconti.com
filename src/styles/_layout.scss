@@ -1,0 +1,26 @@
+@use "./breakpoints" as *;
+
+$section-padding-x: 16px;
+$section-padding-x-tablet: 60px;
+$section-padding-x-desktop: 90px;
+$section-padding-x-big-desktop: 13.5vw;
+
+@mixin section-padding-x {
+  padding-left: $section-padding-x;
+  padding-right: $section-padding-x;
+
+  @include tablet {
+    padding-left: $section-padding-x-tablet;
+    padding-right: $section-padding-x-tablet;
+  }
+
+  @include desktop {
+    padding-left: $section-padding-x-desktop;
+    padding-right: $section-padding-x-desktop;
+  }
+
+  @include big-desktop {
+    padding-left: max(#{$section-padding-x-big-desktop}, calc((100vw - 1420px) / 2));
+    padding-right: max(#{$section-padding-x-big-desktop}, calc((100vw - 1420px) / 2));
+  }
+}

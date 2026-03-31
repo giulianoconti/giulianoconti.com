@@ -1,0 +1,32 @@
+@use "../../styles/typography" as *;
+
+.green_button {
+  align-items: center;
+  background: linear-gradient(90deg, #44dc9a 0%, #5ef0b0 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: var(--background-blueblack);
+  display: inline-flex;
+  justify-content: center;
+  max-width: max-content;
+  min-height: 2.5rem;
+  padding: 0.75rem 1.35rem;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    filter 0.3s ease;
+  @include text-button;
+}
+
+.green_button:hover {
+  box-shadow: 0 0.8rem 1.4rem 0 var(--primary-green-40);
+  filter: saturate(1.08);
+  transform: translateY(-1px);
+}
+
+.green_button:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(6, 9, 22, 0.95),
+    0 0 0 4px rgba(78, 227, 157, 0.65);
+  outline: none;
+}

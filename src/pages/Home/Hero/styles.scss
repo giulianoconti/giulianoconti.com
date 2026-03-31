@@ -1,0 +1,150 @@
+@use "../../../styles/breakpoints" as *;
+@use "../../../styles/typography" as *;
+
+.home {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rem;
+  padding-top: 20rem;
+  position: relative;
+  width: 100%;
+
+  @include tablet {
+    padding: 20rem 0 16rem;
+  }
+
+  .home_container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    justify-content: flex-start;
+    max-width: 32rem;
+    position: relative;
+    z-index: 1;
+
+    .home_container_subheader {
+      color: var(--primary-green-100);
+      @include text-subheader;
+      text-transform: uppercase;
+    }
+
+    .home_container_title {
+      @include heading-hero-mobile;
+      color: var(--neutral-white-100);
+
+      @include tablet {
+        @include heading-hero-desktop;
+      }
+    }
+
+    .home_container_text {
+      @include text-base;
+      color: var(--neutral-gray2-100);
+      max-width: 31rem;
+    }
+
+    .home_container_skills {
+      color: var(--neutral-gray3-100);
+      @include text-small;
+    }
+
+    .home_container_social {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 0.9rem;
+      justify-content: flex-start;
+      margin-top: 0.4rem;
+    }
+  }
+
+  .home_waves {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    user-select: none;
+  }
+
+  .home_waves_blurs {
+    left: -6rem;
+    position: absolute;
+    top: 1rem;
+    width: 56rem;
+
+    @include tablet {
+      left: 20rem;
+      top: -8rem;
+      width: 79rem;
+    }
+  }
+
+  .home_waves_sky_wave {
+    bottom: 0;
+    left: -23rem;
+    position: absolute;
+    right: auto;
+    top: auto;
+    width: 93rem;
+
+    @include tablet {
+      left: 0;
+      width: 119rem;
+    }
+  }
+
+  .home_waves_blue_wave {
+    bottom: 0;
+    left: -19rem;
+    position: absolute;
+    right: auto;
+    top: auto;
+    width: 100rem;
+
+    @include tablet {
+      left: 0;
+      width: 119rem;
+    }
+  }
+
+  .home_waves_purple_wave {
+    bottom: 0;
+    left: -17rem;
+    position: absolute;
+    right: auto;
+    top: auto;
+    width: 100rem;
+
+    @include tablet {
+      left: 0;
+      width: 119rem;
+    }
+  }
+
+  .home_waves_profile {
+    border: 1px solid var(--surface-border-strong);
+    border-radius: 0.9rem;
+    box-shadow: var(--shadow-elevated);
+    height: 184px;
+    left: 0;
+    position: absolute;
+    top: 8rem;
+    width: 184px;
+    z-index: 1;
+
+    @include desktop {
+      border-radius: 50%;
+      height: 25rem;
+      left: clamp(34rem, 55vw, 50rem);
+      position: absolute;
+      top: 12rem;
+      width: 25rem;
+    }
+  }
+}
