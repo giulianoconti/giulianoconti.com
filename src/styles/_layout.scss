@@ -20,7 +20,7 @@ $section-padding-x-big-desktop: 13.5vw;
   }
 
   @include big-desktop {
-    padding-left: max(#{$section-padding-x-big-desktop}, calc((100vw - 1420px) / 2));
-    padding-right: max(#{$section-padding-x-big-desktop}, calc((100vw - 1420px) / 2));
+    padding-left: max(#{$section-padding-x-big-desktop}, calc((100vw - 1200px) / 2));
+    padding-right: max(#{$section-padding-x-big-desktop}, calc((100vw - 1200px) / 2));
   }
 }
