@@ -60,7 +60,7 @@ const translations: Record<Locale, Translations> = {
     home: {
       subheader: "Frontend Engineer",
       title: "Giuliano Conti",
-      bio: "I started in 2021 with HTML, CSS, and JavaScript. I created small projects with Arduino using C++. By 2022, I mainly focused on frontend development utilizing React.",
+      bio: "+3 years of experience mainly working with React, Next.js and blockchain technologies.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Resume",
     },
@@ -115,7 +115,7 @@ const translations: Record<Locale, Translations> = {
     home: {
       subheader: "Ingeniero Frontend",
       title: "Giuliano Conti",
-      bio: "Empecé en 2021 con HTML, CSS y JavaScript. Creé pequeños proyectos con Arduino usando C++. En 2022 me enfoqué principalmente en el desarrollo frontend con React.",
+      bio: "+3 años de experiencia trabajando principalmente con React, Next.js y tecnologías blockchain.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículum",
     },
@@ -170,7 +170,7 @@ const translations: Record<Locale, Translations> = {
     home: {
       subheader: "Engenheiro Frontend",
       title: "Giuliano Conti",
-      bio: "Comecei em 2021 com HTML, CSS e JavaScript. Criei pequenos projetos com Arduino em C++. Em 2022 foquei principalmente no desenvolvimento frontend com React.",
+      bio: "+3 anos de experiência trabalhando principalmente com React, Next.js e tecnologias blockchain.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículo",
     },
