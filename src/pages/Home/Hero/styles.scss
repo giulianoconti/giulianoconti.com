@@ -40,6 +40,11 @@
         flex-wrap: wrap;
         gap: max(0.8vw, 12px);
         justify-content: center;
+        margin-top: 8px;
+
+        @include desktop {
+          margin-top: max(0.6vh, 8px);
+        }
 
         .hero_main_center_actions_btn {
           @include text-caption;

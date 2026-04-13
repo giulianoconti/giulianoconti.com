@@ -128,29 +128,19 @@ export default function Footer() {
       <div className="footer_col">
         <h4 className="footer_col_title">{t.footer.social}</h4>
 
-        <a
-          className="hero_main_center_actions_link"
-          href={SOCIAL_LINKEDIN_URL}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+        <a className="footer_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank">
           <LinkedInIcon />
         </a>
 
-        <a className="hero_main_center_actions_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank">
           <GithubIcon />
         </a>
 
-        <a
-          className="hero_main_center_actions_link"
-          href={SOCIAL_INSTAGRAM_URL}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+        <a className="footer_link" href={SOCIAL_INSTAGRAM_URL} rel="noopener noreferrer" target="_blank">
           <InstagramIcon />
         </a>
 
-        <a className="footer_link" href={`mailto:${SOCIAL_MAIL}`} target="_blank" rel="noopener noreferrer">
+        <a className="footer_mail" href={`mailto:${SOCIAL_MAIL}`} target="_blank" rel="noopener noreferrer">
           {SOCIAL_MAIL}
         </a>
       </div>
