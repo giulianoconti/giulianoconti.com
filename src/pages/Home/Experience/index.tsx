@@ -87,7 +87,7 @@ export default function Experience() {
       projects: [
         {
           name: t.experience.clinis,
-          link: "https://clinis.vercel.app/",
+          link: "https://clinis-automotores.com",
           image: "/assets/experience-clinis.png",
           description: t.experience.clinisDesc,
           technologies: [

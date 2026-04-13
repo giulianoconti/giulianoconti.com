@@ -17,7 +17,7 @@ export const WORMHOLESCAN_WEBSITE_URL = "https://wormholescan.io";
 export const WORMHOLESCAN_GITHUB_URL = "https://github.com/XLabs/wormscan-ui";
 export const PORTAL_WEBSITE_URL = "https://portalbridge.com";
 export const PORTAL_GITHUB_URL = "https://github.com/wormhole-foundation/wormhole-connect";
-export const CLINIS_WEBSITE_URL = "https://clinis.vercel.app/";
+export const CLINIS_WEBSITE_URL = "https://clinis-automotores.com";
 export const CLINIS_GITHUB_URL = "https://github.com/giulianoconti/clinis";
 
 export const EXPERIENCE_WORMHOLESCAN_ASSET = "/assets/experience-wormholescan.png";
@@ -50,13 +50,11 @@ export const PROJECT_REMOVE_BG_GITHUB_URL = "https://github.com/giulianoconti/re
 export const PROJECT_REMOVE_BG_ASSET = "/assets/my-projects-removeBg.webp";
 
 export const PROJECT_GIULIAN_NEWS_URL = "https://github.com/giulianoconti/tp-info-react-2022/";
-export const PROJECT_GIULIAN_NEWS_GITHUB_URL =
-  "https://github.com/giulianoconti/tp-info-react-2022";
+export const PROJECT_GIULIAN_NEWS_GITHUB_URL = "https://github.com/giulianoconti/tp-info-react-2022";
 export const PROJECT_GIULIAN_NEWS_ASSET = "/assets/my-projects-news.webp";
 
 export const PROJECT_POKEMON_FINDER_URL = "https://giulianoconti.github.io/devlights-homework-2/";
-export const PROJECT_POKEMON_FINDER_GITHUB_URL =
-  "https://github.com/giulianoconti/devlights-homework-2";
+export const PROJECT_POKEMON_FINDER_GITHUB_URL = "https://github.com/giulianoconti/devlights-homework-2";
 export const PROJECT_POKEMON_FINDER_ASSET = "/assets/my-projects-pokemon.webp";
 
 export const PROJECT_WEATHER_TI_URL = "https://weather-ti.vercel.app/";
