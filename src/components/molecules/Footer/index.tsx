@@ -67,26 +67,24 @@ export default function Footer() {
 
   return (
     <footer className="footer" id="footer">
-      <div className="footer_col">
-        <a href="#home" className="footer_col_logo">
-          <img alt="Logo" className="footer_col_logo_img" height={48} src="/assets/favicon_light.png" width={48} />
-        </a>
-      </div>
+      <a href="#home" className="footer_logo">
+        <img alt="Logo" className="footer_logo_img" height={48} src="/assets/favicon_light.png" width={48} />
+      </a>
 
       <div className="footer_grid">
-        <div className="projects">
+        <div className="footer_grid_projects">
           <h4 className="footer_grid_projects_title">{t.projects.title}</h4>
 
           {PROJECTS_DATA.map((p) => (
-            <div className="projects_tooltip" key={p.key}>
-              <a className="projects_tooltip_text" href={p.url} target="_blank" rel="noopener noreferrer">
-                <div className="projects_tooltip_text_arrow" />
+            <div className="footer_grid_projects_tooltip" key={p.key}>
+              <a className="footer_grid_projects_tooltip_text" href={p.url} target="_blank" rel="noopener noreferrer">
+                <div className="footer_grid_projects_tooltip_text_arrow" />
                 {nameMap[p.key]}
               </a>
-              <div className="projects_tooltip_container">
-                <div className="projects_tooltip_container_content">
+              <div className="footer_grid_projects_tooltip_container">
+                <div className="footer_grid_projects_tooltip_container_content">
                   <a
-                    className="projects_tooltip_container_content_image"
+                    className="footer_grid_projects_tooltip_container_content_image"
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -94,22 +92,22 @@ export default function Footer() {
                     <img src={p.img} loading="lazy" alt={nameMap[p.key]} />
                   </a>
 
-                  <div className="projects_tooltip_container_content_info">
+                  <div className="footer_grid_projects_tooltip_container_content_info">
                     <div>
                       {p.icons.map((i) => {
                         const IconComponent = iconMap[i];
                         return (
                           <IconComponent
                             key={i}
-                            className="projects_tooltip_container_content_info_icon"
+                            className="footer_grid_projects_tooltip_container_content_info_icon"
                             aria-label={i}
                           />
                         );
                       })}
                     </div>
-                    <h3 className="projects_tooltip_container_content_info_title">{nameMap[p.key]}</h3>
-                    <p className="projects_tooltip_container_content_info_description">{descMap[p.key]}</p>
-                    <div className="projects_tooltip_container_content_info_links">
+                    <h3 className="footer_grid_projects_tooltip_container_content_info_title">{nameMap[p.key]}</h3>
+                    <p className="footer_grid_projects_tooltip_container_content_info_description">{descMap[p.key]}</p>
+                    <div className="footer_grid_projects_tooltip_container_content_info_links">
                       <a href={p.github} target="_blank" rel="noopener noreferrer" title="Github">
                         <GithubIcon />
                       </a>
@@ -125,23 +123,21 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer_col">
-        <h4 className="footer_col_title">{t.footer.social}</h4>
+      <div className="footer_bottom">
+        <a className="footer_bottom_mail" href={`mailto:${SOCIAL_MAIL}`} target="_blank" rel="noopener noreferrer">
+          {SOCIAL_MAIL}
+        </a>
 
-        <a className="footer_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_bottom_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank">
           <LinkedInIcon />
         </a>
 
-        <a className="footer_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_bottom_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank">
           <GithubIcon />
         </a>
 
-        <a className="footer_link" href={SOCIAL_INSTAGRAM_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_bottom_link" href={SOCIAL_INSTAGRAM_URL} rel="noopener noreferrer" target="_blank">
           <InstagramIcon />
-        </a>
-
-        <a className="footer_mail" href={`mailto:${SOCIAL_MAIL}`} target="_blank" rel="noopener noreferrer">
-          {SOCIAL_MAIL}
         </a>
       </div>
     </footer>

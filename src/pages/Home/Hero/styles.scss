@@ -2,7 +2,7 @@
 @use "../../../styles/typography" as *;
 
 .hero {
-  min-height: 120dvh;
+  min-height: 120vh;
   pointer-events: none;
   position: relative;
 
@@ -50,26 +50,27 @@
           @include text-caption;
           border-radius: 9999px;
           border: none;
-          color: #fff;
+          color: rgba(255, 255, 255, 0.7);
           cursor: pointer;
           padding: max(0.5vw, 8px) max(1vw, 12px);
           transition:
             background-color 0.3s ease,
             color 0.3s ease;
-          border: 1px solid #fff;
+          border: 1px solid rgba(255, 255, 255, 0.7);
 
           &:hover {
+            color: #fff;
             background-color: #ffffff16;
           }
         }
 
         .hero_main_center_actions_link {
-          color: #fff;
+          color: rgba(255, 255, 255, 0.7);
           display: flex;
-          transition: transform 0.3s ease;
+          transition: color 0.3s ease;
 
           &:hover {
-            transform: scale(1.1);
+            color: #fff;
           }
 
           & > svg {

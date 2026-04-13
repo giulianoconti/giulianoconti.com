@@ -69,7 +69,7 @@ type Translations = {
 
 const translations: Record<Locale, Translations> = {
   en: {
-    nav: { about: "About", experience: "Experience", contact: "Contact" },
+    nav: { about: "ABOUT", experience: "EXPERIENCE", contact: "CONTACT" },
     home: {
       subheader: "Frontend Engineer",
       title: "Giuliano Conti",
@@ -137,14 +137,14 @@ const translations: Record<Locale, Translations> = {
     footer: { name: "Giuliano Conti", contactMe: "Contact Me", social: "Social" },
   },
   es: {
-    nav: { about: "Sobre mí", experience: "Experiencia", contact: "Contacto" },
+    nav: { about: "SOBRE Mí", experience: "EXPERIENCIA", contact: "CONTACTO" },
     home: {
       subheader: "Ingeniero Frontend",
       title: "Giuliano Conti",
       bio: "+3 años de experiencia desarrollando páginas web con React, Next.js y Web3. Apasionado por el rendimiento, código limpio y aprendizaje continuo.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículum",
-      aboutTitle: "Acerca de",
+      aboutTitle: "SOBRE Mí",
     },
     experience: {
       title: "Experiencia",
@@ -206,14 +206,14 @@ const translations: Record<Locale, Translations> = {
     footer: { name: "Giuliano Conti", contactMe: "Contáctame", social: "Social" },
   },
   pt: {
-    nav: { about: "Sobre mim", experience: "Experiência", contact: "Contato" },
+    nav: { about: "SOBRE MIM", experience: "EXPERIÊNCIA", contact: "CONTATO" },
     home: {
       subheader: "Engenheiro Frontend",
       title: "Giuliano Conti",
       bio: "+3 anos de experiência desenvolvendo páginas web com React, Next.js e Web3. Apaixonado por desempenho, código limpo e aprendizado contínuo.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículo",
-      aboutTitle: "Sobre",
+      aboutTitle: "SOBRE MIM",
     },
     experience: {
       title: "Experiência",

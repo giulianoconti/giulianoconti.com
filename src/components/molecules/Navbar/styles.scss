@@ -48,7 +48,6 @@
     }
 
     .nav_inner_links {
-      -webkit-backdrop-filter: blur(16px);
       align-items: center;
       backdrop-filter: blur(16px);
       background-color: rgba(20, 20, 20, 0.3);
@@ -59,7 +58,7 @@
       padding: max(0.8vw, 12px) max(1.6vw, 24px);
 
       a {
-        @include text-body;
+        @include text-eyebrow;
         color: #fff;
         transition: opacity 0.2s;
 
@@ -70,21 +69,22 @@
     }
 
     .nav_lang {
-      -webkit-backdrop-filter: blur(16px);
       align-items: center;
       backdrop-filter: blur(16px);
       background-color: rgba(20, 20, 20, 0.3);
       border-radius: 9999px;
       display: flex;
-      display: none;
       gap: max(0.5vw, 8px);
       justify-content: center;
       list-style: none;
       padding: max(0.4vw, 4px) max(0.8vw, 12px);
+      position: fixed;
+      top: 16px;
       width: max(5vw, 90px);
 
       @include desktop {
-        display: flex;
+        position: relative;
+        top: unset;
       }
 
       .nav_lang_link {
