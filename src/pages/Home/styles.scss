@@ -1,0 +1,54 @@
+.home_overlay {
+  height: 100dvh;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &.home_overlay_grain1 {
+    mix-blend-mode: color-dodge;
+    opacity: 0.47;
+    z-index: 15;
+  }
+
+  &.home_overlay_grain2 {
+    mix-blend-mode: screen;
+    opacity: 0.25;
+    z-index: 20;
+  }
+}
+
+.home_page {
+  position: relative;
+  z-index: 10;
+
+  &::before {
+    -webkit-mask: radial-gradient(
+      circle 400px at var(--cx, -9999px) var(--cy, -9999px),
+      transparent 0%,
+      transparent 60px,
+      black 400px
+    );
+    backdrop-filter: blur(6px);
+    content: "";
+    inset: 0;
+    mask: radial-gradient(
+      circle 400px at var(--cx, -9999px) var(--cy, -9999px),
+      transparent 0%,
+      transparent 60px,
+      black 400px
+    );
+    pointer-events: none;
+    position: fixed;
+    z-index: -1;
+  }
+}

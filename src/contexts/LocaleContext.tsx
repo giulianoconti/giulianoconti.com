@@ -3,13 +3,14 @@ import { createContext, useContext, useState, useCallback, useEffect, type React
 export type Locale = "en" | "es" | "pt";
 
 type Translations = {
-  nav: { home: string; experience: string; projects: string; contact: string };
+  nav: { about: string; experience: string; contact: string };
   home: {
     subheader: string;
     title: string;
     bio: string;
     skills: string;
     resume: string;
+    aboutTitle: string;
   };
   experience: {
     title: string;
@@ -23,12 +24,24 @@ type Translations = {
     freelancerRole: string;
     freelancerDate: string;
     freelancerDesc: string;
+    xlabsCompany: string;
+    xlabsRole: string;
+    xlabsDate: string;
+    freelanceCompany: string;
+    freelancerJobRole: string;
+    freelancerJobDate: string;
+    clinis: string;
+    clinisDesc: string;
+    present: string;
   };
   contact: {
     title: string;
     text: string;
     button: string;
     message: string;
+    headline: string;
+    headline_2: string;
+    ctaButton: string;
   };
   projects: {
     title: string;
@@ -51,18 +64,19 @@ type Translations = {
     weatherTI: string;
     weatherTIDesc: string;
   };
-  footer: { name: string };
+  footer: { name: string; contactMe: string; social: string };
 };
 
 const translations: Record<Locale, Translations> = {
   en: {
-    nav: { home: "Home", experience: "Experience", projects: "Projects", contact: "Contact" },
+    nav: { about: "About", experience: "Experience", contact: "Contact" },
     home: {
       subheader: "Frontend Engineer",
       title: "Giuliano Conti",
-      bio: "+3 years of experience mainly working with React, Next.js and blockchain technologies.",
+      bio: "3+ years of experience building websites using React, Next.js and Web3. Passionate about performance, clean code, and continuous learning.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Resume",
+      aboutTitle: "About",
     },
     experience: {
       title: "Experience",
@@ -75,17 +89,29 @@ const translations: Record<Locale, Translations> = {
       portalDesc:
         "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
       xlabsDesc:
-        "Developed functionality for the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
+        "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
       freelancerRole: "Freelancer",
       freelancerDate: "2022 - Current",
       freelancerDesc:
         "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
+      xlabsCompany: "xLabs",
+      xlabsRole: "Frontend Engineer",
+      xlabsDate: "2023 - Current",
+      freelanceCompany: "Freelance",
+      freelancerJobRole: "Frontend Developer",
+      freelancerJobDate: "2022 - Current",
+      clinis: "Clinis",
+      clinisDesc: "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
+      present: "Current",
     },
     contact: {
       title: "Contact",
       text: "If you want to chat about opportunities or anything else, get in touch.",
       button: "Contact Me",
       message: "Hello, how are you?",
+      headline: "Ready to talk?",
+      headline_2: "Contact me",
+      ctaButton: "Get in Touch",
     },
     projects: {
       title: "Projects",
@@ -108,16 +134,17 @@ const translations: Record<Locale, Translations> = {
       weatherTI: "WeatherTI",
       weatherTIDesc: "Page to keep you informed about current and future weather.",
     },
-    footer: { name: "Giuliano Conti" },
+    footer: { name: "Giuliano Conti", contactMe: "Contact Me", social: "Social" },
   },
   es: {
-    nav: { home: "Inicio", experience: "Experiencia", projects: "Proyectos", contact: "Contacto" },
+    nav: { about: "Sobre mí", experience: "Experiencia", contact: "Contacto" },
     home: {
       subheader: "Ingeniero Frontend",
       title: "Giuliano Conti",
-      bio: "+3 años de experiencia trabajando principalmente con React, Next.js y tecnologías blockchain.",
+      bio: "+3 años de experiencia desarrollando páginas web con React, Next.js y Web3. Apasionado por el rendimiento, código limpio y aprendizaje continuo.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículum",
+      aboutTitle: "Acerca de",
     },
     experience: {
       title: "Experiencia",
@@ -130,17 +157,30 @@ const translations: Record<Locale, Translations> = {
       portalDesc:
         "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
       xlabsDesc:
-        "Desarrollé funcionalidades de la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
+        "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
       freelancerRole: "Freelancer",
       freelancerDate: "2022 - Actualidad",
       freelancerDesc:
         "Cree una web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
+      xlabsCompany: "xLabs",
+      xlabsRole: "Ingeniero Frontend",
+      xlabsDate: "2023 - Actualidad",
+      freelanceCompany: "Freelance",
+      freelancerJobRole: "Desarrollador Frontend",
+      freelancerJobDate: "2022 - Actualidad",
+      clinis: "Clinis",
+      clinisDesc:
+        "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
+      present: "Actualidad",
     },
     contact: {
       title: "Contacto",
       text: "Si quieres hablar de oportunidades o lo que sea, escríbeme. Acá estoy.",
       button: "Contáctame",
       message: "¡Hola! ¿Cómo estás?",
+      headline: "¿Listo para hablar?",
+      headline_2: "Contáctame",
+      ctaButton: "Ponte en contacto",
     },
     projects: {
       title: "Proyectos",
@@ -163,16 +203,17 @@ const translations: Record<Locale, Translations> = {
       weatherTI: "WeatherTI",
       weatherTIDesc: "Página para informarte del tiempo actual y pronósticos.",
     },
-    footer: { name: "Giuliano Conti" },
+    footer: { name: "Giuliano Conti", contactMe: "Contáctame", social: "Social" },
   },
   pt: {
-    nav: { home: "Início", experience: "Experiência", projects: "Projetos", contact: "Contato" },
+    nav: { about: "Sobre mim", experience: "Experiência", contact: "Contato" },
     home: {
       subheader: "Engenheiro Frontend",
       title: "Giuliano Conti",
-      bio: "+3 anos de experiência trabalhando principalmente com React, Next.js e tecnologias blockchain.",
+      bio: "+3 anos de experiência desenvolvendo páginas web com React, Next.js e Web3. Apaixonado por desempenho, código limpo e aprendizado contínuo.",
       skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículo",
+      aboutTitle: "Sobre",
     },
     experience: {
       title: "Experiência",
@@ -184,17 +225,28 @@ const translations: Record<Locale, Translations> = {
       portal: "Portal",
       portalDesc:
         "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
-      xlabsDesc:
-        "Desenvolvi funcionalidades para o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
+      xlabsDesc: "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
       freelancerRole: "Freelancer",
       freelancerDate: "2022 - Atual",
       freelancerDesc: "Criei um site para mostrar o catálogo de veículos a venda, gerando maior visibilidade e vendas.",
+      xlabsCompany: "xLabs",
+      xlabsRole: "Engenheiro Frontend",
+      xlabsDate: "2023 - Atual",
+      freelanceCompany: "Freelance",
+      freelancerJobRole: "Desenvolvedor Frontend",
+      freelancerJobDate: "2022 - Atual",
+      clinis: "Clinis",
+      clinisDesc: "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
+      present: "Atual",
     },
     contact: {
       title: "Contato",
       text: "Se quiser falar de oportunidades ou o que for, me chama. Tô por aqui.",
       button: "Fale comigo",
       message: "Olá! Como vai?",
+      headline: "Pronto para falar?",
+      headline_2: "Fale comigo",
+      ctaButton: "Entre em contato",
     },
     projects: {
       title: "Projetos",
@@ -217,7 +269,7 @@ const translations: Record<Locale, Translations> = {
       weatherTI: "WeatherTI",
       weatherTIDesc: "Página para informar o tempo atual e previsões.",
     },
-    footer: { name: "Giuliano Conti" },
+    footer: { name: "Giuliano Conti", contactMe: "Fale comigo", social: "Sociais" },
   },
 };
 

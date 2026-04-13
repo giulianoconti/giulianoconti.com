@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { LocaleProvider } from "./contexts/LocaleContext.tsx";
-import App from "./App.tsx";
+import { Navbar, Footer } from "./components/molecules";
+import Home from "./pages/Home/index.tsx";
 import "./index.scss";
 
 const pathToLang: Record<string, string> = {
@@ -20,7 +21,9 @@ if (lang) {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <LocaleProvider>
-      <App />
+      <Navbar />
+      <Home />
+      <Footer />
     </LocaleProvider>
   </StrictMode>,
 );

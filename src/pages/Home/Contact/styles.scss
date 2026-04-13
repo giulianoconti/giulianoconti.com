@@ -2,240 +2,54 @@
 @use "../../../styles/typography" as *;
 
 .contact {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  justify-content: space-between;
-  padding-top: 2.75rem;
-  width: 100%;
+  min-height: 120dvh;
+  justify-content: flex-end;
+  pointer-events: none;
 
-  @include desktop {
+  .contact_cta {
     align-items: center;
-    flex-direction: row;
-  }
-
-  .contact_title {
-    @include heading-h2;
-    color: var(--neutral-white-100);
-
-    @include tablet {
-      @include heading-h2-desktop;
-    }
-  }
-
-  .contact_text {
-    @include text-base;
-    text-wrap: pretty;
-  }
-
-  .contact_container {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    height: 100%;
     justify-content: center;
-    margin: auto;
-    max-width: 32rem;
-    position: relative;
+    margin-bottom: 120px;
+    padding: 0 16px;
+    pointer-events: auto;
+    width: 100%;
 
     @include desktop {
-      margin: unset;
+      padding: 0 10vw;
     }
 
-    p {
-      @include text-base;
-    }
-
-    .contact_container_message {
+    .contact_cta_center {
       align-items: center;
-      background: var(--surface-card-strong);
-      border: 1px solid var(--surface-border);
-      border-radius: 1.5rem;
-      color: var(--neutral-white-100);
       display: flex;
-      left: -1rem;
-      padding: 0.3rem;
-      position: absolute;
-      top: 2.5rem;
-      width: 14rem;
-      z-index: 2;
+      flex-direction: column;
+      gap: max(1vw, 16px);
+      text-align: center;
 
-      @include desktop {
-        width: 19rem;
+      .contact_cta_center_headline {
+        @include text-h2;
+        color: #fff;
       }
 
-      .contact_container_message_text {
-        align-items: center;
-        background: linear-gradient(90deg, #00d4e7 0%, #9a54ff 50%, #d63aff 100%);
-        border-radius: 1rem;
-        color: var(--neutral-white-100);
-        display: flex;
-        padding: 0 0.5rem;
-        width: 100%;
-        z-index: 2;
-        @include text-tiny;
+      .contact_cta_center_btn {
+        @include text-caption;
+        border-radius: 9999px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: max(0.5vw, 8px) max(1vw, 12px);
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+        border: 1px solid #fff;
 
-        @include desktop {
-          padding: 0 1rem;
+        &:hover {
+          background-color: #ffffff32;
         }
       }
-    }
-
-    .contact_container_cat {
-      bottom: -1rem;
-      height: 4rem;
-      left: -2rem;
-      position: absolute;
-      z-index: 2;
-
-      @include desktop {
-        left: 0;
-      }
-    }
-
-    .contact_container_chat {
-      backdrop-filter: blur(80px);
-      border-radius: 0.8rem;
-      border: 1px solid var(--surface-border-strong);
-      box-shadow: var(--shadow-elevated);
-      height: 14rem;
-      width: 20.5rem;
-      z-index: 1;
-
-      .contact_container_chat_btns {
-        align-items: center;
-        border-bottom: 1px solid var(--surface-border);
-        display: flex;
-        gap: 0.4rem;
-        height: 1.5rem;
-        padding-left: 0.6rem;
-        width: 100%;
-
-        .contact_container_chat_btns_btn {
-          border: 1px solid var(--surface-border);
-          border-radius: 50%;
-          height: 0.7rem;
-          width: 0.7rem;
-        }
-      }
-
-      .contact_container_chat_msgs {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        height: calc(100% - 1.5rem);
-        justify-content: center;
-        padding: 0 1rem;
-        width: 100%;
-
-        .contact_container_chat_msgs_msg {
-          align-items: center;
-          display: flex;
-          gap: 0.5rem;
-          height: 1rem;
-        }
-
-        .contact_container_chat_msgs_msg:first-of-type {
-          margin-left: auto;
-          opacity: 0.8;
-        }
-
-        .contact_container_chat_msgs_msg:nth-of-type(2) {
-          opacity: 0.6;
-        }
-
-        .contact_container_chat_msgs_msg:last-of-type {
-          margin-left: auto;
-          opacity: 0.4;
-        }
-
-        .contact_container_chat_msgs_msg_text {
-          align-items: center;
-          border: 1px solid var(--surface-border);
-          border-radius: 1rem;
-          display: flex;
-          gap: 0.25rem;
-          height: 1.2rem;
-          padding: 0 0.5rem;
-          width: max-content;
-
-          .contact_container_chat_msgs_msg_text_info {
-            border: 1px solid var(--surface-border);
-            border-radius: 1rem;
-            height: 0.6rem;
-            width: 5rem;
-          }
-
-          .contact_container_chat_msgs_msg_text_info_w6 {
-            width: 6rem;
-          }
-
-          .contact_container_chat_msgs_msg_text_icons {
-            @include text-tiny-compact;
-            translate: 0 0.08rem;
-          }
-
-          .contact_container_chat_msgs_msg_text_icons:first-of-type {
-            opacity: 0.6;
-          }
-
-          .contact_container_chat_msgs_msg_text_icons:nth-of-type(2) {
-            opacity: 0.4;
-          }
-
-          .contact_container_chat_msgs_msg_text_icons:last-of-type {
-            opacity: 0.2;
-          }
-        }
-
-        .contact_container_chat_msgs_msg_pic {
-          border: 1px solid var(--surface-border);
-          border-radius: 1rem;
-          height: 1.5rem;
-          overflow: hidden;
-          width: 1.5rem;
-
-          .contact_container_chat_msgs_msg_pic_head {
-            border: 1px solid var(--surface-border);
-            border-radius: 50%;
-            height: 50%;
-            margin: 0.2rem auto 0 auto;
-            width: 50%;
-          }
-
-          .contact_container_chat_msgs_msg_pic_body {
-            border: 1px solid var(--surface-border);
-            border-radius: 50%;
-            height: 100%;
-            width: 100%;
-          }
-        }
-      }
-    }
-
-    .contact_container_rocket {
-      position: absolute;
-      right: -1.5rem;
-      top: -4rem;
-      width: 5rem;
-
-      @include desktop {
-        right: 2rem;
-        top: -6rem;
-        width: 6.5rem;
-      }
-    }
-  }
-
-  .contact_container:last-of-type {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 21rem;
-
-    @include desktop {
-      width: 40%;
     }
   }
 }

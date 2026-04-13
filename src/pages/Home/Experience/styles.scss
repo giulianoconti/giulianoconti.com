@@ -5,180 +5,260 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 3rem 0;
-  justify-content: space-between;
+  // min-height: 120dvh;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: auto;
+  position: relative;
   width: 100%;
-  z-index: 1;
 
-  .experience_title {
-    @include heading-h2;
-    color: var(--neutral-white-100);
-
-    @include tablet {
-      @include heading-h2-desktop;
-    }
+  @include desktop {
+    padding: 0 10vw;
   }
 
-  .experience_group {
+  .experience_sticky {
+    align-items: start;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: max(1vw, 16px);
+    justify-content: center;
+    pointer-events: auto;
+    position: static;
     width: 100%;
 
-    .experience_group_header {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem 0;
-      width: 100%;
-
-      @include tablet {
-        justify-content: center;
-        padding-left: 1rem;
-      }
-
-      .experience_group_header_logo {
-        align-items: center;
-        color: var(--neutral-white-100);
-        display: flex;
-        justify-content: center;
-        transition: color 0.3s ease;
-      }
-
-      .experience_group_header_logo:hover {
-        color: var(--primary-green-100);
-      }
-
-      .experience_group_header_period {
-        color: var(--neutral-gray3-100);
-        @include text-small;
-      }
+    @include desktop {
+      height: 150dvh;
     }
 
-    .experience_group_content {
+    .experience_sticky_row {
+      align-items: start;
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      position: relative;
+      gap: max(1vw, 16px);
+      justify-content: space-between;
+      pointer-events: auto;
+      width: 100%;
+      position: static;
 
-      .experience_group_content_project {
+      @include desktop {
+        flex-direction: row;
+      }
+
+      .experience_sticky_row_left {
+        align-items: start;
         display: flex;
         flex-direction: column;
-        gap: 1rem 2rem;
-        height: 100%;
+        gap: max(1vw, 16px);
         justify-content: space-between;
-        position: relative;
+        width: 100%;
 
-        > a {
-          aspect-ratio: 16 / 9;
-          border-radius: 10px;
-          height: max-content;
-          overflow: hidden;
-          width: 100%;
+        @include desktop {
+          height: 100%;
+          width: 50%;
         }
 
-        .experience_group_content_project_image {
-          aspect-ratio: 16 / 9;
-          transition: scale 0.3s ease;
-          width: 100%;
-        }
-
-        .experience_group_content_project_image:hover {
-          scale: 1.1;
-        }
-
-        .experience_group_content_project_info {
+        .experience_sticky_row_left_container {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: max(1vw, 16px);
           width: 100%;
 
-          .experience_group_content_project_info_title {
-            align-items: center;
-            display: flex;
-            gap: 0 1rem;
+          @include desktop {
+            position: sticky;
+            top: 14vh;
+          }
 
-            .experience_group_content_project_info_title_text {
-              @include heading-h3;
-              color: var(--neutral-white-100);
+          .experience_sticky_row_left_container_eyebrow {
+            @include text-eyebrow;
+            color: rgba(255, 255, 255, 0.5);
+          }
+
+          .experience_sticky_row_left_container_title {
+            @include text-h2;
+            color: #fff;
+          }
+
+          .experience_sticky_row_left_container_btn {
+            @include text-body;
+            align-items: center;
+            background: #fff;
+            border-radius: max(0.5vw, 8px);
+            color: #000;
+            display: inline-flex;
+            gap: max(1vw, 16px);
+            margin-top: max(0.5vw, 8px);
+            padding: max(1vw, 16px);
+            transition: opacity 0.2s;
+            width: fit-content;
+
+            display: none;
+
+            &:hover {
+              opacity: 0.85;
+            }
+
+            .experience_sticky_row_left_container_btn_arrow {
+              height: 20px;
+              width: 20px;
             }
           }
-
-          .experience_group_content_project_info_description {
-            @include text-base;
-            color: var(--neutral-gray2-100);
-          }
-
-          .experience_group_content_project_info_tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-          }
-
-          .experience_group_content_project_info_tools span,
-          .experience_group_content_project_info_tools_stacked span {
-            @include text-tiny;
-            align-items: center;
-            color: var(--neutral-gray3-100);
-            display: flex;
-            gap: 0.5rem;
-          }
         }
       }
 
-      .experience_group_content_project:nth-of-type(2) {
-        flex-direction: column-reverse;
-      }
-    }
-  }
+      .experience_sticky_row_right {
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+        gap: max(1vw, 16px);
+        justify-content: center;
+        pointer-events: none;
+        position: relative;
+        width: 100%;
 
-  @media screen and (min-width: 769px) {
-    gap: 4.25rem 0;
-
-    .experience_group {
-      gap: 1rem;
-
-      .experience_group_content {
-        gap: 3.2rem;
-        padding-left: 1rem;
-      }
-
-      .experience_group_content::before {
-        background: linear-gradient(
-          180deg,
-          rgba(120, 138, 185, 0.55) 0%,
-          rgba(120, 138, 185, 0.4) 94%,
-          rgba(120, 138, 185, 0) 100%
-        );
-        content: "";
-        height: 100%;
-        left: calc(50% + 0.4rem);
-        position: absolute;
-        top: 0;
-        width: 2px;
-      }
-
-      .experience_group_content .experience_group_content_project {
-        flex-direction: row;
-
-        > a {
+        @include desktop {
           width: 50%;
         }
 
-        .experience_group_content_project_info {
-          width: 50%;
-        }
-
-        .experience_group_content_project_info_tools_stacked {
+        .experience_sticky_row_right_grid {
+          align-items: flex-start;
           display: flex;
           flex-direction: column;
-          gap: 1rem 0;
-          justify-content: space-between;
-        }
-      }
+          gap: max(1vw, 16px);
 
-      .experience_group_content .experience_group_content_project:nth-of-type(2) {
-        flex-direction: row;
+          @include desktop {
+            flex-direction: row;
+          }
+
+          .experience_sticky_row_right_grid_col {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: max(1vw, 16px);
+
+            .experience_card {
+              display: flex;
+              flex-direction: column;
+              gap: max(1vw, 16px);
+              pointer-events: auto;
+
+              .experience_card_company {
+                @include text-h3;
+                color: #fff;
+              }
+
+              .experience_card_role {
+                @include text-caption;
+                color: rgba(255, 255, 255, 0.5);
+              }
+
+              .experience_card_dates {
+                @include text-caption;
+                color: rgba(255, 255, 255, 0.35);
+              }
+
+              .experience_card_project {
+                pointer-events: auto;
+
+                &:nth-child(odd) .experience_card_project_link {
+                  @include desktop {
+                    flex-direction: row-reverse;
+                  }
+                }
+
+                .experience_card_project_link {
+                  backdrop-filter: blur(16px);
+                  background: rgba(255, 255, 255, 0.04);
+                  border: 1px solid rgba(255, 255, 255, 0.08);
+                  border-radius: max(1vw, 16px);
+                  display: flex;
+                  flex-direction: column;
+                  gap: max(1vw, 16px);
+                  padding: max(1vw, 16px);
+                  text-decoration: none;
+                  transition:
+                    background 0.3s,
+                    border-color 0.2s;
+
+                  @include desktop {
+                    flex-direction: row;
+                  }
+
+                  &:hover {
+                    background: rgba(255, 255, 255, 0.07);
+                    border-color: rgba(255, 255, 255, 0.15);
+
+                    .experience_card_project_link_image > img {
+                      transform: scale(1.05);
+                    }
+                  }
+
+                  .experience_card_project_link_image {
+                    aspect-ratio: 4 / 3;
+                    border-radius: max(0.5vw, 8px);
+                    object-fit: cover;
+                    opacity: 0.85;
+                    width: 100%;
+                    overflow: hidden;
+
+                    @include desktop {
+                      width: 50%;
+                    }
+
+                    & > img {
+                      aspect-ratio: 4 / 3;
+                      border-radius: max(0.5vw, 8px);
+                      object-fit: cover;
+                      opacity: 0.85;
+                      transition: transform 0.2s ease;
+                      width: 100%;
+                    }
+                  }
+
+                  .experience_card_project_link_content {
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    gap: max(0.5vw, 8px);
+
+                    .experience_card_project_link_content_name {
+                      @include text-body;
+                      color: #fff;
+                    }
+
+                    .experience_card_project_link_content_desc {
+                      @include text-caption;
+                      color: rgba(255, 255, 255, 0.55);
+                    }
+
+                    .experience_card_project_link_content_technologies {
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: max(0.5vw, 8px);
+                      margin-top: max(0.2vw, 4px);
+
+                      .experience_card_project_link_content_technologies_technology {
+                        @include text-tiny;
+                        align-items: center;
+                        background: rgba(255, 255, 255, 0.07);
+                        border-radius: 9999px;
+                        color: rgba(255, 255, 255, 0.6);
+                        display: inline-flex;
+                        gap: max(0.3vw, 4px);
+                        padding: max(0.4vh, 4px) max(0.6vw, 12px);
+
+                        svg {
+                          flex-shrink: 0;
+                          height: max(0.7vw, 16px);
+                          width: max(0.7vw, 16px);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

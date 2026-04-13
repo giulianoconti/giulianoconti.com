@@ -2,65 +2,43 @@
 @use "./styles/layout" as *;
 @use "./styles/typography" as *;
 
-:root {
-  --primary-purple-100: #d834ff;
-  --primary-blue-100: #0a84ff;
-  --primary-green-100: #4ee39d;
-  --primary-green-40: #4ee39d66;
-  --primary-red-100: #ff496a;
-
-  --neutral-white-100: #fff;
-  --neutral-gray1-100: #ebebf5;
-  --neutral-gray2-100: #acacb5;
-  --neutral-gray3-100: #5f6377;
-  --neutral-gray4-100: #464957;
-  --neutral-gray5-100: #333345;
-  --neutral-black-100: #000;
-
-  --background-blueblack: #07071c;
-  --background-shell: #0a0d22;
-  --surface-card: rgba(17, 21, 38, 0.72);
-  --surface-card-strong: rgba(15, 19, 34, 0.9);
-  --surface-border: rgba(130, 145, 191, 0.16);
-  --surface-border-strong: rgba(130, 145, 191, 0.25);
-  --shadow-elevated: 0 16px 36px rgba(1, 3, 12, 0.38);
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-decoration: none;
 }
 
 html {
-  background-color: var(--background-blueblack);
-  overflow-x: hidden;
   scroll-behavior: smooth;
-  scrollbar-color: var(--primary-green-100) var(--neutral-black-100);
-  scrollbar-width: thin;
+  scroll-padding-top: max(8vh, 64px);
 }
 
 body {
-  color: var(--neutral-gray2-100);
-  @include text-base;
-  min-height: 100vh;
-  min-height: 100dvh;
+  background: #000;
+  color: #fff;
+  font-family: "HelveticaNow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
-  width: 100%;
+  scrollbar-width: none;
+  overscroll-behavior-y: none;
 }
 
-.app {
-  @include section-padding-x;
-  display: flex;
-  flex-direction: column;
-  gap: 10rem 0;
-  margin: 0 auto;
-  max-width: 100vw;
-  overflow-x: clip;
+#root {
   width: 100%;
+  min-height: 100dvh;
+}
 
-  @include tablet {
-    gap: 12rem 0;
-  }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
 }

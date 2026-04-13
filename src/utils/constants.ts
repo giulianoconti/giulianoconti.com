@@ -3,6 +3,7 @@ import type { Locale } from "../contexts/LocaleContext.tsx";
 export const SOCIAL_LINKEDIN_URL = "https://www.linkedin.com/in/giulianoconti";
 export const SOCIAL_GITHUB_URL = "https://github.com/giulianoconti";
 export const SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/giulianocontii";
+export const SOCIAL_MAIL = "giuliconti1@gmail.com";
 
 export const ASSET_FAVICON_LIGHT = "/assets/favicon_light.png";
 export const ASSET_WAVE_BLUR = "/assets/wave-blur.webp";
@@ -49,11 +50,13 @@ export const PROJECT_REMOVE_BG_GITHUB_URL = "https://github.com/giulianoconti/re
 export const PROJECT_REMOVE_BG_ASSET = "/assets/my-projects-removeBg.webp";
 
 export const PROJECT_GIULIAN_NEWS_URL = "https://github.com/giulianoconti/tp-info-react-2022/";
-export const PROJECT_GIULIAN_NEWS_GITHUB_URL = "https://github.com/giulianoconti/tp-info-react-2022";
+export const PROJECT_GIULIAN_NEWS_GITHUB_URL =
+  "https://github.com/giulianoconti/tp-info-react-2022";
 export const PROJECT_GIULIAN_NEWS_ASSET = "/assets/my-projects-news.webp";
 
 export const PROJECT_POKEMON_FINDER_URL = "https://giulianoconti.github.io/devlights-homework-2/";
-export const PROJECT_POKEMON_FINDER_GITHUB_URL = "https://github.com/giulianoconti/devlights-homework-2";
+export const PROJECT_POKEMON_FINDER_GITHUB_URL =
+  "https://github.com/giulianoconti/devlights-homework-2";
 export const PROJECT_POKEMON_FINDER_ASSET = "/assets/my-projects-pokemon.webp";
 
 export const PROJECT_WEATHER_TI_URL = "https://weather-ti.vercel.app/";
