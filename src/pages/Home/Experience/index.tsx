@@ -109,10 +109,6 @@ export default function Experience() {
             <div className="experience_sticky_row_left_container">
               <h5 className="experience_sticky_row_left_container_eyebrow">{t.experience.title.toUpperCase()}</h5>
               <h2 className="experience_sticky_row_left_container_title">{t.experience.jobTitle}</h2>
-              <a href="#footer" className="experience_sticky_row_left_container_btn">
-                {t.contact.ctaButton}
-                <img src="/group-1597882162.svg" alt="" className="experience_sticky_row_left_container_btn_arrow" />
-              </a>
             </div>
           </div>
 

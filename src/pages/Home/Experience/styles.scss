@@ -76,31 +76,6 @@
             @include text-h2;
             color: #fff;
           }
-
-          .experience_sticky_row_left_container_btn {
-            @include text-body;
-            align-items: center;
-            background: #fff;
-            border-radius: max(0.5vw, 8px);
-            color: #000;
-            display: inline-flex;
-            gap: max(1vw, 16px);
-            margin-top: max(0.5vw, 8px);
-            padding: max(1vw, 16px);
-            transition: opacity 0.2s;
-            width: fit-content;
-
-            display: none;
-
-            &:hover {
-              opacity: 0.85;
-            }
-
-            .experience_sticky_row_left_container_btn_arrow {
-              height: 20px;
-              width: 20px;
-            }
-          }
         }
       }
 
