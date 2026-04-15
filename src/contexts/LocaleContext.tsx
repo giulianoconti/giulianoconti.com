@@ -81,7 +81,7 @@ const translations: Record<Locale, Translations> = {
     experience: {
       title: "Experience",
       jobTitle: "Frontend Engineer",
-      date: "2023 - Current",
+      date: "2023 - Present",
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
@@ -96,7 +96,7 @@ const translations: Record<Locale, Translations> = {
         "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
       xlabsCompany: "xLabs",
       xlabsRole: "Frontend Engineer",
-      xlabsDate: "2023 - Current",
+      xlabsDate: "2023 - Present",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Frontend Developer",
       freelancerJobDate: "2022 - 2023",
@@ -149,7 +149,7 @@ const translations: Record<Locale, Translations> = {
     experience: {
       title: "Experiencia",
       jobTitle: "Ingeniero Frontend",
-      date: "2023 - Actualidad",
+      date: "2023 - Presente",
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
@@ -164,7 +164,7 @@ const translations: Record<Locale, Translations> = {
         "Cree una web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
       xlabsCompany: "xLabs",
       xlabsRole: "Ingeniero Frontend",
-      xlabsDate: "2023 - 2023",
+      xlabsDate: "2023 - Presente",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Desarrollador Frontend",
       freelancerJobDate: "2022 - Actualidad",
@@ -218,7 +218,7 @@ const translations: Record<Locale, Translations> = {
     experience: {
       title: "Experiência",
       jobTitle: "Engenheiro Frontend",
-      date: "2023 - Atual",
+      date: "2023 - Presente",
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
@@ -231,7 +231,7 @@ const translations: Record<Locale, Translations> = {
       freelancerDesc: "Criei um site para mostrar o catálogo de veículos a venda, gerando maior visibilidade e vendas.",
       xlabsCompany: "xLabs",
       xlabsRole: "Engenheiro Frontend",
-      xlabsDate: "2023 - Atual",
+      xlabsDate: "2023 - Presente",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Desenvolvedor Frontend",
       freelancerJobDate: "2022 - 2023",
