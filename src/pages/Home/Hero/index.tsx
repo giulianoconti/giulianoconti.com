@@ -1,10 +1,15 @@
 import { GithubIcon, InstagramIcon, LinkedInIcon } from "../../../icons";
-import { SOCIAL_GITHUB_URL, SOCIAL_INSTAGRAM_URL, SOCIAL_LINKEDIN_URL } from "../../../utils/constants";
+import {
+  SOCIAL_GITHUB_URL,
+  SOCIAL_INSTAGRAM_URL,
+  SOCIAL_LINKEDIN_URL,
+  getCvAssetByLocale,
+} from "../../../utils/constants";
 import { useLocale } from "../../../contexts/LocaleContext";
 import "./styles.scss";
 
 export default function Hero() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
     <section className="hero" id="home">
@@ -17,7 +22,7 @@ export default function Hero() {
           <div className="hero_main_center_actions">
             <a
               className="hero_main_center_actions_btn"
-              href="/assets/Giuliano_Conti_CV-en.pdf"
+              href={getCvAssetByLocale(locale)}
               rel="noopener noreferrer"
               target="_blank"
             >

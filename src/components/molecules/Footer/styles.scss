@@ -168,7 +168,7 @@
             width: 8px;
 
             @include desktop {
-              top: -1.4vh;
+              top: -0.8vh;
               height: 0.8vh;
               width: 0.8vh;
             }
@@ -177,31 +177,25 @@
 
         .footer_grid_projects_tooltip_container {
           border-radius: 0.75vw;
+          bottom: 18px;
           color: var(--neutral-white-100);
           display: flex;
           height: 180px;
+          max-width: calc(100vw - 32px);
           min-height: 180px;
           opacity: 0.01;
           padding-bottom: 4px;
           position: absolute;
-          top: -180px;
           visibility: hidden;
-          max-width: calc(100vw - 32px);
           z-index: 1;
 
           @include desktop {
-            inset-inline: 16px auto;
-            left: 50%;
-            right: auto;
-            transform: translateX(-50%);
-
-            inset-inline: auto;
+            bottom: max(0.7vw, 18px);
+            height: max(16vh, 180px);
             left: 50%;
             max-width: none;
-            padding-bottom: 1vh;
-            right: auto;
-            height: 16vh;
-            top: -16vh;
+            padding-bottom: 0.4vh;
+            transform: translateX(-50%);
           }
 
           .footer_grid_projects_tooltip_container_content {
