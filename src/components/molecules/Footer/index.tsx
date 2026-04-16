@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import { useLocale } from "../../../contexts/LocaleContext.tsx";
+import { trackProjectClick, trackSocialClick } from "../../../utils/analytics.ts";
 import {
   BlenderIcon,
   CssIcon,
@@ -38,7 +39,7 @@ const iconMap: Record<string, IconComponent> = {
 };
 
 export default function Footer() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const projectMap: Record<string, { name: string; desc: string }> = {
     blackjack: { name: t.projects.blackjack, desc: t.projects.blackjackDesc },
@@ -64,7 +65,7 @@ export default function Footer() {
 
           {PROJECTS_DATA.map((p) => (
             <div className="footer_grid_projects_tooltip" key={p.key}>
-              <a className="footer_grid_projects_tooltip_text" href={p.url} target="_blank" rel="noopener noreferrer">
+              <a className="footer_grid_projects_tooltip_text" href={p.url} target="_blank" rel="noopener noreferrer" onClick={() => trackProjectClick(p.key, locale)}>
                 <div className="footer_grid_projects_tooltip_text_arrow" />
                 {projectMap[p.key].name}
               </a>
@@ -119,15 +120,15 @@ export default function Footer() {
           {SOCIAL_MAIL}
         </a>
 
-        <a className="footer_bottom_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_bottom_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank" onClick={() => trackSocialClick("linkedin", "footer")}>
           <LinkedInIcon />
         </a>
 
-        <a className="footer_bottom_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_bottom_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank" onClick={() => trackSocialClick("github", "footer")}>
           <GithubIcon />
         </a>
 
-        <a className="footer_bottom_link" href={SOCIAL_INSTAGRAM_URL} rel="noopener noreferrer" target="_blank">
+        <a className="footer_bottom_link" href={SOCIAL_INSTAGRAM_URL} rel="noopener noreferrer" target="_blank" onClick={() => trackSocialClick("instagram", "footer")}>
           <InstagramIcon />
         </a>
       </div>

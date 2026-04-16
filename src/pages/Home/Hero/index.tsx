@@ -6,6 +6,7 @@ import {
   getCvAssetByLocale,
 } from "../../../utils/constants";
 import { useLocale } from "../../../contexts/LocaleContext";
+import { trackResumeClick, trackSocialClick } from "../../../utils/analytics";
 import "./styles.scss";
 
 export default function Hero() {
@@ -25,6 +26,7 @@ export default function Hero() {
               href={getCvAssetByLocale(locale)}
               rel="noopener noreferrer"
               target="_blank"
+              onClick={() => trackResumeClick(locale)}
             >
               {t.home.resume}
             </a>
@@ -34,6 +36,7 @@ export default function Hero() {
               href={SOCIAL_LINKEDIN_URL}
               rel="noopener noreferrer"
               target="_blank"
+              onClick={() => trackSocialClick("linkedin", "hero")}
             >
               <LinkedInIcon />
             </a>
@@ -43,6 +46,7 @@ export default function Hero() {
               href={SOCIAL_GITHUB_URL}
               rel="noopener noreferrer"
               target="_blank"
+              onClick={() => trackSocialClick("github", "hero")}
             >
               <GithubIcon />
             </a>
@@ -52,6 +56,7 @@ export default function Hero() {
               href={SOCIAL_INSTAGRAM_URL}
               rel="noopener noreferrer"
               target="_blank"
+              onClick={() => trackSocialClick("instagram", "hero")}
             >
               <InstagramIcon />
             </a>

@@ -1,9 +1,10 @@
 import { SOCIAL_LINKEDIN_URL } from "../../../utils/constants";
 import { useLocale } from "../../../contexts/LocaleContext";
+import { trackContactClick } from "../../../utils/analytics";
 import "./styles.scss";
 
 export default function Contact() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
     <section className="contact">
@@ -20,6 +21,7 @@ export default function Contact() {
             id="contact"
             rel="noopener noreferrer"
             target="_blank"
+            onClick={() => trackContactClick(locale)}
           >
             {t.contact.ctaButton}
           </a>

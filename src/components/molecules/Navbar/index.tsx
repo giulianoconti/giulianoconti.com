@@ -1,10 +1,14 @@
 import { Locale, useLocale } from "../../../contexts/LocaleContext";
+import { trackLanguageChange } from "../../../utils/analytics";
 import "./styles.scss";
 
 export default function Navbar() {
   const { locale, setLocale, t } = useLocale();
 
-  const setLang = (lang: Locale) => () => setLocale(lang);
+  const setLang = (lang: Locale) => () => {
+    setLocale(lang);
+    trackLanguageChange(lang);
+  };
 
   return (
     <nav className="nav">
