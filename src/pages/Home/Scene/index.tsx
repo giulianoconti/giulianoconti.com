@@ -1,14 +1,19 @@
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect, type RefObject } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
 // ── Keyframe helpers ──────────────────────────────────────────────────
-function lerp(a, b, t) {
+interface Keyframe {
+  ts: number[];
+  vs: number[];
+}
+
+function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
 }
 
-function sampleKF(kf, t) {
+function sampleKF(kf: Keyframe, t: number): number {
   const { ts, vs } = kf;
   if (t <= ts[0]) return vs[0];
   if (t >= ts[ts.length - 1]) return vs[vs.length - 1];
@@ -18,6 +23,7 @@ function sampleKF(kf, t) {
       return lerp(vs[i], vs[i + 1], s);
     }
   }
+  return vs[vs.length - 1];
 }
 
 // ── GROUP 1 — espiral primaria (spiral-shape-v3) ──────────────────────
@@ -35,11 +41,11 @@ const G1 = {
 // ── GROUP 2 — espiral secundaria (spiral-staight-v2) ─────────────────
 // Entra desde detrás de la niebla (posZ=-20), llega al centro,
 // luego en el footer se vuelca 90° y se agranda hasta llenar la pantalla como túnel.
-const G2 = {                           
-  posZ: { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.95], vs: [-20, -14, 0.7, -14, -20, -80,  0.7 ]},
-  rotX: { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.95], vs: [  0,   0, 0,    0,   0,   PI2, PI2 ]},
-  rotY: { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.95], vs: [  0,   0, 3,    6,   3,   3,   3   ]},
-  scl:  { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.95], vs: [  6,   6, 2,    6,   9,   40,  5   ]},
+const G2 = {
+  posZ: { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.98], vs: [-20, -14, 0.7, -14, -20, -80,  0.7 ]},
+  rotX: { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.98], vs: [  0,   0, 0,    0,   0,   PI2, PI2 ]},
+  rotY: { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.98], vs: [  0,   0, 3,    6,   3,   3,   3   ]},
+  scl:  { ts: [0.2, 0.3, 0.45, 0.85, 0.851, 0.851001, 0.98], vs: [  6,   6, 2,    6,   9,   40,  5   ]},
 };
 
 
@@ -61,20 +67,20 @@ const BG_COL = {
 
 // ── Esfera metálica ───────────────────────────────────────────────────
 const SPHERE = {
-  posZ: { ts: [0.85, 0.95], vs: [-14, -5] },
+  posZ: { ts: [0.85, 0.98], vs: [-14, -5] },
 };
 
 // ── Apply metal material to all meshes in GLTF ────────────────────────
-function applyMat(scene, mat) {
+function applyMat(scene: THREE.Object3D, mat: THREE.Material): void {
   scene.traverse((c) => {
-    if (c.isMesh) {
+    if (c instanceof THREE.Mesh) {
       c.material = mat;
     }
   });
 }
 
 // ── Caustics video texture ────────────────────────────────────────────
-function useCausticsTexture() {
+function useCausticsTexture(): THREE.VideoTexture {
   return useMemo(() => {
     const vid = document.createElement("video");
     vid.src = "/assets/video-caustics-2-480p.mp4";
@@ -91,7 +97,7 @@ function useCausticsTexture() {
 
 // ── Metal material ────────────────────────────────────────────────────
 // env map comes from <Environment> in the scene (HDR via scene.environment)
-function useMetalMaterial() {
+function useMetalMaterial(): THREE.MeshStandardMaterial {
   return useMemo(() => new THREE.MeshStandardMaterial({
     color: 0x797979,
     roughness: 0,
@@ -102,18 +108,23 @@ function useMetalMaterial() {
 }
 
 // ── Primary model ─────────────────────────────────────────────────────
-function PrimaryModel({ mat, scrollRef }) {
+interface ModelProps {
+  mat: THREE.MeshStandardMaterial;
+  scrollRef: RefObject<number>;
+}
+
+function PrimaryModel({ mat, scrollRef }: ModelProps) {
   const { scene, animations } = useGLTF("/model/spiral-shape-v3-optimize.glb");
   const { actions } = useAnimations(animations, scene);
-  const g = useRef();
+  const g = useRef<THREE.Group>(null);
 
   useEffect(() => {
     applyMat(scene, mat);
     scene.scale.setScalar(1.0323);
     scene.rotation.set(-Math.PI, 0, -Math.PI);
     Object.values(actions).forEach((a) => {
-      a.timeScale = 0.6;
-      a.play();
+      a!.timeScale = 0.6;
+      a!.play();
     });
   }, [scene, actions, mat]);
 
@@ -139,18 +150,18 @@ function PrimaryModel({ mat, scrollRef }) {
 }
 
 // ── Secondary model (static, fogged out behind G1) ───────────────────
-function SecondaryModel({ mat, scrollRef }) {
+function SecondaryModel({ mat, scrollRef }: ModelProps) {
   const { scene, animations } = useGLTF("/model/spiral-staight-v2-optimize.glb");
   const { actions } = useAnimations(animations, scene);
-  const g = useRef();
+  const g = useRef<THREE.Group>(null);
 
   useEffect(() => {
     applyMat(scene, mat);
     scene.scale.setScalar(1.0317);
     scene.position.set(0, -1.944, 0);
     Object.values(actions).forEach((a) => {
-      a.timeScale = 0.8;
-      a.play();
+      a!.timeScale = 0.8;
+      a!.play();
     });
   }, [scene, actions, mat]);
 
@@ -173,9 +184,14 @@ function SecondaryModel({ mat, scrollRef }) {
 }
 
 // ── Background plane with caustics video ─────────────────────────────
-function CausticsBackground({ tex, scrollRef }) {
-  const matRef = useRef();
-  const meshRef = useRef();
+interface BackgroundProps {
+  tex: THREE.VideoTexture;
+  scrollRef: RefObject<number>;
+}
+
+function CausticsBackground({ tex, scrollRef }: BackgroundProps) {
+  const matRef = useRef<THREE.MeshStandardMaterial>(null);
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame(() => {
     const sp = scrollRef.current;
@@ -214,8 +230,12 @@ function CausticsBackground({ tex, scrollRef }) {
 }
 
 // ── Metallic sphere (rises from below into footer view) ───────────────
-function Sphere({ scrollRef }) {
-  const meshRef = useRef();
+interface SphereProps {
+  scrollRef: RefObject<number>;
+}
+
+function Sphere({ scrollRef }: SphereProps) {
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame(() => {
     if (!meshRef.current) return;
@@ -242,7 +262,11 @@ function Sphere({ scrollRef }) {
 }
 
 // ── Inner scene (has gl + scene access) ───────────────────────────────
-function SceneInner({ scrollRef }) {
+interface SceneInnerProps {
+  scrollRef: RefObject<number>;
+}
+
+function SceneInner({ scrollRef }: SceneInnerProps) {
   const mat = useMetalMaterial();
   const videoTex = useCausticsTexture();
 
@@ -261,11 +285,11 @@ function SceneInner({ scrollRef }) {
 // ── Camera tilt (follows mouse, max 1°) ──────────────────────────────
 // Matches the real site's TILT control: maxRotation x/y = 0.0175 rad (1°)
 function CameraTilt() {
-  const mouse = useRef({ x: 0, y: 0 });
+  const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const MAX = 0.01745; // 1° in radians
 
   useEffect(() => {
-    const fn = (e) => {
+    const fn = (e: MouseEvent) => {
       mouse.current.x = (e.clientX / window.innerWidth - 0.5) * 2;
       mouse.current.y = (e.clientY / window.innerHeight - 0.5) * 2;
     };
@@ -296,7 +320,12 @@ function useScrollProgress() {
   return { scrollRef, targetRef };
 }
 
-function ScrollSmoother({ scrollRef, targetRef }) {
+interface ScrollSmootherProps {
+  scrollRef: RefObject<number>;
+  targetRef: RefObject<number>;
+}
+
+function ScrollSmoother({ scrollRef, targetRef }: ScrollSmootherProps) {
   useFrame(() => {
     scrollRef.current += (targetRef.current - scrollRef.current) * 0.06;
   });

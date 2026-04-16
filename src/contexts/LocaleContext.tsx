@@ -8,22 +8,17 @@ type Translations = {
     subheader: string;
     title: string;
     bio: string;
-    skills: string;
     resume: string;
     aboutTitle: string;
   };
   experience: {
     title: string;
     jobTitle: string;
-    date: string;
     wormholescan: string;
     wormholescanDesc: string;
     portal: string;
     portalDesc: string;
     xlabsDesc: string;
-    freelancerRole: string;
-    freelancerDate: string;
-    freelancerDesc: string;
     xlabsCompany: string;
     xlabsRole: string;
     xlabsDate: string;
@@ -32,13 +27,8 @@ type Translations = {
     freelancerJobDate: string;
     clinis: string;
     clinisDesc: string;
-    present: string;
   };
   contact: {
-    title: string;
-    text: string;
-    button: string;
-    message: string;
     headline: string;
     headline_2: string;
     ctaButton: string;
@@ -64,7 +54,6 @@ type Translations = {
     weatherTI: string;
     weatherTIDesc: string;
   };
-  footer: { name: string; contactMe: string; social: string };
 };
 
 const translations: Record<Locale, Translations> = {
@@ -74,14 +63,12 @@ const translations: Record<Locale, Translations> = {
       subheader: "Frontend Engineer",
       title: "Giuliano Conti",
       bio: "3+ years of experience building websites using React, Next.js and Web3. Passionate about performance, clean code, and continuous learning.",
-      skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Resume",
       aboutTitle: "About",
     },
     experience: {
       title: "Experience",
       jobTitle: "Frontend Engineer",
-      date: "2023 - Present",
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
@@ -90,10 +77,6 @@ const translations: Record<Locale, Translations> = {
         "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
       xlabsDesc:
         "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
-      freelancerRole: "Freelancer",
-      freelancerDate: "2022 - 2023",
-      freelancerDesc:
-        "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
       xlabsCompany: "xLabs",
       xlabsRole: "Frontend Engineer",
       xlabsDate: "2023 - Present",
@@ -102,13 +85,8 @@ const translations: Record<Locale, Translations> = {
       freelancerJobDate: "2022 - 2023",
       clinis: "Clinis",
       clinisDesc: "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
-      present: "Current",
     },
     contact: {
-      title: "Contact",
-      text: "If you want to chat about opportunities or anything else, get in touch.",
-      button: "Contact Me",
-      message: "Hello, how are you?",
       headline: "Ready to talk?",
       headline_2: "Contact me",
       ctaButton: "Get in Touch",
@@ -134,7 +112,6 @@ const translations: Record<Locale, Translations> = {
       weatherTI: "WeatherTI",
       weatherTIDesc: "Page to keep you informed about current and future weather.",
     },
-    footer: { name: "Giuliano Conti", contactMe: "Contact Me", social: "Social" },
   },
   es: {
     nav: { about: "SOBRE Mí", experience: "EXPERIENCIA", contact: "CONTACTO" },
@@ -142,14 +119,12 @@ const translations: Record<Locale, Translations> = {
       subheader: "Ingeniero Frontend",
       title: "Giuliano Conti",
       bio: "+3 años de experiencia desarrollando páginas web con React, Next.js y Web3. Apasionado por el rendimiento, código limpio y aprendizaje continuo.",
-      skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículum",
       aboutTitle: "SOBRE Mí",
     },
     experience: {
       title: "Experiencia",
       jobTitle: "Ingeniero Frontend",
-      date: "2023 - Presente",
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
@@ -158,26 +133,17 @@ const translations: Record<Locale, Translations> = {
         "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
       xlabsDesc:
         "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
-      freelancerRole: "Freelancer",
-      freelancerDate: "2022 - 2023",
-      freelancerDesc:
-        "Cree una web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
       xlabsCompany: "xLabs",
       xlabsRole: "Ingeniero Frontend",
       xlabsDate: "2023 - Presente",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Desarrollador Frontend",
-      freelancerJobDate: "2022 - Actualidad",
+      freelancerJobDate: "2022 - 2023",
       clinis: "Clinis",
       clinisDesc:
         "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
-      present: "Actualidad",
     },
     contact: {
-      title: "Contacto",
-      text: "Si quieres hablar de oportunidades o lo que sea, escríbeme. Acá estoy.",
-      button: "Contáctame",
-      message: "¡Hola! ¿Cómo estás?",
       headline: "¿Listo para hablar?",
       headline_2: "Contáctame",
       ctaButton: "Ponte en contacto",
@@ -203,7 +169,6 @@ const translations: Record<Locale, Translations> = {
       weatherTI: "WeatherTI",
       weatherTIDesc: "Página para informarte del tiempo actual y pronósticos.",
     },
-    footer: { name: "Giuliano Conti", contactMe: "Contáctame", social: "Social" },
   },
   pt: {
     nav: { about: "SOBRE MIM", experience: "EXPERIÊNCIA", contact: "CONTATO" },
@@ -211,14 +176,12 @@ const translations: Record<Locale, Translations> = {
       subheader: "Engenheiro Frontend",
       title: "Giuliano Conti",
       bio: "+3 anos de experiência desenvolvendo páginas web com React, Next.js e Web3. Apaixonado por desempenho, código limpo e aprendizado contínuo.",
-      skills: "React · TypeScript · HTML · CSS · Web3",
       resume: "Currículo",
       aboutTitle: "SOBRE MIM",
     },
     experience: {
       title: "Experiência",
       jobTitle: "Engenheiro Frontend",
-      date: "2023 - Presente",
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
@@ -226,9 +189,6 @@ const translations: Record<Locale, Translations> = {
       portalDesc:
         "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
       xlabsDesc: "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
-      freelancerRole: "Freelancer",
-      freelancerDate: "2022 - 2023",
-      freelancerDesc: "Criei um site para mostrar o catálogo de veículos a venda, gerando maior visibilidade e vendas.",
       xlabsCompany: "xLabs",
       xlabsRole: "Engenheiro Frontend",
       xlabsDate: "2023 - Presente",
@@ -237,13 +197,8 @@ const translations: Record<Locale, Translations> = {
       freelancerJobDate: "2022 - 2023",
       clinis: "Clinis",
       clinisDesc: "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
-      present: "Atual",
     },
     contact: {
-      title: "Contato",
-      text: "Se quiser falar de oportunidades ou o que for, me chama. Tô por aqui.",
-      button: "Fale comigo",
-      message: "Olá! Como vai?",
       headline: "Pronto para falar?",
       headline_2: "Fale comigo",
       ctaButton: "Entre em contato",
@@ -269,7 +224,6 @@ const translations: Record<Locale, Translations> = {
       weatherTI: "WeatherTI",
       weatherTIDesc: "Página para informar o tempo atual e previsões.",
     },
-    footer: { name: "Giuliano Conti", contactMe: "Fale comigo", social: "Sociais" },
   },
 };
 

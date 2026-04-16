@@ -21,7 +21,6 @@ import {
   SOCIAL_MAIL,
 } from "../../../utils/constants.ts";
 import type { IconProps } from "../../../utils/interfaces.ts";
-import CopyEmailButton from "../../atoms/CopyEmailButton/index.tsx";
 import "./styles.scss";
 
 interface IconComponent {
@@ -41,28 +40,16 @@ const iconMap: Record<string, IconComponent> = {
 export default function Footer() {
   const { t } = useLocale();
 
-  const nameMap: Record<string, string> = {
-    blackjack: t.projects.blackjack,
-    sokoban: t.projects.sokoban,
-    copicti: t.projects.copicti,
-    portfolio3d: t.projects.portfolio3d,
-    createResume: t.projects.createResume,
-    removeBg: t.projects.removeBg,
-    giulianNews: t.projects.giulianNews,
-    pokemonFinder: t.projects.pokemonFinder,
-    weatherTI: t.projects.weatherTI,
-  };
-
-  const descMap: Record<string, string> = {
-    blackjack: t.projects.blackjackDesc,
-    sokoban: t.projects.sokobanDesc,
-    copicti: t.projects.copictiDesc,
-    portfolio3d: t.projects.portfolio3dDesc,
-    createResume: t.projects.createResumeDesc,
-    removeBg: t.projects.removeBgDesc,
-    giulianNews: t.projects.giulianNewsDesc,
-    pokemonFinder: t.projects.pokemonFinderDesc,
-    weatherTI: t.projects.weatherTIDesc,
+  const projectMap: Record<string, { name: string; desc: string }> = {
+    blackjack: { name: t.projects.blackjack, desc: t.projects.blackjackDesc },
+    sokoban: { name: t.projects.sokoban, desc: t.projects.sokobanDesc },
+    copicti: { name: t.projects.copicti, desc: t.projects.copictiDesc },
+    portfolio3d: { name: t.projects.portfolio3d, desc: t.projects.portfolio3dDesc },
+    createResume: { name: t.projects.createResume, desc: t.projects.createResumeDesc },
+    removeBg: { name: t.projects.removeBg, desc: t.projects.removeBgDesc },
+    giulianNews: { name: t.projects.giulianNews, desc: t.projects.giulianNewsDesc },
+    pokemonFinder: { name: t.projects.pokemonFinder, desc: t.projects.pokemonFinderDesc },
+    weatherTI: { name: t.projects.weatherTI, desc: t.projects.weatherTIDesc },
   };
 
   return (
@@ -79,7 +66,7 @@ export default function Footer() {
             <div className="footer_grid_projects_tooltip" key={p.key}>
               <a className="footer_grid_projects_tooltip_text" href={p.url} target="_blank" rel="noopener noreferrer">
                 <div className="footer_grid_projects_tooltip_text_arrow" />
-                {nameMap[p.key]}
+                {projectMap[p.key].name}
               </a>
               <div className="footer_grid_projects_tooltip_container">
                 <div className="footer_grid_projects_tooltip_container_content">
@@ -89,7 +76,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src={p.img} loading="lazy" alt={nameMap[p.key]} />
+                    <img src={p.img} loading="lazy" alt={projectMap[p.key].name} />
                   </a>
 
                   <div className="footer_grid_projects_tooltip_container_content_info">
@@ -105,8 +92,12 @@ export default function Footer() {
                         );
                       })}
                     </div>
-                    <h3 className="footer_grid_projects_tooltip_container_content_info_title">{nameMap[p.key]}</h3>
-                    <p className="footer_grid_projects_tooltip_container_content_info_description">{descMap[p.key]}</p>
+                    <h3 className="footer_grid_projects_tooltip_container_content_info_title">
+                      {projectMap[p.key].name}
+                    </h3>
+                    <p className="footer_grid_projects_tooltip_container_content_info_description">
+                      {projectMap[p.key].desc}
+                    </p>
                     <div className="footer_grid_projects_tooltip_container_content_info_links">
                       <a href={p.github} target="_blank" rel="noopener noreferrer" title="Github">
                         <GithubIcon />
