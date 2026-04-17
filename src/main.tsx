@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+// StrictMode removed: double-mount in dev causes WebGL context loss on Canvas
 import { createRoot } from "react-dom/client";
 import { LocaleProvider } from "./contexts/LocaleContext.tsx";
 import { Navbar, Footer } from "./components/molecules";
@@ -19,11 +19,9 @@ if (lang) {
 }
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <LocaleProvider>
-      <Navbar />
-      <Home />
-      <Footer />
-    </LocaleProvider>
-  </StrictMode>,
+  <LocaleProvider>
+    <Navbar />
+    <Home />
+    <Footer />
+  </LocaleProvider>,
 );
