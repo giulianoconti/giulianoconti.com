@@ -80,25 +80,25 @@ export default function Experience() {
         },
       ],
     },
-    {
-      company: t.experience.freelanceCompany,
-      role: t.experience.freelancerJobRole,
-      dates: t.experience.freelancerJobDate,
-      projects: [
-        {
-          name: t.experience.clinis,
-          link: "https://clinis-automotores.com",
-          image: "/assets/experience-clinis.png",
-          description: t.experience.clinisDesc,
-          technologies: [
-            { icon: <ReactIcon />, name: "React" },
-            { icon: <TypeScriptIcon />, name: "TypeScript" },
-            { icon: <SassIcon />, name: "Sass" },
-            { icon: <MotionIcon />, name: "Motion" },
-          ],
-        },
-      ],
-    },
+    // {
+    //   company: t.experience.freelanceCompany,
+    //   role: t.experience.freelancerJobRole,
+    //   dates: t.experience.freelancerJobDate,
+    //   projects: [
+    //     {
+    //       name: t.experience.clinis,
+    //       link: "https://clinis-automotores.com",
+    //       image: "/assets/experience-clinis.png",
+    //       description: t.experience.clinisDesc,
+    //       technologies: [
+    //         { icon: <ReactIcon />, name: "React" },
+    //         { icon: <TypeScriptIcon />, name: "TypeScript" },
+    //         { icon: <SassIcon />, name: "Sass" },
+    //         { icon: <MotionIcon />, name: "Motion" },
+    //       ],
+    //     },
+    //   ],
+    // },
   ];
 
   return (
