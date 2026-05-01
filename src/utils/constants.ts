@@ -3,7 +3,7 @@ import type { Locale } from "../contexts/LocaleContext.tsx";
 export const SOCIAL_LINKEDIN_URL = "https://www.linkedin.com/in/giulianoconti";
 export const SOCIAL_GITHUB_URL = "https://github.com/giulianoconti";
 export const SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/giulianocontii";
-export const SOCIAL_MAIL = "giuliconti1@gmail.com";
+export const SOCIAL_MAIL = "tech@giulianoconti.com";
 
 export const ASSET_FAVICON_LIGHT = "/assets/favicon_light.png";
 export const ASSET_WAVE_BLUR = "/assets/wave-blur.webp";

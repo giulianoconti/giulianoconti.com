@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guía de Inicio para Clientes — Giuliano Conti</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #111;
+        background: #fff;
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 48px 40px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 24px;
+        border-bottom: 2px solid #a3e635;
+        margin-bottom: 36px;
+      }
+
+      header .brand {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      header .brand span {
+        color: #a3e635;
+      }
+      header .meta {
+        font-size: 11px;
+        color: #666;
+        text-align: right;
+        line-height: 1.8;
+      }
+
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+      }
+      .subtitle {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 8px;
+      }
+      .model-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 100px;
+        background: #f0f0f0;
+        color: #555;
+        margin-bottom: 36px;
+      }
+      .model-tag strong {
+        color: #3d6b00;
+      }
+
+      .step {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 32px;
+      }
+
+      .step-num {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #a3e635;
+        color: #000;
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .step-content h2 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+
+      .step-content .platform {
+        font-size: 11px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 10px;
+      }
+
+      .step-content p {
+        color: #444;
+        margin-bottom: 10px;
+      }
+
+      .instructions {
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 14px 16px;
+        list-style: none;
+      }
+
+      .instructions li {
+        display: flex;
+        gap: 10px;
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+        color: #333;
+      }
+
+      .instructions li:last-child {
+        border-bottom: none;
+      }
+
+      .instructions li .arrow {
+        color: #a3e635;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .alert {
+        background: #fffbe6;
+        border-left: 3px solid #f59e0b;
+        border-radius: 0 6px 6px 0;
+        padding: 10px 14px;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #555;
+      }
+
+      .alert strong {
+        color: #b45309;
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid #e5e5e5;
+        margin: 36px 0;
+      }
+
+      h3 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .next-steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .next-card {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+
+      .next-card .model-name {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #3d6b00;
+        margin-bottom: 6px;
+      }
+
+      .next-card p {
+        font-size: 12px;
+        color: #555;
+        line-height: 1.55;
+      }
+
+      .free-note {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 8px;
+        padding: 14px 18px;
+        font-size: 12px;
+        color: #166534;
+        margin-bottom: 32px;
+      }
+
+      footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e5e5;
+        font-size: 10px;
+        color: #888;
+        line-height: 1.7;
+      }
+
+      @media print {
+        body {
+          padding: 20px 28px;
+        }
+        .step {
+          break-inside: avoid;
+        }
+        .next-steps {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">giulianoconti<span>.com</span></div>
+      <div class="meta">
+        Giuliano Conti — Software Engineer<br />
+        <a href="mailto:tech@giulianoconti.com" style="color:inherit;text-decoration:none;">tech@giulianoconti.com</a><br />
+        Resistencia, Chaco, Argentina
+      </div>
+    </header>
+
+    <h1>Guía de Inicio para Clientes</h1>
+    <p class="subtitle">
+      Para que tu sitio web sea rápido, seguro y de tu propiedad, necesitamos configurar las cuentas correctamente. Esta
+      guía aplica al modelo de <strong>Pago Único</strong>.
+    </p>
+    <div class="model-tag">Aplica a: <strong>Pago Único</strong></div>
+
+    <div class="free-note" style="margin-bottom: 32px">
+      <strong>¿Contrataste el plan Mensual?</strong> No necesitás hacer nada de esto. Yo me encargo de toda la
+      infraestructura — hosting, base de datos, dominio y mantenimiento. Vos solo comprás tu dominio y me lo informás.
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="platform">github.com</div>
+        <h2>GitHub — Donde vive el código</h2>
+        <p>GitHub almacena el código fuente de tu sitio de forma segura. Es la base de todo el sistema.</p>
+        <ul class="instructions">
+          <li><span class="arrow">→</span> Entrá a <strong>github.com</strong> y hacé clic en "Sign up".</li>
+          <li><span class="arrow">→</span> Creá la cuenta con tu correo corporativo o personal.</li>
+          <li><span class="arrow">→</span> Confirmá tu correo electrónico (revisá la bandeja de entrada).</li>
+          <li><span class="arrow">→</span> Guardá bien el usuario y contraseña en un lugar seguro.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="platform">vercel.com</div>
+        <h2>Vercel — Donde se ve tu web</h2>
+        <p>Vercel publica tu sitio en internet y lo hace ultrarrápido. Se conecta directamente a GitHub.</p>
+        <ul class="instructions">
+          <li><span class="arrow">→</span> Entrá a <strong>vercel.com</strong>.</li>
+          <li><span class="arrow">→</span> Seleccioná "Continue with GitHub" (no crees cuenta con email).</li>
+          <li><span class="arrow">→</span> Autorizá la conexión cuando te lo pida.</li>
+          <li>
+            <span class="arrow">→</span> Si te pide número de teléfono para verificación, ingresá el tuyo (es solo para
+            seguridad).
+          </li>
+        </ul>
+        <div class="alert">
+          <strong>Importante:</strong> Usá siempre "Continue with GitHub" para que ambas cuentas queden vinculadas
+          automáticamente.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="platform">supabase.com — Solo para Business</div>
+        <h2>Supabase — Tu base de datos</h2>
+        <p>
+          Supabase guarda de forma segura los datos de tu aplicación (usuarios, formularios, productos, etc.). Solo
+          aplica si tu proyecto incluye base de datos.
+        </p>
+        <ul class="instructions">
+          <li><span class="arrow">→</span> Entrá a <strong>supabase.com</strong>.</li>
+          <li><span class="arrow">→</span> Hacé clic en "Sign in" y seleccioná "Continue with GitHub".</li>
+          <li><span class="arrow">→</span> Aceptá los permisos solicitados.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="platform">analytics.google.com — Opcional</div>
+        <h2>Google Analytics — Tus estadísticas</h2>
+        <p>Te permite ver cuántas personas visitan tu sitio, desde dónde y qué páginas miran.</p>
+        <ul class="instructions">
+          <li><span class="arrow">→</span> Iniciá sesión en <strong>analytics.google.com</strong> con tu Gmail.</li>
+          <li><span class="arrow">→</span> Hacé clic en "Empezar a medir".</li>
+          <li><span class="arrow">→</span> Ponele el nombre de tu empresa y seguí los pasos.</li>
+          <li>
+            <span class="arrow">→</span> Compartí acceso de Administrador con: <strong>tech@giulianoconti.com</strong>
+          </li>
+        </ul>
+        <div class="alert">
+          <strong>Nota legal:</strong> Es importante que Analytics esté a tu nombre. Vos sos el dueño de los datos de
+          tus visitantes — yo solo tengo acceso para la implementación técnica.
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h3>¿Qué sigue después de crear las cuentas?</h3>
+
+    <div class="next-steps">
+      <div class="next-card">
+        <div class="model-name">Acceso completo</div>
+        <p>
+          Enviame por un canal seguro (WhatsApp, email) el usuario y contraseña de GitHub. Yo ingreso, configuro Vercel
+          y Supabase, y al terminar te aviso para que cambies todas las contraseñas.
+        </p>
+      </div>
+      <div class="next-card">
+        <div class="model-name">Sin compartir contraseñas (+20%)</div>
+        <p>
+          No necesito tus claves. Solo decime tu nombre de usuario de GitHub y te envío una invitación de colaborador.
+          Haremos la configuración de Vercel juntos por videollamada.
+        </p>
+      </div>
+    </div>
+
+    <div class="free-note">
+      <strong>Sobre los costos de las plataformas:</strong> En todos los casos se usan los planes gratuitos de GitHub,
+      Vercel y Supabase — son muy potentes y suficientes para la mayoría de los proyectos. Si en el futuro tu web crece
+      mucho, estas plataformas te avisarán antes de cobrar algo.
+    </div>
+
+    <footer>
+      <p><a href="https://giulianoconti.com" style="color:inherit;text-decoration:none;">giulianoconti.com</a> · <a href="mailto:tech@giulianoconti.com" style="color:inherit;text-decoration:none;">tech@giulianoconti.com</a> · Resistencia, Chaco, Argentina</p>
+      <p>
+        Esta guía es para el modelo de Pago Único. Para el plan Mensual no es necesario crear ninguna cuenta — el
+        desarrollador se encarga de todo.
+      </p>
+    </footer>
+  </body>
+</html>
