@@ -12,7 +12,7 @@ const HIRE_MSG = "Hola Giuliano! Quiero contratar tus servicios de desarrollo we
 
 const PROJECTS = [
   // {
-  //   image: "/assets/experience-clinis.png",
+  //   image: "/assets/project-clinis.png",
   //   title: "Clinis",
   //   desc: "Plataforma de gestión para clínicas. Panel admin, turnos, pacientes y facturación.",
   //   url: "https://clinis.com.ar/",
@@ -20,7 +20,7 @@ const PROJECTS = [
   //   role: "Web completa",
   // },
   {
-    image: "/assets/experience-wormholescan.png",
+    image: "/assets/project-wormholescan.png",
     title: "Wormhole Scan",
     desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",
     url: "https://wormholescan.io/",
@@ -28,7 +28,7 @@ const PROJECTS = [
     role: "Frontend completo",
   },
   {
-    image: "/assets/experience-portal.png",
+    image: "/assets/project-portal.png",
     title: "Portal Bridge",
     desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",
     url: "https://portalbridge.com/",
@@ -36,7 +36,7 @@ const PROJECTS = [
     role: "Testing y fixes",
   },
   {
-    image: "/assets/experience-xlabs.png",
+    image: "/assets/project-xlabs.png",
     title: "xLabs",
     desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",
     url: "https://xlabs.xyz/",
@@ -417,90 +417,13 @@ export default function Landing() {
     { href: "#contacto", label: "Contacto" },
   ];
 
-  const SCOPES_EXPRESS: PricingPlan[] = [
-    {
-      name: "Starter",
-      desc: "Template premium personalizada con tu marca. La opción más rápida y económica.",
-      price: "$100",
-      unit: "USD",
-      note: "Entrega en 2-3 días hábiles",
-      features: [
-        "Template premium personalizada con tu marca",
-        "Personalización de colores, tipografía y contenido",
-        "Responsive mobile & desktop",
-        "SEO básico on-page",
-        "Deploy en tu Vercel + código en tu GitHub",
-        "1 ronda de revisión",
-      ],
-      btnLabel: "Consultar →",
-      btnPrimary: false,
-      mailSubject: "Plan Starter - Pago Único",
-    },
-    {
-      name: "Pro",
-      desc: "Diseño 100% a medida desde cero. Tu identidad, tu estilo, sin templates.",
-      price: "$400",
-      unit: "USD",
-      note: "Entrega en 5-7 días hábiles",
-      features: [
-        "Diseño 100% custom desde cero",
-        "Responsive + animaciones y microinteracciones",
-        "SEO on-page completo + Google Analytics",
-        "Formulario de contacto",
-        "Deploy en tu Vercel + código en tu GitHub",
-        "2 rondas de revisión",
-      ],
-      btnLabel: "Consultar →",
-      btnPrimary: false,
-      mailSubject: "Plan Pro - Pago Único",
-    },
-    {
-      name: "Business",
-      desc: "Aplicación web completa con Next.js, Vercel y Supabase. Stack moderno en tus cuentas.",
-      price: "$1.500",
-      unit: "USD",
-      note: "Entrega en 4-8 semanas según alcance",
-      badge: "Más solicitado",
-      features: [
-        "Next.js App Router + TypeScript",
-        "Base de datos Supabase",
-        "Autenticación con Supabase Auth",
-        "Dashboard o panel de administración",
-        "API routes integradas",
-        "SEO técnico + Google Analytics",
-        "Deploy en tu Vercel + código en tu GitHub · 3 rondas de revisión",
-      ],
-      btnLabel: "Contrátame →",
-      btnPrimary: true,
-      mailSubject: "Plan Business - Pago Único",
-    },
-    {
-      name: "Commerce",
-      desc: "Business + registro de usuarios y pagos online integrados.",
-      price: "$3.000",
-      unit: "USD",
-      note: "Próximamente",
-      badge: "Próximamente",
-      features: [
-        "Todo del plan Business",
-        "Registro y login de usuarios",
-        "Pagos online integrados",
-        "Panel de gestión de órdenes",
-        "Notificaciones automáticas",
-      ],
-      btnLabel: "Consultar →",
-      btnPrimary: false,
-      mailSubject: "Plan Commerce - Pago Único",
-      disabled: true,
-    },
-  ];
-
   return (
     <div className={`lp${theme === "light" ? " lp--light" : ""}`}>
       {/* ── Nav ──────────────────────────────────────── */}
       <nav className={`lp__nav ${scrolled ? "lp__nav--scrolled" : ""}`}>
         <div className="lp__nav__inner">
           <a href="/" className="lp__nav__logo">
+            <img alt="Logo" className="nav_inner_logo_img" src="/assets/favicon_dark.svg" height={32} width={32} />
             giulianoconti.com
           </a>
 
@@ -898,8 +821,8 @@ export default function Landing() {
                         onClick={() => setCalc((c) => ({ ...c, maintenance: "hosting" }))}
                       >
                         <span>Solo hosting</span>
-                        <small>La página funciona y está online. Sin cambios ni soporte.</small>
-                        <Tooltip text="Me encargo de que el sitio esté activo y funcionando. No incluye cambios de contenido ni soporte técnico adicional." />
+                        <small>La página funciona y está online. Sin cambios.</small>
+                        <Tooltip text="Me encargo de que el sitio esté activo y funcionando. No incluye cambios de contenido técnico adicional." />
                       </button>
                       <button
                         className={`lp__calc__option${calc.maintenance === "basic" ? " lp__calc__option--active" : ""}`}
@@ -937,14 +860,14 @@ export default function Landing() {
                         onClick={() => setCalc((c) => ({ ...c, timeline: "normal" }))}
                       >
                         <span>Sin apuro</span>
-                        {calc.project && <small>{CALC_TIMES[calc.project].normal}</small>}
+                        <small>{CALC_TIMES[calc.project]?.normal || CALC_TIMES.landing.normal}</small>
                       </button>
                       <button
                         className={`lp__calc__option${calc.timeline === "express" ? " lp__calc__option--active" : ""}`}
                         onClick={() => setCalc((c) => ({ ...c, timeline: "express" }))}
                       >
                         <span>Express +40%</span>
-                        {calc.project && <small>{CALC_TIMES[calc.project].express}</small>}
+                        <small>{CALC_TIMES[calc.project]?.express || CALC_TIMES.landing.express}</small>
                         <Tooltip text="Priorizo tu proyecto por encima de otros trabajos. El recargo del 40% aplica sobre el costo de setup." />
                       </button>
                     </div>
