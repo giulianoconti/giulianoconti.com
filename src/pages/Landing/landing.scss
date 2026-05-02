@@ -1,18 +1,24 @@
 // ─── Layout constants (compile-time) ──────────────────
 $container: 1280px;
-$pad-x: 40px;
-$pad-x-sm: 20px;
+$pad-x-md: 60px;
+$pad-x-sm: 40px;
+$pad-x-xs: 20px;
 
 // ─── Mixins ───────────────────────────────────────────
 @mixin container {
   max-width: $container;
   margin: 0 auto;
-  padding-left: $pad-x;
-  padding-right: $pad-x;
+  padding-left: $pad-x-md;
+  padding-right: $pad-x-md;
 
-  @media (max-width: 640px) {
+  @media (max-width: 1024px) {
     padding-left: $pad-x-sm;
     padding-right: $pad-x-sm;
+  }
+
+  @media (max-width: 640px) {
+    padding-left: $pad-x-xs;
+    padding-right: $pad-x-xs;
   }
 }
 
@@ -94,6 +100,18 @@ $pad-x-sm: 20px;
   }
 }
 
+@keyframes lp-option-hint {
+  0%,
+  100% {
+    border-color: var(--border);
+    box-shadow: none;
+  }
+  50% {
+    border-color: rgba(163, 230, 53, 0.5);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+}
+
 @keyframes lp-whatsapp {
   from {
     transform: scale(0);
@@ -133,7 +151,7 @@ $pad-x-sm: 20px;
   --code-kw: #a78bfa;
   --code-fn: #60a5fa;
   --code-str: #a3e635;
-  --code-mt: rgba(255, 255, 255, 0.45);
+  --code-mt: rgba(255, 255, 255, 0.55);
   --feat-txt: rgba(255, 255, 255, 0.75);
   --tab-shadow: rgba(0, 0, 0, 0.25);
 
@@ -145,7 +163,7 @@ $pad-x-sm: 20px;
     --border: rgba(0, 0, 0, 0.1);
     --card: #f0f0ed;
     --card-hover: #e5e5e2;
-    --accent: #a3e635;
+    --accent: #93e116;
     --accent-dim: rgba(90, 154, 0, 0.1);
     --accent-text: #3d6b00;
     --em-color: rgba(0, 0, 0, 0.38);
@@ -161,7 +179,7 @@ $pad-x-sm: 20px;
     --code-kw: #7c3aed;
     --code-fn: #1d4ed8;
     --code-str: #3d6b00;
-    --code-mt: rgba(0, 0, 0, 0.45);
+    --code-mt: rgba(0, 0, 0, 0.55);
     --feat-txt: rgba(0, 0, 0, 0.72);
     --tab-shadow: rgba(0, 0, 0, 0.08);
   }
@@ -504,27 +522,6 @@ $pad-x-sm: 20px;
           opacity: 0.85;
         }
       }
-
-      &__secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 14px 28px;
-        border-radius: 100px;
-        border: 1px solid var(--border);
-        color: var(--text);
-        font-size: 14px;
-        font-weight: 400;
-        text-decoration: none;
-        transition:
-          border-color 0.2s,
-          background 0.2s;
-
-        &:hover {
-          border-color: var(--muted);
-          background: var(--card);
-        }
-      }
     }
 
     &__stats {
@@ -716,12 +713,6 @@ $pad-x-sm: 20px;
     opacity: 0;
     transform: translateY(18px);
 
-    // &__container {
-    //   background-color: red;
-    //   position: absolute;
-    //   width: 100%;
-    // }
-
     &--visible {
       animation: lp-reveal 0.55s ease var(--reveal-delay, 0s) both;
     }
@@ -731,46 +722,176 @@ $pad-x-sm: 20px;
     }
   }
 
-  // ── Services ─────────────────────────────────────────
-  &__services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  // ── Projects ─────────────────────────────────────────
+  &__projects-grid {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
     gap: 16px;
+    overflow-x: auto;
+    padding: 0 60px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    transform: translateX(-60px);
+    width: calc(100% + 120px);
 
-    @media (max-width: 900px) {
-      grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 1024px) {
+      padding: 0 40px;
+      transform: translateX(-40px);
+      width: calc(100% + 80px);
+    }
+    @media (max-width: 640px) {
+      padding: 0 20px;
+      transform: translateX(-20px);
+      width: calc(100% + 40px);
     }
 
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &--single {
+      max-width: 600px;
     }
   }
 
-  &__service-card {
+  &__projects-grid-wrap {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 64px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &::before {
+      left: -64px;
+      background: linear-gradient(to left, transparent, var(--bg));
+    }
+
+    &::after {
+      right: -64px;
+      background: linear-gradient(to right, transparent, var(--bg));
+    }
+
+    @media (max-width: 1024px) {
+      &::before,
+      &::after {
+        width: 40px;
+      }
+
+      &::before {
+        left: -40px;
+      }
+
+      &::after {
+        right: -40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      &::before,
+      &::after {
+        width: 20px;
+      }
+
+      &::before {
+        left: -20px;
+      }
+
+      &::after {
+        right: -20px;
+      }
+    }
+  }
+
+  &__project-card {
     @include card;
-    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc((100% - 2 * 16px - 56px) / 3);
+    overflow: hidden;
+    scroll-snap-align: center;
+    text-decoration: none;
     transition:
       border-color 0.2s,
-      background 0.2s;
-    cursor: default;
+      transform 0.2s;
 
     &:hover {
       border-color: var(--muted);
-      background: var(--card-hover);
+      transform: translateY(-2px);
+
+      .lp__project-card__img {
+        opacity: 0.85;
+      }
     }
 
-    h3 {
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
-      margin-top: 16px;
+    @media (max-width: 1024px) {
+      flex: 0 0 calc((100% - 16px - 56px) / 2);
+    }
+
+    @media (max-width: 640px) {
+      flex: 0 0 calc(100% - 56px);
+    }
+
+    &__img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--card-hover);
+      transition: opacity 0.2s;
+    }
+
+    &__body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+
+      h3 {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: var(--text);
+      }
+    }
+
+    &__role {
+      font-size: 10px;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     p {
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.6;
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+
+      span {
+        font-size: 10px;
+        padding: 3px 8px;
+        border-radius: 100px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
     }
   }
 
@@ -989,206 +1110,13 @@ $pad-x-sm: 20px;
     }
   }
 
-  // ── Pricing ──────────────────────────────────────────
-  &__pricing-grid-wrap {
-    position: relative;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 64px;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    &::before {
-      left: -64px;
-      background: linear-gradient(to left, transparent, var(--bg));
-    }
-
-    &::after {
-      right: -64px;
-      background: linear-gradient(to right, transparent, var(--bg));
-    }
-  }
-
-  &__pricing-grid {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-    padding-top: 16px;
-
-    padding: 16px 64px 4px 64px;
-    transform: translateX(-64px);
-    width: calc(100% + 128px);
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    &--single {
-      max-width: 600px;
-    }
-  }
-
-  &__pricing-card {
-    @include card;
-    padding: 36px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    flex: 0 0 calc((100% - 2 * 16px - 56px) / 3);
-    scroll-snap-align: center;
-
-    @media (max-width: 900px) {
-      flex: 0 0 85vw;
-    }
-
-    @media (max-width: 480px) {
-      flex: 0 0 90vw;
-    }
-
-    &--featured {
-      border-color: rgba(163, 230, 53, 0.3);
-      background: var(--feat-card);
-    }
-
-    &--disabled {
-      animation-name: lp-reveal-disabled;
-      cursor: not-allowed;
-    }
-
-    &__badge {
-      background-color: var(--accent);
-      border-radius: 100px;
-      color: #000;
-      font-size: 11px;
-      font-weight: 500;
-      left: 50%;
-      letter-spacing: 0.04em;
-      padding: 5px 14px;
-      position: absolute;
-      text-transform: uppercase;
-      top: -12px;
-      transform: translateX(-50%);
-      white-space: nowrap;
-
-      &--soon {
-        background: #2a2a2a;
-        color: rgba(255, 255, 255, 0.45);
-
-        .lp--light & {
-          background: #e0e0dd;
-          color: rgba(0, 0, 0, 0.42);
-        }
-      }
-    }
-
-    &__name {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    &__desc {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-
-    &__price {
-      font-size: clamp(32px, 4vw, 44px);
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      margin-bottom: 4px;
-      white-space: nowrap;
-
-      small {
-        color: var(--muted);
-        font-size: 16px;
-        font-weight: 300;
-        white-space: nowrap;
-      }
-    }
-
-    &__note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    &__features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-      margin-bottom: 36px;
-
-      li {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-size: 14px;
-        color: var(--feat-txt);
-        line-height: 1.5;
-
-        svg {
-          flex-shrink: 0;
-          margin-top: 2px;
-          color: var(--accent-text);
-        }
-      }
-    }
-
-    &__btn {
-      display: block;
-      text-align: center;
-      padding: 14px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition:
-        opacity 0.2s,
-        background 0.2s;
-
-      &--primary {
-        background: var(--accent);
-        color: #000;
-        &:hover {
-          opacity: 0.88;
-        }
-      }
-
-      &--secondary {
-        border: 1px solid var(--border);
-        color: var(--text);
-        &:hover {
-          background: var(--card-hover);
-          border-color: var(--muted);
-        }
-      }
-    }
-  }
-
   // ── Pricing Calculator ──────────────────────────────────────
   &__calc {
     display: grid;
     grid-template-columns: 1fr 300px;
     gap: 24px;
     margin-top: 40px;
+    min-height: max(100vh, 800px);
 
     @media (max-width: 900px) {
       grid-template-columns: 1fr;
@@ -1199,11 +1127,56 @@ $pad-x-sm: 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      position: sticky;
+      top: 90px;
+    }
+
+    &__progress {
+      padding: 4px 0 8px;
+
+      &__labels {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+
+        span:first-child {
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--accent-text);
+        }
+
+        span:last-child {
+          font-size: 11px;
+          color: var(--muted);
+        }
+      }
+
+      &__bar {
+        height: 3px;
+        background: var(--border);
+        border-radius: 100px;
+        overflow: hidden;
+
+        &__fill {
+          height: 100%;
+          background: var(--accent);
+          border-radius: 100px;
+          transition: width 0.35s ease;
+        }
+      }
     }
 
     &__step {
       @include card;
       padding: 22px 24px;
+      transition: opacity 0.35s ease;
+
+      &--locked {
+        opacity: 0.35;
+        pointer-events: none;
+        user-select: none;
+      }
 
       &__header {
         display: flex;
@@ -1300,6 +1273,10 @@ $pad-x-sm: 20px;
         background: var(--accent-dim);
       }
 
+      &--hint {
+        animation: lp-option-hint 2s ease-in-out infinite;
+      }
+
       &:disabled {
         cursor: not-allowed;
         opacity: 0.4;
@@ -1307,11 +1284,12 @@ $pad-x-sm: 20px;
     }
 
     &__summary {
-      position: sticky;
-      top: 90px;
-      align-self: start;
       @include card;
+      align-self: start;
+      margin-top: 51px;
       padding: 24px;
+      position: sticky;
+      top: 141px;
 
       &__label {
         font-size: 10px;
@@ -1409,33 +1387,33 @@ $pad-x-sm: 20px;
 
   // ── Tooltip ──────────────────────────────────────────────────
   &__tip {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: inline-flex;
     align-items: center;
+    color: var(--muted) !important;
     cursor: help;
-    color: var(--muted);
+    display: inline-flex;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 
     &__box {
-      position: absolute;
-      bottom: calc(100% + 8px);
-      right: 0;
       background: var(--card);
-      border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 12px;
+      border: 1px solid var(--border);
+      bottom: calc(100% + 8px);
+      color: var(--muted) !important;
+      font-size: 12px !important;
+      font-weight: 400 !important;
       line-height: 1.5;
-      color: var(--muted);
-      width: 220px;
-      pointer-events: none;
       opacity: 0;
-      transition: opacity 0.15s;
-      z-index: 100;
-      white-space: normal;
+      padding: 10px 14px;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
       text-align: left;
-      font-weight: 400;
+      transition: opacity 0.15s;
+      white-space: normal;
+      width: 220px;
+      z-index: 100;
 
       .lp--light & {
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -1518,7 +1496,6 @@ $pad-x-sm: 20px;
 
         &.featured {
           background: color-mix(in srgb, var(--accent) 12%, var(--card));
-          color: var(--accent);
         }
 
         &.disabled-col {

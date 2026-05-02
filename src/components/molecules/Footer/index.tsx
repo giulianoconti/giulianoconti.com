@@ -56,7 +56,7 @@ export default function Footer() {
   return (
     <footer className="footer" id="footer">
       <a href="#home" className="footer_logo">
-        <img alt="Logo" className="footer_logo_img" height={48} src="/assets/favicon_light.png" width={48} />
+        <img alt="Logo" className="footer_logo_img" height={48} src="/assets/favicon_dark.svg" width={48} />
       </a>
 
       <div className="footer_grid">
@@ -65,7 +65,13 @@ export default function Footer() {
 
           {PROJECTS_DATA.map((p) => (
             <div className="footer_grid_projects_tooltip" key={p.key}>
-              <a className="footer_grid_projects_tooltip_text" href={p.url} target="_blank" rel="noopener noreferrer" onClick={() => trackProjectClick(p.key, locale)}>
+              <a
+                className="footer_grid_projects_tooltip_text"
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackProjectClick(p.key, locale)}
+              >
                 <div className="footer_grid_projects_tooltip_text_arrow" />
                 {projectMap[p.key].name}
               </a>
@@ -120,15 +126,33 @@ export default function Footer() {
           {SOCIAL_MAIL}
         </a>
 
-        <a className="footer_bottom_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank" onClick={() => trackSocialClick("linkedin", "footer")}>
+        <a
+          className="footer_bottom_link"
+          href={SOCIAL_LINKEDIN_URL}
+          rel="noopener noreferrer"
+          target="_blank"
+          onClick={() => trackSocialClick("linkedin", "footer")}
+        >
           <LinkedInIcon />
         </a>
 
-        <a className="footer_bottom_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank" onClick={() => trackSocialClick("github", "footer")}>
+        <a
+          className="footer_bottom_link"
+          href={SOCIAL_GITHUB_URL}
+          rel="noopener noreferrer"
+          target="_blank"
+          onClick={() => trackSocialClick("github", "footer")}
+        >
           <GithubIcon />
         </a>
 
-        <a className="footer_bottom_link" href={SOCIAL_INSTAGRAM_URL} rel="noopener noreferrer" target="_blank" onClick={() => trackSocialClick("instagram", "footer")}>
+        <a
+          className="footer_bottom_link"
+          href={SOCIAL_INSTAGRAM_URL}
+          rel="noopener noreferrer"
+          target="_blank"
+          onClick={() => trackSocialClick("instagram", "footer")}
+        >
           <InstagramIcon />
         </a>
       </div>

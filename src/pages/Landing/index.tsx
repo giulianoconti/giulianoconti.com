@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import "./landing.scss";
 
 const MAIL = "tech@giulianoconti.com";
@@ -10,26 +10,38 @@ const HIRE_MSG = "Hola Giuliano! Quiero contratar tus servicios de desarrollo we
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
-const SERVICES = [
+const PROJECTS = [
+  // {
+  //   image: "/assets/experience-clinis.png",
+  //   title: "Clinis",
+  //   desc: "Plataforma de gestión para clínicas. Panel admin, turnos, pacientes y facturación.",
+  //   url: "https://clinis.com.ar/",
+  //   tags: ["Next.js", "Supabase", "Auth", "Admin"],
+  //   role: "Web completa",
+  // },
   {
-    n: "01",
-    title: "Sitios Web & Landing Pages",
-    desc: "Sitios rápidos, modernos y optimizados para convertir visitantes en clientes reales.",
+    image: "/assets/experience-wormholescan.png",
+    title: "Wormhole Scan",
+    desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",
+    url: "https://wormholescan.io/",
+    tags: ["React", "TypeScript", "Web3", "API"],
+    role: "Frontend completo",
   },
   {
-    n: "02",
-    title: "Aplicaciones Web",
-    desc: "Apps completas con React, Next.js y TypeScript. Rápidas, escalables y con código limpio.",
+    image: "/assets/experience-portal.png",
+    title: "Portal Bridge",
+    desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",
+    url: "https://portalbridge.com/",
+    tags: ["React", "Web3", "Wallets"],
+    role: "Testing y fixes",
   },
   {
-    n: "03",
-    title: "Backend & APIs",
-    desc: "APIs robustas con Node.js y bases de datos. Mantenibles, seguras y documentadas.",
-  },
-  {
-    n: "04",
-    title: "Web3 & Blockchain",
-    desc: "Interfaces para DeFi, explorers multi-chain y dApps. Experiencia real en producción.",
+    image: "/assets/experience-xlabs.png",
+    title: "xLabs",
+    desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",
+    url: "https://xlabs.xyz/",
+    tags: ["React", "TypeScript", "Animaciones"],
+    role: "Frontend completo",
   },
 ];
 
@@ -68,7 +80,7 @@ const PRICING_AGENCIA: PricingPlan[] = [
     features: [
       "Template premium personalizada con tu marca",
       "Personalización de colores, tipografía y contenido",
-      "Responsive mobile & desktop",
+      "Responsive mobile y desktop",
       "SEO básico on-page",
       "Hosting en Vercel + dominio conectado",
       "Hasta 1 cambio de contenido/mes",
@@ -132,84 +144,6 @@ const PRICING_AGENCIA: PricingPlan[] = [
     btnLabel: "Consultar →",
     btnPrimary: false,
     mailSubject: "Plan Commerce Managed",
-    disabled: true,
-  },
-];
-
-const SCOPES_EXPRESS: PricingPlan[] = [
-  {
-    name: "Starter",
-    desc: "Template premium personalizada con tu marca. La opción más rápida y económica.",
-    price: "$100",
-    unit: "USD",
-    note: "Entrega en 2-3 días hábiles",
-    features: [
-      "Template premium personalizada con tu marca",
-      "Personalización de colores, tipografía y contenido",
-      "Responsive mobile & desktop",
-      "SEO básico on-page",
-      "Deploy en tu Vercel + código en tu GitHub",
-      "1 ronda de revisión",
-    ],
-    btnLabel: "Consultar →",
-    btnPrimary: false,
-    mailSubject: "Plan Starter - Pago Único",
-  },
-  {
-    name: "Pro",
-    desc: "Diseño 100% a medida desde cero. Tu identidad, tu estilo, sin templates.",
-    price: "$400",
-    unit: "USD",
-    note: "Entrega en 5-7 días hábiles",
-    features: [
-      "Diseño 100% custom desde cero",
-      "Responsive + animaciones y microinteracciones",
-      "SEO on-page completo + Google Analytics",
-      "Formulario de contacto",
-      "Deploy en tu Vercel + código en tu GitHub",
-      "2 rondas de revisión",
-    ],
-    btnLabel: "Consultar →",
-    btnPrimary: false,
-    mailSubject: "Plan Pro - Pago Único",
-  },
-  {
-    name: "Business",
-    desc: "Aplicación web completa con Next.js, Vercel y Supabase. Stack moderno en tus cuentas.",
-    price: "$1.500",
-    unit: "USD",
-    note: "Entrega en 4-8 semanas según alcance",
-    badge: "Más solicitado",
-    features: [
-      "Next.js App Router + TypeScript",
-      "Base de datos Supabase",
-      "Autenticación con Supabase Auth",
-      "Dashboard o panel de administración",
-      "API routes integradas",
-      "SEO técnico + Google Analytics",
-      "Deploy en tu Vercel + código en tu GitHub · 3 rondas de revisión",
-    ],
-    btnLabel: "Contrátame →",
-    btnPrimary: true,
-    mailSubject: "Plan Business - Pago Único",
-  },
-  {
-    name: "Commerce",
-    desc: "Business + registro de usuarios y pagos online integrados.",
-    price: "$3.000",
-    unit: "USD",
-    note: "Próximamente",
-    badge: "Próximamente",
-    features: [
-      "Todo del plan Business",
-      "Registro y login de usuarios",
-      "Pagos online integrados",
-      "Panel de gestión de órdenes",
-      "Notificaciones automáticas",
-    ],
-    btnLabel: "Consultar →",
-    btnPrimary: false,
-    mailSubject: "Plan Commerce - Pago Único",
     disabled: true,
   },
 ];
@@ -405,7 +339,7 @@ export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
-  const [comparisonOpen, setComparisonOpen] = useState(true);
+  const [comparisonOpen, setComparisonOpen] = useState(false);
   const [calc, setCalc] = useState<CalcState>(CALC_INIT);
 
   const [currency, setCurrency] = useState<"usd" | "ars">(() => {
@@ -483,6 +417,84 @@ export default function Landing() {
     { href: "#contacto", label: "Contacto" },
   ];
 
+  const SCOPES_EXPRESS: PricingPlan[] = [
+    {
+      name: "Starter",
+      desc: "Template premium personalizada con tu marca. La opción más rápida y económica.",
+      price: "$100",
+      unit: "USD",
+      note: "Entrega en 2-3 días hábiles",
+      features: [
+        "Template premium personalizada con tu marca",
+        "Personalización de colores, tipografía y contenido",
+        "Responsive mobile & desktop",
+        "SEO básico on-page",
+        "Deploy en tu Vercel + código en tu GitHub",
+        "1 ronda de revisión",
+      ],
+      btnLabel: "Consultar →",
+      btnPrimary: false,
+      mailSubject: "Plan Starter - Pago Único",
+    },
+    {
+      name: "Pro",
+      desc: "Diseño 100% a medida desde cero. Tu identidad, tu estilo, sin templates.",
+      price: "$400",
+      unit: "USD",
+      note: "Entrega en 5-7 días hábiles",
+      features: [
+        "Diseño 100% custom desde cero",
+        "Responsive + animaciones y microinteracciones",
+        "SEO on-page completo + Google Analytics",
+        "Formulario de contacto",
+        "Deploy en tu Vercel + código en tu GitHub",
+        "2 rondas de revisión",
+      ],
+      btnLabel: "Consultar →",
+      btnPrimary: false,
+      mailSubject: "Plan Pro - Pago Único",
+    },
+    {
+      name: "Business",
+      desc: "Aplicación web completa con Next.js, Vercel y Supabase. Stack moderno en tus cuentas.",
+      price: "$1.500",
+      unit: "USD",
+      note: "Entrega en 4-8 semanas según alcance",
+      badge: "Más solicitado",
+      features: [
+        "Next.js App Router + TypeScript",
+        "Base de datos Supabase",
+        "Autenticación con Supabase Auth",
+        "Dashboard o panel de administración",
+        "API routes integradas",
+        "SEO técnico + Google Analytics",
+        "Deploy en tu Vercel + código en tu GitHub · 3 rondas de revisión",
+      ],
+      btnLabel: "Contrátame →",
+      btnPrimary: true,
+      mailSubject: "Plan Business - Pago Único",
+    },
+    {
+      name: "Commerce",
+      desc: "Business + registro de usuarios y pagos online integrados.",
+      price: "$3.000",
+      unit: "USD",
+      note: "Próximamente",
+      badge: "Próximamente",
+      features: [
+        "Todo del plan Business",
+        "Registro y login de usuarios",
+        "Pagos online integrados",
+        "Panel de gestión de órdenes",
+        "Notificaciones automáticas",
+      ],
+      btnLabel: "Consultar →",
+      btnPrimary: false,
+      mailSubject: "Plan Commerce - Pago Único",
+      disabled: true,
+    },
+  ];
+
   return (
     <div className={`lp${theme === "light" ? " lp--light" : ""}`}>
       {/* ── Nav ──────────────────────────────────────── */}
@@ -558,16 +570,13 @@ export default function Landing() {
             </h1>
 
             <p className="lp__hero__sub">
-              Soy Giuliano Conti, developer full-stack desde Resistencia, Argentina. Construyo productos web con React,
-              Next.js y TypeScript — rápidos, limpios y listos para escalar.
+              Soy Giuliano Conti, developer full-stack. Construyo sitios web y aplicaciones para negocios que quieren
+              crecer online — rápidos, modernos y sin vueltas técnicas.
             </p>
 
             <div className="lp__hero__actions">
               <a href={`mailto:${MAIL}`} className="lp__hero__actions__primary">
                 Contrátame
-              </a>
-              <a href="/portfolio" className="lp__hero__actions__secondary">
-                Ver portfolio →
               </a>
             </div>
 
@@ -645,28 +654,42 @@ export default function Landing() {
         </div>
       </div>
 
-      {/* ── Servicios ────────────────────────────────── */}
       <section className="lp__section" id="servicios">
         <div className="lp__container">
           <div className="lp__section-header lp__reveal">
-            <span className="lp__section-header__label">Servicios</span>
+            <span className="lp__section-header__label">Proyectos</span>
             <h2>
-              Lo que <em>construyo</em>
+              Lo que <em>construí</em>
             </h2>
-            <p>Desde landing pages hasta aplicaciones complejas. Trabajo solo o me integro a tu equipo.</p>
+            <p>Algunos productos en producción.</p>
           </div>
-          <div className="lp__services-grid">
-            {SERVICES.map((s, i) => (
-              <div
-                key={s.title}
-                className="lp__service-card lp__reveal"
-                style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}
-              >
-                <div className="lp__process-step__n">{s.n}</div>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </div>
-            ))}
+          <div className="lp__projects-grid-wrap">
+            <div className="lp__projects-grid">
+              {PROJECTS.map((p, i) => (
+                <a
+                  key={p.title}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lp__project-card lp__reveal"
+                  style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}
+                >
+                  <img className="lp__project-card__img" src={p.image} aria-label={p.title} />
+                  <div className="lp__project-card__body">
+                    <div className="lp__project-card__top">
+                      <h3>{p.title}</h3>
+                      <span className="lp__project-card__role">{p.role}</span>
+                    </div>
+                    <p>{p.desc}</p>
+                    <div className="lp__project-card__tags">
+                      {p.tags.map((t) => (
+                        <span key={t}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -730,6 +753,24 @@ export default function Landing() {
           <div className="lp__calc lp__reveal">
             {/* <div className="lp__calc lp__reveal__container"> */}
             <div className="lp__calc__steps">
+              {/* Progress bar */}
+              {(() => {
+                const step3done = calc.infra === "mine" ? !!calc.maintenance : !!calc.passwords;
+                const done = [!!calc.project, !!calc.infra, step3done, !!calc.timeline].filter(Boolean).length;
+                return (
+                  <div className="lp__calc__progress">
+                    <div className="lp__calc__progress__labels">
+                      <span>Paso {Math.min(done + 1, 4)} de 4</span>
+                      <span>
+                        {done === 4 ? "¡Listo! Revisá el precio →" : "Completá todos los pasos para ver el precio"}
+                      </span>
+                    </div>
+                    <div className="lp__calc__progress__bar">
+                      <div className="lp__calc__progress__bar__fill" style={{ width: `${(done / 4) * 100}%` }} />
+                    </div>
+                  </div>
+                );
+              })()}
               {/* Step 1 */}
               <div className="lp__calc__step">
                 <div className="lp__calc__step__header">
@@ -764,10 +805,10 @@ export default function Landing() {
                         tags: ["GitHub", "Vercel", "CMS", "Supabase", "Auth", "Pagos", "Analytics"],
                       },
                     ] as const
-                  ).map((o) => (
+                  ).map((o, i) => (
                     <button
                       key={o.value}
-                      className={`lp__calc__option${calc.project === o.value ? " lp__calc__option--active" : ""}`}
+                      className={`lp__calc__option${calc.project === o.value ? " lp__calc__option--active" : ""}${i === 0 && !calc.project ? " lp__calc__option--hint" : ""}`}
                       onClick={() => setCalc((c) => ({ ...c, project: o.value }))}
                       disabled={o.value === "app-payments"}
                     >
@@ -784,129 +825,132 @@ export default function Landing() {
               </div>
 
               {/* Step 2 */}
-              {calc.project && (
-                <div className="lp__calc__step">
-                  <div className="lp__calc__step__header">
-                    <span className="lp__calc__step__num">02</span>
-                    <span className="lp__calc__step__title">¿Dónde va la infraestructura?</span>
-                  </div>
-                  <div className="lp__calc__options">
-                    <button
-                      className={`lp__calc__option${calc.infra === "mine" ? " lp__calc__option--active" : ""}`}
-                      onClick={() =>
-                        setCalc((c) => ({ ...c, infra: "mine", passwords: "", maintenance: "", timeline: "" }))
-                      }
-                    >
-                      <span>Giuliano lo gestiona — Mensual</span>
-                      <small>
-                        Manejo toda la infra en mis cuentas. Vos solo comprás el dominio. Cualquier problema técnico lo
-                        resuelvo yo.
-                      </small>
-                      <Tooltip text="Hosting, base de datos, deploys y mantenimiento van por mi cuenta. Cero preocupaciones técnicas de tu lado." />
-                    </button>
-                    <button
-                      className={`lp__calc__option${calc.infra === "theirs" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, infra: "theirs", maintenance: "", timeline: "" }))}
-                    >
-                      <span>Tus cuentas — Pago Único</span>
-                      <small>
-                        El código y toda la infra quedan 100% a tu nombre. Una vez entregado, vos administrás todo.
-                      </small>
-                      <Tooltip text="Creamos las cuentas a tu nombre. Al finalizar sos responsable de la infraestructura. Sin mensualidad." />
-                    </button>
-                  </div>
+              <div className={`lp__calc__step${!calc.project ? " lp__calc__step--locked" : ""}`}>
+                <div className="lp__calc__step__header">
+                  <span className="lp__calc__step__num">02</span>
+                  <span className="lp__calc__step__title">¿Dónde va la infraestructura?</span>
                 </div>
-              )}
+                <div className="lp__calc__options">
+                  <button
+                    className={`lp__calc__option${calc.infra === "mine" ? " lp__calc__option--active" : ""}${!calc.infra && calc.project ? " lp__calc__option--hint" : ""}`}
+                    onClick={() =>
+                      setCalc((c) => ({ ...c, infra: "mine", passwords: "", maintenance: "", timeline: "" }))
+                    }
+                  >
+                    <span>Giuliano lo gestiona — Mensual</span>
+                    <small>
+                      Manejo toda la infra en mis cuentas. Vos solo comprás el dominio. Cualquier problema técnico lo
+                      resuelvo yo.
+                    </small>
+                    <Tooltip text="Hosting, base de datos, deploys y mantenimiento van por mi cuenta. Cero preocupaciones técnicas de tu lado." />
+                  </button>
+                  <button
+                    className={`lp__calc__option${calc.infra === "theirs" ? " lp__calc__option--active" : ""}`}
+                    onClick={() => setCalc((c) => ({ ...c, infra: "theirs", maintenance: "", timeline: "" }))}
+                  >
+                    <span>Tus cuentas — Pago Único</span>
+                    <small>
+                      El código y toda la infra quedan 100% a tu nombre. Una vez entregado, vos administrás todo.
+                    </small>
+                    <Tooltip text="Creamos las cuentas a tu nombre. Al finalizar sos responsable de la infraestructura. Sin mensualidad." />
+                  </button>
+                </div>
+              </div>
 
-              {/* Step 3a — passwords (tus cuentas) */}
-              {calc.project && calc.infra === "theirs" && (
-                <div className="lp__calc__step">
-                  <div className="lp__calc__step__header">
-                    <span className="lp__calc__step__num">03</span>
-                    <span className="lp__calc__step__title">¿Compartís las contraseñas temporalmente?</span>
-                  </div>
-                  <div className="lp__calc__options">
-                    <button
-                      className={`lp__calc__option${calc.passwords === "yes" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, passwords: "yes" }))}
-                    >
-                      <span>Sí, sin problema</span>
-                      <small>Acceso temporal durante el desarrollo. Cambiás todo al entregar.</small>
-                    </button>
-                    <button
-                      className={`lp__calc__option${calc.passwords === "no" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, passwords: "no" }))}
-                    >
-                      <span>Sin contraseñas +20%</span>
-                      <small>Configuramos en vivo por videollamada sin compartir credenciales.</small>
-                      <Tooltip text="Acordamos una videollamada donde vos mismo ingresás las credenciales mientras yo guío el proceso. El recargo del 20% cubre el tiempo adicional requerido." />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Step 3b — maintenance (mis cuentas) */}
-              {calc.project && calc.infra === "mine" && (
-                <div className="lp__calc__step">
-                  <div className="lp__calc__step__header">
-                    <span className="lp__calc__step__num">03</span>
-                    <span className="lp__calc__step__title">¿Qué nivel de mantenimiento necesitás?</span>
-                  </div>
-                  <div className="lp__calc__options">
-                    <button
-                      className={`lp__calc__option${calc.maintenance === "hosting" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, maintenance: "hosting" }))}
-                    >
-                      <span>Solo hosting</span>
-                      <small>La página funciona y está online. Sin cambios ni soporte.</small>
-                      <Tooltip text="Me encargo de que el sitio esté activo y funcionando. No incluye cambios de contenido ni soporte técnico adicional." />
-                    </button>
-                    <button
-                      className={`lp__calc__option${calc.maintenance === "basic" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, maintenance: "basic" }))}
-                    >
-                      <span>Básico</span>
-                      <small>Hosting + hasta 2 cambios de contenido por mes.</small>
-                      <Tooltip text="Incluye hosting, monitoreo y hasta 2 cambios de texto, imágenes o secciones por mes." />
-                    </button>
-                    <button
-                      className={`lp__calc__option${calc.maintenance === "full" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, maintenance: "full" }))}
-                    >
-                      <span>Completo</span>
-                      <small>Hosting + soporte técnico activo + cambios ilimitados.</small>
-                      <Tooltip text="Soporte técnico, actualizaciones de dependencias y cambios ilimitados incluidos. Requiere que yo tenga acceso continuo a la infraestructura." />
-                    </button>
-                  </div>
-                </div>
-              )}
+              {/* Step 3 — passwords or maintenance depending on infra */}
+              <div className={`lp__calc__step${!calc.infra ? " lp__calc__step--locked" : ""}`}>
+                {calc.infra && calc.infra !== "mine" ? (
+                  <>
+                    <div className="lp__calc__step__header">
+                      <span className="lp__calc__step__num">03</span>
+                      <span className="lp__calc__step__title">¿Compartís las contraseñas temporalmente?</span>
+                    </div>
+                    <div className="lp__calc__options">
+                      <button
+                        className={`lp__calc__option${calc.passwords === "yes" ? " lp__calc__option--active" : ""}${!calc.passwords && calc.infra ? " lp__calc__option--hint" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, passwords: "yes" }))}
+                      >
+                        <span>Sí, sin problema</span>
+                        <small>
+                          Creás una contraseña temporal para GitHub (ej. "Web123456") durante el desarrollo. Al
+                          entregar, la cambiás y listo.
+                        </small>
+                      </button>
+                      <button
+                        className={`lp__calc__option${calc.passwords === "no" ? " lp__calc__option--active" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, passwords: "no" }))}
+                      >
+                        <span>Sin contraseñas +20%</span>
+                        <small>Configuramos en vivo por videollamada sin compartir credenciales.</small>
+                        <Tooltip text="Acordamos una videollamada donde vos mismo ingresás las credenciales mientras yo guío el proceso. El recargo del 20% cubre el tiempo adicional requerido." />
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="lp__calc__step__header">
+                      <span className="lp__calc__step__num">03</span>
+                      <span className="lp__calc__step__title">¿Qué nivel de mantenimiento necesitás?</span>
+                    </div>
+                    <div className="lp__calc__options">
+                      <button
+                        className={`lp__calc__option${calc.maintenance === "hosting" ? " lp__calc__option--active" : ""}${!calc.maintenance && calc.infra ? " lp__calc__option--hint" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, maintenance: "hosting" }))}
+                      >
+                        <span>Solo hosting</span>
+                        <small>La página funciona y está online. Sin cambios ni soporte.</small>
+                        <Tooltip text="Me encargo de que el sitio esté activo y funcionando. No incluye cambios de contenido ni soporte técnico adicional." />
+                      </button>
+                      <button
+                        className={`lp__calc__option${calc.maintenance === "basic" ? " lp__calc__option--active" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, maintenance: "basic" }))}
+                      >
+                        <span>Básico</span>
+                        <small>Hosting + hasta 2 cambios de contenido por mes.</small>
+                        <Tooltip text="Incluye hosting, monitoreo y hasta 2 cambios de texto, imágenes o secciones por mes." />
+                      </button>
+                      <button
+                        className={`lp__calc__option${calc.maintenance === "full" ? " lp__calc__option--active" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, maintenance: "full" }))}
+                      >
+                        <span>Completo</span>
+                        <small>Hosting + soporte técnico activo + cambios ilimitados.</small>
+                        <Tooltip text="Soporte técnico, actualizaciones de dependencias y cambios ilimitados incluidos. Requiere que yo tenga acceso continuo a la infraestructura." />
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
 
               {/* Step 4 — timeline */}
-              {calc.project && calc.infra && (calc.infra === "mine" ? calc.maintenance : calc.passwords) && (
-                <div className="lp__calc__step">
-                  <div className="lp__calc__step__header">
-                    <span className="lp__calc__step__num">04</span>
-                    <span className="lp__calc__step__title">¿Cuándo lo necesitás?</span>
+              {(() => {
+                const step3done = calc.infra === "mine" ? !!calc.maintenance : !!calc.passwords;
+                return (
+                  <div className={`lp__calc__step${!step3done ? " lp__calc__step--locked" : ""}`}>
+                    <div className="lp__calc__step__header">
+                      <span className="lp__calc__step__num">04</span>
+                      <span className="lp__calc__step__title">¿Cuándo lo necesitás?</span>
+                    </div>
+                    <div className="lp__calc__options">
+                      <button
+                        className={`lp__calc__option${calc.timeline === "normal" ? " lp__calc__option--active" : ""}${!calc.timeline && step3done ? " lp__calc__option--hint" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, timeline: "normal" }))}
+                      >
+                        <span>Sin apuro</span>
+                        {calc.project && <small>{CALC_TIMES[calc.project].normal}</small>}
+                      </button>
+                      <button
+                        className={`lp__calc__option${calc.timeline === "express" ? " lp__calc__option--active" : ""}`}
+                        onClick={() => setCalc((c) => ({ ...c, timeline: "express" }))}
+                      >
+                        <span>Express +40%</span>
+                        {calc.project && <small>{CALC_TIMES[calc.project].express}</small>}
+                        <Tooltip text="Priorizo tu proyecto por encima de otros trabajos. El recargo del 40% aplica sobre el costo de setup." />
+                      </button>
+                    </div>
                   </div>
-                  <div className="lp__calc__options">
-                    <button
-                      className={`lp__calc__option${calc.timeline === "normal" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, timeline: "normal" }))}
-                    >
-                      <span>Sin apuro</span>
-                      {calc.project && <small>{CALC_TIMES[calc.project].normal}</small>}
-                    </button>
-                    <button
-                      className={`lp__calc__option${calc.timeline === "express" ? " lp__calc__option--active" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, timeline: "express" }))}
-                    >
-                      <span>Express +40%</span>
-                      {calc.project && <small>{CALC_TIMES[calc.project].express}</small>}
-                      <Tooltip text="Priorizo tu proyecto por encima de otros trabajos. El recargo del 40% aplica sobre el costo de setup." />
-                    </button>
-                  </div>
-                </div>
-              )}
+                );
+              })()}
             </div>
             {/* Summary */}
             <div className="lp__calc__summary">
@@ -1009,7 +1053,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check /> Ninguno — yo me encargo de todo
                       </td>
-                      <td>15–120 min crear cuentas</td>
+                      <td>15–120 min crear y/o configurar cuentas</td>
                     </tr>
                     <tr>
                       <td>Gestión técnica continua</td>
@@ -1107,8 +1151,10 @@ export default function Landing() {
                       <th></th>
                       <th>Landing page</th>
                       <th>App web</th>
-                      <th className="featured">App con login</th>
-                      <th>App con pagos</th>
+                      <th className="featured">
+                        App con login <span className="lp__cmp-recommended">Más popular</span>
+                      </th>
+                      <th className="disabled-col">App con pagos</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1120,7 +1166,7 @@ export default function Landing() {
                       <td>1</td>
                       <td>Hasta 4</td>
                       <td className="featured">Hasta 10</td>
-                      <td>Hasta 20</td>
+                      <td className="disabled-col">Hasta 20</td>
                     </tr>
                     <tr>
                       <td>Contenido editable (CMS)</td>
@@ -1131,7 +1177,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1144,7 +1190,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1158,7 +1204,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1169,7 +1215,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1183,7 +1229,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1194,7 +1240,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1205,7 +1251,7 @@ export default function Landing() {
                       <td className="featured">
                         <Check />
                       </td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1217,7 +1263,7 @@ export default function Landing() {
                       <td>—</td>
                       <td>—</td>
                       <td className="featured">—</td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1226,7 +1272,7 @@ export default function Landing() {
                       <td>—</td>
                       <td>—</td>
                       <td className="featured">—</td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1235,7 +1281,7 @@ export default function Landing() {
                       <td>—</td>
                       <td>—</td>
                       <td className="featured">—</td>
-                      <td>
+                      <td className="disabled-col">
                         <Check />
                       </td>
                     </tr>
@@ -1247,14 +1293,14 @@ export default function Landing() {
                       <td>3–5 días</td>
                       <td>1–2 semanas</td>
                       <td className="featured">2–3 semanas</td>
-                      <td>3–4 semanas</td>
+                      <td className="disabled-col">3–4 semanas</td>
                     </tr>
                     <tr>
                       <td>Entrega express (+40%)</td>
                       <td>1–2 días</td>
                       <td>4–7 días</td>
                       <td className="featured">1–2 semanas</td>
-                      <td>2–3 semanas</td>
+                      <td className="disabled-col">2–3 semanas</td>
                     </tr>
                   </tbody>
                 </table>

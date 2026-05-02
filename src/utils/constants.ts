@@ -5,7 +5,7 @@ export const SOCIAL_GITHUB_URL = "https://github.com/giulianoconti";
 export const SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/giulianocontii";
 export const SOCIAL_MAIL = "tech@giulianoconti.com";
 
-export const ASSET_FAVICON_LIGHT = "/assets/favicon_light.png";
+export const ASSET_FAVICON_LIGHT = "/assets/favicon_dark.svg";
 export const ASSET_WAVE_BLUR = "/assets/wave-blur.webp";
 export const ASSET_WAVE_PROFILE = "/assets/wave-profile.jpg";
 export const ASSET_CONTACT_CAT = "/assets/contact-cat.webp";
