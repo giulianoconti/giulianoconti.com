@@ -700,6 +700,7 @@ export default function Landing() {
                   </div>
                 );
               })()}
+
               {/* Step 1 */}
               <div className="lp__calc__step">
                 <div className="lp__calc__step__header">
@@ -881,6 +882,7 @@ export default function Landing() {
                 );
               })()}
             </div>
+
             {/* Summary */}
             <div className="lp__calc__summary">
               <div className="lp__calc__summary__label">Precio estimado</div>
@@ -960,7 +962,6 @@ export default function Landing() {
                 );
               })()}
             </div>
-            {/* </div> */}
           </div>
 
           {/* Comparison tables */}

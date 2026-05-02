@@ -1152,10 +1152,34 @@ $pad-x-xs: 20px;
       gap: 12px;
       position: sticky;
       top: 90px;
+
+      @media (max-width: 900px) {
+        position: relative;
+        top: 0;
+      }
     }
 
     &__progress {
       padding: 4px 0 8px;
+
+      @media (max-width: 900px) {
+        background-color: var(--bg);
+        padding: 12px 0 4px 0;
+        position: sticky;
+        top: 68px;
+        z-index: 9;
+
+        &::before {
+          background: linear-gradient(to bottom, var(--bg), transparent);
+          bottom: -64px;
+          content: "";
+          height: 64px;
+          left: 0;
+          pointer-events: none;
+          position: absolute;
+          right: 0;
+        }
+      }
 
       &__labels {
         display: flex;
@@ -1326,6 +1350,12 @@ $pad-x-xs: 20px;
       padding: 24px;
       position: sticky;
       top: 141px;
+
+      @media (max-width: 900px) {
+        top: 0;
+        position: relative;
+        margin-top: 0;
+      }
 
       &__label {
         font-size: 10px;
