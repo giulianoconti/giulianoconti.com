@@ -292,27 +292,6 @@ $pad-x-xs: 20px;
       }
     }
 
-    &__cta {
-      @media (max-width: 768px) {
-        display: none;
-      }
-
-      a {
-        font-size: 13px;
-        font-weight: 500;
-        padding: 9px 22px;
-        border-radius: 100px;
-        background: var(--text);
-        color: var(--bg);
-        text-decoration: none;
-        transition: opacity 0.2s;
-
-        &:hover {
-          opacity: 0.85;
-        }
-      }
-    }
-
     &__hamburger {
       display: none;
       flex-direction: column;
@@ -520,6 +499,37 @@ $pad-x-xs: 20px;
 
         &:hover {
           opacity: 0.85;
+        }
+      }
+
+      &__secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition:
+          opacity 0.2s,
+          background 0.2s,
+          border-color 0.2s;
+
+        &:first-child {
+          background: var(--text);
+          color: var(--bg);
+          &:hover {
+            opacity: 0.85;
+          }
+        }
+        &:not(:first-child) {
+          border: 1px solid var(--border);
+          color: var(--text);
+          &:hover {
+            border-color: var(--muted);
+            background: var(--card);
+          }
         }
       }
     }

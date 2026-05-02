@@ -3,8 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LocaleProvider } from "./contexts/LocaleContext.tsx";
 import { Navbar, Footer } from "./components/molecules";
-import Portfolio from "./pages/Portfolio/index.tsx";
-import Landing from "./pages/Landing/index.tsx";
+import { Landing, Portfolio } from "./pages/";
 import "./index.scss";
 
 const pathToLang: Record<string, string> = {

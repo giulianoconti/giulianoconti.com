@@ -5,6 +5,7 @@ const MAIL = "tech@giulianoconti.com";
 const LINKEDIN = "https://www.linkedin.com/in/giulianoconti";
 const GITHUB = "https://github.com/giulianoconti";
 const WA_MSG = (msg: string) => `https://wa.me/5493624223320?text=${encodeURIComponent(msg)}`;
+// const WA_MSG = (msg: string) => `https://wa.me/5493624043228?text=${encodeURIComponent(msg)}`;
 const CONTACT_MSG = "Hola Giuliano! Me interesa contratarte para un proyecto. ¿Podemos hablar?";
 const HIRE_MSG = "Hola Giuliano! Quiero contratar tus servicios de desarrollo web.";
 
@@ -439,10 +440,6 @@ export default function Landing() {
             <button className="lp__nav__theme-toggle" onClick={toggleTheme} aria-label="Cambiar tema">
               {theme === "dark" ? <SunIcon /> : <MoonIcon />}
             </button>
-
-            <div className="lp__nav__cta">
-              <a href={`mailto:${MAIL}`}>Contrátame →</a>
-            </div>
           </div>
 
           <button
@@ -498,8 +495,17 @@ export default function Landing() {
             </p>
 
             <div className="lp__hero__actions">
-              <a href={`mailto:${MAIL}`} className="lp__hero__actions__primary">
-                Contrátame
+              <a className="lp__hero__actions__primary" href={`mailto:${MAIL}`}>
+                {MAIL}
+              </a>
+
+              <a
+                className="lp__hero__actions__secondary"
+                href={WA_MSG(CONTACT_MSG)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
               </a>
             </div>
 
@@ -917,12 +923,36 @@ export default function Landing() {
                         )}
                       </strong>
                     </div>
+
                     <a
-                      href={`mailto:${MAIL}?subject=${encodeURIComponent("Consulta de presupuesto")}`}
                       className="lp__calc__summary__btn"
+                      href={WA_MSG(
+                        [
+                          "Qué tal Giuliano!",
+                          "Mi nombre es [Tu Nombre].",
+                          "",
+                          "Me gustaría consultar sobre un proyecto. Estos son los datos que me devolvió la calculadora:",
+                          "",
+                          `💰 Precio estimado: ${fmtPrice(r.setup, currency)} setup + ${
+                            r.monthly > 0 ? `${fmtPrice(r.monthly, currency)} mensual` : "sin cargo mensual"
+                          }`,
+                          "",
+                          "📋 Detalles:",
+                          `• Proyecto: ${calc.project}`,
+                          `• Infra: ${calc.infra}`,
+                          `• Mantenimiento: ${calc.maintenance || "No definido"}`,
+                          `• Timeline: ${calc.timeline || "No definido"}`,
+                          "",
+                          "Quedo atento para avanzar o afinar detalles.",
+                          "¡Gracias!",
+                        ].join("\n"),
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Consultar este plan →
                     </a>
+
                     <p className="lp__calc__summary__note">
                       Precio estimado · El presupuesto final se confirma en la primer consulta sin compromiso.
                     </p>
