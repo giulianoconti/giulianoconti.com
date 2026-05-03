@@ -112,6 +112,16 @@ $pad-x-xs: 20px;
   }
 }
 
+@keyframes lp-cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 @keyframes lp-whatsapp {
   from {
     transform: scale(0);
@@ -150,7 +160,7 @@ $pad-x-xs: 20px;
   --cta-glow: rgba(163, 230, 53, 0.05);
   --code-kw: #a78bfa;
   --code-fn: #60a5fa;
-  --code-str: #a3e635;
+  --code-str: rgba(163, 230, 53, 0.72);
   --code-mt: rgba(255, 255, 255, 0.55);
   --feat-txt: rgba(255, 255, 255, 0.75);
   --tab-shadow: rgba(0, 0, 0, 0.25);
@@ -591,6 +601,7 @@ $pad-x-xs: 20px;
         font-family: "Courier New", monospace;
         font-size: 13px;
         line-height: 1.9;
+        white-space: pre;
 
         .kw {
           color: var(--code-kw);
@@ -611,6 +622,16 @@ $pad-x-xs: 20px;
           padding-left: 32px;
         }
       }
+
+      &__cursor {
+        display: inline-block;
+        width: 2px;
+        height: 13px;
+        background: var(--accent);
+        margin-left: 1px;
+        vertical-align: middle;
+        animation: lp-cursor-blink 1s step-end infinite;
+      }
     }
   }
 
@@ -622,6 +643,12 @@ $pad-x-xs: 20px;
     overflow: hidden;
     position: relative;
     width: 100%;
+
+    &:hover {
+      .lp__marquee__track {
+        animation-play-state: paused;
+      }
+    }
 
     // Edge fade — hides the seam where the loop restarts
     &::after {
@@ -836,7 +863,7 @@ $pad-x-xs: 20px;
       transform: translateY(-2px);
 
       .lp__project-card__img {
-        opacity: 0.85;
+        transform: scale(1.05);
       }
     }
 
@@ -851,17 +878,22 @@ $pad-x-xs: 20px;
     &__img {
       aspect-ratio: 1920/1280;
       background: var(--card-hover);
-      transition: opacity 0.2s;
+      transition: transform 0.2s;
       width: 100%;
 
       background:
         radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 50%, transparent), transparent 40%),
         radial-gradient(circle at bottom right, color-mix(in srgb, var(--accent) 50%, transparent), transparent 40%),
         var(--card);
+
+      &__container {
+        aspect-ratio: 1920/1280;
+        overflow: hidden;
+      }
     }
 
     // even
-    &:nth-child(2n) > .lp__project-card__img {
+    &:nth-child(2n) .lp__project-card__img {
       background:
         radial-gradient(circle at bottom left, color-mix(in srgb, var(--accent) 50%, transparent), transparent 40%),
         radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 50%, transparent), transparent 40%),
@@ -932,7 +964,7 @@ $pad-x-xs: 20px;
   }
 
   &__process-step {
-    padding: 40px 32px;
+    padding: 32px 32px 40px;
     border: 1px solid var(--border);
     position: relative;
     transition: background 0.2s;
@@ -953,12 +985,18 @@ $pad-x-xs: 20px;
     }
 
     &__n {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--accent-text);
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      font-size: 68px;
+      font-weight: 400;
+      font-style: italic;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: fit-content;
     }
 
     h3 {

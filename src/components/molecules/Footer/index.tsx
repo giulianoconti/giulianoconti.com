@@ -56,7 +56,10 @@ export default function Footer() {
   return (
     <footer className="footer" id="footer">
       <a href="#home" className="footer_logo">
-        <img alt="Logo" className="footer_logo_img" height={48} src="/assets/favicon_dark.svg" width={48} />
+        <picture>
+          <source srcSet="/assets/favicon_light.svg" media="(prefers-color-scheme: light)" />
+          <img alt="Logo" className="footer_logo_img" height={48} src="/assets/favicon_dark.svg" width={48} />
+        </picture>
       </a>
 
       <div className="footer_grid">

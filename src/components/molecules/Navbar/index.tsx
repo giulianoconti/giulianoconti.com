@@ -14,7 +14,10 @@ export default function Navbar() {
     <nav className="nav">
       <div className="nav_inner">
         <a href="#home" className="nav_inner_logo">
-          <img alt="Logo" className="nav_inner_logo_img" height={48} src="/assets/favicon_dark.svg" width={48} />
+          <picture>
+            <source srcSet="/assets/favicon_light.svg" media="(prefers-color-scheme: light)" />
+            <img alt="Logo" className="nav_inner_logo_img" height={48} src="/assets/favicon_dark.svg" width={48} />
+          </picture>
         </a>
 
         <ul className="nav_inner_links">

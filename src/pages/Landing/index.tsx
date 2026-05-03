@@ -154,31 +154,31 @@ const ARS_RATE = 1400;
 const FAQS = [
   {
     q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
-    a: "En el plan Mensual, manejo toda la infraestructura en mis cuentas (Vercel, GitHub, etc.). Vos solo comprás tu dominio y pagás una mensualidad. Cero dolores de cabeza técnicos. En el Pago Único, te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código y la infra.",
-  },
-  {
-    q: "¿Qué pasa si quiero salir del plan Mensual?",
-    a: "Sin problema. Si ya cumpliste 6 meses, te migro todo a tus propias cuentas sin costo adicional. Antes de los 6 meses se aplica un cargo de migración según el plan.",
-  },
-  {
-    q: "¿Trabajás con clientes de otros países?",
-    a: "Sí. Trabajo 100% remoto desde Resistencia, Argentina. Tengo experiencia colaborando con equipos de EEUU, Europa y América Latina.",
-  },
-  {
-    q: "¿Cómo se hace el pago?",
-    a: "Acepto pagos en USD (por el momento solo crypto USDT/USDC) y en ARS. Generalmente pido 50% adelantado y 50% al entregar.",
+    a: "En el modelo Mensual, manejo toda la infraestructura en mis cuentas (Vercel, GitHub, Supabase, etc). Vos solo comprás tu dominio y pagás una mensualidad. Cero dolores de cabeza técnicos. En el Pago Único, te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código, la infra y los accesos desde el día uno.",
   },
   {
     q: "¿Cuánto tarda un proyecto?",
-    a: "Una landing page bien hecha: 5-7 días. Una web completa: 2-4 semanas. Una app React/Next.js: desde 4 semanas según complejidad.",
+    a: "Depende del tipo: landing page, 3–5 días hábiles. App web (multi-página + CMS), 1–2 semanas. App con login y panel admin, 2–3 semanas. Si necesitás prioridad, ofrezco un modo Express (+40% sobre el precio base) que reduce los tiempos a la mitad.",
+  },
+  {
+    q: "¿Qué es el modo Express?",
+    a: "Priorizo tu proyecto por encima de cualquier otro trabajo activo hasta entregarlo. El recargo del 40% aplica sobre el costo de setup o el precio total. En la primera consulta confirmamos si tengo disponibilidad para arrancarlo de inmediato.",
+  },
+  {
+    q: "¿Qué pasa si quiero salir del plan Mensual?",
+    a: "Sin problema. Si ya cumpliste 6 meses, te migro todo a tus propias cuentas (GitHub, Vercel, Supabase, etc) sin costo adicional. Antes de los 6 meses aplica un cargo de migración según el plan contratado.",
+  },
+  {
+    q: "¿Cómo se hace el pago?",
+    a: "Acepto pagos en USD (crypto USDT/USDC) y en ARS con Mercadopago o transferencia bancaria. La estructura estándar es 50% adelantado para arrancar y 50% al momento de la entrega. Para el modelo Mensual, el primer mes se abona junto con el setup.",
   },
   {
     q: "¿Puedo pedirte cambios después de la entrega?",
-    a: "Sí. Incluyo rondas de revisión en cada plan. En el Mensual los cambios de contenido están incluidos cada mes. En el Pago Único puedo presupuestarlos o armamos un retainer.",
+    a: "Sí. Cada proyecto incluye rondas de revisión antes del cierre. En el Mensual, los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido. En el Pago Único, podemos presupuestar cambios puntuales o acordar un retainer mensual.",
   },
   {
-    q: "¿Hacés mantenimiento y hosting?",
-    a: "En el plan Mensual sí, está incluido. En el Pago Único te ayudo con el deploy inicial y para mantenimiento continuo podemos acordar un retainer mensual.",
+    q: "¿Trabajás con clientes de otros países?",
+    a: "Sí. Trabajo 100% remoto desde Resistencia, Argentina. Tengo experiencia colaborando con equipos de EEUU, Europa y América Latina. Coordinamos por WhatsApp, email o videollamada según tu zona horaria.",
   },
 ];
 
@@ -206,6 +206,85 @@ const MARQUEE_ITEMS = [
   "Sass",
   "REST APIs",
 ];
+
+// ── Hero code typewriter ─────────────────────────────────────────────────────
+
+const CODE_TOKENS: { text: string; cls?: string }[] = [
+  { text: "const", cls: "kw" },
+  { text: " " },
+  { text: "engineer", cls: "fn" },
+  { text: " = {\n" },
+  { text: "  " },
+  { text: "name", cls: "str" },
+  { text: ": " },
+  { text: '"Giuliano Conti"', cls: "mt" },
+  { text: ",\n" },
+  { text: "  " },
+  { text: "role", cls: "str" },
+  { text: ": " },
+  { text: '"Full-Stack Developer"', cls: "mt" },
+  { text: ",\n" },
+  { text: "  " },
+  { text: "location", cls: "str" },
+  { text: ": " },
+  { text: '"Resistencia, AR 🇦🇷"', cls: "mt" },
+  { text: ",\n" },
+  { text: "  " },
+  { text: "stack", cls: "str" },
+  { text: ": [\n" },
+  { text: "    " },
+  { text: '"React"', cls: "mt" },
+  { text: ", " },
+  { text: '"Next.js"', cls: "mt" },
+  { text: ",\n" },
+  { text: "    " },
+  { text: '"TypeScript"', cls: "mt" },
+  { text: ", " },
+  { text: '"Node.js"', cls: "mt" },
+  { text: ",\n" },
+  { text: "    " },
+  { text: '"Web3"', cls: "mt" },
+  { text: ", " },
+  { text: '"Supabase"', cls: "mt" },
+  { text: ",\n" },
+  { text: "  ],\n" },
+  { text: "  " },
+  { text: "available", cls: "str" },
+  { text: ": " },
+  { text: "true", cls: "kw" },
+  { text: ",\n" },
+  { text: "  " },
+  { text: "currency", cls: "str" },
+  { text: ": [" },
+  { text: '"USD"', cls: "mt" },
+  { text: ", " },
+  { text: '"ARS"', cls: "mt" },
+  { text: "],\n" },
+  { text: "}" },
+];
+
+const TOTAL_CHARS = CODE_TOKENS.reduce((sum, t) => sum + t.text.length, 0);
+
+function renderCodeTokens(tokens: typeof CODE_TOKENS, typedCount: number): React.ReactNode[] {
+  const nodes: React.ReactNode[] = [];
+  let remaining = typedCount;
+  let key = 0;
+  for (const token of tokens) {
+    if (remaining <= 0) break;
+    const visible = token.text.slice(0, remaining);
+    remaining -= token.text.length;
+    nodes.push(
+      token.cls ? (
+        <span key={key++} className={token.cls}>
+          {visible}
+        </span>
+      ) : (
+        visible
+      ),
+    );
+  }
+  return nodes;
+}
 
 // ── Pricing Calculator ───────────────────────────────────────────────────────
 
@@ -342,6 +421,7 @@ export default function Landing() {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [comparisonOpen, setComparisonOpen] = useState(false);
   const [calc, setCalc] = useState<CalcState>(CALC_INIT);
+  const [typedCount, setTypedCount] = useState(0);
 
   const [currency, setCurrency] = useState<"usd" | "ars">(() => {
     const saved = localStorage.getItem("lp-currency");
@@ -411,6 +491,16 @@ export default function Landing() {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      setTypedCount(count);
+      if (count >= TOTAL_CHARS) clearInterval(interval);
+    }, 18);
+    return () => clearInterval(interval);
+  }, []);
+
   const navLinks = [
     { href: "#servicios", label: "Servicios" },
     { href: "#precios", label: "Precios" },
@@ -424,7 +514,13 @@ export default function Landing() {
       <nav className={`lp__nav ${scrolled ? "lp__nav--scrolled" : ""}`}>
         <div className="lp__nav__inner">
           <a href="/" className="lp__nav__logo">
-            <img alt="Logo" className="nav_inner_logo_img" src="/assets/favicon_dark.svg" height={32} width={32} />
+            <img
+              alt="Logo"
+              className="nav_inner_logo_img"
+              src={theme === "light" ? "/assets/favicon_light.svg" : "/assets/favicon_dark.svg"}
+              height={32}
+              width={32}
+            />
             giulianoconti.com
           </a>
 
@@ -529,39 +625,8 @@ export default function Landing() {
               <span className="lp__hero__card__header__label">giuliano.config.ts</span>
             </div>
             <div className="lp__hero__card__code">
-              <div>
-                <span className="kw">const</span> <span className="fn">engineer</span> = {"{"}
-              </div>
-              <div className="pl">
-                <span className="str">name</span>: <span className="mt">"Giuliano Conti"</span>,
-              </div>
-              <div className="pl">
-                <span className="str">role</span>: <span className="mt">"Full-Stack Developer"</span>,
-              </div>
-              <div className="pl">
-                <span className="str">location</span>: <span className="mt">"Resistencia, AR 🇦🇷"</span>,
-              </div>
-              <div className="pl">
-                <span className="str">stack</span>: [
-              </div>
-              <div className="pl2">
-                <span className="mt">"React"</span>, <span className="mt">"Next.js"</span>,
-              </div>
-              <div className="pl2">
-                <span className="mt">"TypeScript"</span>, <span className="mt">"Node.js"</span>,
-              </div>
-              <div className="pl2">
-                <span className="mt">"Web3"</span>, <span className="mt">"Supabase"</span>,
-              </div>
-              <div className="pl">],</div>
-              <div className="pl">
-                <span className="str">available</span>: <span className="kw">true</span>,
-              </div>
-              <div className="pl">
-                <span className="str">currency</span>: [<span className="mt">"USD"</span>,{" "}
-                <span className="mt">"ARS"</span>],
-              </div>
-              <div>{"}"}</div>
+              {renderCodeTokens(CODE_TOKENS, typedCount)}
+              <span className="lp__hero__card__cursor" />
             </div>
           </div>
         </div>
@@ -603,7 +668,9 @@ export default function Landing() {
                   className="lp__project-card lp__reveal"
                   style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}
                 >
-                  <img className="lp__project-card__img" src={p.image} aria-label={p.title} />
+                  <div className="lp__project-card__img__container">
+                    <img className="lp__project-card__img" src={p.image} aria-label={p.title} />
+                  </div>
                   <div className="lp__project-card__body">
                     <div className="lp__project-card__top">
                       <h3>{p.title}</h3>
