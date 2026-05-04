@@ -1995,25 +1995,3 @@ $pad-x-xs: 20px;
     }
   }
 }
-
-// ─── Mobile: disable expensive animations + skip reveal opacity block ─────────
-@media (max-width: 768px) {
-  .lp__hero__grid::after {
-    animation: none;
-  }
-
-  .lp__hero__tag__dot {
-    animation: none;
-  }
-
-  .lp__calc__option--hint {
-    animation: none;
-    border-color: var(--border);
-  }
-
-  .lp__reveal {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
-}
