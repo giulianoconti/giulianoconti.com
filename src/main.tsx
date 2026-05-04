@@ -1,10 +1,13 @@
 // StrictMode removed: double-mount in dev causes WebGL context loss on Canvas
 import { createRoot } from "react-dom/client";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LocaleProvider } from "./contexts/LocaleContext.tsx";
 import { Navbar, Footer } from "./components/molecules";
-import { Landing, Portfolio } from "./pages/";
+import Landing from "./pages/Landing";
 import "./index.scss";
+
+const Portfolio = lazy(() => import("./pages/Portfolio"));
 
 const pathToLang: Record<string, string> = {
   "/es.html": "es",
@@ -26,11 +29,13 @@ createRoot(document.getElementById("root")!).render(
       <Route
         path="/portfolio"
         element={
-          <LocaleProvider>
-            <Navbar />
-            <Portfolio />
-            <Footer />
-          </LocaleProvider>
+          <Suspense fallback={null}>
+            <LocaleProvider>
+              <Navbar />
+              <Portfolio />
+              <Footer />
+            </LocaleProvider>
+          </Suspense>
         }
       />
     </Routes>
