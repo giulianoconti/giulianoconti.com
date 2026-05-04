@@ -400,13 +400,23 @@ export default function Landing() {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth < 960) {
+      setTypedCount(TOTAL_CHARS);
+      return;
+    }
     let count = 0;
-    const interval = setInterval(() => {
-      count++;
-      setTypedCount(count);
-      if (count >= TOTAL_CHARS) clearInterval(interval);
-    }, 18);
-    return () => clearInterval(interval);
+    let raf: number;
+    let last = 0;
+    const tick = (now: number) => {
+      if (now - last >= 18) {
+        last = now;
+        count++;
+        setTypedCount(count);
+      }
+      if (count < TOTAL_CHARS) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   const navLinks = [
