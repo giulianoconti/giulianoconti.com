@@ -1335,7 +1335,6 @@ export default function Landing() {
             © {new Date().getFullYear()} Giuliano Conti · Resistencia, Chaco, Argentina
           </div>
           <div className="lp__footer__links">
-            <a href="/portfolio">Portfolio</a>
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>

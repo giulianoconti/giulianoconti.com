@@ -1,4 +1,23 @@
-// ─── Self-hosted fonts (Landing only) ─────────────────
+// ─── Self-hosted fonts ────────────────────────────────
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/helveticanowdisplay-light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/helveticanowdisplay-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/helveticanowdisplay-medium.woff2") format("woff2");
+}
+
 @font-face {
   font-family: "Outfit";
   font-style: normal;

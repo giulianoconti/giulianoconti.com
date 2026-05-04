@@ -1,7 +1,3 @@
-@use "./styles/breakpoints" as *;
-@use "./styles/layout" as *;
-@use "./styles/typography" as *;
-
 *,
 *::before,
 *::after {
@@ -12,17 +8,11 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: max(8vh, 64px);
 }
 
 body {
-  background: #000;
-  color: #fff;
-  font-family: "HelveticaNow", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
   overflow-x: hidden;
   scrollbar-width: none;
-  overscroll-behavior-y: none;
 }
 
 #root {
