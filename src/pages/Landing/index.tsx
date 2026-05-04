@@ -21,7 +21,7 @@ const PROJECTS = [
   //   role: "Web completa",
   // },
   {
-    image: "/assets/project-wormholescan.png",
+    image: "/assets/project-wormholescan.webp",
     title: "Wormhole Scan",
     desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",
     url: "https://wormholescan.io/",
@@ -29,7 +29,7 @@ const PROJECTS = [
     role: "Frontend completo",
   },
   {
-    image: "/assets/project-portal.png",
+    image: "/assets/project-portal.webp",
     title: "Portal Bridge",
     desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",
     url: "https://portalbridge.com/",
@@ -37,7 +37,7 @@ const PROJECTS = [
     role: "Testing y fixes",
   },
   {
-    image: "/assets/project-xlabs.png",
+    image: "/assets/project-xlabs.webp",
     title: "xLabs",
     desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",
     url: "https://xlabs.xyz/",
@@ -587,7 +587,7 @@ export default function Landing() {
                   style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}
                 >
                   <div className="lp__project-card__img__container">
-                    <img className="lp__project-card__img" src={p.image} aria-label={p.title} />
+                    <img className="lp__project-card__img" src={p.image} alt={p.title} loading="lazy" />
                   </div>
                   <div className="lp__project-card__body">
                     <div className="lp__project-card__top">
