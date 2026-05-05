@@ -204,17 +204,17 @@ const CALC_TIMES: Record<string, { normal: string; express: string }> = {
 };
 
 const CALC_BUILD: Record<string, number> = {
-  landing: 300,
-  app: 700,
-  "app-auth": 1100,
+  landing: 250,
+  app: 600,
+  "app-auth": 900,
   "app-payments": 1400,
 };
 
 const CALC_ONE_TIME: Record<string, number> = {
-  landing: 400,
-  app: 800,
-  "app-auth": 1200,
-  "app-payments": 1500,
+  landing: 350,
+  app: 750,
+  "app-auth": 1100,
+  "app-payments": 1600,
 };
 
 const CALC_MONTHLY: Record<string, Record<string, number>> = {
@@ -829,8 +829,8 @@ export default function Landing() {
                         onClick={() => setCalc((c) => ({ ...c, maintenance: "full" }))}
                       >
                         <span>Completo</span>
-                        <small>Hosting + soporte técnico activo + cambios ilimitados.</small>
-                        <Tooltip text="Soporte técnico, actualizaciones de dependencias y cambios ilimitados incluidos. Requiere que yo tenga acceso continuo a la infraestructura." />
+                        <small>Hosting + soporte técnico activo + hasta 8 cambios por mes.</small>
+                        <Tooltip text="Soporte técnico, actualizaciones de dependencias y hasta 8 cambios de contenido o ajustes visuales por mes. Requiere que yo tenga acceso continuo a la infraestructura." />
                       </button>
                     </div>
                   </>
