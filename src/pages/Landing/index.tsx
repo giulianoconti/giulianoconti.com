@@ -368,6 +368,7 @@ export default function Landing() {
     setTheme((t) => {
       const next = t === "dark" ? "light" : "dark";
       localStorage.setItem("lp-theme", next);
+      document.documentElement.style.background = next === "light" ? "#fafaf8" : "#000";
       return next;
     });
   };

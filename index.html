@@ -100,6 +100,14 @@
         ]
       }
     </script>
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem("lp-theme") ||
+          (window.matchMedia("(prefers-color-scheme:light)").matches ? "light" : "dark");
+        document.documentElement.style.background = t === "light" ? "#fafaf8" : "#000";
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
