@@ -378,6 +378,12 @@ export default function QuoteModal({ mode, onClose }: Props) {
               </button>
             </div>
 
+            <p className="qm__model-note">
+              {model === "monthly"
+                ? "Hosting, actualizaciones y soporte incluidos. Vos usás el sitio; yo me encargo del resto."
+                : "Pago único sin mensualidad. El código y las cuentas quedan a tu nombre. Cambios futuros se cotizan por separado."}
+            </p>
+
             <div className="qm__features">
               {GROUPED.map(([group, features]) => (
                 <div key={group} className="qm__group">

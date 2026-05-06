@@ -295,6 +295,15 @@
   }
 }
 
+.qm__model-note {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  padding: 8px 22px 0;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
 // ── Feature groups & rows ─────────────────────────────────────────────────────
 
 .qm__features {
