@@ -384,10 +384,11 @@ export default function Landing() {
 
   useEffect(() => {
     if (!localStorage.getItem("lp-quote-modal-seen")) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setQuoteMode("quiz");
         setQuoteOpen(true);
       }, 600);
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -692,7 +693,7 @@ export default function Landing() {
           </div>
 
           <div className="lp__pricing-entries lp__reveal">
-            <button className="lp__pricing-entry lp__pricing-entry--primary" onClick={() => openQuote("quiz")}>
+            <button type="button" className="lp__pricing-entry lp__pricing-entry--primary" onClick={() => openQuote("quiz")}>
               <div className="lp__pricing-entry__icon">🧭</div>
               <div className="lp__pricing-entry__body">
                 <span className="lp__pricing-entry__badge">Recomendado</span>
@@ -708,7 +709,7 @@ export default function Landing() {
               <span className="lp__pricing-entry__cta">Empezar quiz →</span>
             </button>
 
-            <button className="lp__pricing-entry" onClick={() => openQuote("table")}>
+            <button type="button" className="lp__pricing-entry" onClick={() => openQuote("table")}>
               <div className="lp__pricing-entry__icon">⚙️</div>
               <div className="lp__pricing-entry__body">
                 <h3>Armar directo</h3>
