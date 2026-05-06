@@ -1,13 +1,23 @@
 // src/pages/Landing/quote-modal.scss
 
 @keyframes qm-fade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes qm-slide {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // ── Overlay ──────────────────────────────────────────────────────────────────
@@ -25,7 +35,9 @@
   padding: 16px;
   animation: qm-fade 0.22s ease both;
 
-  &--out { animation: qm-fade 0.2s ease both reverse; }
+  &--out {
+    animation: qm-fade 0.2s ease both reverse;
+  }
 }
 
 // ── Card ─────────────────────────────────────────────────────────────────────
@@ -42,7 +54,9 @@
   overflow: hidden;
   animation: qm-slide 0.22s ease both;
 
-  &--out { animation: qm-slide 0.2s ease both reverse; }
+  &--out {
+    animation: qm-slide 0.2s ease both reverse;
+  }
 }
 
 // ── Header ───────────────────────────────────────────────────────────────────
@@ -69,7 +83,9 @@
   cursor: pointer;
   transition: color 0.15s;
 
-  &:hover { color: var(--text); }
+  &:hover {
+    color: var(--text);
+  }
 }
 
 .qm__close {
@@ -83,7 +99,9 @@
   justify-content: center;
   cursor: pointer;
   color: var(--muted);
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   margin-left: auto;
 
   &:hover {
@@ -93,7 +111,9 @@
 
   .lp--light & {
     background: rgba(0, 0, 0, 0.04);
-    &:hover { background: rgba(0, 0, 0, 0.09); }
+    &:hover {
+      background: rgba(0, 0, 0, 0.09);
+    }
   }
 }
 
@@ -107,7 +127,9 @@
   text-align: center;
   margin: 0;
 
-  &--sm { font-size: 20px; }
+  &--sm {
+    font-size: 20px;
+  }
 }
 
 .qm__sub {
@@ -126,7 +148,9 @@
   flex: 1;
   overflow-y: auto;
   scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 // ── Progress bar ─────────────────────────────────────────────────────────────
@@ -175,9 +199,13 @@
   width: 100%;
   font-family: inherit;
   color: var(--text);
-  transition: border-color 0.15s, background 0.15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
 
-  .lp--light & { background: rgba(0, 0, 0, 0.01); }
+  .lp--light & {
+    background: rgba(0, 0, 0, 0.01);
+  }
 
   &:hover {
     border-color: rgba(163, 230, 53, 0.35);
@@ -200,9 +228,13 @@
     font-size: 18px;
     flex-shrink: 0;
 
-    .lp--light & { background: rgba(0, 0, 0, 0.05); }
+    .lp--light & {
+      background: rgba(0, 0, 0, 0.05);
+    }
 
-    .qm__option--selected & { background: var(--accent-dim); }
+    .qm__option--selected & {
+      background: var(--accent-dim);
+    }
   }
 
   &__body {
@@ -271,7 +303,9 @@
   margin: 12px 22px 0;
   flex-shrink: 0;
 
-  .lp--light & { background: rgba(0, 0, 0, 0.05); }
+  .lp--light & {
+    background: rgba(0, 0, 0, 0.05);
+  }
 }
 
 .qm__model-tab {
@@ -293,6 +327,20 @@
     color: var(--bg);
     font-weight: 600;
   }
+
+  &__badge {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--accent);
+    color: #000;
+    border-radius: 20px;
+    padding: 1px 6px;
+    vertical-align: middle;
+    line-height: 1.6;
+  }
 }
 
 .qm__model-note {
@@ -302,6 +350,7 @@
   padding: 8px 22px 0;
   flex-shrink: 0;
   line-height: 1.5;
+  text-wrap: pretty;
 }
 
 // ── Feature groups & rows ─────────────────────────────────────────────────────
@@ -313,8 +362,13 @@
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 
-  &::-webkit-scrollbar { width: 4px; }
-  &::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
 }
 
 .qm__group {
@@ -346,16 +400,31 @@
   transition: background 0.12s;
   text-align: left;
 
-  &:hover:not(&--locked) { background: rgba(255, 255, 255, 0.03); }
+  &:hover:not(&--locked) {
+    background: rgba(255, 255, 255, 0.03);
+  }
 
-  .lp--light &:hover:not(&--locked) { background: rgba(0, 0, 0, 0.03); }
+  .lp--light &:hover:not(&--locked) {
+    background: rgba(0, 0, 0, 0.03);
+  }
 
-  &--locked { cursor: default; opacity: 0.5; }
+  &--locked {
+    cursor: default;
+    opacity: 0.5;
+  }
 
-  &--required { cursor: not-allowed; }
-  &--required &__check { opacity: 0.6; }
-  &--required &__label { opacity: 0.75; }
-  &--required &__price { opacity: 0.75; }
+  &--required {
+    cursor: not-allowed;
+  }
+  &--required &__check {
+    opacity: 0.6;
+  }
+  &--required &__label {
+    opacity: 0.75;
+  }
+  &--required &__price {
+    opacity: 0.75;
+  }
 
   &__check {
     width: 16px;
@@ -381,7 +450,10 @@
     }
   }
 
-  &__info { flex: 1; min-width: 0; }
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
 
   &__label {
     display: block;
@@ -407,7 +479,9 @@
     flex-shrink: 0;
     white-space: nowrap;
 
-    .qm__row--checked:not(.qm__row--locked) & { color: var(--accent-text); }
+    .qm__row--checked:not(.qm__row--locked) & {
+      color: var(--accent-text);
+    }
   }
 }
 
@@ -461,7 +535,9 @@
     padding: 0;
     transition: color 0.15s;
 
-    &:hover { color: var(--text); }
+    &:hover {
+      color: var(--text);
+    }
   }
 
   &__monthly {
@@ -485,7 +561,9 @@
     transition: opacity 0.15s;
     flex-shrink: 0;
 
-    &:hover { opacity: 0.88; }
+    &:hover {
+      opacity: 0.88;
+    }
   }
 }
 
@@ -502,8 +580,14 @@
     border-radius: 20px 20px 0 0;
   }
 
-  .qm__title { font-size: 22px; }
-  .qm__price-bar__amount strong { font-size: 20px; }
+  .qm__title {
+    font-size: 22px;
+  }
+  .qm__price-bar__amount strong {
+    font-size: 20px;
+  }
 
-  .qm__model-tab { font-size: 10px; }
+  .qm__model-tab {
+    font-size: 10px;
+  }
 }
