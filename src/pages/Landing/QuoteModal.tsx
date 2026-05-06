@@ -131,9 +131,27 @@ function calcMonthly(checked: Set<string>, model: Model): number {
   return fee;
 }
 
+const AR_TZ = new Set([
+  "America/Argentina/Buenos_Aires", "America/Argentina/Cordoba", "America/Argentina/Salta",
+  "America/Argentina/Jujuy", "America/Argentina/Tucuman", "America/Argentina/Catamarca",
+  "America/Argentina/La_Rioja", "America/Argentina/San_Juan", "America/Argentina/Mendoza",
+  "America/Argentina/San_Luis", "America/Argentina/Rio_Gallegos", "America/Argentina/Ushuaia",
+  "America/Buenos_Aires", "America/Cordoba", "America/Rosario", "America/Catamarca",
+  "America/Jujuy", "America/Mendoza",
+]);
+
+function isArgentina(): boolean {
+  return AR_TZ.has(Intl.DateTimeFormat().resolvedOptions().timeZone);
+}
+
 function fmt(n: number, currency: Currency): string {
   if (currency === "ars") return "$" + Math.round(n * ARS_RATE).toLocaleString("es-AR");
   return "$" + n.toLocaleString("en-US");
+}
+
+function fmtFeature(price: number, currency: Currency, model: Model): string {
+  const adjusted = model === "onetime" ? Math.round(price * 1.2) : price;
+  return "+" + fmt(adjusted, currency);
 }
 
 function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
@@ -199,7 +217,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const [currency, setCurrency] = useState<Currency>(() => {
     const saved = localStorage.getItem("lp-currency");
     if (saved === "ars" || saved === "usd") return saved as Currency;
-    return Intl.DateTimeFormat().resolvedOptions().timeZone.includes("Argentina") ? "ars" : "usd";
+    return isArgentina() ? "ars" : "usd";
   });
   const [closing, setClosing] = useState(false);
 
@@ -383,7 +401,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                           <span className="qm__row__desc">{f.desc}</span>
                         </div>
                         <span className="qm__row__price">
-                          {f.price === 0 ? "inc." : `+${fmt(f.price, currency)}`}
+                          {f.price === 0 ? "inc." : fmtFeature(f.price, currency, model)}
                         </span>
                       </button>
                     );
