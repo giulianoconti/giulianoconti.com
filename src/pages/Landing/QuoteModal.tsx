@@ -33,7 +33,7 @@ type QuizAnswers = Partial<Record<string, string>>;
 const ARS_RATE = 1400;
 
 const FEATURES: Feature[] = [
-  { id: "deploy",     label: "Deploy en Vercel",        desc: "Hosting automático + CDN global",                price: 0,   group: "base",     locked: true },
+  { id: "deploy",     label: "Deploy en Vercel",         desc: "Hosting automático + CDN global",                price: 0,   group: "base",     locked: true },
   { id: "ssl",        label: "SSL / HTTPS gratis",       desc: "Certificado de seguridad incluido",              price: 0,   group: "base",     locked: true },
   { id: "responsive", label: "Diseño responsive",        desc: "Se adapta a móvil, tablet y escritorio",         price: 0,   group: "base",     locked: true },
   { id: "whatsapp",   label: "Botón WhatsApp flotante",  desc: "Acceso directo desde cualquier página",          price: 0,   group: "base",     locked: true },
@@ -47,7 +47,7 @@ const FEATURES: Feature[] = [
   { id: "auth",       label: "Login / Usuarios",         desc: "Registro, inicio de sesión, sesiones",           price: 200, group: "backend",  triggers: ["db"] },
   { id: "admin",      label: "Panel admin protegido",    desc: "Gestión de contenido o datos desde panel",       price: 150, group: "backend",  triggers: ["auth", "db"] },
   { id: "db",         label: "Base de datos (Supabase)", desc: "Almacenamiento de datos en tiempo real",         price: 100, group: "backend" },
-  { id: "roles",      label: "Roles y permisos",         desc: "Admin, editor, usuario — control de acceso",     price: 80,  group: "backend" },
+  { id: "roles",      label: "Roles y permisos",         desc: "Admin, editor, usuario — control de acceso",     price: 80,  group: "backend",  triggers: ["auth", "db"] },
   { id: "maps",       label: "Google Maps integrado",    desc: "Mapa interactivo con tu ubicación",              price: 30,  group: "extras" },
   { id: "multilang",  label: "Multi-idioma (ES + EN)",   desc: "Soporte para dos o más idiomas",                 price: 150, group: "extras" },
   { id: "animations", label: "Animaciones premium",      desc: "Scroll effects y micro-interacciones",           price: 60,  group: "extras" },
@@ -88,7 +88,7 @@ const QUIZ_STEPS: QuizStep[] = [
     key: "timeline",
     options: [
       { value: "normal",  icon: "📅", label: "Sin apuro",    desc: "Entrega estándar" },
-      { value: "express", icon: "⚡", label: "Express +40%", desc: "Prioridad absoluta hasta entregarlo" },
+      { value: "express", icon: "⚡",  label: "Express +40%", desc: "Prioridad absoluta hasta entregarlo" },
     ],
   },
   {
@@ -97,7 +97,7 @@ const QUIZ_STEPS: QuizStep[] = [
     key: "infra",
     options: [
       { value: "monthly", icon: "🛠️", label: "Giuliano lo gestiona", desc: "Setup + mensualidad. Cero dolores de cabeza" },
-      { value: "onetime", icon: "🔑", label: "Mis propias cuentas",   desc: "Pago único. El código queda 100% tuyo" },
+      { value: "onetime", icon: "🔑", label: "Mis propias cuentas",  desc: "Pago único. El código queda 100% tuyo" },
     ],
   },
 ];
