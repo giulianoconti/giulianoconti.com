@@ -267,8 +267,9 @@ function fmt(n: number, currency: Currency): string {
   return "$" + n.toLocaleString("en-US");
 }
 
-function fmtFeature(price: number, currency: Currency, model: Model): string {
-  const adjusted = model === "onetime" ? Math.round(price * 1.2) : price;
+function fmtFeature(price: number, currency: Currency, model: Model, timeline: Timeline): string {
+  let adjusted = model === "onetime" ? Math.round(price * 1.2) : price;
+  if (timeline === "express") adjusted = Math.round(adjusted * 1.4);
   return "+" + fmt(adjusted, currency);
 }
 
@@ -538,7 +539,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                           <span className="qm__row__desc">{f.desc}</span>
                         </div>
                         <span className="qm__row__price">
-                          {f.price === 0 ? "inc." : fmtFeature(f.price, currency, model)}
+                          {f.price === 0 ? "inc." : fmtFeature(f.price, currency, model, timeline)}
                         </span>
                       </button>
                     );
