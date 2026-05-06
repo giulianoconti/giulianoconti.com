@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./landing.scss";
+import QuoteModal from "./QuoteModal";
 
 const MAIL = "tech@giulianoconti.com";
 const LINKEDIN = "https://www.linkedin.com/in/giulianoconti";
@@ -327,8 +328,8 @@ export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
-  const [comparisonOpen, setComparisonOpen] = useState(false);
-  const [calc, setCalc] = useState<CalcState>(CALC_INIT);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quoteMode, setQuoteMode] = useState<"quiz" | "table">("quiz");
   const [typedCount, setTypedCount] = useState(0);
 
   const [currency, setCurrency] = useState<"usd" | "ars">(() => {
@@ -380,6 +381,25 @@ export default function Landing() {
     if (!el) return;
     setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
   }, []);
+
+  useEffect(() => {
+    if (!localStorage.getItem("lp-quote-modal-seen")) {
+      setTimeout(() => {
+        setQuoteMode("quiz");
+        setQuoteOpen(true);
+      }, 600);
+    }
+  }, []);
+
+  const openQuote = (m: "quiz" | "table") => {
+    setQuoteMode(m);
+    setQuoteOpen(true);
+  };
+
+  const closeQuote = () => {
+    setQuoteOpen(false);
+    localStorage.setItem("lp-quote-modal-seen", "1");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -648,12 +668,11 @@ export default function Landing() {
           <div className="lp__section-header lp__reveal">
             <span className="lp__section-header__label">Precios</span>
             <h2>
-              Dos modelos, <em>un solo dev</em>
+              Armá tu web, <em>feature por feature</em>
             </h2>
-            <p>Elegí cómo querés trabajar. Precios en USD o ARS al cambio del día. Sin costos ocultos.</p>
+            <p>Pagás exactamente por lo que necesitás. Sin paquetes fijos. Precios en USD o ARS. Sin costos ocultos.</p>
           </div>
 
-          {/* PDF link */}
           <div className="lp__pricing-pdfs lp__reveal">
             <a
               href="/docs/Modelos de Colaboración y Términos — Giuliano Conti.pdf"
@@ -672,591 +691,32 @@ export default function Landing() {
             </a>
           </div>
 
-          {/* Calculator */}
-          <div className="lp__calc lp__reveal">
-            {/* <div className="lp__calc lp__reveal__container"> */}
-            <div className="lp__calc__steps">
-              {/* Progress bar */}
-              {(() => {
-                const step3done = calc.infra === "mine" ? !!calc.maintenance : !!calc.passwords;
-                const done = [!!calc.project, !!calc.infra, step3done, !!calc.timeline].filter(Boolean).length;
-                return (
-                  <div className="lp__calc__progress">
-                    <div className="lp__calc__progress__labels">
-                      <span>Paso {Math.min(done + 1, 4)} de 4</span>
-                      <span>
-                        {done === 4 ? "¡Listo! Revisá el precio →" : "Completá todos los pasos para ver el precio"}
-                      </span>
-                    </div>
-                    <div className="lp__calc__progress__bar">
-                      <div className="lp__calc__progress__bar__fill" style={{ width: `${(done / 4) * 100}%` }} />
-                    </div>
-                  </div>
-                );
-              })()}
-
-              {/* Step 1 */}
-              <div className="lp__calc__step">
-                <div className="lp__calc__step__header">
-                  <span className="lp__calc__step__num">01</span>
-                  <span className="lp__calc__step__title">¿Qué necesitás construir?</span>
-                </div>
-                <div className="lp__calc__options">
-                  {(
-                    [
-                      {
-                        value: "landing",
-                        label: "Landing page",
-                        sub: "Una sola página. Presentación de negocio, portfolio o servicio.",
-                        tags: ["GitHub", "Vercel"],
-                      },
-                      {
-                        value: "app",
-                        label: "App web",
-                        sub: "Sitio multi-página con blog, catálogo o contenido editable vía CMS.",
-                        tags: ["GitHub", "Vercel", "CMS", "Analytics"],
-                      },
-                      {
-                        value: "app-auth",
-                        label: "App con login",
-                        sub: "Multi-página + acceso protegido. Panel admin, roles o registro de usuarios.",
-                        tags: ["GitHub", "Vercel", "CMS", "Supabase", "Auth", "Analytics"],
-                      },
-                      {
-                        value: "app-payments",
-                        label: "App con pagos (Próximamente)",
-                        sub: "Todo lo anterior más pagos integrados. E-commerce, suscripciones o checkout.",
-                        tags: ["GitHub", "Vercel", "CMS", "Supabase", "Auth", "Pagos", "Analytics"],
-                      },
-                    ] as const
-                  ).map((o, i) => (
-                    <button
-                      key={o.value}
-                      className={`lp__calc__option${calc.project === o.value ? " lp__calc__option--active" : ""}${i === 0 && !calc.project ? " lp__calc__option--hint" : ""}`}
-                      onClick={() => setCalc((c) => ({ ...c, project: o.value }))}
-                      disabled={o.value === "app-payments"}
-                    >
-                      <span>{o.label}</span>
-                      <small>{o.sub}</small>
-                      <div className="lp__calc__option__tags">
-                        {o.tags.map((t) => (
-                          <span key={t}>{t}</span>
-                        ))}
-                      </div>
-                    </button>
-                  ))}
-                </div>
+          <div className="lp__pricing-entries lp__reveal">
+            <button className="lp__pricing-entry lp__pricing-entry--primary" onClick={() => openQuote("quiz")}>
+              <div className="lp__pricing-entry__icon">🧭</div>
+              <div className="lp__pricing-entry__body">
+                <span className="lp__pricing-entry__badge">Recomendado</span>
+                <h3>Hacé el quiz</h3>
+                <p>4 preguntas rápidas. Pre-configuramos la tabla según tu proyecto.</p>
+                <ul>
+                  <li>¿Cuántas páginas necesitás?</li>
+                  <li>¿Necesitás login de usuarios?</li>
+                  <li>¿Cuándo lo necesitás?</li>
+                  <li>¿Cómo querés la infra?</li>
+                </ul>
               </div>
-
-              {/* Step 2 */}
-              <div className={`lp__calc__step${!calc.project ? " lp__calc__step--locked" : ""}`}>
-                <div className="lp__calc__step__header">
-                  <span className="lp__calc__step__num">02</span>
-                  <span className="lp__calc__step__title">¿Dónde va la infraestructura?</span>
-                </div>
-                <div className="lp__calc__options">
-                  <button
-                    className={`lp__calc__option${calc.infra === "mine" ? " lp__calc__option--active" : ""}${!calc.infra && calc.project ? " lp__calc__option--hint" : ""}`}
-                    onClick={() =>
-                      setCalc((c) => ({ ...c, infra: "mine", passwords: "", maintenance: "", timeline: "" }))
-                    }
-                  >
-                    <span>Giuliano lo gestiona — Mensual</span>
-                    <small>
-                      Manejo toda la infra en mis cuentas. Vos solo comprás el dominio. Cualquier problema técnico lo
-                      resuelvo yo.
-                    </small>
-                    <Tooltip text="Hosting, base de datos, deploys y mantenimiento van por mi cuenta. Cero preocupaciones técnicas de tu lado." />
-                  </button>
-                  <button
-                    className={`lp__calc__option${calc.infra === "theirs" ? " lp__calc__option--active" : ""}`}
-                    onClick={() => setCalc((c) => ({ ...c, infra: "theirs", maintenance: "", timeline: "" }))}
-                  >
-                    <span>Tus cuentas — Pago Único</span>
-                    <small>
-                      El código y toda la infra quedan 100% a tu nombre. Una vez entregado, vos administrás todo.
-                    </small>
-                    <Tooltip text="Creamos las cuentas a tu nombre. Al finalizar sos responsable de la infraestructura. Sin mensualidad." />
-                  </button>
-                </div>
-              </div>
-
-              {/* Step 3 — passwords or maintenance depending on infra */}
-              <div className={`lp__calc__step${!calc.infra ? " lp__calc__step--locked" : ""}`}>
-                {calc.infra && calc.infra !== "mine" ? (
-                  <>
-                    <div className="lp__calc__step__header">
-                      <span className="lp__calc__step__num">03</span>
-                      <span className="lp__calc__step__title">¿Compartís las contraseñas temporalmente?</span>
-                    </div>
-                    <div className="lp__calc__options">
-                      <button
-                        className={`lp__calc__option${calc.passwords === "yes" ? " lp__calc__option--active" : ""}${!calc.passwords && calc.infra ? " lp__calc__option--hint" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, passwords: "yes" }))}
-                      >
-                        <span>Sí, sin problema</span>
-                        <small>
-                          Creás una contraseña temporal para GitHub (ej. "Web123456") durante el desarrollo. Al
-                          entregar, la cambiás y listo.
-                        </small>
-                      </button>
-                      <button
-                        className={`lp__calc__option${calc.passwords === "no" ? " lp__calc__option--active" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, passwords: "no" }))}
-                      >
-                        <span>Sin contraseñas +20%</span>
-                        <small>Configuramos en vivo por videollamada sin compartir credenciales.</small>
-                        <Tooltip text="Acordamos una videollamada donde vos mismo ingresás las credenciales mientras yo guío el proceso. El recargo del 20% cubre el tiempo adicional requerido." />
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="lp__calc__step__header">
-                      <span className="lp__calc__step__num">03</span>
-                      <span className="lp__calc__step__title">¿Qué nivel de mantenimiento necesitás?</span>
-                    </div>
-                    <div className="lp__calc__options">
-                      <button
-                        className={`lp__calc__option${calc.maintenance === "hosting" ? " lp__calc__option--active" : ""}${!calc.maintenance && calc.infra ? " lp__calc__option--hint" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, maintenance: "hosting" }))}
-                      >
-                        <span>Solo hosting</span>
-                        <small>La página funciona y está online. Sin cambios.</small>
-                        <Tooltip text="Me encargo de que el sitio esté activo y funcionando. No incluye cambios de contenido técnico adicional." />
-                      </button>
-                      <button
-                        className={`lp__calc__option${calc.maintenance === "basic" ? " lp__calc__option--active" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, maintenance: "basic" }))}
-                      >
-                        <span>Básico</span>
-                        <small>Hosting + hasta 2 cambios de contenido por mes.</small>
-                        <Tooltip text="Incluye hosting, monitoreo y hasta 2 cambios de texto, imágenes o secciones por mes." />
-                      </button>
-                      <button
-                        className={`lp__calc__option${calc.maintenance === "full" ? " lp__calc__option--active" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, maintenance: "full" }))}
-                      >
-                        <span>Completo</span>
-                        <small>Hosting + soporte técnico activo + hasta 8 cambios por mes.</small>
-                        <Tooltip text="Soporte técnico, actualizaciones de dependencias y hasta 8 cambios de contenido o ajustes visuales por mes. Requiere que yo tenga acceso continuo a la infraestructura." />
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Step 4 — timeline */}
-              {(() => {
-                const step3done = calc.infra === "mine" ? !!calc.maintenance : !!calc.passwords;
-                return (
-                  <div className={`lp__calc__step${!step3done ? " lp__calc__step--locked" : ""}`}>
-                    <div className="lp__calc__step__header">
-                      <span className="lp__calc__step__num">04</span>
-                      <span className="lp__calc__step__title">¿Cuándo lo necesitás?</span>
-                    </div>
-                    <div className="lp__calc__options">
-                      <button
-                        className={`lp__calc__option${calc.timeline === "normal" ? " lp__calc__option--active" : ""}${!calc.timeline && step3done ? " lp__calc__option--hint" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, timeline: "normal" }))}
-                      >
-                        <span>Sin apuro</span>
-                        <small>{CALC_TIMES[calc.project]?.normal || CALC_TIMES.landing.normal}</small>
-                      </button>
-                      <button
-                        className={`lp__calc__option${calc.timeline === "express" ? " lp__calc__option--active" : ""}`}
-                        onClick={() => setCalc((c) => ({ ...c, timeline: "express" }))}
-                      >
-                        <span>Express +40%</span>
-                        <small>{CALC_TIMES[calc.project]?.express || CALC_TIMES.landing.express}</small>
-                        <Tooltip text="Priorizo tu proyecto por encima de otros trabajos. El recargo del 40% aplica sobre el costo de setup." />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })()}
-            </div>
-
-            {/* Summary */}
-            <div className="lp__calc__summary">
-              <div className="lp__calc__summary__label">Precio estimado</div>
-              {(() => {
-                const toggleCurrency = () => {
-                  const next = currency === "usd" ? "ars" : "usd";
-                  setCurrency(next);
-                  localStorage.setItem("lp-currency", next);
-                };
-                const r = calcResult(calc);
-                if (!r)
-                  return (
-                    <div className="lp__calc__summary__empty">
-                      <p>Completá las opciones para ver el precio estimado al instante.</p>
-                    </div>
-                  );
-                return (
-                  <div className="lp__calc__summary__content">
-                    <div className="lp__calc__summary__row">
-                      <span>Setup inicial</span>
-                      <strong>
-                        {fmtPrice(r.setup, currency)}{" "}
-                        <em className="lp__calc__summary__currency" onClick={toggleCurrency}>
-                          {currency.toUpperCase()}
-                        </em>
-                      </strong>
-                    </div>
-                    <div className="lp__calc__summary__row">
-                      <span>Mensualidad</span>
-                      <strong>
-                        {r.monthly > 0 ? (
-                          <>
-                            {fmtPrice(r.monthly, currency)}{" "}
-                            <em className="lp__calc__summary__currency" onClick={toggleCurrency}>
-                              {currency.toUpperCase()}/mes
-                            </em>
-                          </>
-                        ) : (
-                          "Sin cargo mensual"
-                        )}
-                      </strong>
-                    </div>
-
-                    <a
-                      className="lp__calc__summary__btn"
-                      href={WA_MSG(
-                        [
-                          "Qué tal Giuliano!",
-                          "Mi nombre es [Tu Nombre].",
-                          "",
-                          "Me gustaría consultar sobre un proyecto. Estos son los datos que me devolvió la calculadora:",
-                          "",
-                          `💰 Precio estimado: ${fmtPrice(r.setup, currency)} setup + ${
-                            r.monthly > 0 ? `${fmtPrice(r.monthly, currency)} mensual` : "sin cargo mensual"
-                          }`,
-                          "",
-                          "📋 Detalles:",
-                          `• Proyecto: ${calc.project}`,
-                          `• Infra: ${calc.infra}`,
-                          `• Mantenimiento: ${calc.maintenance || "No definido"}`,
-                          `• Timeline: ${calc.timeline || "No definido"}`,
-                          "",
-                          "Quedo atento para avanzar o afinar detalles.",
-                          "¡Gracias!",
-                        ].join("\n"),
-                      )}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Consultar este plan →
-                    </a>
-
-                    <p className="lp__calc__summary__note">
-                      Precio estimado · El presupuesto final se confirma en la primer consulta sin compromiso.
-                    </p>
-                  </div>
-                );
-              })()}
-            </div>
-          </div>
-
-          {/* Comparison tables */}
-          <div className="lp__pricing-comparison">
-            <button className="lp__pricing-comparison__toggle" onClick={() => setComparisonOpen((o) => !o)}>
-              <svg
-                width="14"
-                height="14"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-                style={{ transform: comparisonOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-              {comparisonOpen ? "Ocultar comparación" : "Ver comparación detallada"}
+              <span className="lp__pricing-entry__cta">Empezar quiz →</span>
             </button>
 
-            <div
-              className="lp__pricing-comparison__body"
-              style={{ maxHeight: comparisonOpen ? "4000px" : "0px", opacity: comparisonOpen ? 1 : 0 }}
-            >
-              {/* Table 1 — Model comparison */}
-              <div className="lp__pricing-comparison__section-title">¿Mensual o Pago Único?</div>
-              <div className="lp__pricing-comparison__scroll">
-                <table className="lp__pricing-comparison__table">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th className="featured">
-                        Mensual <span className="lp__cmp-recommended">recomendado</span>
-                      </th>
-                      <th>Pago Único</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="section-header">
-                      <td colSpan={3}>Comodidad</td>
-                    </tr>
-                    <tr>
-                      <td>Setup inicial</td>
-                      <td className="featured">
-                        <Check /> Ninguno — yo me encargo de todo
-                      </td>
-                      <td>15–120 min crear y/o configurar cuentas</td>
-                    </tr>
-                    <tr>
-                      <td>Gestión técnica continua</td>
-                      <td className="featured">
-                        <Check /> Incluida en la mensualidad
-                      </td>
-                      <td>A cargo del cliente</td>
-                    </tr>
-                    <tr>
-                      <td>Hosting y mantenimiento</td>
-                      <td className="featured">
-                        <Check /> Gestionado por el desarrollador
-                      </td>
-                      <td>El cliente lo administra</td>
-                    </tr>
-                    <tr>
-                      <td>Actualizaciones de contenido</td>
-                      <td className="featured">
-                        <Check /> Incluidas según plan
-                      </td>
-                      <td>Se presupuestan aparte</td>
-                    </tr>
-
-                    <tr className="section-header">
-                      <td colSpan={3}>Propiedad y control</td>
-                    </tr>
-                    <tr>
-                      <td>Propiedad del código</td>
-                      <td className="featured">Licencia de uso activa</td>
-                      <td>
-                        <Check /> Transferencia total al pagar
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Infraestructura</td>
-                      <td className="featured">Cuentas del desarrollador</td>
-                      <td>
-                        <Check /> Tus propias cuentas
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Rescisión</td>
-                      <td className="featured">30 días de aviso · migración gratis desde el mes 6</td>
-                      <td>No aplica</td>
-                    </tr>
-
-                    <tr className="section-header">
-                      <td colSpan={3}>Costos</td>
-                    </tr>
-                    <tr>
-                      <td>Estructura de pago</td>
-                      <td className="featured">
-                        <Check /> Setup + cuota mensual fija
-                      </td>
-                      <td>50% adelantado · 50% al entregar</td>
-                    </tr>
-                    <tr>
-                      <td>Costo total a largo plazo</td>
-                      <td className="featured">Previsible mes a mes</td>
-                      <td>Mayor inicial, cero mensual</td>
-                    </tr>
-                    <tr>
-                      <td>Sin compartir contraseñas</td>
-                      <td className="featured">No aplica</td>
-                      <td>+20% por videollamada guiada</td>
-                    </tr>
-
-                    <tr className="section-header">
-                      <td colSpan={3}>Soporte</td>
-                    </tr>
-                    <tr>
-                      <td>Soporte técnico posterior</td>
-                      <td className="featured">
-                        <Check /> Incluido mientras dure el contrato
-                      </td>
-                      <td>14 días post-entrega</td>
-                    </tr>
-                    <tr>
-                      <td>Ideal para</td>
-                      <td className="featured">No técnicos · negocios en crecimiento</td>
-                      <td>Devs · empresas con equipo técnico</td>
-                    </tr>
-                  </tbody>
-                </table>
+            <button className="lp__pricing-entry" onClick={() => openQuote("table")}>
+              <div className="lp__pricing-entry__icon">⚙️</div>
+              <div className="lp__pricing-entry__body">
+                <h3>Armar directo</h3>
+                <p>Sabés lo que querés. Activá features vos mismo y ves el precio al instante.</p>
               </div>
-
-              {/* Table 2 — Project type comparison */}
-              <div className="lp__pricing-comparison__section-title" style={{ marginTop: 32 }}>
-                ¿Qué incluye cada tipo de proyecto?
-              </div>
-              <div className="lp__pricing-comparison__scroll">
-                <table className="lp__pricing-comparison__table lp__pricing-comparison__table--4col">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>Landing page</th>
-                      <th>App web</th>
-                      <th className="featured">
-                        App con login <span className="lp__cmp-recommended">Más popular</span>
-                      </th>
-                      <th className="disabled-col">App con pagos</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="section-header">
-                      <td colSpan={5}>Estructura</td>
-                    </tr>
-                    <tr>
-                      <td>Rutas / páginas</td>
-                      <td>1</td>
-                      <td>Hasta 4</td>
-                      <td className="featured">Hasta 10</td>
-                      <td className="disabled-col">Hasta 20</td>
-                    </tr>
-                    <tr>
-                      <td>Contenido editable (CMS)</td>
-                      <td>—</td>
-                      <td>
-                        <Check />
-                      </td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>SEO + Analytics</td>
-                      <td>—</td>
-                      <td>
-                        <Check />
-                      </td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr className="section-header">
-                      <td colSpan={5}>Backend</td>
-                    </tr>
-                    <tr>
-                      <td>Base de datos (Supabase)</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>API routes</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr className="section-header">
-                      <td colSpan={5}>Acceso y usuarios</td>
-                    </tr>
-                    <tr>
-                      <td>Autenticación</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Panel admin protegido</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Roles y permisos</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">
-                        <Check />
-                      </td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr className="section-header">
-                      <td colSpan={5}>Pagos</td>
-                    </tr>
-                    <tr>
-                      <td>Pagos integrados</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">—</td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Webhooks de pago</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">—</td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Gestión de órdenes</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td className="featured">—</td>
-                      <td className="disabled-col">
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr className="section-header">
-                      <td colSpan={5}>Tiempos estimados</td>
-                    </tr>
-                    <tr>
-                      <td>Entrega normal</td>
-                      <td>3–5 días</td>
-                      <td>1–2 semanas</td>
-                      <td className="featured">2–3 semanas</td>
-                      <td className="disabled-col">3–4 semanas</td>
-                    </tr>
-                    <tr>
-                      <td>Entrega express (+40%)</td>
-                      <td>1–2 días</td>
-                      <td>4–7 días</td>
-                      <td className="featured">1–2 semanas</td>
-                      <td className="disabled-col">2–3 semanas</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+              <span className="lp__pricing-entry__cta">Ver tabla →</span>
+            </button>
           </div>
-
-          <p className="lp__pricing-note">¿Proyecto personalizado? Escribime y hacemos un presupuesto a medida.</p>
         </div>
       </section>
 
@@ -1354,6 +814,9 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* ── Quote modal ──────────────────────────────── */}
+      {quoteOpen && <QuoteModal mode={quoteMode} onClose={closeQuote} />}
 
       {/* ── WhatsApp floating ────────────────────────── */}
       <a
