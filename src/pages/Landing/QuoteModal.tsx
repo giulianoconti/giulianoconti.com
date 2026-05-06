@@ -251,10 +251,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
         next.add(id);
       } else if (next.has(id)) {
         const requiredBy = FEATURES.some((f) => f.id !== id && next.has(f.id) && !!f.triggers?.includes(id));
-        if (!requiredBy) {
-          next.delete(id);
-          FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.delete(t));
-        }
+        if (!requiredBy) next.delete(id);
       } else {
         next.add(id);
         FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.add(t));
