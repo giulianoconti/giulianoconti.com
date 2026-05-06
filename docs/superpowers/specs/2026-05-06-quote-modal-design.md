@@ -168,16 +168,12 @@ Accessible directly (skips quiz). Opened with `p1` pre-selected (radio group nee
 ### Setup price
 ```
 base = sum of prices for all locked + checked features
-if model === 'onetime': base = base × 1.35
+if model === 'onetime': base = base × 1.20
 if timeline === 'express': base = base × 1.4
 setupTotal = Math.round(base)
 ```
 
-The 1.35× onetime multiplier reflects existing site pricing ratios:
-- landing: $250 (monthly) → $350 (onetime) ≈ ×1.40
-- app: $600 → $750 ≈ ×1.25
-- app-auth: $900 → $1100 ≈ ×1.22
-- Average ≈ ×1.35
+The 1.20× onetime multiplier reflects the additional cost of ownership transfer and infrastructure setup in client accounts.
 
 ### Monthly fee (only shown when model = monthly)
 ```
