@@ -58,8 +58,6 @@ const PROCESS = [
   },
 ];
 
-const ARS_RATE = 1400;
-
 const FAQS = [
   {
     q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
@@ -195,71 +193,6 @@ function renderCodeTokens(tokens: typeof CODE_TOKENS, typedCount: number): React
   return nodes;
 }
 
-// ── Pricing Calculator ───────────────────────────────────────────────────────
-
-const CALC_TIMES: Record<string, { normal: string; express: string }> = {
-  landing: { normal: "3–5 días", express: "1–2 días" },
-  app: { normal: "1–2 semanas", express: "4–7 días" },
-  "app-auth": { normal: "2–3 semanas", express: "1–2 semanas" },
-  "app-payments": { normal: "3–4 semanas", express: "2–3 semanas" },
-};
-
-const CALC_BUILD: Record<string, number> = {
-  landing: 250,
-  app: 600,
-  "app-auth": 900,
-  "app-payments": 1400,
-};
-
-const CALC_ONE_TIME: Record<string, number> = {
-  landing: 350,
-  app: 750,
-  "app-auth": 1100,
-  "app-payments": 1600,
-};
-
-const CALC_MONTHLY: Record<string, Record<string, number>> = {
-  landing: { hosting: 20, basic: 40, full: 80 },
-  app: { hosting: 30, basic: 80, full: 150 },
-  "app-auth": { hosting: 40, basic: 100, full: 200 },
-  "app-payments": { hosting: 50, basic: 120, full: 250 },
-};
-
-type CalcState = { project: string; infra: string; passwords: string; maintenance: string; timeline: string };
-const CALC_INIT: CalcState = { project: "", infra: "", passwords: "", maintenance: "", timeline: "" };
-
-function calcResult(c: CalcState): { setup: number; monthly: number } | null {
-  if (!c.project || !c.infra) return null;
-  if (c.infra === "mine") {
-    if (!c.maintenance || !c.timeline) return null;
-    const base = c.timeline === "express" ? Math.round(CALC_BUILD[c.project] * 1.4) : CALC_BUILD[c.project];
-    return { setup: base, monthly: CALC_MONTHLY[c.project]?.[c.maintenance] ?? 0 };
-  } else {
-    if (!c.passwords || !c.timeline) return null;
-    let setup = CALC_ONE_TIME[c.project] ?? 0;
-    if (c.passwords === "no") setup = Math.round(setup * 1.2);
-    if (c.timeline === "express") setup = Math.round(setup * 1.4);
-    return { setup, monthly: 0 };
-  }
-}
-
-function fmtPrice(n: number, currency: "usd" | "ars"): string {
-  if (currency === "ars") return "$" + (n * ARS_RATE).toLocaleString("es-AR");
-  return "$" + n.toLocaleString("en-US");
-}
-
-function Tooltip({ text }: { text: string }) {
-  return (
-    <span className="lp__tip" onClick={(e) => e.stopPropagation()}>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-        <circle cx="12" cy="12" r="10" />
-        <path strokeLinecap="round" d="M12 8v4M12 16h.01" />
-      </svg>
-      <span className="lp__tip__box">{text}</span>
-    </span>
-  );
-}
-
 // ── Icons ─────────────────────────────────────────────────────────────────────
 
 function CheckIcon() {
@@ -332,33 +265,6 @@ export default function Landing() {
   const [quoteMode, setQuoteMode] = useState<"quiz" | "table">("quiz");
   const [typedCount, setTypedCount] = useState(0);
 
-  const [currency, setCurrency] = useState<"usd" | "ars">(() => {
-    const saved = localStorage.getItem("lp-currency");
-    if (saved === "ars" || saved === "usd") return saved;
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const AR_ZONES = new Set([
-      "America/Argentina/Buenos_Aires",
-      "America/Argentina/Cordoba",
-      "America/Argentina/Salta",
-      "America/Argentina/Jujuy",
-      "America/Argentina/Tucuman",
-      "America/Argentina/Catamarca",
-      "America/Argentina/La_Rioja",
-      "America/Argentina/San_Juan",
-      "America/Argentina/Mendoza",
-      "America/Argentina/San_Luis",
-      "America/Argentina/Rio_Gallegos",
-      "America/Argentina/Ushuaia",
-      "America/Buenos_Aires",
-      "America/Cordoba",
-      "America/Rosario",
-      "America/Catamarca",
-      "America/Jujuy",
-      "America/Mendoza",
-    ]);
-    if (AR_ZONES.has(tz)) return "ars";
-    return "usd";
-  });
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     const saved = localStorage.getItem("lp-theme");
     if (saved === "light" || saved === "dark") return saved;
