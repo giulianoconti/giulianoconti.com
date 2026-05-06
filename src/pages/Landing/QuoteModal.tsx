@@ -87,7 +87,7 @@ const QUIZ_STEPS: QuizStep[] = [
     sub: "El timeline afecta el precio de setup",
     key: "timeline",
     options: [
-      { value: "normal",  icon: "📅", label: "Sin apuro",    desc: "Entrega estándar según el proyecto" },
+      { value: "normal",  icon: "📅", label: "Sin apuro",    desc: "Entrega estándar" },
       { value: "express", icon: "⚡", label: "Express +40%", desc: "Prioridad absoluta hasta entregarlo" },
     ],
   },
@@ -142,6 +142,7 @@ function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
     checked.add("auth");
     checked.add("db");
     checked.add("admin");
+    checked.add("roles");
   }
   return checked;
 }
@@ -257,13 +258,13 @@ export default function QuoteModal({ mode, onClose }: Props) {
       "Armé esta cotización en la calculadora:",
       "",
       `💰 Setup: ${fmt(setup, currency)}`,
-      monthly > 0 ? `📅 Mensualidad: desde ${fmt(monthly, currency)}/mes` : "📅 Sin cargo mensual",
+      monthly > 0 ? `📅 Mensualidad: ${fmt(monthly, currency)}/mes` : "📅 Sin cargo mensual",
+      "",
+      "📋 Features seleccionadas:",
+      ...selectedLabels,
       "",
       `Modelo: ${model === "monthly" ? "Mensual" : "Pago único"}`,
       timeline === "express" ? "Timeline: Express (+40%)" : "Timeline: Sin apuro",
-      "",
-      "📋 Features:",
-      ...selectedLabels,
       "",
       "Quedo a la espera. ¡Gracias!",
     ].join("\n");
