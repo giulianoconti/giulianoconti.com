@@ -232,8 +232,11 @@ export default function QuoteModal({ mode, onClose }: Props) {
         FEATURES.filter((f) => f.radio === radio).forEach((f) => next.delete(f.id));
         next.add(id);
       } else if (next.has(id)) {
-        next.delete(id);
-        FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.delete(t));
+        const requiredBy = FEATURES.some((f) => f.id !== id && next.has(f.id) && !!f.triggers?.includes(id));
+        if (!requiredBy) {
+          next.delete(id);
+          FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.delete(t));
+        }
       } else {
         next.add(id);
         FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.add(t));
@@ -366,10 +369,11 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <div className="qm__group__label">{GROUP_LABELS[group] ?? group}</div>
                   {features.map((f) => {
                     const isChecked = !!f.locked || checked.has(f.id);
+                    const isRequired = !f.locked && checked.has(f.id) && FEATURES.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
                     return (
                       <button
                         key={f.id}
-                        className={`qm__row${isChecked ? " qm__row--checked" : ""}${f.locked ? " qm__row--locked" : ""}`}
+                        className={`qm__row${isChecked ? " qm__row--checked" : ""}${f.locked ? " qm__row--locked" : ""}${isRequired ? " qm__row--required" : ""}`}
                         onClick={() => !f.locked && toggleFeature(f.id, f.radio)}
                         disabled={!!f.locked}
                       >

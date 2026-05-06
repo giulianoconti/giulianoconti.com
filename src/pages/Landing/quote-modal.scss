@@ -343,6 +343,11 @@
 
   &--locked { cursor: default; opacity: 0.5; }
 
+  &--required { cursor: not-allowed; }
+  &--required &__check { opacity: 0.6; }
+  &--required &__label { opacity: 0.75; }
+  &--required &__price { opacity: 0.75; }
+
   &__check {
     width: 16px;
     height: 16px;
