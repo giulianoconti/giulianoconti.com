@@ -33,33 +33,134 @@ type QuizAnswers = Partial<Record<string, string>>;
 const ARS_RATE = 1400;
 
 const FEATURES: Feature[] = [
-  { id: "deploy",     label: "Deploy en Vercel",         desc: "Hosting automático + CDN global",                price: 0,   group: "base",     locked: true },
-  { id: "ssl",        label: "SSL / HTTPS gratis",       desc: "Certificado de seguridad incluido",              price: 0,   group: "base",     locked: true },
-  { id: "responsive", label: "Diseño responsive",        desc: "Se adapta a móvil, tablet y escritorio",         price: 0,   group: "base",     locked: true },
-  { id: "whatsapp",   label: "Botón WhatsApp flotante",  desc: "Acceso directo desde cualquier página",          price: 0,   group: "base",     locked: true },
-  { id: "contact",    label: "Formulario de contacto",   desc: "Email o WhatsApp al enviar",                     price: 0,   group: "base",     locked: true },
-  { id: "p1",         label: "1 página (landing)",       desc: "Una sola página de presentación",                price: 150, group: "paginas",  radio: "pages" },
-  { id: "p4",         label: "Hasta 4 páginas",          desc: "Inicio, servicios, contacto, etc.",              price: 220, group: "paginas",  radio: "pages" },
-  { id: "p10",        label: "Hasta 10 páginas",         desc: "Sitio completo con múltiples secciones",         price: 350, group: "paginas",  radio: "pages" },
-  { id: "cms",        label: "CMS editable",             desc: "Modificá texto e imágenes sin código",           price: 80,  group: "contenido" },
-  { id: "blog",       label: "Blog / Noticias",          desc: "Posts editables vía CMS",                        price: 80,  group: "contenido" },
-  { id: "seo",        label: "SEO + Google Analytics",   desc: "Optimización + tracking de visitas",             price: 60,  group: "contenido" },
-  { id: "auth",       label: "Login / Usuarios",         desc: "Registro, inicio de sesión, sesiones",           price: 200, group: "backend",  triggers: ["db"] },
-  { id: "admin",      label: "Panel admin protegido",    desc: "Gestión de contenido o datos desde panel",       price: 150, group: "backend",  triggers: ["auth", "db"] },
-  { id: "db",         label: "Base de datos (Supabase)", desc: "Almacenamiento de datos en tiempo real",         price: 100, group: "backend" },
-  { id: "roles",      label: "Roles y permisos",         desc: "Admin, editor, usuario — control de acceso",     price: 80,  group: "backend",  triggers: ["auth", "db"] },
-  { id: "maps",       label: "Google Maps integrado",    desc: "Mapa interactivo con tu ubicación",              price: 30,  group: "extras" },
-  { id: "multilang",  label: "Multi-idioma (ES + EN)",   desc: "Soporte para dos o más idiomas",                 price: 150, group: "extras" },
-  { id: "animations", label: "Animaciones premium",      desc: "Scroll effects y micro-interacciones",           price: 60,  group: "extras" },
-  { id: "gdpr",       label: "Banner GDPR / Cookies",    desc: "Cumplimiento de privacidad legal",               price: 40,  group: "extras" },
+  {
+    id: "deploy",
+    label: "Deploy en Vercel",
+    desc: "Hosting automático + CDN global",
+    price: 0,
+    group: "base",
+    locked: true,
+  },
+  {
+    id: "ssl",
+    label: "SSL / HTTPS gratis",
+    desc: "Certificado de seguridad incluido",
+    price: 0,
+    group: "base",
+    locked: true,
+  },
+  {
+    id: "responsive",
+    label: "Diseño responsive",
+    desc: "Se adapta a móvil, tablet y escritorio",
+    price: 0,
+    group: "base",
+    locked: true,
+  },
+  {
+    id: "whatsapp",
+    label: "Botón WhatsApp flotante",
+    desc: "Acceso directo desde cualquier página",
+    price: 0,
+    group: "base",
+    locked: true,
+  },
+  {
+    id: "contact",
+    label: "Formulario de contacto",
+    desc: "Email o WhatsApp al enviar",
+    price: 0,
+    group: "base",
+    locked: true,
+  },
+  {
+    id: "p1",
+    label: "1 página (landing)",
+    desc: "Una sola página de presentación",
+    price: 150,
+    group: "paginas",
+    radio: "pages",
+  },
+  {
+    id: "p4",
+    label: "Hasta 4 páginas",
+    desc: "Inicio, servicios, contacto, etc.",
+    price: 220,
+    group: "paginas",
+    radio: "pages",
+  },
+  {
+    id: "p10",
+    label: "Hasta 10 páginas",
+    desc: "Sitio completo con múltiples secciones",
+    price: 350,
+    group: "paginas",
+    radio: "pages",
+  },
+  { id: "cms", label: "CMS editable", desc: "Modificá texto e imágenes sin código", price: 80, group: "contenido" },
+  { id: "blog", label: "Blog / Noticias", desc: "Posts editables vía CMS", price: 80, group: "contenido" },
+  {
+    id: "seo",
+    label: "SEO + Google Analytics",
+    desc: "Optimización + tracking de visitas",
+    price: 60,
+    group: "contenido",
+  },
+  {
+    id: "auth",
+    label: "Login / Usuarios",
+    desc: "Registro, inicio de sesión, sesiones",
+    price: 200,
+    group: "backend",
+    triggers: ["db"],
+  },
+  {
+    id: "admin",
+    label: "Panel admin protegido",
+    desc: "Gestión de contenido o datos desde panel",
+    price: 150,
+    group: "backend",
+    triggers: ["auth", "db"],
+  },
+  {
+    id: "db",
+    label: "Base de datos (Supabase)",
+    desc: "Almacenamiento de datos en tiempo real",
+    price: 100,
+    group: "backend",
+  },
+  {
+    id: "roles",
+    label: "Roles y permisos",
+    desc: "Admin, editor, usuario — control de acceso",
+    price: 80,
+    group: "backend",
+    triggers: ["auth", "db"],
+  },
+  { id: "maps", label: "Google Maps integrado", desc: "Mapa interactivo con tu ubicación", price: 30, group: "extras" },
+  {
+    id: "multilang",
+    label: "Multi-idioma (ES + EN)",
+    desc: "Soporte para dos o más idiomas",
+    price: 150,
+    group: "extras",
+  },
+  {
+    id: "animations",
+    label: "Animaciones premium",
+    desc: "Scroll effects y micro-interacciones",
+    price: 60,
+    group: "extras",
+  },
+  { id: "gdpr", label: "Banner GDPR / Cookies", desc: "Cumplimiento de privacidad legal", price: 40, group: "extras" },
 ];
 
 const GROUP_LABELS: Record<string, string> = {
-  base:      "Siempre incluido",
-  paginas:   "Páginas del sitio · elegí una",
+  base: "Siempre incluido",
+  paginas: "Páginas del sitio · elegí una",
   contenido: "Contenido y marketing",
-  backend:   "Backend / Usuarios",
-  extras:    "Extras opcionales",
+  backend: "Backend / Usuarios",
+  extras: "Extras opcionales",
 };
 
 const QUIZ_STEPS: QuizStep[] = [
@@ -68,9 +169,9 @@ const QUIZ_STEPS: QuizStep[] = [
     sub: "Elegí la opción que mejor describe tu proyecto",
     key: "pages",
     options: [
-      { value: "p1",  icon: "📄", label: "1 página",      desc: "Solo necesito una landing page" },
-      { value: "p4",  icon: "📋", label: "2–4 páginas",   desc: "Varias secciones para mi negocio" },
-      { value: "p10", icon: "🗂️", label: "5–10 páginas",  desc: "Sitio completo con múltiples secciones" },
+      { value: "p1", icon: "📄", label: "1 página", desc: "Solo necesito una landing page" },
+      { value: "p4", icon: "📋", label: "2–4 páginas", desc: "Varias secciones para mi negocio" },
+      { value: "p10", icon: "🗂️", label: "5–10 páginas", desc: "Sitio completo con múltiples secciones" },
     ],
   },
   {
@@ -78,8 +179,8 @@ const QUIZ_STEPS: QuizStep[] = [
     sub: "Esto define si hay backend de usuarios",
     key: "auth",
     options: [
-      { value: "no",  icon: "🌐", label: "No, es público",      desc: "Solo info, contacto o catálogo" },
-      { value: "yes", icon: "🔐", label: "Sí, necesito login",  desc: "Registro, perfil, panel propio" },
+      { value: "no", icon: "🌐", label: "No, es público", desc: "Solo info, contacto o catálogo" },
+      { value: "yes", icon: "🔐", label: "Sí, necesito login", desc: "Registro, perfil, panel propio" },
     ],
   },
   {
@@ -87,8 +188,8 @@ const QUIZ_STEPS: QuizStep[] = [
     sub: "El timeline afecta el precio de setup",
     key: "timeline",
     options: [
-      { value: "normal",  icon: "📅", label: "Sin apuro",    desc: "Entrega estándar" },
-      { value: "express", icon: "⚡",  label: "Express +40%", desc: "Prioridad absoluta hasta entregarlo" },
+      { value: "normal", icon: "📅", label: "Sin apuro", desc: "Entrega estándar" },
+      { value: "express", icon: "⚡", label: "Express +40%", desc: "Prioridad absoluta hasta entregarlo" },
     ],
   },
   {
@@ -96,8 +197,13 @@ const QUIZ_STEPS: QuizStep[] = [
     sub: "Define si pagás mensual o una sola vez",
     key: "infra",
     options: [
-      { value: "monthly", icon: "🛠️", label: "Giuliano lo gestiona", desc: "Setup + mensualidad. Cero dolores de cabeza" },
-      { value: "onetime", icon: "🔑", label: "Mis propias cuentas",  desc: "Pago único. El código queda 100% tuyo" },
+      {
+        value: "monthly",
+        icon: "🛠️",
+        label: "Giuliano lo gestiona",
+        desc: "Setup + mensualidad. Cero dolores de cabeza",
+      },
+      { value: "onetime", icon: "🔑", label: "Mis propias cuentas", desc: "Pago único. El código queda 100% tuyo" },
     ],
   },
 ];
@@ -108,7 +214,7 @@ const GROUPED = Object.entries(
   FEATURES.reduce<Record<string, Feature[]>>((acc, f) => {
     (acc[f.group] ??= []).push(f);
     return acc;
-  }, {})
+  }, {}),
 );
 
 // ── Pricing utilities ────────────────────────────────────────────────────────
@@ -132,12 +238,24 @@ function calcMonthly(checked: Set<string>, model: Model): number {
 }
 
 const AR_TZ = new Set([
-  "America/Argentina/Buenos_Aires", "America/Argentina/Cordoba", "America/Argentina/Salta",
-  "America/Argentina/Jujuy", "America/Argentina/Tucuman", "America/Argentina/Catamarca",
-  "America/Argentina/La_Rioja", "America/Argentina/San_Juan", "America/Argentina/Mendoza",
-  "America/Argentina/San_Luis", "America/Argentina/Rio_Gallegos", "America/Argentina/Ushuaia",
-  "America/Buenos_Aires", "America/Cordoba", "America/Rosario", "America/Catamarca",
-  "America/Jujuy", "America/Mendoza",
+  "America/Argentina/Buenos_Aires",
+  "America/Argentina/Cordoba",
+  "America/Argentina/Salta",
+  "America/Argentina/Jujuy",
+  "America/Argentina/Tucuman",
+  "America/Argentina/Catamarca",
+  "America/Argentina/La_Rioja",
+  "America/Argentina/San_Juan",
+  "America/Argentina/Mendoza",
+  "America/Argentina/San_Luis",
+  "America/Argentina/Rio_Gallegos",
+  "America/Argentina/Ushuaia",
+  "America/Buenos_Aires",
+  "America/Cordoba",
+  "America/Rosario",
+  "America/Catamarca",
+  "America/Jujuy",
+  "America/Mendoza",
 ]);
 
 function isArgentina(): boolean {
@@ -209,9 +327,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const [view, setView] = useState<"quiz" | "table">(mode);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
-  const [checked, setChecked] = useState<Set<string>>(() =>
-    mode === "table" ? new Set(["p1"]) : new Set()
-  );
+  const [checked, setChecked] = useState<Set<string>>(() => (mode === "table" ? new Set(["p1"]) : new Set()));
   const [model, setModel] = useState<Model>("monthly");
   const [timeline, setTimeline] = useState<Timeline>("normal");
   const [currency, setCurrency] = useState<Currency>(() => {
@@ -227,14 +343,18 @@ export default function QuoteModal({ mode, onClose }: Props) {
   }, [onClose]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [handleClose]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   const toggleCurrency = () => {
@@ -305,7 +425,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
       onClick={(e) => e.target === e.currentTarget && handleClose()}
     >
       <div className={`qm${closing ? " qm--out" : ""}`}>
-
         {/* ── Header ── */}
         <div className="qm__header">
           {view === "quiz" && step > 0 && (
@@ -314,7 +433,16 @@ export default function QuoteModal({ mode, onClose }: Props) {
             </button>
           )}
           {view === "table" && (
-            <button className="qm__back" onClick={() => { setView("quiz"); setStep(QUIZ_STEPS.length - 1); }}>
+            <button
+              className="qm__back"
+              onClick={() => {
+                setAnswers({});
+                setTimeline("normal");
+                setModel("monthly");
+                setStep(0);
+                setView("quiz");
+              }}
+            >
               <BackIcon /> Atrás
             </button>
           )}
@@ -329,7 +457,9 @@ export default function QuoteModal({ mode, onClose }: Props) {
             <div className="qm__progress">
               <div className="qm__progress__fill" style={{ width: `${((step + 1) / QUIZ_STEPS.length) * 100}%` }} />
             </div>
-            <div className="qm__progress__label">{step + 1} de {QUIZ_STEPS.length}</div>
+            <div className="qm__progress__label">
+              {step + 1} de {QUIZ_STEPS.length}
+            </div>
 
             <h2 className="qm__title">{QUIZ_STEPS[step].title}</h2>
             <p className="qm__sub">{QUIZ_STEPS[step].sub}</p>
@@ -381,8 +511,8 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
             <p className="qm__model-note">
               {model === "monthly"
-                ? "Giuliano mantiene — hosting, actualizaciones y soporte incluidos. Cualquier problema lo resuelvo yo."
-                : "Cliente mantiene — setup +20%, sin mensualidad. El código queda 100% tuyo, pero hosting, soporte y cambios futuros corren por tu cuenta."}
+                ? "Nos encargamos de todo: hosting, actualizaciones, seguridad y soporte continuo. Tu web siempre funcionando sin que tengas que preocuparte por nada."
+                : "Pagas una sola vez y el sitio es tuyo. Pero deberás ocuparte del hosting, mantenimiento, seguridad y cualquier cambio futuro por tu cuenta."}
             </p>
 
             <div className="qm__features">
@@ -391,7 +521,10 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <div className="qm__group__label">{GROUP_LABELS[group] ?? group}</div>
                   {features.map((f) => {
                     const isChecked = !!f.locked || checked.has(f.id);
-                    const isRequired = !f.locked && checked.has(f.id) && FEATURES.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
+                    const isRequired =
+                      !f.locked &&
+                      checked.has(f.id) &&
+                      FEATURES.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
                     return (
                       <button
                         key={f.id}
@@ -439,7 +572,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
