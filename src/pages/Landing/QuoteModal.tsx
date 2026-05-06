@@ -104,6 +104,13 @@ const QUIZ_STEPS: QuizStep[] = [
 
 const WA_BASE = "https://wa.me/5493624223320?text=";
 
+const GROUPED = Object.entries(
+  FEATURES.reduce<Record<string, Feature[]>>((acc, f) => {
+    (acc[f.group] ??= []).push(f);
+    return acc;
+  }, {})
+);
+
 // ── Pricing utilities ────────────────────────────────────────────────────────
 
 function calcSetup(checked: Set<string>, model: Model, timeline: Timeline): number {
@@ -226,6 +233,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
         next.add(id);
       } else if (next.has(id)) {
         next.delete(id);
+        FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.delete(t));
       } else {
         next.add(id);
         FEATURES.find((f) => f.id === id)?.triggers?.forEach((t) => next.add(t));
@@ -272,13 +280,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
   const setup = calcSetup(checked, model, timeline);
   const monthly = calcMonthly(checked, model);
-
-  const grouped = Object.entries(
-    FEATURES.reduce<Record<string, Feature[]>>((acc, f) => {
-      (acc[f.group] ??= []).push(f);
-      return acc;
-    }, {})
-  );
 
   return (
     <div
@@ -346,19 +347,21 @@ export default function QuoteModal({ mode, onClose }: Props) {
               <button
                 className={`qm__model-tab${model === "monthly" ? " qm__model-tab--active" : ""}`}
                 onClick={() => setModel("monthly")}
+                aria-pressed={model === "monthly"}
               >
                 Mensual (Giuliano gestiona)
               </button>
               <button
                 className={`qm__model-tab${model === "onetime" ? " qm__model-tab--active" : ""}`}
                 onClick={() => setModel("onetime")}
+                aria-pressed={model === "onetime"}
               >
                 Pago único (tus cuentas)
               </button>
             </div>
 
             <div className="qm__features">
-              {grouped.map(([group, features]) => (
+              {GROUPED.map(([group, features]) => (
                 <div key={group} className="qm__group">
                   <div className="qm__group__label">{GROUP_LABELS[group] ?? group}</div>
                   {features.map((f) => {
@@ -390,7 +393,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                 <span className="qm__price-bar__label">Total estimado</span>
                 <div className="qm__price-bar__amount">
                   <strong>{fmt(setup, currency)}</strong>
-                  <button className="qm__price-bar__currency" onClick={toggleCurrency}>
+                  <button className="qm__price-bar__currency" onClick={toggleCurrency} aria-label="Cambiar moneda">
                     {currency.toUpperCase()}
                   </button>
                 </div>
