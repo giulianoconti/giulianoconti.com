@@ -367,7 +367,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                 onClick={() => setModel("monthly")}
                 aria-pressed={model === "monthly"}
               >
-                Mensual (Giuliano gestiona)
+                Mensual
                 <span className="qm__model-tab__badge">Más elegido</span>
               </button>
               <button
@@ -375,14 +375,14 @@ export default function QuoteModal({ mode, onClose }: Props) {
                 onClick={() => setModel("onetime")}
                 aria-pressed={model === "onetime"}
               >
-                Pago único (tus cuentas)
+                Pago único
               </button>
             </div>
 
             <p className="qm__model-note">
               {model === "monthly"
-                ? "Hosting, actualizaciones y soporte incluidos. Vos usás el sitio; yo me encargo del resto."
-                : "Setup +20% · sin mensualidad. El código y las cuentas quedan 100% a tu nombre. Hosting, soporte y cambios futuros se contratan por separado."}
+                ? "Giuliano mantiene — hosting, actualizaciones y soporte incluidos. Cualquier problema lo resuelvo yo."
+                : "Cliente mantiene — setup +20%, sin mensualidad. El código queda 100% tuyo, pero hosting, soporte y cambios futuros corren por tu cuenta."}
             </p>
 
             <div className="qm__features">
