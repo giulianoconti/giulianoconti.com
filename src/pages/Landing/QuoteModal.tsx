@@ -1,10 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { BackIcon, CheckIcon, CloseIcon } from "./icons";
-import {
-  CLOSE_MS, ARS_RATE, MULTIPLIER_ONETIME, MULTIPLIER_EXPRESS,
-  FEATURES, GROUP_LABELS, QUIZ_STEPS, FEATURE_GROUPS,
-  isArgentina, WA_MSG,
-} from "./constants";
+import { CLOSE_MS, ARS_RATE, MULTIPLIER_ONETIME, MULTIPLIER_EXPRESS, FEATURES, GROUP_LABELS, QUIZ_STEPS, FEATURE_GROUPS, isArgentina, WA_MSG } from "./constants";
 import type { Feature } from "./constants";
 import "./QuoteModal.scss";
 
@@ -56,7 +52,7 @@ function calcSetup(checked: Set<string>, model: Model, timeline: Timeline): numb
 function calcMonthly(checked: Set<string>, model: Model): number {
   if (model !== "monthly") return 0;
   let fee = 20;
-  if (checked.has("cms") || checked.has("blog")) fee += 10;
+  if (checked.has("cms")) fee += 10;
   if (checked.has("auth")) fee += 20;
   return fee;
 }
@@ -77,14 +73,13 @@ function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
   const { pages, auth } = answers;
   if (pages) checked.add(pages);
   if (pages === "p4" || pages === "p10") {
-    checked.add("cms");
     checked.add("seo");
   }
   if (pages === "p1") checked.add("seo");
   if (auth === "yes") {
     checked.add("auth");
     checked.add("db");
-    checked.add("admin");
+    checked.add("cms");
     checked.add("roles");
   }
   return checked;
@@ -179,10 +174,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const monthly = calcMonthly(checked, model);
 
   return (
-    <div
-      className={`qm__overlay${closing ? " qm__overlay--out" : ""}`}
-      onClick={(e) => e.target === e.currentTarget && handleClose()}
-    >
+    <div className={`qm__overlay${closing ? " qm__overlay--out" : ""}`} onClick={(e) => e.target === e.currentTarget && handleClose()}>
       <div className={`qm${closing ? " qm--out" : ""}`}>
         {/* ── Header ── */}
         <div className="qm__header">
@@ -211,11 +203,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
             <div className="qm__options">
               {QUIZ_STEPS[step].options.map((opt) => (
-                <button
-                  key={opt.value}
-                  className={`qm__option${answers[QUIZ_STEPS[step].key] === opt.value ? " qm__option--selected" : ""}`}
-                  onClick={() => selectAnswer(QUIZ_STEPS[step].key, opt.value, step)}
-                >
+                <button key={opt.value} className={`qm__option${answers[QUIZ_STEPS[step].key] === opt.value ? " qm__option--selected" : ""}`} onClick={() => selectAnswer(QUIZ_STEPS[step].key, opt.value, step)}>
                   <div className="qm__option__icon">
                     <opt.icon height={20} width={20} />
                   </div>
@@ -239,19 +227,11 @@ export default function QuoteModal({ mode, onClose }: Props) {
             </div>
 
             <div className="qm__model-tabs">
-              <button
-                className={`qm__model-tab${model === "monthly" ? " qm__model-tab--active" : ""}`}
-                onClick={() => setModel("monthly")}
-                aria-pressed={model === "monthly"}
-              >
+              <button className={`qm__model-tab${model === "monthly" ? " qm__model-tab--active" : ""}`} onClick={() => setModel("monthly")} aria-pressed={model === "monthly"}>
                 Mensual
                 <span className="qm__model-tab__badge">Más elegido</span>
               </button>
-              <button
-                className={`qm__model-tab${model === "onetime" ? " qm__model-tab--active" : ""}`}
-                onClick={() => setModel("onetime")}
-                aria-pressed={model === "onetime"}
-              >
+              <button className={`qm__model-tab${model === "onetime" ? " qm__model-tab--active" : ""}`} onClick={() => setModel("onetime")} aria-pressed={model === "onetime"}>
                 Pago único
               </button>
             </div>
@@ -268,10 +248,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <div className="qm__group__label">{GROUP_LABELS[group] ?? group}</div>
                   {(features as Feature[]).map((f) => {
                     const isChecked = !!f.locked || checked.has(f.id);
-                    const isRequired =
-                      !f.locked &&
-                      checked.has(f.id) &&
-                      FEATURES.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
+                    const isRequired = !f.locked && checked.has(f.id) && FEATURES.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
                     return (
                       <button
                         key={f.id}
@@ -284,9 +261,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                           <span className="qm__row__label">{f.label}</span>
                           <span className="qm__row__desc">{f.desc}</span>
                         </div>
-                        <span className="qm__row__price">
-                          {f.price === 0 ? "inc." : fmtFeature(f.price, currency, model, timeline)}
-                        </span>
+                        <span className="qm__row__price">{f.price === 0 ? "inc." : fmtFeature(f.price, currency, model, timeline)}</span>
                       </button>
                     );
                   })}
@@ -303,17 +278,9 @@ export default function QuoteModal({ mode, onClose }: Props) {
                     {currency.toUpperCase()}
                   </button>
                 </div>
-                <span className="qm__price-bar__monthly">
-                  {monthly > 0 ? `+ desde ${fmt(monthly, currency)}/mes` : "Sin cargo mensual"}
-                </span>
+                <span className="qm__price-bar__monthly">{monthly > 0 ? `+ desde ${fmt(monthly, currency)}/mes` : "Sin cargo mensual"}</span>
               </div>
-              <a
-                className="qm__price-bar__cta"
-                href={WA_MSG(buildWaMessage(checked, model, timeline, currency))}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleClose}
-              >
+              <a className="qm__price-bar__cta" href={WA_MSG(buildWaMessage(checked, model, timeline, currency))} target="_blank" rel="noopener noreferrer" onClick={handleClose}>
                 Consultar →
               </a>
             </div>
