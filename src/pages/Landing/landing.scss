@@ -1,3 +1,5 @@
+@use "../../styles/mixins" as *;
+
 // ─── Self-hosted fonts ────────────────────────────────
 @font-face {
   font-family: "InstrumentSerif";
@@ -83,17 +85,17 @@ $pad-x-xs: 20px;
 @mixin container {
   max-width: $container;
   margin: 0 auto;
-  padding-left: $pad-x-md;
-  padding-right: $pad-x-md;
+  padding-left: $pad-x-xs;
+  padding-right: $pad-x-xs;
 
-  @media (max-width: 1024px) {
+  @include tablet {
     padding-left: $pad-x-sm;
     padding-right: $pad-x-sm;
   }
 
-  @media (max-width: 640px) {
-    padding-left: $pad-x-xs;
-    padding-right: $pad-x-xs;
+  @include desktop {
+    padding-left: $pad-x-md;
+    padding-right: $pad-x-md;
   }
 }
 
@@ -316,13 +318,13 @@ $pad-x-xs: 20px;
     }
 
     &__links {
-      display: flex;
+      display: none;
       align-items: center;
       gap: 36px;
       list-style: none;
 
-      @media (max-width: 768px) {
-        display: none;
+      @include tablet {
+        display: flex;
       }
 
       a {
@@ -342,16 +344,13 @@ $pad-x-xs: 20px;
     &__right {
       align-items: center;
       display: flex;
-      gap: 12px;
+      gap: 8px;
       margin-left: auto;
       margin-right: 16px;
 
-      @media (min-width: 768px) {
+      @include tablet {
+        gap: 12px;
         margin: 0;
-      }
-
-      @media (max-width: 768px) {
-        gap: 8px;
       }
     }
 
@@ -378,7 +377,7 @@ $pad-x-xs: 20px;
     }
 
     &__hamburger {
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 5px;
       padding: 8px;
@@ -386,8 +385,8 @@ $pad-x-xs: 20px;
       background: none;
       border: none;
 
-      @media (max-width: 768px) {
-        display: flex;
+      @include tablet {
+        display: none;
       }
 
       span {
@@ -506,13 +505,13 @@ $pad-x-xs: 20px;
       z-index: 2;
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      grid-template-columns: 1fr;
+      gap: 60px;
       align-items: center;
 
-      @media (max-width: 960px) {
-        grid-template-columns: 1fr;
-        gap: 60px;
+      @include desktop {
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
       }
     }
 
@@ -621,13 +620,13 @@ $pad-x-xs: 20px;
 
     &__stats {
       display: flex;
-      gap: 40px;
+      gap: 24px;
       margin-top: 56px;
       padding-top: 40px;
       border-top: 1px solid var(--border);
 
-      @media (max-width: 480px) {
-        gap: 24px;
+      @include tablet {
+        gap: 40px;
       }
 
       &__item {
@@ -649,11 +648,12 @@ $pad-x-xs: 20px;
     // Right: code card
     &__card {
       @include card;
+      display: none;
       padding: 32px;
       animation: lp-float 7s ease-in-out infinite;
 
-      @media (max-width: 960px) {
-        display: none;
+      @include desktop {
+        display: block;
       }
 
       &__header {
@@ -772,10 +772,10 @@ $pad-x-xs: 20px;
 
   // ── Section shared ───────────────────────────────────
   &__section {
-    padding: 100px 0;
+    padding: 72px 0;
 
-    @media (max-width: 640px) {
-      padding: 72px 0;
+    @include tablet {
+      padding: 100px 0;
     }
   }
 
@@ -840,21 +840,21 @@ $pad-x-xs: 20px;
     display: flex;
     gap: 16px;
     overflow-x: auto;
-    padding: 0 60px;
+    padding: 0 20px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    transform: translateX(-60px);
-    width: calc(100% + 120px);
+    transform: translateX(-20px);
+    width: calc(100% + 40px);
 
-    @media (max-width: 1024px) {
+    @include tablet {
       padding: 0 40px;
       transform: translateX(-40px);
       width: calc(100% + 80px);
     }
-    @media (max-width: 640px) {
-      padding: 0 20px;
-      transform: translateX(-20px);
-      width: calc(100% + 40px);
+    @include desktop {
+      padding: 0 60px;
+      transform: translateX(-60px);
+      width: calc(100% + 120px);
     }
 
     &::-webkit-scrollbar {
@@ -874,23 +874,23 @@ $pad-x-xs: 20px;
       content: "";
       position: absolute;
       top: 0;
-      width: 64px;
+      width: 20px;
       height: 100%;
       pointer-events: none;
       z-index: 1;
     }
 
     &::before {
-      left: -64px;
+      left: -20px;
       background: linear-gradient(to left, transparent, var(--bg));
     }
 
     &::after {
-      right: -64px;
+      right: -20px;
       background: linear-gradient(to right, transparent, var(--bg));
     }
 
-    @media (max-width: 1024px) {
+    @include tablet {
       &::before,
       &::after {
         width: 40px;
@@ -905,18 +905,18 @@ $pad-x-xs: 20px;
       }
     }
 
-    @media (max-width: 640px) {
+    @include desktop {
       &::before,
       &::after {
-        width: 20px;
+        width: 64px;
       }
 
       &::before {
-        left: -20px;
+        left: -64px;
       }
 
       &::after {
-        right: -20px;
+        right: -64px;
       }
     }
   }
@@ -925,7 +925,7 @@ $pad-x-xs: 20px;
     @include card;
     display: flex;
     flex-direction: column;
-    flex: 0 0 calc((100% - 2 * 16px - 56px) / 3);
+    flex: 0 0 calc(100% - 56px);
     overflow: hidden;
     scroll-snap-align: center;
     text-decoration: none;
@@ -942,12 +942,12 @@ $pad-x-xs: 20px;
       }
     }
 
-    @media (max-width: 1024px) {
+    @include tablet {
       flex: 0 0 calc((100% - 16px - 56px) / 2);
     }
 
-    @media (max-width: 640px) {
-      flex: 0 0 calc(100% - 56px);
+    @include desktop {
+      flex: 0 0 calc((100% - 2 * 16px - 56px) / 3);
     }
 
     &__img {
@@ -1028,13 +1028,13 @@ $pad-x-xs: 20px;
   // ── Process ──────────────────────────────────────────
   &__process-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
+    grid-template-columns: 1fr;
+    gap: 0;
     position: relative;
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 0;
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
     }
   }
 
@@ -1045,13 +1045,13 @@ $pad-x-xs: 20px;
     transition: background 0.2s;
 
     &:not(:last-child) {
-      border-right: none;
+      border-bottom: none;
     }
 
-    @media (max-width: 768px) {
-      border-right: 1px solid var(--border) !important;
+    @include tablet {
       &:not(:last-child) {
-        border-bottom: none;
+        border-bottom: 1px solid var(--border);
+        border-right: none;
       }
     }
 
@@ -1130,13 +1130,13 @@ $pad-x-xs: 20px;
   // ── Pricing entry cards ──────────────────────────────
   &__pricing-entries {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
     max-width: 800px;
     margin-top: 40px;
 
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
@@ -1152,7 +1152,9 @@ $pad-x-xs: 20px;
     cursor: pointer;
     font-family: inherit;
     color: var(--text);
-    transition: border-color 0.2s, background 0.2s;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
     position: relative;
 
     &:hover {
@@ -1164,7 +1166,9 @@ $pad-x-xs: 20px;
       border-color: rgba(163, 230, 53, 0.22);
       background: var(--feat-card);
 
-      &:hover { border-color: rgba(163, 230, 53, 0.45); }
+      &:hover {
+        border-color: rgba(163, 230, 53, 0.45);
+      }
     }
 
     &__badge {

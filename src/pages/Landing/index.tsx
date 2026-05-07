@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import "./landing.scss";
 import QuoteModal from "./QuoteModal";
+import { MoonIcon, SlidersHorizontalIcon, SparklesIcon, SunIcon } from "./icons";
+import "./Landing.scss";
 
 const MAIL = "tech@giulianoconti.com";
 const LINKEDIN = "https://www.linkedin.com/in/giulianoconti";
@@ -193,68 +194,6 @@ function renderCodeTokens(tokens: typeof CODE_TOKENS, typedCount: number): React
   return nodes;
 }
 
-// ── Icons ─────────────────────────────────────────────────────────────────────
-
-function CheckIcon() {
-  return (
-    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
-
-function SunIcon() {
-  return (
-    <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <circle cx="12" cy="12" r="4" />
-      <path
-        strokeLinecap="round"
-        d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-      />
-    </svg>
-  );
-}
-
-function MoonIcon() {
-  return (
-    <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-    </svg>
-  );
-}
-
-function Check() {
-  return (
-    <svg
-      className="lp__cmp-check"
-      width="14"
-      height="14"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2.5}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
-
-function Cross() {
-  return (
-    <svg
-      className="lp__cmp-cross"
-      width="14"
-      height="14"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2.5}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  );
-}
-
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function Landing() {
@@ -388,7 +327,7 @@ export default function Landing() {
 
           <div className="lp__nav__right">
             <button className="lp__nav__theme-toggle" onClick={toggleTheme} aria-label="Cambiar tema">
-              {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+              {theme === "dark" ? <SunIcon height={15} width={15} /> : <MoonIcon height={15} width={15} />}
             </button>
           </div>
 
@@ -599,8 +538,14 @@ export default function Landing() {
           </div>
 
           <div className="lp__pricing-entries lp__reveal">
-            <button type="button" className="lp__pricing-entry lp__pricing-entry--primary" onClick={() => openQuote("quiz")}>
-              <div className="lp__pricing-entry__icon">🧭</div>
+            <button
+              type="button"
+              className="lp__pricing-entry lp__pricing-entry--primary"
+              onClick={() => openQuote("quiz")}
+            >
+              <div className="lp__pricing-entry__icon">
+                <SparklesIcon />
+              </div>
               <div className="lp__pricing-entry__body">
                 <span className="lp__pricing-entry__badge">Recomendado</span>
                 <h3>Hacé el quiz</h3>
@@ -616,7 +561,9 @@ export default function Landing() {
             </button>
 
             <button type="button" className="lp__pricing-entry" onClick={() => openQuote("table")}>
-              <div className="lp__pricing-entry__icon">⚙️</div>
+              <div className="lp__pricing-entry__icon">
+                <SlidersHorizontalIcon />
+              </div>
               <div className="lp__pricing-entry__body">
                 <h3>Armar directo</h3>
                 <p>Sabés lo que querés. Activá features vos mismo y ves el precio al instante.</p>

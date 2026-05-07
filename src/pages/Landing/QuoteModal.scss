@@ -1,4 +1,4 @@
-// src/pages/Landing/quote-modal.scss
+@use "../../styles/mixins" as *;
 
 @keyframes qm-fade {
   from {
@@ -42,7 +42,7 @@
     animation: qm-fade 0.2s ease both reverse;
   }
 
-  @media (min-width: 601px) {
+  @include tablet {
     -webkit-align-items: center;
     align-items: center;
     padding: 16px;
@@ -57,7 +57,8 @@
   border-radius: 20px 20px 0 0;
   width: 100%;
   max-width: 100%;
-  max-height: 92vh;
+  max-height: 93vh;
+  max-height: 95dvh;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -69,7 +70,7 @@
     animation: qm-slide 0.2s ease both reverse;
   }
 
-  @media (min-width: 601px) {
+  @include tablet {
     border-radius: 24px;
     max-width: 540px;
     max-height: 90vh;
@@ -144,7 +145,7 @@
   text-align: center;
   margin: 0;
 
-  @media (min-width: 601px) {
+  @include tablet {
     font-size: 26px;
   }
 
@@ -344,7 +345,7 @@
   text-align: center;
   transition: all 0.15s;
 
-  @media (min-width: 601px) {
+  @include tablet {
     font-size: 11px;
   }
 
@@ -548,7 +549,7 @@
       color: var(--accent-text);
       line-height: 1;
 
-      @media (min-width: 601px) {
+      @include tablet {
         font-size: 24px;
       }
     }
@@ -596,4 +597,3 @@
     }
   }
 }
-

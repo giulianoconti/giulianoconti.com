@@ -1,6 +1,5 @@
-// src/pages/Landing/QuoteModal.tsx
 import { useState, useEffect, useCallback } from "react";
-import "./quote-modal.scss";
+import "./QuoteModal.scss";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -30,6 +29,7 @@ type QuizAnswers = Partial<Record<string, string>>;
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
+const CLOSE_MS = 220;
 const ARS_RATE = 1400;
 
 const FEATURES: Feature[] = [
@@ -210,12 +210,37 @@ const QUIZ_STEPS: QuizStep[] = [
 
 const WA_BASE = "https://wa.me/5493624223320?text=";
 
-const GROUPED = Object.entries(
+const FEATURE_GROUPS = Object.entries(
   FEATURES.reduce<Record<string, Feature[]>>((acc, f) => {
     (acc[f.group] ??= []).push(f);
     return acc;
   }, {}),
 );
+
+// ── Messaging ────────────────────────────────────────────────────────────────
+
+function buildWaMessage(checked: Set<string>, model: Model, timeline: Timeline, currency: Currency): string {
+  const setup = calcSetup(checked, model, timeline);
+  const monthly = calcMonthly(checked, model);
+  const selectedLabels = FEATURES.filter((f) => !f.locked && checked.has(f.id)).map((f) => `• ${f.label}`);
+  return [
+    "Hola Giuliano!",
+    "Mi nombre es [Tu Nombre].",
+    "",
+    "Armé esta cotización en la calculadora:",
+    "",
+    `💰 Setup: ${fmt(setup, currency)}`,
+    monthly > 0 ? `📅 Mensualidad: ${fmt(monthly, currency)}/mes` : "📅 Sin cargo mensual",
+    "",
+    "📋 Features seleccionadas:",
+    ...selectedLabels,
+    "",
+    `Modelo: ${model === "monthly" ? "Mensual" : "Pago único"}`,
+    timeline === "express" ? "Timeline: Express (+40%)" : "Timeline: Sin apuro",
+    "",
+    "Quedo a la espera. ¡Gracias!",
+  ].join("\n");
+}
 
 // ── Pricing utilities ────────────────────────────────────────────────────────
 
@@ -340,8 +365,16 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
   const handleClose = useCallback(() => {
     setClosing(true);
-    setTimeout(() => onClose(), 220);
+    setTimeout(() => onClose(), CLOSE_MS);
   }, [onClose]);
+
+  const resetToQuiz = useCallback(() => {
+    setAnswers({});
+    setTimeline("normal");
+    setModel("monthly");
+    setStep(0);
+    setView("quiz");
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -394,29 +427,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
     }
   };
 
-  const buildWaMessage = () => {
-    const setup = calcSetup(checked, model, timeline);
-    const monthly = calcMonthly(checked, model);
-    const selectedLabels = FEATURES.filter((f) => !f.locked && checked.has(f.id)).map((f) => `• ${f.label}`);
-    return [
-      "Hola Giuliano!",
-      "Mi nombre es [Tu Nombre].",
-      "",
-      "Armé esta cotización en la calculadora:",
-      "",
-      `💰 Setup: ${fmt(setup, currency)}`,
-      monthly > 0 ? `📅 Mensualidad: ${fmt(monthly, currency)}/mes` : "📅 Sin cargo mensual",
-      "",
-      "📋 Features seleccionadas:",
-      ...selectedLabels,
-      "",
-      `Modelo: ${model === "monthly" ? "Mensual" : "Pago único"}`,
-      timeline === "express" ? "Timeline: Express (+40%)" : "Timeline: Sin apuro",
-      "",
-      "Quedo a la espera. ¡Gracias!",
-    ].join("\n");
-  };
-
   const setup = calcSetup(checked, model, timeline);
   const monthly = calcMonthly(checked, model);
 
@@ -428,22 +438,8 @@ export default function QuoteModal({ mode, onClose }: Props) {
       <div className={`qm${closing ? " qm--out" : ""}`}>
         {/* ── Header ── */}
         <div className="qm__header">
-          {view === "quiz" && step > 0 && (
-            <button className="qm__back" onClick={() => setStep((s) => s - 1)}>
-              <BackIcon /> Atrás
-            </button>
-          )}
-          {view === "table" && (
-            <button
-              className="qm__back"
-              onClick={() => {
-                setAnswers({});
-                setTimeline("normal");
-                setModel("monthly");
-                setStep(0);
-                setView("quiz");
-              }}
-            >
+          {(view === "table" || step > 0) && (
+            <button className="qm__back" onClick={view === "table" ? resetToQuiz : () => setStep((s) => s - 1)}>
               <BackIcon /> Atrás
             </button>
           )}
@@ -517,7 +513,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
             </p>
 
             <div className="qm__features">
-              {GROUPED.map(([group, features]) => (
+              {FEATURE_GROUPS.map(([group, features]) => (
                 <div key={group} className="qm__group">
                   <div className="qm__group__label">{GROUP_LABELS[group] ?? group}</div>
                   {features.map((f) => {
@@ -563,7 +559,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
               </div>
               <a
                 className="qm__price-bar__cta"
-                href={`${WA_BASE}${encodeURIComponent(buildWaMessage())}`}
+                href={`${WA_BASE}${encodeURIComponent(buildWaMessage(checked, model, timeline, currency))}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleClose}
