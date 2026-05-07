@@ -28,15 +28,24 @@
   background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  display: -webkit-flex;
   display: flex;
-  align-items: center;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-justify-content: center;
   justify-content: center;
   z-index: 1000;
-  padding: 16px;
+  padding: 0;
   animation: qm-fade 0.22s ease both;
 
   &--out {
     animation: qm-fade 0.2s ease both reverse;
+  }
+
+  @media (min-width: 601px) {
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 16px;
   }
 }
 
@@ -45,17 +54,25 @@
 .qm {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 20px 20px 0 0;
   width: 100%;
-  max-width: 540px;
-  max-height: 90vh;
+  max-width: 100%;
+  max-height: 92vh;
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: column;
   flex-direction: column;
   overflow: hidden;
   animation: qm-slide 0.22s ease both;
 
   &--out {
     animation: qm-slide 0.2s ease both reverse;
+  }
+
+  @media (min-width: 601px) {
+    border-radius: 24px;
+    max-width: 540px;
+    max-height: 90vh;
   }
 }
 
@@ -120,12 +137,16 @@
 // ── Shared typography ─────────────────────────────────────────────────────────
 
 .qm__title {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text);
   line-height: 1.15;
   text-align: center;
   margin: 0;
+
+  @media (min-width: 601px) {
+    font-size: 26px;
+  }
 
   &--sm {
     font-size: 20px;
@@ -309,18 +330,23 @@
 }
 
 .qm__model-tab {
-  flex: 1;
-  padding: 8px 6px;
+  background: none;
   border-radius: 7px;
   border: none;
-  background: none;
   color: var(--muted);
-  font-size: 11px;
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  flex: 1;
   font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  height: 32px;
+  padding: 0 6px;
   text-align: center;
+  transition: all 0.15s;
+
+  @media (min-width: 601px) {
+    font-size: 11px;
+  }
 
   &--active {
     background: var(--text);
@@ -337,7 +363,7 @@
     background: var(--accent);
     color: #000;
     border-radius: 20px;
-    padding: 1px 6px;
+    padding: 0 6px;
     vertical-align: middle;
     line-height: 1.6;
   }
@@ -517,10 +543,14 @@
     gap: 6px;
 
     strong {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--accent-text);
       line-height: 1;
+
+      @media (min-width: 601px) {
+        font-size: 24px;
+      }
     }
   }
 
@@ -567,27 +597,3 @@
   }
 }
 
-// ── Mobile ────────────────────────────────────────────────────────────────────
-
-@media (max-width: 600px) {
-  .qm__overlay {
-    align-items: flex-end;
-    padding: 0;
-  }
-
-  .qm {
-    max-height: 92vh;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .qm__title {
-    font-size: 22px;
-  }
-  .qm__price-bar__amount strong {
-    font-size: 20px;
-  }
-
-  .qm__model-tab {
-    font-size: 10px;
-  }
-}
