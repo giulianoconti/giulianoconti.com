@@ -521,7 +521,7 @@ export default function Landing() {
 
           <div className="lp__pricing-pdfs lp__reveal">
             <a
-              href="/docs/Modelos de Colaboración y Términos — Giuliano Conti.pdf"
+              href="/docs/modelos-colaboracion-terminos.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="lp__pricing-pdfs__link"

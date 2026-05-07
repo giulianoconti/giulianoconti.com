@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelos de Colaboración y Términos — Giuliano Conti</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-wrap: pretty;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #fff;
+        padding: 48px 64px;
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      /* ── Header ── */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 24px;
+      }
+
+      .logo {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      .logo span {
+        color: #7ec015;
+      }
+
+      .header-info {
+        text-align: right;
+        font-size: 12px;
+        color: #555;
+        line-height: 1.7;
+      }
+      .header-info a {
+        color: #555;
+      }
+
+      .divider {
+        height: 2px;
+        background: linear-gradient(to right, #7ec015, #a3e635);
+        margin-bottom: 36px;
+        border: none;
+      }
+
+      /* ── Section titles ── */
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .subtitle {
+        color: #555;
+        margin-bottom: 32px;
+        font-size: 14px;
+      }
+
+      .section-title {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      /* ── Model cards ── */
+      .model-card {
+        border: 1px solid #e5e5e5;
+        border-left: 3px solid #a3e635;
+        border-radius: 4px;
+        padding: 24px 28px;
+        margin-bottom: 16px;
+      }
+
+      .model-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 6px;
+      }
+
+      .model-name {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #a3e635;
+        color: #1a1a1a;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 3px 12px;
+        border-radius: 100px;
+        margin-bottom: 14px;
+      }
+
+      .model-desc {
+        color: #333;
+        margin-bottom: 14px;
+        font-size: 13.5px;
+      }
+
+      .model-card ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .model-card ul li {
+        font-size: 13.5px;
+        color: #333;
+        padding-left: 14px;
+        position: relative;
+      }
+
+      .model-card ul li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #7ec015;
+      }
+
+      /* ── Comparison table ── */
+      .table-wrap {
+        margin: 32px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      thead tr {
+        background: #1a1a1a;
+        color: #fff;
+      }
+
+      thead th {
+        padding: 12px 4px;
+        text-align: left;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      tbody tr {
+        border-bottom: 1px solid #ebebeb;
+      }
+
+      tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      tbody td {
+        padding: 12px 4px;
+        vertical-align: top;
+      }
+
+      tbody td:first-child {
+        font-weight: 500;
+        color: #1a1a1a;
+        width: 30%;
+      }
+
+      tbody td:nth-child(2) {
+        color: #7ec015;
+        font-weight: 500;
+        width: 35%;
+      }
+
+      tbody td:nth-child(3) {
+        color: #555;
+        width: 35%;
+      }
+
+      /* ── Terms ── */
+      .terms {
+        margin-top: 36px;
+      }
+
+      .term-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 18px 0;
+        border-bottom: 1px solid #ebebeb;
+      }
+
+      .term-item:last-child {
+        border-bottom: none;
+      }
+
+      .term-num {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        border-radius: 50%;
+        background: #a3e635;
+        color: #1a1a1a;
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+      }
+
+      .term-body h3 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .term-body p {
+        font-size: 13px;
+        color: #444;
+        line-height: 1.65;
+      }
+
+      /* ── Footer ── */
+      .footer-note {
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e5e5;
+        font-size: 11.5px;
+        color: #777;
+        line-height: 1.6;
+      }
+
+      .footer-contact {
+        margin-top: 12px;
+        font-size: 11px;
+        color: #999;
+      }
+      .footer-contact a {
+        color: #999;
+      }
+
+      @media print {
+        body {
+          padding: 32px 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">giulianoconti<span>.com</span></div>
+      <div class="header-info">
+        Giuliano Conti — Software Engineer<br />
+        <a href="mailto:tech@giulianoconti.com">tech@giulianoconti.com</a><br />
+        Resistencia, Chaco, Argentina
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h1>Modelos de Colaboración Tecnológica</h1>
+    <p class="subtitle">
+      Este documento describe las dos modalidades de trabajo disponibles para el desarrollo y mantenimiento de su
+      solución web, junto con los términos legales aplicables a cada una.
+    </p>
+
+    <!-- Modelos -->
+    <div class="section-title">Los dos modelos</div>
+
+    <div class="model-card">
+      <div class="model-label">Modelo 1 · Mensual</div>
+      <div class="model-name">Plan Mensual</div>
+      <div class="badge">Ideal para no técnicos</div>
+      <p class="model-desc">
+        Yo asumo la administración total de la infraestructura. El sitio se despliega y mantiene bajo mis cuentas
+        profesionales. El cliente no necesita crear cuentas ni gestionar contraseñas.
+      </p>
+      <ul>
+        <li>
+          <strong>Propiedad:</strong> El cliente es dueño del contenido y la marca. El código queda bajo licencia de uso
+          mientras dure el contrato.
+        </li>
+        <li><strong>Pago:</strong> Setup inicial + cuota mensual fija.</li>
+        <li>
+          <strong>Rescisión:</strong> Con 30 días de aviso. Migración incluida sin costo a partir del mes 6 de contrato.
+        </li>
+      </ul>
+    </div>
+
+    <div class="model-card">
+      <div class="model-label">Modelo 2 · Pago Único</div>
+      <div class="model-name">Pago Único</div>
+      <div class="badge">Ideal para dueños que quieren autonomía</div>
+      <p class="model-desc">
+        Las cuentas se crean a nombre del cliente. Se otorga acceso temporal durante el desarrollo. Al entregar, el
+        cliente cambia todas las contraseñas y el desarrollador pierde acceso. El precio incluye un recargo del 40%
+        sobre el costo base por la transferencia total de la infraestructura.
+      </p>
+      <ul>
+        <li>
+          <strong>Propiedad:</strong> Transferencia total del código y la infraestructura al finalizar el proyecto.
+        </li>
+        <li><strong>Pago:</strong> 50% adelantado, 50% al entregar. Pago único con recargo del 40%.</li>
+        <li><strong>NDA:</strong> El desarrollador se compromete a no usar credenciales para otros fines.</li>
+      </ul>
+    </div>
+
+    <!-- Comparativa -->
+    <div class="table-wrap">
+      <div class="section-title">Comparativa rápida</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Acción</th>
+            <th>Mensual</th>
+            <th>Pago Único</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Configuración inicial</td>
+            <td>0 min. Yo me encargo de todo.</td>
+            <td>15–120 min. El cliente crea la cuenta.</td>
+          </tr>
+          <tr>
+            <td>Gestión de contraseñas</td>
+            <td>No necesitás guardar nuevas claves.</td>
+            <td>El cliente lo administra.</td>
+          </tr>
+          <tr>
+            <td>Actualizaciones futuras</td>
+            <td>Incluidas en la mensualidad.</td>
+            <td>Se presupuestan por separado.</td>
+          </tr>
+          <tr>
+            <td>Responsabilidad técnica</td>
+            <td>Recae sobre el desarrollador.</td>
+            <td>Recae sobre el cliente.</td>
+          </tr>
+          <tr>
+            <td>Propiedad del código</td>
+            <td>Licencia de uso.</td>
+            <td>Transferencia total al finalizar.</td>
+          </tr>
+          <tr>
+            <td>Recargo sobre precio base</td>
+            <td>Ninguno.</td>
+            <td>+40% por transferencia total.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Términos -->
+    <div class="terms">
+      <div class="section-title" style="padding-top: 48px">Términos y condiciones generales</div>
+
+      <div class="term-item">
+        <div class="term-num">1</div>
+        <div class="term-body">
+          <h3>Propiedad Intelectual</h3>
+          <p>
+            La propiedad intelectual de los activos de marca (logos, textos, imágenes) pertenece al Cliente en todas las
+            modalidades. En los modelos de Pago Único, la propiedad del código fuente se transfiere al Cliente tras la
+            liquidación total de los honorarios.
+          </p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-num">2</div>
+        <div class="term-body">
+          <h3>Protección de Datos (Ley 25.326 / GDPR)</h3>
+          <p>
+            El Cliente actúa como Responsable del Tratamiento de los datos capturados en su web. El desarrollador actúa
+            como Encargado del Tratamiento únicamente para fines de configuración técnica, sin retención de datos
+            personales de terceros.
+          </p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-num">3</div>
+        <div class="term-body">
+          <h3>Servicios de Terceros</h3>
+          <p>
+            El funcionamiento del sitio depende de GitHub, Vercel, Supabase y Google Analytics. El Cliente acepta los
+            términos de dichos proveedores. Cualquier cargo por uso excedente en estas plataformas es responsabilidad
+            del Cliente.
+          </p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-num">4</div>
+        <div class="term-body">
+          <h3>Google Analytics</h3>
+          <p>
+            Las propiedades de analítica deben ser de titularidad del Cliente por cumplimiento normativo. El
+            desarrollador tendrá acceso de administrador únicamente para implementación técnica de eventos y objetivos.
+          </p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-num">5</div>
+        <div class="term-body">
+          <h3>Garantía y Soporte Post-Entrega</h3>
+          <p>
+            Se incluye garantía técnica de 14 días para resolución de bugs de código. Modificaciones estéticas o nuevas
+            funcionalidades posteriores se presupuestan por separado.
+          </p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-num">6</div>
+        <div class="term-body">
+          <h3>Moneda y Ajuste de Precios (Argentina)</h3>
+          <p>
+            Los precios se expresan en USD. Los pagos en ARS se calculan al tipo de cambio vigente al momento del pago.
+            En el plan Mensual, la cuota se revisará cada 6 meses por acuerdo entre las partes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-note">
+      <strong>Nota:</strong> En todos los modelos, la propiedad intelectual del contenido proporcionado pertenece al
+      Cliente. Los términos de servicio y costos de terceros (Vercel, Supabase, Google) están sujetos a sus propias
+      políticas de uso. En modelos de Pago Único, el soporte técnico posterior a la entrega se cotizará de forma
+      independiente.
+    </div>
+    <div class="footer-contact">
+      <a href="https://giulianoconti.com" target="_blank" rel="noopener noreferrer">giulianoconti.com</a> ·
+      <a href="mailto:tech@giulianoconti.com">tech@giulianoconti.com</a> · Resistencia, Chaco, Argentina · Documento
+      informativo — no constituye contrato. Se firmará contrato de prestación de servicios previo al inicio de cada
+      proyecto.
+    </div>
+  </body>
+</html>

@@ -4,6 +4,38 @@ interface IconProps {
   width?: number;
 }
 
+export function CloseIcon({ className, height = 20, width = 20 }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      height={height}
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      width={width}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
+
+export function BackIcon({ className, height = 20, width = 20 }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      height={height}
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      width={width}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  );
+}
+
 export function CheckIcon({ className, height = 20, width = 20 }: IconProps) {
   return (
     <svg

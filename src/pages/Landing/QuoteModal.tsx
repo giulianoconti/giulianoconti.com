@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { BackIcon, CheckIcon, CloseIcon } from "./icons";
 import "./QuoteModal.scss";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -203,12 +204,19 @@ const QUIZ_STEPS: QuizStep[] = [
         label: "Giuliano lo gestiona",
         desc: "Setup + mensualidad. Cero dolores de cabeza",
       },
-      { value: "onetime", icon: "🔑", label: "Mis propias cuentas", desc: "Pago único. El código queda 100% tuyo" },
+      {
+        value: "onetime",
+        icon: "🔑",
+        label: "Mis propias cuentas",
+        desc: "Pago único +40%. El código queda 100% tuyo",
+      },
     ],
   },
 ];
 
 const WA_BASE = "https://wa.me/5493624223320?text=";
+const MULTIPLIER_ONETIME = 1.4;
+const MULTIPLIER_EXPRESS = 1.4;
 
 const FEATURE_GROUPS = Object.entries(
   FEATURES.reduce<Record<string, Feature[]>>((acc, f) => {
@@ -249,8 +257,8 @@ function calcSetup(checked: Set<string>, model: Model, timeline: Timeline): numb
   for (const f of FEATURES) {
     if (f.locked || checked.has(f.id)) total += f.price;
   }
-  if (model === "onetime") total = Math.round(total * 1.2);
-  if (timeline === "express") total = Math.round(total * 1.4);
+  if (model === "onetime") total = Math.round(total * MULTIPLIER_ONETIME);
+  if (timeline === "express") total = Math.round(total * MULTIPLIER_EXPRESS);
   return total;
 }
 
@@ -293,8 +301,8 @@ function fmt(n: number, currency: Currency): string {
 }
 
 function fmtFeature(price: number, currency: Currency, model: Model, timeline: Timeline): string {
-  let adjusted = model === "onetime" ? Math.round(price * 1.2) : price;
-  if (timeline === "express") adjusted = Math.round(adjusted * 1.4);
+  let adjusted = model === "onetime" ? Math.round(price * MULTIPLIER_ONETIME) : price;
+  if (timeline === "express") adjusted = Math.round(adjusted * MULTIPLIER_EXPRESS);
   return "+" + fmt(adjusted, currency);
 }
 
@@ -314,32 +322,6 @@ function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
     checked.add("roles");
   }
   return checked;
-}
-
-// ── Icons ─────────────────────────────────────────────────────────────────────
-
-function CloseIcon() {
-  return (
-    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="10" height="10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
-
-function BackIcon() {
-  return (
-    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-    </svg>
-  );
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -440,11 +422,11 @@ export default function QuoteModal({ mode, onClose }: Props) {
         <div className="qm__header">
           {(view === "table" || step > 0) && (
             <button className="qm__back" onClick={view === "table" ? resetToQuiz : () => setStep((s) => s - 1)}>
-              <BackIcon /> Atrás
+              <BackIcon height={14} width={14} /> Atrás
             </button>
           )}
           <button className="qm__close" onClick={handleClose} aria-label="Cerrar">
-            <CloseIcon />
+            <CloseIcon height={14} width={14} />
           </button>
         </div>
 
@@ -509,7 +491,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
             <p className="qm__model-note">
               {model === "monthly"
                 ? "Nos encargamos de todo: hosting, actualizaciones, seguridad y soporte continuo. Tu web siempre funcionando sin que tengas que preocuparte por nada."
-                : "Pagas una sola vez y el sitio es tuyo. Pero deberás ocuparte del hosting, mantenimiento, seguridad y cualquier cambio futuro por tu cuenta."}
+                : "Pago único con recargo del 40%. El código es 100% tuyo, pero hosting, soporte y cambios futuros corren por tu cuenta."}
             </p>
 
             <div className="qm__features">
@@ -529,7 +511,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                         onClick={() => !f.locked && toggleFeature(f.id, f.radio)}
                         disabled={!!f.locked}
                       >
-                        <div className="qm__row__check">{isChecked && <CheckIcon />}</div>
+                        <div className="qm__row__check">{isChecked && <CheckIcon height={10} width={10} />}</div>
                         <div className="qm__row__info">
                           <span className="qm__row__label">{f.label}</span>
                           <span className="qm__row__desc">{f.desc}</span>
