@@ -1,107 +1,46 @@
-# Giuliano's Portfolio
+# giulianoconti.com
 
-A modern, interactive 3D portfolio built with React, TypeScript, and Three.js. Features smooth animations, project showcases with interactive tooltips, and multi-language support.
+Personal freelance landing page. Single-page site showcasing services, projects, pricing, and contact.
 
-## 🚀 Features
+## Features
 
-- **3D Interactive Scene** – WebGL-powered hero section using Three.js and React Three Fiber
-- **Smooth Scroll** – Lenis integration for butter-smooth scrolling experience
-- **Project Showcase** – Interactive tooltips in footer with project details, tech stack, and links
-- **Multi-language Support** – English/Spanish/Portuguese
-- **Responsive Design** – Mobile-first approach with SCSS breakpoints
-- **Modern Stack** – React 19, TypeScript, Vite for fast development
+- **Dark/light theme** – persisted in localStorage, respects system preference
+- **Typewriter hero** – animated code card on desktop
+- **Project showcase** – real production projects with tags and roles
+- **Pricing modal** – quiz flow or direct feature table, opens automatically on first visit
+- **FAQ accordion** – collapsible Q&A section
+- **WhatsApp floating button** – pre-filled message
+- **Scroll animations** – IntersectionObserver reveal on sections
+- **Responsive** – mobile hamburger menu, desktop nav
 
-## 📁 Project Structure
+## Stack
+
+- React 19, TypeScript
+- Vite
+- SCSS
+
+## Structure
 
 ```
 src/
-├── components/
-│   ├── molecules/
-│   │   ├── Footer/        # Footer with project tooltips
-│   │   └── Navbar/        # Navigation bar
-│   └── atoms/             # Reusable UI components
 ├── pages/
-│   └── Home/              # Main page sections
-│       ├── Hero/          # 3D hero section
-│       ├── About/         # About section
-│       ├── Experience/    # Work experience
-│       ├── Contact/       # Contact section
-│       └── Scene/         # Three.js scene setup
-├── contexts/
-│   └── LocaleContext.tsx  # Language/locale management
-├── icons/                 # SVG icon components
-├── styles/                # Global SCSS
-└── utils/                 # Constants, interfaces, helpers
+│   └── Landing/
+│       ├── index.tsx        # Main landing page
+│       ├── Landing.scss     # All landing styles
+│       ├── QuoteModal.tsx   # Pricing quiz / feature table modal
+│       ├── QuoteModal.scss
+│       └── icons.tsx        # SVG icon components
+├── styles/
+│   └── _mixins.scss
+├── index.scss
+└── main.tsx
 ```
 
-## 🛠️ Setup & Installation
+## Scripts
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Lint code
-npm lint
+npm run dev      # Start dev server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run lint     # Run ESLint
 ```
-
-## 🎨 Tech Stack
-
-- **Frontend**: React 19, TypeScript
-- **Build Tool**: Vite
-- **3D Graphics**: Three.js, React Three Fiber, React Three Drei
-- **Styling**: SCSS with CSS variables
-- **Scrolling**: Lenis
-
-## 📋 Scripts
-
-| Command           | Description                      |
-| ----------------- | -------------------------------- |
-| `npm run dev`     | Start Vite dev server            |
-| `npm run build`   | Build for production             |
-| `npm run preview` | Preview production build locally |
-| `npm lint`        | Run ESLint                       |
-
-## 🌐 Localization
-
-The portfolio supports multiple languages through `LocaleContext`. Currently configured for:
-
-- English
-- Spanish
-
-Add new languages by extending the locale context and translation maps.
-
-## 📂 Key Components
-
-- **Footer**: Interactive project showcase with hover tooltips
-- **Navbar**: Navigation with mobile support
-- **Hero Section**: 3D scene with Three.js
-- **About/Experience**: Portfolio content sections
-- **Contact**: Contact information and CTA
-
-## 📱 Responsive Breakpoints
-
-Configured in `src/styles/_breakpoints.scss`:
-
-- Mobile (default)
-- Tablet
-- Desktop
-
-## 🔧 Development Notes
-
-- Uses CSS modules via SCSS `@use` for styling
-- Icons are reusable React components with TypeScript support
-- Three.js scene is optimized for performance with lazy loading
-- Project data managed in `utils/constants.ts`
-
-## 📄 License
-
-Personal portfolio project.

@@ -8,6 +8,6 @@
   "arrowParens": "always",
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 120,
+  "printWidth": 220,
   "endOfLine": "lf"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "giulianoconti.com",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,6 +7,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "prettier": "^3.8.3",
     "vite": "^8.0.4"
   }
 }

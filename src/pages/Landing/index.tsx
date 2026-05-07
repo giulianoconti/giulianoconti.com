@@ -1,175 +1,8 @@
 import { useState, useEffect } from "react";
 import QuoteModal from "./QuoteModal";
 import { MoonIcon, SlidersHorizontalIcon, SparklesIcon, SunIcon } from "./icons";
+import { MAIL, LINKEDIN, GITHUB, WA_MSG, CONTACT_MSG, HIRE_MSG, PROJECTS, PROCESS, FAQS, MARQUEE_ITEMS, CODE_TOKENS } from "./constants";
 import "./Landing.scss";
-
-const MAIL = "tech@giulianoconti.com";
-const LINKEDIN = "https://www.linkedin.com/in/giulianoconti";
-const GITHUB = "https://github.com/giulianoconti";
-const WA_MSG = (msg: string) => `https://wa.me/5493624223320?text=${encodeURIComponent(msg)}`;
-// const WA_MSG = (msg: string) => `https://wa.me/5493624043228?text=${encodeURIComponent(msg)}`;
-const CONTACT_MSG = "Hola Giuliano! Me interesa contratarte para un proyecto. ¿Podemos hablar?";
-const HIRE_MSG = "Hola Giuliano! Quiero contratar tus servicios de desarrollo web.";
-
-// ── Data ─────────────────────────────────────────────────────────────────────
-
-const PROJECTS = [
-  // {
-  //   image: "/assets/project-clinis.png",
-  //   title: "Clinis",
-  //   desc: "Plataforma de gestión para clínicas. Panel admin, turnos, pacientes y facturación.",
-  //   url: "https://clinis.com.ar/",
-  //   tags: ["Next.js", "Supabase", "Auth", "Admin"],
-  //   role: "Web completa",
-  // },
-  {
-    image: "/assets/project-wormholescan.webp",
-    title: "Wormhole Scan",
-    desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",
-    url: "https://wormholescan.io/",
-    tags: ["React", "TypeScript", "Web3", "API"],
-    role: "Frontend completo",
-  },
-  {
-    image: "/assets/project-portal.webp",
-    title: "Portal Bridge",
-    desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",
-    url: "https://portalbridge.com/",
-    tags: ["React", "Web3", "Wallets"],
-    role: "Testing y fixes",
-  },
-  {
-    image: "/assets/project-xlabs.webp",
-    title: "xLabs",
-    desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",
-    url: "https://xlabs.xyz/",
-    tags: ["React", "TypeScript", "Animaciones"],
-    role: "Frontend completo",
-  },
-];
-
-const PROCESS = [
-  { n: "01", title: "Hablamos", desc: "Me contás el proyecto, qué necesitás y en qué plazo. Sin rodeos." },
-  { n: "02", title: "Propongo", desc: "Te mando un presupuesto detallado con alcance, tiempo de entrega y precio." },
-  { n: "03", title: "Desarrollo", desc: "Trabajo en sprints y te muestro avances. Podés dar feedback en cada etapa." },
-  {
-    n: "04",
-    title: "Lanzamos",
-    desc: "Deploy en producción, te entrego accesos y documentación. Queda todo funcionando.",
-  },
-];
-
-const FAQS = [
-  {
-    q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
-    a: "En el modelo Mensual, manejo toda la infraestructura en mis cuentas (Vercel, GitHub, Supabase, etc). Vos solo comprás tu dominio y pagás una mensualidad. Cero dolores de cabeza técnicos. En el Pago Único, te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código, la infra y los accesos desde el día uno.",
-  },
-  {
-    q: "¿Cuánto tarda un proyecto?",
-    a: "Depende del tipo: landing page, 3–5 días hábiles. App web (multi-página + CMS), 1–2 semanas. App con login y panel admin, 2–3 semanas. Si necesitás prioridad, ofrezco un modo Express (+40% sobre el precio base) que reduce los tiempos a la mitad.",
-  },
-  {
-    q: "¿Qué es el modo Express?",
-    a: "Priorizo tu proyecto por encima de cualquier otro trabajo activo hasta entregarlo. El recargo del 40% aplica sobre el costo de setup o el precio total. En la primera consulta confirmamos si tengo disponibilidad para arrancarlo de inmediato.",
-  },
-  {
-    q: "¿Qué pasa si quiero salir del plan Mensual?",
-    a: "Sin problema. Si ya cumpliste 6 meses, te migro todo a tus propias cuentas (GitHub, Vercel, Supabase, etc) sin costo adicional. Antes de los 6 meses aplica un cargo de migración según el plan contratado.",
-  },
-  {
-    q: "¿Cómo se hace el pago?",
-    a: "Acepto pagos en USD (crypto USDT/USDC) y en ARS con Mercadopago o transferencia bancaria. La estructura estándar es 50% adelantado para arrancar y 50% al momento de la entrega. Para el modelo Mensual, el primer mes se abona junto con el setup.",
-  },
-  {
-    q: "¿Puedo pedirte cambios después de la entrega?",
-    a: "Sí. Cada proyecto incluye rondas de revisión antes del cierre. En el Mensual, los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido. En el Pago Único, podemos presupuestar cambios puntuales o acordar un retainer mensual.",
-  },
-  {
-    q: "¿Trabajás con clientes de otros países?",
-    a: "Sí. Trabajo 100% remoto desde Resistencia, Argentina. Tengo experiencia colaborando con equipos de EEUU, Europa y América Latina. Coordinamos por WhatsApp, email o videollamada según tu zona horaria.",
-  },
-];
-
-const MARQUEE_ITEMS = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Tailwind CSS",
-  "Supabase",
-  "Vercel",
-  "GitHub",
-  "Google Analytics",
-  "Sass",
-  "REST APIs",
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Tailwind CSS",
-  "Supabase",
-  "Vercel",
-  "GitHub",
-  "Google Analytics",
-  "Sass",
-  "REST APIs",
-];
-
-// ── Hero code typewriter ─────────────────────────────────────────────────────
-
-const CODE_TOKENS: { text: string; cls?: string }[] = [
-  { text: "const", cls: "kw" },
-  { text: " " },
-  { text: "engineer", cls: "fn" },
-  { text: " = {\n" },
-  { text: "  " },
-  { text: "name", cls: "str" },
-  { text: ": " },
-  { text: '"Giuliano Conti"', cls: "mt" },
-  { text: ",\n" },
-  { text: "  " },
-  { text: "role", cls: "str" },
-  { text: ": " },
-  { text: '"Full-Stack Developer"', cls: "mt" },
-  { text: ",\n" },
-  { text: "  " },
-  { text: "location", cls: "str" },
-  { text: ": " },
-  { text: '"Resistencia, AR 🇦🇷"', cls: "mt" },
-  { text: ",\n" },
-  { text: "  " },
-  { text: "stack", cls: "str" },
-  { text: ": [\n" },
-  { text: "    " },
-  { text: '"React"', cls: "mt" },
-  { text: ", " },
-  { text: '"Next.js"', cls: "mt" },
-  { text: ",\n" },
-  { text: "    " },
-  { text: '"TypeScript"', cls: "mt" },
-  { text: ", " },
-  { text: '"Node.js"', cls: "mt" },
-  { text: ",\n" },
-  { text: "    " },
-  { text: '"Web3"', cls: "mt" },
-  { text: ", " },
-  { text: '"Supabase"', cls: "mt" },
-  { text: ",\n" },
-  { text: "  ],\n" },
-  { text: "  " },
-  { text: "available", cls: "str" },
-  { text: ": " },
-  { text: "true", cls: "kw" },
-  { text: ",\n" },
-  { text: "  " },
-  { text: "currency", cls: "str" },
-  { text: ": [" },
-  { text: '"USD"', cls: "mt" },
-  { text: ", " },
-  { text: '"ARS"', cls: "mt" },
-  { text: "],\n" },
-  { text: "}" },
-];
 
 const TOTAL_CHARS = CODE_TOKENS.reduce((sum, t) => sum + t.text.length, 0);
 
@@ -211,11 +44,15 @@ export default function Landing() {
   });
 
   const toggleTheme = () => {
+    document.documentElement.classList.add("no-transition");
     setTheme((t) => {
       const next = t === "dark" ? "light" : "dark";
       localStorage.setItem("lp-theme", next);
       document.documentElement.style.background = next === "light" ? "#fafaf8" : "#000";
       return next;
+    });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => document.documentElement.classList.remove("no-transition"));
     });
   };
 
@@ -307,13 +144,7 @@ export default function Landing() {
       <nav className={`lp__nav ${scrolled ? "lp__nav--scrolled" : ""}`}>
         <div className="lp__nav__inner">
           <a href="/" className="lp__nav__logo">
-            <img
-              alt="Logo"
-              className="nav_inner_logo_img"
-              src={theme === "light" ? "/assets/favicon_light.svg" : "/assets/favicon_dark.svg"}
-              height={32}
-              width={32}
-            />
+            <img alt="Logo" className="nav_inner_logo_img" src={theme === "light" ? "/assets/favicon_light.svg" : "/assets/favicon_dark.svg"} height={32} width={32} />
             giulianoconti.com
           </a>
 
@@ -331,11 +162,7 @@ export default function Landing() {
             </button>
           </div>
 
-          <button
-            className={`lp__nav__hamburger ${menuOpen ? "lp__nav__hamburger--open" : ""}`}
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Menú"
-          >
+          <button className={`lp__nav__hamburger ${menuOpen ? "lp__nav__hamburger--open" : ""}`} onClick={() => setMenuOpen((o) => !o)} aria-label="Menú">
             <span />
             <span />
             <span />
@@ -378,22 +205,14 @@ export default function Landing() {
               Freelance
             </h1>
 
-            <p className="lp__hero__sub">
-              Soy Giuliano Conti, developer full-stack. Construyo sitios web y aplicaciones para negocios que quieren
-              crecer online — rápidos, modernos y sin vueltas técnicas.
-            </p>
+            <p className="lp__hero__sub">Soy Giuliano Conti, developer full-stack. Construyo sitios web y aplicaciones para negocios que quieren crecer online — rápidos, modernos y sin vueltas técnicas.</p>
 
             <div className="lp__hero__actions">
               <a className="lp__hero__actions__primary" href={`mailto:${MAIL}`}>
                 {MAIL}
               </a>
 
-              <a
-                className="lp__hero__actions__secondary"
-                href={WA_MSG(CONTACT_MSG)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="lp__hero__actions__secondary" href={WA_MSG(CONTACT_MSG)} target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
             </div>
@@ -453,14 +272,7 @@ export default function Landing() {
           <div className="lp__projects-grid-wrap">
             <div className="lp__projects-grid">
               {PROJECTS.map((p, i) => (
-                <a
-                  key={p.title}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="lp__project-card lp__reveal"
-                  style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}
-                >
+                <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer" className="lp__project-card lp__reveal" style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}>
                   <div className="lp__project-card__img__container">
                     <img className="lp__project-card__img" src={p.image} alt={p.title} loading="lazy" />
                   </div>
@@ -494,11 +306,7 @@ export default function Landing() {
           </div>
           <div className="lp__process-grid">
             {PROCESS.map((p, i) => (
-              <div
-                key={p.n}
-                className="lp__process-step lp__reveal"
-                style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}
-              >
+              <div key={p.n} className="lp__process-step lp__reveal" style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}>
                 <div className="lp__process-step__n">{p.n}</div>
                 <h3>{p.title}</h3>
                 <p>{p.desc}</p>
@@ -520,29 +328,16 @@ export default function Landing() {
           </div>
 
           <div className="lp__pricing-pdfs lp__reveal">
-            <a
-              href="/docs/modelos-colaboracion-terminos.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lp__pricing-pdfs__link"
-            >
+            <a href="/docs/modelos-colaboracion-terminos.pdf" target="_blank" rel="noopener noreferrer" className="lp__pricing-pdfs__link">
               <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               Términos y modelos de colaboración
             </a>
           </div>
 
           <div className="lp__pricing-entries lp__reveal">
-            <button
-              type="button"
-              className="lp__pricing-entry lp__pricing-entry--primary"
-              onClick={() => openQuote("quiz")}
-            >
+            <button type="button" className="lp__pricing-entry lp__pricing-entry--primary" onClick={() => openQuote("quiz")}>
               <div className="lp__pricing-entry__icon">
                 <SparklesIcon />
               </div>
@@ -591,17 +386,7 @@ export default function Landing() {
                   <span className={`lp__faq__btn__icon ${faqOpen === i ? "lp__faq__btn__icon--open" : ""}`}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
                       <line x1="5" y1="1" x2="5" y2="9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      {faqOpen !== i && (
-                        <line
-                          x1="1"
-                          y1="5"
-                          x2="9"
-                          y2="5"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      )}
+                      {faqOpen !== i && <line x1="1" y1="5" x2="9" y2="5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />}
                     </svg>
                   </span>
                 </button>
@@ -654,9 +439,7 @@ export default function Landing() {
       {/* ── Footer ───────────────────────────────────── */}
       <footer className="lp__footer">
         <div className="lp__footer__inner">
-          <div className="lp__footer__left">
-            © {new Date().getFullYear()} Giuliano Conti · Resistencia, Chaco, Argentina
-          </div>
+          <div className="lp__footer__left">© {new Date().getFullYear()} Giuliano Conti · Resistencia, Chaco, Argentina</div>
           <div className="lp__footer__links">
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
               LinkedIn
@@ -673,13 +456,7 @@ export default function Landing() {
       {quoteOpen && <QuoteModal mode={quoteMode} onClose={closeQuote} />}
 
       {/* ── WhatsApp floating ────────────────────────── */}
-      <a
-        href={WA_MSG(HIRE_MSG)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="lp__wa"
-        aria-label="Contactar por WhatsApp"
-      >
+      <a href={WA_MSG(HIRE_MSG)} target="_blank" rel="noopener noreferrer" className="lp__wa" aria-label="Contactar por WhatsApp">
         <svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552">
           <defs>
             <linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
