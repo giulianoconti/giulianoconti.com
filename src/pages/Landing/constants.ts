@@ -28,7 +28,7 @@ export interface QuizStep {
 
 // ── Contact ───────────────────────────────────────────────────────────────────
 
-export const PHONE = "5493624223320";
+export const PHONE = "5493624043228";
 export const MAIL = "tech@giulianoconti.com";
 export const LINKEDIN = "https://www.linkedin.com/in/giulianoconti";
 export const GITHUB = "https://github.com/giulianoconti";
