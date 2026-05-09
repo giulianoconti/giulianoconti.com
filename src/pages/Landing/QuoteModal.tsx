@@ -70,17 +70,18 @@ function fmtFeature(price: number, currency: Currency, model: Model, timeline: T
 
 function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
   const checked = new Set<string>();
-  const { pages, auth } = answers;
+  const { pages, auth, cms } = answers;
   if (pages) checked.add(pages);
-  if (pages === "p4" || pages === "p10") {
-    checked.add("seo");
-  }
+  if (pages === "p4" || pages === "p10") checked.add("seo");
   if (pages === "p1") checked.add("seo");
   if (auth === "yes") {
     checked.add("auth");
     checked.add("db");
-    checked.add("cms");
     checked.add("roles");
+  }
+  if (cms === "yes" || auth === "yes") {
+    checked.add("cms");
+    checked.add("db");
   }
   return checked;
 }

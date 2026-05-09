@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { FileIcon, LayoutIcon, LayersIcon, GlobeIcon, LockIcon, ClockIcon, ZapIcon, WrenchIcon, KeyIcon } from "./icons";
+import { FileIcon, LayoutIcon, LayersIcon, GlobeIcon, LockIcon, ClockIcon, ZapIcon, WrenchIcon, KeyIcon, PenToolIcon, MonitorIcon } from "./icons";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -40,9 +40,9 @@ export const HIRE_MSG = "Hola Giuliano! Quiero contratar tus servicios de desarr
 
 // prettier-ignore
 export const PROJECTS = [
-  { image: "/assets/project-wormholescan.webp", title: "Wormhole Scan", desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",  url: "https://wormholescan.io/",  tags: ["React", "TypeScript", "Web3", "API"], role: "Frontend completo" },
-  { image: "/assets/project-portal.webp",       title: "Portal Bridge", desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",       url: "https://portalbridge.com/", tags: ["React", "Web3", "Wallets"],           role: "Testing y fixes"   },
-  { image: "/assets/project-xlabs.webp",        title: "xLabs",         desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",          url: "https://xlabs.xyz/",        tags: ["React", "TypeScript", "Animaciones"], role: "Frontend completo" },
+  { image: "/assets/project-wormholescan.webp", title: "Wormhole Scan", desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",  url: "https://wormholescan.io/",                tags: ["React", "TypeScript", "Web3", "API"], role: "Frontend completo" },
+  { image: "/assets/project-portal.webp",       title: "Portal Bridge", desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",       url: "https://portalbridge.com/",               tags: ["React", "Web3", "Wallets"],           role: "Testing y fixes"   },
+  { image: "/assets/project-xlabs.webp",        title: "xLabs",         desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",          url: "https://xlabs.github.io/xlabs-website/",  tags: ["React", "TypeScript", "Animaciones"], role: "Frontend completo" },
 ];
 
 // prettier-ignore
@@ -162,6 +162,7 @@ export const FEATURES: Feature[] = [
   { id: "cms",        label: "Panel admin + CMS",        desc: "Editá contenido e imágenes desde panel /admin",       price: 180, group: "backend", triggers: ["db"]          },
   { id: "db",         label: "Base de datos",            desc: "Almacenamiento de datos en tiempo real - PostgreSQL", price: 100, group: "backend"                            },
   { id: "roles",      label: "Roles y permisos",         desc: "Admin, editor, usuario — control de acceso",          price: 80,  group: "backend", triggers: ["auth", "db"]  },
+  { id: "bookings",   label: "Sistema de turnos",        desc: "Reservas online con calendario y gestión",            price: 200, group: "extras",  triggers: ["db", "auth"] },
   { id: "seo",        label: "SEO + Google Analytics",   desc: "Optimización + tracking de visitas + GDPR",           price: 80,  group: "extras"                             },
   { id: "maps",       label: "Google Maps integrado",    desc: "Mapa interactivo con tu ubicación",                   price: 30,  group: "extras"                             },
   { id: "mercadopago",label: "Pagos con MercadoPago",    desc: "Checkout integrado — requiere cuenta MP tuya",        price: 120, group: "extras"                             },
@@ -194,7 +195,16 @@ export const QUIZ_STEPS: QuizStep[] = [
     key: "auth",
     options: [
       { value: "no",  icon: GlobeIcon, label: "No, es público",     desc: "Solo info, contacto o catálogo" },
-      { value: "yes", icon: LockIcon,  label: "Sí, necesito login", desc: "Registro, perfil, panel propio" },
+      { value: "yes", icon: LockIcon,  label: "Sí, necesito login", desc: "Mis usuarios se registran y tienen perfil" },
+    ],
+  },
+  {
+    title: "¿Necesitás panel admin o CMS?",
+    sub: "Para publicar contenido y gestionar tu web",
+    key: "cms",
+    options: [
+      { value: "no",  icon: MonitorIcon,  label: "No, contenido fijo",     desc: "El contenido no cambia frecuentemente" },
+      { value: "yes", icon: PenToolIcon,  label: "Sí, quiero panel admin", desc: "Necesito publicar contenido o administrar datos" },
     ],
   },
   {
@@ -211,8 +221,8 @@ export const QUIZ_STEPS: QuizStep[] = [
     sub: "Define si pagás mensual o una sola vez",
     key: "infra",
     options: [
-      { value: "monthly", icon: WrenchIcon, label: "Giuliano lo gestiona", desc: "Setup + mensualidad. Cero dolores de cabeza" },
-      { value: "onetime", icon: KeyIcon,    label: "Mis propias cuentas",  desc: "Pago único +40%. El código queda 100% tuyo" },
+      { value: "monthly", icon: WrenchIcon, label: "Giuliano lo gestiona", desc: "Setup + mensualidad. Hosting, soporte y updates incluidos" },
+      { value: "onetime", icon: KeyIcon,    label: "Mis propias cuentas",  desc: "Pago único +40%. Hosting, soporte y cambios corren por tu cuenta" },
     ],
   },
 ];
