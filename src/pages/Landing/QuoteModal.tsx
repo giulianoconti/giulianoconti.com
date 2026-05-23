@@ -16,14 +16,7 @@ type QuizAnswers = Partial<Record<string, string>>;
 
 // ── Messaging ────────────────────────────────────────────────────────────────
 
-function buildWaMessage(
-  checked: Set<string>,
-  model: Model,
-  timeline: Timeline,
-  currency: Currency,
-  t: (key: string) => string,
-  features: Feature[],
-): string {
+function buildWaMessage(checked: Set<string>, model: Model, timeline: Timeline, currency: Currency, t: (key: string) => string, features: Feature[]): string {
   const setup = calcSetup(checked, model, timeline, features);
   const monthly = calcMonthly(checked, model);
   const selectedLabels = features.filter((f) => !f.locked && checked.has(f.id)).map((f) => `• ${f.label}`);
@@ -95,6 +88,14 @@ function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
   return checked;
 }
 
+// ── Geo ───────────────────────────────────────────────────────────────────────
+
+const AR_SHORT = ["America/Cordoba", "America/Buenos_Aires", "America/Mendoza", "America/Jujuy", "America/Catamarca", "America/Rosario"];
+function isArgentina(): boolean {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  return tz.startsWith("America/Argentina/") || AR_SHORT.includes(tz);
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 interface Props {
@@ -120,7 +121,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const [currency, setCurrency] = useState<Currency>(() => {
     const saved = localStorage.getItem("lp-currency");
     if (saved === "ars" || saved === "usd") return saved as Currency;
-    return Intl.DateTimeFormat().resolvedOptions().timeZone.startsWith("America/Argentina") ? "ars" : "usd";
+    return isArgentina() ? "ars" : "usd";
   });
   const [closing, setClosing] = useState(false);
 
@@ -192,10 +193,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const monthly = calcMonthly(checked, model);
 
   return (
-    <div
-      className={`qm__overlay${closing ? " qm__overlay--out" : ""}`}
-      onClick={(e) => e.target === e.currentTarget && handleClose()}
-    >
+    <div className={`qm__overlay${closing ? " qm__overlay--out" : ""}`} onClick={(e) => e.target === e.currentTarget && handleClose()}>
       <div className={`qm${closing ? " qm--out" : ""}`}>
         {/* ── Header ── */}
         <div className="qm__header">
@@ -224,11 +222,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
             <div className="qm__options">
               {quizSteps[step].options.map((opt) => (
-                <button
-                  key={opt.value}
-                  className={`qm__option${answers[quizSteps[step].key] === opt.value ? " qm__option--selected" : ""}`}
-                  onClick={() => selectAnswer(quizSteps[step].key, opt.value, step)}
-                >
+                <button key={opt.value} className={`qm__option${answers[quizSteps[step].key] === opt.value ? " qm__option--selected" : ""}`} onClick={() => selectAnswer(quizSteps[step].key, opt.value, step)}>
                   <div className="qm__option__icon">
                     <opt.icon height={20} width={20} />
                   </div>
@@ -252,26 +246,16 @@ export default function QuoteModal({ mode, onClose }: Props) {
             </div>
 
             <div className="qm__model-tabs">
-              <button
-                className={`qm__model-tab${model === "monthly" ? " qm__model-tab--active" : ""}`}
-                onClick={() => setModel("monthly")}
-                aria-pressed={model === "monthly"}
-              >
+              <button className={`qm__model-tab${model === "monthly" ? " qm__model-tab--active" : ""}`} onClick={() => setModel("monthly")} aria-pressed={model === "monthly"}>
                 {t("qm_tab_monthly")}
                 <span className="qm__model-tab__badge">{t("qm_tab_badge")}</span>
               </button>
-              <button
-                className={`qm__model-tab${model === "onetime" ? " qm__model-tab--active" : ""}`}
-                onClick={() => setModel("onetime")}
-                aria-pressed={model === "onetime"}
-              >
+              <button className={`qm__model-tab${model === "onetime" ? " qm__model-tab--active" : ""}`} onClick={() => setModel("onetime")} aria-pressed={model === "onetime"}>
                 {t("qm_tab_onetime")}
               </button>
             </div>
 
-            <p className="qm__model-note">
-              {model === "monthly" ? t("qm_note_monthly") : t("qm_note_onetime")}
-            </p>
+            <p className="qm__model-note">{model === "monthly" ? t("qm_note_monthly") : t("qm_note_onetime")}</p>
 
             <div className="qm__features">
               {featureGroups.map(([group, groupFeatures]) => (
@@ -279,10 +263,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <div className="qm__group__label">{groupLabels[group] ?? group}</div>
                   {(groupFeatures as Feature[]).map((f) => {
                     const isChecked = !!f.locked || checked.has(f.id);
-                    const isRequired =
-                      !f.locked &&
-                      checked.has(f.id) &&
-                      features.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
+                    const isRequired = !f.locked && checked.has(f.id) && features.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
                     return (
                       <button
                         key={f.id}
@@ -295,9 +276,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                           <span className="qm__row__label">{f.label}</span>
                           <span className="qm__row__desc">{f.desc}</span>
                         </div>
-                        <span className="qm__row__price">
-                          {f.price === 0 ? "inc." : fmtFeature(f.price, currency, model, timeline)}
-                        </span>
+                        <span className="qm__row__price">{f.price === 0 ? "inc." : fmtFeature(f.price, currency, model, timeline)}</span>
                       </button>
                     );
                   })}
@@ -314,17 +293,9 @@ export default function QuoteModal({ mode, onClose }: Props) {
                     {currency.toUpperCase()}
                   </button>
                 </div>
-                <span className="qm__price-bar__monthly">
-                  {monthly > 0 ? `${t("qm_monthly_from")} ${fmt(monthly, currency)}${t("qm_monthly_per")}` : t("qm_no_monthly")}
-                </span>
+                <span className="qm__price-bar__monthly">{monthly > 0 ? `${t("qm_monthly_from")} ${fmt(monthly, currency)}${t("qm_monthly_per")}` : t("qm_no_monthly")}</span>
               </div>
-              <a
-                className="qm__price-bar__cta"
-                href={WA_MSG(buildWaMessage(checked, model, timeline, currency, t, features))}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleClose}
-              >
+              <a className="qm__price-bar__cta" href={WA_MSG(buildWaMessage(checked, model, timeline, currency, t, features))} target="_blank" rel="noopener noreferrer" onClick={handleClose}>
                 {t("qm_cta")}
               </a>
             </div>
