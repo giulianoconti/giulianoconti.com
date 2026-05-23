@@ -33,59 +33,26 @@ export const MAIL = "tech@giulianoconti.com";
 export const LINKEDIN = "https://www.linkedin.com/in/giulianoconti";
 export const GITHUB = "https://github.com/giulianoconti";
 export const WA_MSG = (msg: string) => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
-export const CONTACT_MSG = "Hola Giuliano! Me interesa contratarte para un proyecto. ¿Podemos hablar?";
-export const HIRE_MSG = "Hola Giuliano! Quiero contratar tus servicios de desarrollo web.";
 
 // ── Landing data ──────────────────────────────────────────────────────────────
 
+// 1920x1280 1560x998
 // prettier-ignore
 export const PROJECTS = [
-  { image: "/assets/project-wormholescan.webp", title: "Wormhole Scan", desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",  url: "https://wormholescan.io/",                tags: ["React", "TypeScript", "Web3", "API"], role: "Frontend completo" },
-  { image: "/assets/project-portal.webp",       title: "Portal Bridge", desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",       url: "https://portalbridge.com/",               tags: ["React", "Web3", "Wallets"],           role: "Testing y fixes"   },
-  { image: "/assets/project-xlabs.webp",        title: "xLabs",         desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",          url: "https://xlabs.github.io/xlabs-website/",  tags: ["React", "TypeScript", "Animaciones"], role: "Frontend completo" },
+  { image: "/assets/project-clinis.webp",       title: "Clinis",        desc: "", url: "https://www.clinis.com.ar/",              tags: ["React", "Next.js", "TypeScript", "Supabase"], role: "Web completa"      },
+  { image: "/assets/project-wormholescan.webp", title: "Wormhole Scan", desc: "", url: "https://wormholescan.io/",                tags: ["React", "TypeScript", "Web3", "API"],         role: "Frontend completo" },
+  { image: "/assets/project-portal.webp",       title: "Portal Bridge", desc: "", url: "https://portalbridge.com/",               tags: ["React", "Web3", "Wallets"],                   role: "Testing y fixes"   },
+  { image: "/assets/project-xlabs.webp",        title: "xLabs",         desc: "", url: "https://xlabs.github.io/xlabs-website/",  tags: ["React", "TypeScript", "Animaciones"],         role: "Frontend completo" },
 ];
 
 // prettier-ignore
 export const PROCESS = [
-  { n: "01", title: "Hablamos",   desc: "Me contás el proyecto, qué necesitás y en qué plazo. Sin rodeos." },
-  { n: "02", title: "Propongo",   desc: "Te mando un presupuesto detallado con alcance, tiempo de entrega y precio." },
-  { n: "03", title: "Desarrollo", desc: "Trabajo en sprints y te muestro avances. Podés dar feedback en cada etapa." },
-  { n: "04", title: "Lanzamos",   desc: "Deploy en producción, te entrego accesos y documentación. Queda todo funcionando." },
+  { n: "01", title: "Hablamos",   desc: ""  },
+  { n: "02", title: "Propongo",   desc: ""  },
+  { n: "03", title: "Desarrollo", desc: ""  },
+  { n: "04", title: "Lanzamos",   desc: ""  },
 ];
 
-export const FAQS = [
-  {
-    q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
-    a: "En el modelo Mensual, manejo toda la infraestructura en mis cuentas (Vercel, GitHub, Supabase, etc). Vos solo comprás tu dominio y pagás una mensualidad. Cero dolores de cabeza técnicos. En el Pago Único, te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código, la infra y los accesos desde el día uno.",
-  },
-  {
-    q: "¿Cuánto tarda un proyecto?",
-    a: "Depende del tipo: landing page, 3–5 días hábiles. App web (multi-página + CMS), 1–2 semanas. App con login y panel admin, 2–3 semanas. Si necesitás prioridad, ofrezco un modo Express (+40% sobre el precio base) que reduce los tiempos a la mitad.",
-  },
-  {
-    q: "¿Qué es el modo Express?",
-    a: "Priorizo tu proyecto por encima de cualquier otro trabajo activo hasta entregarlo. El recargo del 40% aplica sobre el costo de setup o el precio total. En la primera consulta confirmamos si tengo disponibilidad para arrancarlo de inmediato.",
-  },
-  {
-    q: "¿Qué pasa si quiero salir del plan Mensual?",
-    a: "Sin problema. Si ya cumpliste 6 meses, te migro todo a tus propias cuentas (GitHub, Vercel, Supabase, etc) sin costo adicional. Antes de los 6 meses aplica un cargo de migración según el plan contratado.",
-  },
-  {
-    q: "¿Cómo se hace el pago?",
-    a: "Acepto pagos en USD (crypto USDT/USDC) y en ARS con Mercadopago o transferencia bancaria. La estructura estándar es 50% adelantado para arrancar y 50% al momento de la entrega. Para el modelo Mensual, el primer mes se abona junto con el setup.",
-  },
-  {
-    q: "¿Puedo pedirte cambios después de la entrega?",
-    a: "Sí. Cada proyecto incluye rondas de revisión antes del cierre. En el Mensual, los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido. En el Pago Único, podemos presupuestar cambios puntuales o acordar un retainer mensual.",
-  },
-  {
-    q: "¿Trabajás con clientes de otros países?",
-    a: "Sí. Trabajo 100% remoto desde Resistencia, Argentina. Tengo experiencia colaborando con equipos de EEUU, Europa y América Latina. Coordinamos por WhatsApp, email o videollamada según tu zona horaria.",
-  },
-];
-
-// prettier-ignore
-export const MARQUEE_ITEMS = ["React","Next.js","TypeScript","Node.js","Tailwind CSS","Supabase","Vercel","GitHub","Google Analytics","Sass","REST APIs","React","Next.js","TypeScript","Node.js","Tailwind CSS","Supabase","Vercel","GitHub","Google Analytics","Sass","REST APIs"];
 
 export const CODE_TOKENS: { text: string; cls?: string }[] = [
   { text: "const", cls: "kw" },
@@ -170,12 +137,6 @@ export const FEATURES: Feature[] = [
   { id: "animations", label: "Animaciones premium",      desc: "Scroll effects y micro-interacciones",                price: 80,  group: "extras"                             },
 ];
 
-export const GROUP_LABELS: Record<string, string> = {
-  base: "Siempre incluido",
-  paginas: "Páginas del sitio · elegí una",
-  backend: "Backend / Usuarios",
-  extras: "Extras opcionales",
-};
 
 // prettier-ignore
 export const QUIZ_STEPS: QuizStep[] = [
@@ -227,34 +188,3 @@ export const QUIZ_STEPS: QuizStep[] = [
   },
 ];
 
-export const FEATURE_GROUPS = Object.entries(
-  FEATURES.reduce<Record<string, Feature[]>>((acc, f) => {
-    (acc[f.group] ??= []).push(f);
-    return acc;
-  }, {}),
-);
-
-export const AR_TZ = new Set([
-  "America/Argentina/Buenos_Aires",
-  "America/Argentina/Cordoba",
-  "America/Argentina/Salta",
-  "America/Argentina/Jujuy",
-  "America/Argentina/Tucuman",
-  "America/Argentina/Catamarca",
-  "America/Argentina/La_Rioja",
-  "America/Argentina/San_Juan",
-  "America/Argentina/Mendoza",
-  "America/Argentina/San_Luis",
-  "America/Argentina/Rio_Gallegos",
-  "America/Argentina/Ushuaia",
-  "America/Buenos_Aires",
-  "America/Cordoba",
-  "America/Rosario",
-  "America/Catamarca",
-  "America/Jujuy",
-  "America/Mendoza",
-]);
-
-export function isArgentina(): boolean {
-  return AR_TZ.has(Intl.DateTimeFormat().resolvedOptions().timeZone);
-}

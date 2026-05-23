@@ -319,8 +319,8 @@ const QUIZ_STEP_TEXT: Record<Lang, StepText[]> = {
       title: "¿Necesitás panel admin o CMS?",
       sub: "Para publicar contenido y gestionar tu web",
       options: [
-        { label: "Sí, quiero panel admin", desc: "Necesito publicar contenido o administrar datos" },
         { label: "No, contenido fijo",     desc: "El contenido no cambia frecuentemente" },
+        { label: "Sí, quiero panel admin", desc: "Necesito publicar contenido o administrar datos" },
       ],
     },
     {
@@ -362,8 +362,8 @@ const QUIZ_STEP_TEXT: Record<Lang, StepText[]> = {
       title: "Do you need an admin panel or CMS?",
       sub: "To publish content and manage your website",
       options: [
-        { label: "Yes, I want an admin panel", desc: "I need to publish content or manage data" },
         { label: "No, fixed content",          desc: "Content doesn't change frequently" },
+        { label: "Yes, I want an admin panel", desc: "I need to publish content or manage data" },
       ],
     },
     {
@@ -402,14 +402,16 @@ export function getQuizSteps(lang: Lang): QuizStep[] {
 
 export const PROJECTS_TEXT: Record<Lang, { desc: string; role: string }[]> = {
   es: [
-    { desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.", role: "Frontend completo" },
-    { desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",       role: "Testing y fixes"   },
-    { desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",          role: "Frontend completo" },
+    { desc: "Concesionaria de vehículos usados y nuevos. Sitio completo con catálogo, filtros y panel admin.",  role: "Web completa"      },
+    { desc: "Explorer multi-chain para el protocolo Wormhole. Miles de transacciones en tiempo real.",          role: "Frontend completo" },
+    { desc: "Bridge cross-chain de activos digitales. UI de alto tráfico con múltiples wallets.",               role: "Testing y fixes"   },
+    { desc: "Sitio institucional del equipo detrás de Wormhole. Diseño limpio y animaciones.",                  role: "Frontend completo" },
   ],
   en: [
-    { desc: "Multi-chain explorer for the Wormhole protocol. Thousands of transactions in real time.", role: "Full frontend" },
-    { desc: "Cross-chain digital asset bridge. High-traffic UI with multiple wallets.",                role: "Testing & fixes" },
-    { desc: "Institutional site for the team behind Wormhole. Clean design and animations.",           role: "Full frontend" },
+    { desc: "Used and new car dealership. Complete site with catalog, filters and admin panel.",                role: "Full web"          },
+    { desc: "Multi-chain explorer for the Wormhole protocol. Thousands of transactions in real time.",          role: "Full frontend"     },
+    { desc: "Cross-chain digital asset bridge. High-traffic UI with multiple wallets.",                         role: "Testing & fixes"   },
+    { desc: "Institutional site for the team behind Wormhole. Clean design and animations.",                    role: "Full frontend"     },
   ],
 };
 
