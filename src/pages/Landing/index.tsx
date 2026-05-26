@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import QuoteModal from "./QuoteModal";
-import { MoonIcon, SlidersHorizontalIcon, SparklesIcon, SunIcon } from "./icons";
+import { ChevronLeftIcon, ChevronRightIcon, MoonIcon, SlidersHorizontalIcon, SparklesIcon, SunIcon } from "./icons";
 import { MAIL, LINKEDIN, GITHUB, WA_MSG, PROJECTS, PROCESS, CODE_TOKENS } from "./constants";
 import { LangProvider, useLang, useT } from "./lang";
 import { PROJECTS_TEXT, PROCESS_TEXT, FAQS_TEXT } from "./translations";
@@ -47,6 +47,22 @@ function LandingContent() {
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [quoteMode, setQuoteMode] = useState<"quiz" | "table">("quiz");
   const [typedCount, setTypedCount] = useState(0);
+  const projGridRef = useRef<HTMLDivElement>(null);
+  const [projCanPrev, setProjCanPrev] = useState(false);
+  const [projCanNext, setProjCanNext] = useState(true);
+
+  const updateProjNav = useCallback(() => {
+    const el = projGridRef.current;
+    if (!el) return;
+    setProjCanPrev(el.scrollLeft > 4);
+    setProjCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }, []);
+
+  const scrollProj = (dir: 1 | -1) => {
+    const el = projGridRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * (el.clientWidth * 0.75), behavior: "smooth" });
+  };
 
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     const saved = localStorage.getItem("lp-theme");
@@ -286,7 +302,17 @@ function LandingContent() {
             <p>{t("section_projects_p")}</p>
           </div>
           <div className="lp__projects-grid-wrap">
-            <div className="lp__projects-grid">
+            {projCanPrev && (
+              <button className="lp__projects-nav lp__projects-nav--prev" onClick={() => scrollProj(-1)} aria-label="Previous">
+                <ChevronLeftIcon width={18} height={18} />
+              </button>
+            )}
+            {projCanNext && (
+              <button className="lp__projects-nav lp__projects-nav--next" onClick={() => scrollProj(1)} aria-label="Next">
+                <ChevronRightIcon width={18} height={18} />
+              </button>
+            )}
+            <div className="lp__projects-grid" ref={projGridRef} onScroll={updateProjNav}>
               {projects.map((p, i) => (
                 <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer" className="lp__project-card lp__reveal" style={{ "--reveal-delay": `${i * 0.08}s` } as React.CSSProperties}>
                   <div className="lp__project-card__img__container">
@@ -312,13 +338,14 @@ function LandingContent() {
       </section>
 
       {/* ── Proceso ──────────────────────────────────── */}
-      <section className="lp__section" id="proceso" style={{ paddingTop: 0 }}>
+      <section className="lp__section" id="proceso">
         <div className="lp__container">
           <div className="lp__section-header lp__reveal">
             <span className="lp__section-header__label">{t("section_process_label")}</span>
             <h2>
               {t("section_process_h2_pre")} <em>{t("section_process_h2_em")}</em>
             </h2>
+            <p>{t("section_process_p")}</p>
           </div>
           <div className="lp__process-grid">
             {process.map((p, i) => (
@@ -385,7 +412,7 @@ function LandingContent() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────── */}
-      <section className="lp__section" id="faq" style={{ paddingTop: 0 }}>
+      <section className="lp__section" id="faq">
         <div className="lp__container">
           <div className="lp__section-header lp__reveal" style={{ textAlign: "center" }}>
             <span className="lp__section-header__label">{t("section_faq_label")}</span>
@@ -423,19 +450,30 @@ function LandingContent() {
             <h2>
               {t("section_cta_h2_line1")}
               <br />
-              {t("section_cta_h2_line2_pre")} <em>{t("section_cta_h2_em")}</em>{t("section_cta_h2_line2_post")}
+              {t("section_cta_h2_line2_pre")} <em>{t("section_cta_h2_em")}</em>
+              {t("section_cta_h2_line2_post")}
             </h2>
             <p>{t("section_cta_p")}</p>
             <div className="lp__cta__links">
               <a href={`mailto:${MAIL}`}>
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                  />
                 </svg>
                 {MAIL}
               </a>
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href={GITHUB} target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href={WA_MSG(t("wa_contact"))} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a href={GITHUB} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a href={WA_MSG(t("wa_contact"))} target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -446,8 +484,12 @@ function LandingContent() {
         <div className="lp__footer__inner">
           <div className="lp__footer__left">© {new Date().getFullYear()} Giuliano Conti · Resistencia, Chaco, Argentina</div>
           <div className="lp__footer__links">
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href={GITHUB} target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href={GITHUB} target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
             <a href={`mailto:${MAIL}`}>{MAIL}</a>
           </div>
         </div>
@@ -468,11 +510,28 @@ function LandingContent() {
               <feGaussianBlur stdDeviation="3.531" />
             </filter>
           </defs>
-          <path fill="#b3b3b3" d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0" filter="url(#a)" />
-          <path fill="#fff" d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z" />
-          <path fill="url(#linearGradient1780)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z" />
-          <path fill="url(#b)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z" />
-          <path fill="#fff" fillRule="evenodd" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647" />
+          <path
+            fill="#b3b3b3"
+            d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0"
+            filter="url(#a)"
+          />
+          <path
+            fill="#fff"
+            d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"
+          />
+          <path
+            fill="url(#linearGradient1780)"
+            d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z"
+          />
+          <path
+            fill="url(#b)"
+            d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"
+          />
+          <path
+            fill="#fff"
+            fillRule="evenodd"
+            d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647"
+          />
         </svg>
       </a>
     </div>

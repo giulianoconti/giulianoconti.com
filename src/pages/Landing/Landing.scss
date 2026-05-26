@@ -733,6 +733,11 @@ $pad-x-xs: 20px;
     overflow: hidden;
     position: relative;
     width: 100%;
+    margin-bottom: 72px;
+
+    @include tablet {
+      margin-bottom: 100px;
+    }
 
     &:hover {
       .lp__marquee__track {
@@ -787,10 +792,10 @@ $pad-x-xs: 20px;
 
   // ── Section shared ───────────────────────────────────
   &__section {
-    padding: 72px 0;
+    padding-bottom: 72px;
 
     @include tablet {
-      padding: 100px 0;
+      padding-bottom: 100px;
     }
   }
 
@@ -932,6 +937,44 @@ $pad-x-xs: 20px;
 
       &::after {
         right: -64px;
+      }
+    }
+  }
+
+  &__projects-nav {
+    display: none;
+
+    @include desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      transition:
+        background 0.15s,
+        border-color 0.15s,
+        opacity 0.15s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+      &:hover {
+        background: var(--bg);
+        border-color: var(--muted);
+      }
+
+      &--prev {
+        left: -22px;
+      }
+      &--next {
+        right: -22px;
       }
     }
   }

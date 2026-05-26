@@ -34,6 +34,7 @@ export const T: Record<Lang, Record<string, string>> = {
     section_process_label: "Proceso",
     section_process_h2_pre: "Cómo",
     section_process_h2_em: "trabajamos",
+    section_process_p: "Cuatro pasos, sin burocracia.",
 
     // Pricing section
     section_pricing_label: "Precios",
@@ -141,6 +142,7 @@ export const T: Record<Lang, Record<string, string>> = {
     section_process_label: "Process",
     section_process_h2_pre: "How we",
     section_process_h2_em: "work",
+    section_process_p: "Four steps, no bureaucracy.",
 
     // Pricing section
     section_pricing_label: "Pricing",

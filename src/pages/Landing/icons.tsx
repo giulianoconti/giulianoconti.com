@@ -175,3 +175,19 @@ export function ZapIcon({ className, height = 20, width = 20 }: IconProps) {
     </svg>
   );
 }
+
+export function ChevronLeftIcon({ className, height = 20, width = 20 }: IconProps) {
+  return (
+    <svg className={className} fill="none" height={height} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" width={width}>
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+export function ChevronRightIcon({ className, height = 20, width = 20 }: IconProps) {
+  return (
+    <svg className={className} fill="none" height={height} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" width={width}>
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+}
