@@ -1,0 +1,125 @@
+@use "../../../styles/breakpoints" as *;
+@use "../../../styles/layout" as *;
+@use "../../../styles/typography" as *;
+
+.process {
+  @include section-padding-x;
+  padding-top: max(8vw, 80px);
+  padding-bottom: max(6vw, 60px);
+  pointer-events: none;
+
+  .process_inner {
+    display: flex;
+    flex-direction: column;
+    gap: max(3vw, 48px);
+    pointer-events: auto;
+
+    .process_header {
+      display: flex;
+      flex-direction: column;
+      gap: max(1vw, 16px);
+
+      .process_header_eyebrow {
+        @include text-eyebrow;
+        color: var(--eyebrow);
+      }
+
+      .process_header_rule {
+        background-color: var(--rule);
+        height: 1px;
+        width: 100%;
+      }
+    }
+
+    .process_content {
+      display: flex;
+      flex-direction: column;
+      gap: max(3vw, 48px);
+
+      .process_content_title {
+        @include text-h2;
+        color: var(--text);
+        font-style: normal;
+
+        em {
+          color: var(--muted);
+          font-style: italic;
+        }
+      }
+
+      .process_content_desc {
+        @include text-body;
+        color: var(--body-text);
+        margin-top: -32px;
+      }
+
+      .process_steps {
+        display: grid;
+        gap: 1px;
+        grid-template-columns: 1fr;
+        border: 1px solid var(--step-border);
+        border-radius: 16px;
+        overflow: hidden;
+
+        @include tablet {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include desktop {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  }
+}
+
+.process_step {
+  background: var(--step-bg);
+  border-right: 1px solid var(--step-border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: max(2vw, 28px);
+
+  &:last-child {
+    border-right: none;
+  }
+
+  @include tablet {
+    &:nth-child(2) {
+      border-right: none;
+    }
+    &:nth-child(3) {
+      border-top: 1px solid var(--step-border);
+      border-right: 1px solid var(--step-border);
+    }
+    &:nth-child(4) {
+      border-top: 1px solid var(--step-border);
+      border-right: none;
+    }
+  }
+
+  @include desktop {
+    border-top: none !important;
+    &:nth-child(3) {
+      border-right: 1px solid var(--step-border);
+    }
+  }
+
+  .process_step_n {
+    @include text-eyebrow;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+
+  .process_step_title {
+    @include text-h4;
+    color: var(--text);
+  }
+
+  .process_step_desc {
+    @include text-caption;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+}
