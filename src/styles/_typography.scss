@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 300;
+  src: url("/fonts/helveticanowdisplay-light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 400;
+  src: url("/fonts/helveticanowdisplay-regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 500;
+  src: url("/fonts/helveticanowdisplay-medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "InstrumentSerif";
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/instrumentserif-regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "InstrumentSerif";
+  font-weight: 400;
+  font-style: italic;
+  src: url("/fonts/instrumentserif-italic.ttf") format("truetype");
+}
+
+@mixin type($size, $weight: 400, $family: "HelveticaNow") {
+  font-family: $family, sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin text-h1 {
+  @include type(max(5.6vw, 56px), 400, "InstrumentSerif");
+  line-height: 1;
+}
+
+@mixin text-h2 {
+  @include type(max(3.2vw, 32px), 300, "InstrumentSerif");
+}
+
+@mixin text-h3 {
+  @include type(max(2.4vw, 24px), 400, "InstrumentSerif");
+}
+
+@mixin text-h4 {
+  @include type(max(1.6vw, 16px), 400, "InstrumentSerif");
+}
+
+@mixin text-eyebrow {
+  @include type(max(0.8vw, 12px), 400, "HelveticaNow");
+  letter-spacing: max(0.2vw, 3px);
+}
+
+@mixin text-body {
+  @include type(max(1vw, 16px), 400, "HelveticaNow");
+}
+
+@mixin text-caption {
+  @include type(max(0.8vw, 14px), 300, "HelveticaNow");
+}
+
+@mixin text-small {
+  @include type(max(0.7vw, 12px), 400, "HelveticaNow");
+}
+
+@mixin text-tiny {
+  @include type(max(0.6vw, 10px), 400, "HelveticaNow");
+}

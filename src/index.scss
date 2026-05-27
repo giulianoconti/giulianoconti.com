@@ -1,3 +1,7 @@
+@use "./styles/breakpoints" as *;
+@use "./styles/layout" as *;
+@use "./styles/typography" as *;
+
 *,
 *::before,
 *::after {
@@ -6,24 +10,110 @@
   padding: 0;
 }
 
+:root {
+  --bg: #000;
+  --text: #fff;
+  --muted: rgba(255, 255, 255, 0.45);
+  --border: rgba(255, 255, 255, 0.09);
+  --card: #0b0b0b;
+  --card-hover: #111;
+  --accent: #a3e635;
+  --accent-dim: rgba(163, 230, 53, 0.12);
+  --accent-text: #a3e635;
+  --feat-card: #0a0f07;
+  --rule: rgba(255, 255, 255, 0.15);
+  --eyebrow: rgba(255, 255, 255, 0.5);
+  --body-text: rgba(255, 255, 255, 0.4);
+  --step-bg: rgba(255, 255, 255, 0.02);
+  --step-border: rgba(255, 255, 255, 0.08);
+  --chip-bg: rgba(255, 255, 255, 0.07);
+  --card-hover-bg: rgba(255, 255, 255, 0.07);
+  --nav-bg: rgba(20, 20, 20, 0.35);
+  --nav-text: rgba(255, 255, 255, 0.65);
+  --nav-text-active: #fff;
+  --mobile-menu-bg: rgba(10, 10, 10, 0.96);
+  --mobile-link-border: rgba(255, 255, 255, 0.08);
+  --mobile-link-text: #fff;
+  --hamburger-bg: #fff;
+  --wa-border: rgba(163, 230, 53, 0.5);
+  --wa-text: rgba(163, 230, 53, 0.8);
+  --wa-hover-bg: rgba(163, 230, 53, 0.1);
+  --wa-hover-text: #a3e635;
+  --contact-em: rgba(255, 255, 255, 0.7);
+  --contact-link-text: rgba(255, 255, 255, 0.7);
+  --contact-link-hover: rgba(255, 255, 255, 0.85);
+  --entry-hover-border: rgba(255, 255, 255, 0.18);
+  --entry-hover-bg: rgba(255, 255, 255, 0.05);
+  --entry-primary-border: rgba(163, 230, 53, 0.25);
+  --entry-primary-bg: rgba(163, 230, 53, 0.04);
+  --entry-primary-hover-border: rgba(163, 230, 53, 0.4);
+  --entry-primary-hover-bg: rgba(163, 230, 53, 0.07);
+}
+
+[data-theme="light"] {
+  --bg: #f0efea;
+  --text: #0d0d0d;
+  --muted: rgba(0, 0, 0, 0.58);
+  --border: rgba(0, 0, 0, 0.12);
+  --card: #e2e1db;
+  --card-hover: #d4d3cd;
+  --accent: #3a6e00;
+  --accent-dim: rgba(58, 110, 0, 0.1);
+  --accent-text: #3a6e00;
+  --feat-card: #e3ecda;
+  --rule: rgba(0, 0, 0, 0.14);
+  --eyebrow: rgba(0, 0, 0, 0.54);
+  --body-text: rgba(0, 0, 0, 0.65);
+  --step-bg: rgba(0, 0, 0, 0.025);
+  --step-border: rgba(0, 0, 0, 0.1);
+  --chip-bg: rgba(0, 0, 0, 0.07);
+  --card-hover-bg: rgba(0, 0, 0, 0.05);
+  --nav-bg: rgba(228, 227, 222, 0.72);
+  --nav-text: rgba(0, 0, 0, 0.6);
+  --nav-text-active: #0d0d0d;
+  --mobile-menu-bg: rgba(240, 239, 234, 0.98);
+  --mobile-link-border: rgba(0, 0, 0, 0.1);
+  --mobile-link-text: #0d0d0d;
+  --hamburger-bg: #0d0d0d;
+  --wa-border: rgba(45, 110, 0, 0.4);
+  --wa-text: rgba(40, 100, 0, 0.9);
+  --wa-hover-bg: rgba(45, 110, 0, 0.08);
+  --wa-hover-text: #3a6e00;
+  --contact-em: rgba(0, 0, 0, 0.5);
+  --contact-link-text: rgba(0, 0, 0, 0.62);
+  --contact-link-hover: rgba(0, 0, 0, 0.85);
+  --entry-hover-border: rgba(0, 0, 0, 0.16);
+  --entry-hover-bg: rgba(0, 0, 0, 0.04);
+  --entry-primary-border: rgba(58, 110, 0, 0.3);
+  --entry-primary-bg: rgba(58, 110, 0, 0.05);
+  --entry-primary-hover-border: rgba(58, 110, 0, 0.45);
+  --entry-primary-hover-bg: rgba(58, 110, 0, 0.09);
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: max(8vh, 64px);
   scrollbar-gutter: stable;
 }
 
+[data-lite="true"] * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "HelveticaNow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   overflow-x: hidden;
   scrollbar-width: none;
+  overscroll-behavior-y: none;
 }
 
 #root {
   width: 100%;
   min-height: 100dvh;
-}
-
-.no-transition * {
-  transition: none !important;
-  animation: none !important;
 }
 
 a {
