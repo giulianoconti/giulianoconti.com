@@ -26,10 +26,18 @@ interface Project {
   technologies: Technology[];
 }
 
+interface CompanyEntry {
+  company: string;
+  role: string;
+  dates: string;
+}
+
+type ExperienceEntry = Project | CompanyEntry;
+
 export default function Experience() {
   const { t } = useLocale();
 
-  const EXPERIENCE: any[] = [
+  const EXPERIENCE: ExperienceEntry[] = [
     {
       company: t.experience.freelanceCompany,
       role: t.experience.freelancerJobRole,
@@ -109,7 +117,7 @@ export default function Experience() {
           </div>
           <div className="experience_sticky_row_right">
             {EXPERIENCE.map(experience =>
-              experience.company ? (
+              "company" in experience ? (
                 <div className="experience_sticky_row_right_info" key={experience.company}>
                   <h3 className="experience_sticky_row_right_info_company" id="experience">
                     {experience.company}
