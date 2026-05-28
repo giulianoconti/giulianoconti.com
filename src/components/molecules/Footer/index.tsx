@@ -13,7 +13,12 @@ import {
   ThreejsIcon,
   WorldIcon,
 } from "../../../icons";
-import { MAIN_PROJECTS, SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL } from "../../../utils/constants.ts";
+import {
+  MAIN_PROJECTS,
+  SOCIAL_GITHUB_URL,
+  SOCIAL_LINKEDIN_URL,
+  SOCIAL_MAIL,
+} from "../../../utils/constants.ts";
 import type { IconProps } from "../../../utils/interfaces.ts";
 import "./styles.scss";
 import { useTheme } from "../../../contexts/ThemeContext.tsx";
@@ -60,71 +65,13 @@ export default function Footer() {
         />
       </a>
 
-      <div className="footer_grid">
-        <div className="footer_grid_projects">
-          <h4 className="footer_grid_projects_title">{t.projects.title}</h4>
-
-          {MAIN_PROJECTS.map((p) => (
-            <div className="footer_grid_projects_tooltip" key={p.key}>
-              <a
-                className="footer_grid_projects_tooltip_text"
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackProjectClick(p.key, locale)}
-              >
-                <div className="footer_grid_projects_tooltip_text_arrow" />
-                {projectMap[p.key].name}
-              </a>
-              <div className="footer_grid_projects_tooltip_container">
-                <div className="footer_grid_projects_tooltip_container_content">
-                  <a
-                    className="footer_grid_projects_tooltip_container_content_image"
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={p.img} loading="lazy" alt={projectMap[p.key].name} />
-                  </a>
-
-                  <div className="footer_grid_projects_tooltip_container_content_info">
-                    <div>
-                      {p.icons.map((i) => {
-                        const IconComponent = iconMap[i];
-                        if (!IconComponent) return null;
-                        return (
-                          <IconComponent
-                            key={i}
-                            className="footer_grid_projects_tooltip_container_content_info_icon"
-                            aria-label={i}
-                          />
-                        );
-                      })}
-                    </div>
-                    <h3 className="footer_grid_projects_tooltip_container_content_info_title">
-                      {projectMap[p.key].name}
-                    </h3>
-                    <p className="footer_grid_projects_tooltip_container_content_info_description">
-                      {projectMap[p.key].desc}
-                    </p>
-                    <div className="footer_grid_projects_tooltip_container_content_info_links">
-                      <a href={p.github} target="_blank" rel="noopener noreferrer" title="Github">
-                        <GithubIcon />
-                      </a>
-                      <a href={p.url} target="_blank" rel="noopener noreferrer" title="Website">
-                        <WorldIcon />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="footer_bottom">
-        <a className="footer_bottom_mail" href={`mailto:${SOCIAL_MAIL}`} target="_blank" rel="noopener noreferrer">
+        <a
+          className="footer_bottom_mail"
+          href={`mailto:${SOCIAL_MAIL}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {SOCIAL_MAIL}
         </a>
 

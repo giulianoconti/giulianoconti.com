@@ -1,6 +1,11 @@
 import type { IconProps } from "../utils/interfaces";
 
-export const AvalancheIcon = ({ className = "", height = 24, title = "avalanche", width = 24 }: IconProps) => (
+export const AvalancheIcon = ({
+  className = "",
+  height = 24,
+  title = "Avalanche",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -17,7 +22,12 @@ export const AvalancheIcon = ({ className = "", height = 24, title = "avalanche"
   </svg>
 );
 
-export const BlenderIcon = ({ className = "", height = 24, title = "blender", width = 24 }: IconProps) => (
+export const BlenderIcon = ({
+  className = "",
+  height = 24,
+  title = "Blender",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="currentColor"
@@ -36,7 +46,7 @@ export const BlenderIcon = ({ className = "", height = 24, title = "blender", wi
   </svg>
 );
 
-export const CssIcon = ({ className = "", height = 24, title = "css", width = 24 }: IconProps) => (
+export const CssIcon = ({ className = "", height = 24, title = "CSS", width = 24 }: IconProps) => (
   <svg
     className={className}
     fill="currentColor"
@@ -54,7 +64,12 @@ export const CssIcon = ({ className = "", height = 24, title = "css", width = 24
   </svg>
 );
 
-export const FirebaseIcon = ({ className = "", height = 24, title = "firebase", width = 24 }: IconProps) => (
+export const FirebaseIcon = ({
+  className = "",
+  height = 24,
+  title = "Firebase",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -72,7 +87,12 @@ export const FirebaseIcon = ({ className = "", height = 24, title = "firebase", 
   </svg>
 );
 
-export const GithubIcon = ({ className = "", height = 24, title = "github", width = 24 }: IconProps) => (
+export const GithubIcon = ({
+  className = "",
+  height = 24,
+  title = "GitHub",
+  width = 24,
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -93,7 +113,12 @@ export const GithubIcon = ({ className = "", height = 24, title = "github", widt
   </svg>
 );
 
-export const InstagramIcon = ({ className = "", height = 24, title = "instagram", width = 24 }: IconProps) => (
+export const InstagramIcon = ({
+  className = "",
+  height = 24,
+  title = "Instagram",
+  width = 24,
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -118,11 +143,22 @@ export const InstagramIcon = ({ className = "", height = 24, title = "instagram"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path d="M16.5 7.5l0 .01" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M16.5 7.5l0 .01"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
-export const LinkedInIcon = ({ className = "", height = 24, title = "linkedin", width = 24 }: IconProps) => (
+export const LinkedInIcon = ({
+  className = "",
+  height = 24,
+  title = "LinkedIn",
+  width = 24,
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -140,9 +176,27 @@ export const LinkedInIcon = ({ className = "", height = 24, title = "linkedin", 
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path d="M8 11l0 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M8 8l0 .01" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M12 16l0 -5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M8 11l0 5"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8 8l0 .01"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12 16l0 -5"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
     <path
       d="M16 16v-3a2 2 0 0 0 -4 0"
       stroke="currentColor"
@@ -153,7 +207,12 @@ export const LinkedInIcon = ({ className = "", height = 24, title = "linkedin", 
   </svg>
 );
 
-export const MonadIcon = ({ className = "", height = 24, title = "monad", width = 24 }: IconProps) => (
+export const MonadIcon = ({
+  className = "",
+  height = 24,
+  title = "Monad",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -170,7 +229,12 @@ export const MonadIcon = ({ className = "", height = 24, title = "monad", width 
   </svg>
 );
 
-export const MongodbIcon = ({ className = "", height = 24, title = "mongodb", width = 24 }: IconProps) => (
+export const MongodbIcon = ({
+  className = "",
+  height = 24,
+  title = "MongoDB",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="currentColor"
@@ -184,7 +248,12 @@ export const MongodbIcon = ({ className = "", height = 24, title = "mongodb", wi
   </svg>
 );
 
-export const MotionIcon = ({ className = "", height = 24, title = "motion", width = 24 }: IconProps) => (
+export const MotionIcon = ({
+  className = "",
+  height = 24,
+  title = "Motion",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     height={height}
@@ -221,7 +290,12 @@ export const MotionIcon = ({ className = "", height = 24, title = "motion", widt
   </svg>
 );
 
-export const NextJSIcon = ({ className = "", height = 24, title = "nextjs", width = 24 }: IconProps) => (
+export const NextJSIcon = ({
+  className = "",
+  height = 24,
+  title = "Next.js",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     height={height}
@@ -230,14 +304,23 @@ export const NextJSIcon = ({ className = "", height = 24, title = "nextjs", widt
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>{title}</title>
-    <g transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+    <g
+      transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)"
+      fill="currentColor"
+      stroke="none"
+    >
       <path d="M1065 2394 c-168 -26 -282 -62 -418 -132 -317 -162 -546 -464 -623 -822 -26 -118 -26 -362 0 -480 102 -474 462 -834 936 -936 118 -26 362 -26 480 0 473 102 834 462 936 936 26 118 26 362 0 480 -101 467 -454 826 -916 931 -83 19 -327 33 -395 23z m282 -155 c179 -24 386 -117 528 -236 232 -195 375 -501 375 -803 0 -229 -86 -473 -232 -657 -60 -76 -158 -167 -169 -156 -4 4 -202 285 -439 623 -238 338 -441 624 -451 635 -15 15 -36 20 -92 23 -67 4 -76 2 -103 -21 l-29 -25 0 -470 c0 -448 1 -471 19 -491 13 -14 31 -21 57 -21 70 0 69 -7 69 444 0 343 2 398 14 386 8 -8 197 -276 421 -594 l408 -579 -22 -18 c-28 -23 -165 -76 -261 -100 -41 -11 -122 -22 -180 -26 -472 -27 -905 267 -1053 716 -76 228 -76 434 0 662 103 315 347 558 662 663 162 54 312 68 478 45z" />
       <path d="M1520 1663 c-8 -3 -23 -12 -32 -21 -16 -14 -18 -41 -18 -307 0 -321 -1 -314 62 -330 22 -6 33 -1 58 23 l30 30 0 277 0 277 -29 29 c-29 29 -42 33 -71 22z" />
     </g>
   </svg>
 );
 
-export const ReactIcon = ({ className = "", height = 24, title = "react", width = 24 }: IconProps) => (
+export const ReactIcon = ({
+  className = "",
+  height = 24,
+  title = "React",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="currentColor"
@@ -251,7 +334,12 @@ export const ReactIcon = ({ className = "", height = 24, title = "react", width 
   </svg>
 );
 
-export const SassIcon = ({ className = "", height = 24, title = "sass", width = 24 }: IconProps) => (
+export const SassIcon = ({
+  className = "",
+  height = 24,
+  title = "Sass",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -270,7 +358,12 @@ export const SassIcon = ({ className = "", height = 24, title = "sass", width = 
   </svg>
 );
 
-export const SolanaIcon = ({ className = "", height = 24, title = "solana", width = 24 }: IconProps) => (
+export const SolanaIcon = ({
+  className = "",
+  height = 24,
+  title = "Solana",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -287,7 +380,67 @@ export const SolanaIcon = ({ className = "", height = 24, title = "solana", widt
   </svg>
 );
 
-export const TailwindIcon = ({ className = "", height = 24, title = "tailwind", width = 24 }: IconProps) => (
+export const SupabaseIcon = ({
+  className = "",
+  height = 24,
+  title = "Supabase",
+  width = 24,
+}: IconProps) => (
+  <svg
+    className={className}
+    fill="none"
+    height={height}
+    viewBox="0 0 109 113"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>{title}</title>
+    <path
+      d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z"
+      fill="url(#paint0_linear)"
+    />
+    <path
+      d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z"
+      fill="url(#paint1_linear)"
+      fillOpacity="0.2"
+    />
+    <path
+      d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z"
+      fill="currentColor"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear"
+        x1="53.9738"
+        y1="54.974"
+        x2="94.1635"
+        y2="71.8295"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="currentColor" />
+        <stop offset={1} stopColor="currentColor" />
+      </linearGradient>
+      <linearGradient
+        id="paint1_linear"
+        x1="36.1558"
+        y1="30.578"
+        x2="54.4844"
+        y2="65.0806"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop />
+        <stop offset={1} stopOpacity={0} />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export const TailwindIcon = ({
+  className = "",
+  height = 24,
+  title = "Tailwind",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -307,8 +460,19 @@ export const TailwindIcon = ({ className = "", height = 24, title = "tailwind", 
   </svg>
 );
 
-export const ThreejsIcon = ({ className = "", height = 24, title = "threejs", width = 24 }: IconProps) => (
-  <svg className={className} height={height} viewBox="0 0 640 640" width={width} xmlns="http://www.w3.org/2000/svg">
+export const ThreejsIcon = ({
+  className = "",
+  height = 24,
+  title = "Three.js",
+  width = 24,
+}: IconProps) => (
+  <svg
+    className={className}
+    height={height}
+    viewBox="0 0 640 640"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <title>{title}</title>
     <style>
       {
@@ -340,7 +504,12 @@ export const ThreejsIcon = ({ className = "", height = 24, title = "threejs", wi
   </svg>
 );
 
-export const TypeScriptIcon = ({ className = "", height = 24, title = "typescript", width = 24 }: IconProps) => (
+export const TypeScriptIcon = ({
+  className = "",
+  height = 24,
+  title = "TypeScript",
+  width = 24,
+}: IconProps) => (
   <svg
     className={className}
     fill="none"
@@ -359,7 +528,12 @@ export const TypeScriptIcon = ({ className = "", height = 24, title = "typescrip
   </svg>
 );
 
-export const WhatsAppIcon = ({ className = "", height = 28, title = "whatsapp", width = 28 }: IconProps) => (
+export const WhatsAppIcon = ({
+  className = "",
+  height = 28,
+  title = "WhatsApp",
+  width = 28,
+}: IconProps) => (
   <svg
     className={className}
     height={height}
@@ -369,11 +543,25 @@ export const WhatsAppIcon = ({ className = "", height = 28, title = "whatsapp", 
   >
     <title>{title}</title>
     <defs>
-      <linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
+      <linearGradient
+        id="b"
+        x1="85.915"
+        x2="86.535"
+        y1="32.567"
+        y2="137.092"
+        gradientUnits="userSpaceOnUse"
+      >
         <stop offset={0} stopColor="#57d163" />
         <stop offset={1} stopColor="#23b33a" />
       </linearGradient>
-      <filter id="a" width="1.115" height="1.114" x="-.057" y="-.057" colorInterpolationFilters="sRGB">
+      <filter
+        id="a"
+        width="1.115"
+        height="1.114"
+        x="-.057"
+        y="-.057"
+        colorInterpolationFilters="sRGB"
+      >
         <feGaussianBlur stdDeviation="3.531" />
       </filter>
     </defs>
@@ -402,7 +590,12 @@ export const WhatsAppIcon = ({ className = "", height = 28, title = "whatsapp", 
   </svg>
 );
 
-export const WorldIcon = ({ className = "", height = 24, title = "world", width = 24 }: IconProps) => (
+export const WorldIcon = ({
+  className = "",
+  height = 24,
+  title = "World",
+  width = 24,
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -420,8 +613,20 @@ export const WorldIcon = ({ className = "", height = 24, title = "world", width 
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path d="M3.6 9h16.8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M3.6 15h16.8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M3.6 9h16.8"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3.6 15h16.8"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
     <path
       d="M11.5 3a17 17 0 0 0 0 18"
       stroke="currentColor"

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { BackIcon, CheckIcon, CloseIcon } from "../../../icons";
 import { CLOSE_MS, ARS_RATE, MULTIPLIER_EXPRESS, MONTHLY_TIERS, INFRA_COSTS } from "../../../utils/pricingData";
 import type { TierId } from "../../../utils/pricingData";
@@ -208,7 +209,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const featureSum = features.filter((f) => !f.locked && checked.has(f.id)).reduce((s, f) => s + f.price, 0);
   const monthly = calcMonthly(model, tier, checked, features);
 
-  return (
+  return createPortal(
     <div
       className={`qm__overlay${closing ? " qm__overlay--out" : ""}`}
       onClick={(e) => e.target === e.currentTarget && handleClose()}
@@ -361,6 +362,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

@@ -37,8 +37,8 @@
           background: #f59e0b;
           border-radius: 50%;
           display: inline-block;
-          height: 0.4vw;
-          width: 0.4vw;
+          height: max(0.4vw, 6px);
+          width: max(0.4vw, 6px);
         }
       }
 

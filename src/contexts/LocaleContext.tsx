@@ -116,16 +116,13 @@ const translations: Record<Locale, Translations> = {
       title: "Experience",
       jobTitle: "Software Engineer",
       wormholescan: "WormholeScan",
-      wormholescanDesc:
-        "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
+      wormholescanDesc: "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
       portal: "Portal",
-      portalDesc:
-        "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
-      xlabsDesc:
-        "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
+      portalDesc: "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
+      xlabsDesc: "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
       xlabsCompany: "xLabs",
       xlabsRole: "Frontend Engineer",
-      xlabsDate: "2023 - Present",
+      xlabsDate: "2023 - 2026",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Software Engineer",
       freelancerJobDate: "2026 - Present",
@@ -209,22 +206,18 @@ const translations: Record<Locale, Translations> = {
       title: "Experiencia",
       jobTitle: "Software Engineer",
       wormholescan: "WormholeScan",
-      wormholescanDesc:
-        "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
+      wormholescanDesc: "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
       portal: "Portal",
-      portalDesc:
-        "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
-      xlabsDesc:
-        "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
+      portalDesc: "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
+      xlabsDesc: "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
       xlabsCompany: "xLabs",
       xlabsRole: "Ingeniero Frontend",
-      xlabsDate: "2023 - Presente",
+      xlabsDate: "2023 - 2026",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Software Engineer",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
-      clinisDesc:
-        "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
+      clinisDesc: "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
     },
     process: {
       label: "Proceso",
@@ -303,15 +296,13 @@ const translations: Record<Locale, Translations> = {
       title: "Experiência",
       jobTitle: "Software Engineer",
       wormholescan: "WormholeScan",
-      wormholescanDesc:
-        "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
+      wormholescanDesc: "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
       portal: "Portal",
-      portalDesc:
-        "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
+      portalDesc: "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
       xlabsDesc: "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
       xlabsCompany: "xLabs",
       xlabsRole: "Engenheiro Frontend",
-      xlabsDate: "2023 - Presente",
+      xlabsDate: "2023 - 2026",
       freelanceCompany: "Freelance",
       freelancerJobRole: "Software Engineer",
       freelancerJobDate: "2026 - Presente",

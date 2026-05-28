@@ -1,7 +1,0 @@
-node_modules
-dist
-coverage
-package-lock.json
-*.min.js
-*.min.css
-src/pages/Home/Scene/index.tsx
