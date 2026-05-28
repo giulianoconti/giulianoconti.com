@@ -25,11 +25,13 @@ export default function Hero() {
           <h2 className="hero_main_center_subhead">{t.home.subheader}</h2>
 
           <div className="hero_main_center_stats">
-            {([
-              ["+3", t.home.statYearsLabel],
-              ["+5", t.home.statProjectsLabel],
-              ["xLabs", t.home.statCurrentLabel],
-            ] as [string, string][]).map(([v, l]) => (
+            {(
+              [
+                ["+3", t.home.statYearsLabel],
+                ["+5", t.home.statProjectsLabel],
+                ["Freelance", t.home.statCurrentLabel],
+              ] as [string, string][]
+            ).map(([v, l]) => (
               <div className="hero_main_center_stats_item" key={l}>
                 <p className="hero_main_center_stats_item_val">{v}</p>
                 <p className="hero_main_center_stats_item_label">{l}</p>
@@ -38,10 +40,7 @@ export default function Hero() {
           </div>
 
           <div className="hero_main_center_actions">
-            <a
-              className="hero_main_center_actions_btn"
-              href={`mailto:${SOCIAL_MAIL}`}
-            >
+            <a className="hero_main_center_actions_btn" href={`mailto:${SOCIAL_MAIL}`}>
               {t.home.ctaEmail}
             </a>
             <a

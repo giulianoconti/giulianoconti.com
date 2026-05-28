@@ -46,7 +46,7 @@
   background: #25d366;
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-  display: flex;
+  display: none;
   height: max(3vw, 48px);
   justify-content: center;
   left: 8px;
@@ -56,10 +56,11 @@
     transform 0.2s,
     box-shadow 0.2s;
   width: max(3vw, 48px);
-  z-index: 9999;
+  z-index: 30;
 
   @include desktop {
     bottom: max(2vh, 24px);
+    display: flex;
     left: unset;
     right: max(2vh, 24px);
     top: unset;
@@ -81,21 +82,11 @@
   z-index: 10;
 
   &::before {
-    -webkit-mask: radial-gradient(
-      circle 400px at var(--cx, -9999px) var(--cy, -9999px),
-      transparent 0%,
-      transparent 60px,
-      black 400px
-    );
+    -webkit-mask: radial-gradient(circle 400px at var(--cx, -9999px) var(--cy, -9999px), transparent 0%, transparent 60px, black 400px);
     backdrop-filter: blur(6px);
     content: "";
     inset: 0;
-    mask: radial-gradient(
-      circle 400px at var(--cx, -9999px) var(--cy, -9999px),
-      transparent 0%,
-      transparent 60px,
-      black 400px
-    );
+    mask: radial-gradient(circle 400px at var(--cx, -9999px) var(--cy, -9999px), transparent 0%, transparent 60px, black 400px);
     pointer-events: none;
     position: fixed;
     z-index: -1;

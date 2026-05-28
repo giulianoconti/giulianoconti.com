@@ -75,34 +75,45 @@
 
 .process_step {
   background: var(--step-bg);
-  border-right: 1px solid var(--step-border);
+  border-bottom: 1px solid var(--step-border);
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: max(2vw, 28px);
 
   &:last-child {
-    border-right: none;
+    border-bottom: none;
   }
 
   @include tablet {
-    &:nth-child(2) {
-      border-right: none;
-    }
-    &:nth-child(3) {
-      border-top: 1px solid var(--step-border);
+    border-bottom: none;
+
+    &:nth-child(1) {
       border-right: 1px solid var(--step-border);
     }
-    &:nth-child(4) {
+    &:nth-child(2) {
+      border-bottom: 1px solid var(--step-border);
+    }
+    &:nth-child(3) {
+      border-right: 1px solid var(--step-border);
       border-top: 1px solid var(--step-border);
-      border-right: none;
     }
   }
 
   @include desktop {
-    border-top: none !important;
-    &:nth-child(3) {
+    border-right: 1px solid var(--step-border);
+
+    &:nth-child(1) {
       border-right: 1px solid var(--step-border);
+    }
+    &:nth-child(2) {
+      border-bottom: none;
+    }
+    &:nth-child(3) {
+      border-top: none;
+    }
+    &:nth-child(4) {
+      border-right: none;
     }
   }
 

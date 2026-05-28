@@ -9,7 +9,6 @@ export default function Navbar() {
   const { locale, setLocale, t } = useLocale();
   const { theme, toggleTheme } = useTheme();
   const { liteMode, toggleLiteMode } = useLiteMode();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const setLang = (lang: Locale) => () => {
@@ -17,12 +16,6 @@ export default function Navbar() {
     trackLanguageChange(lang);
     setMenuOpen(false);
   };
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const navLinks = [
     { href: "#experience", label: t.nav.experience },
@@ -32,16 +25,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`nav${scrolled ? " nav--scrolled" : ""}`}>
+    <nav className="nav">
       <div className="nav_inner">
         <a href="#home" className="nav_inner_logo">
-          <img
-            alt="Logo"
-            className="nav_inner_logo_img"
-            src={theme === "light" ? "/assets/favicon_light.svg" : "/assets/favicon_dark.svg"}
-            height={32}
-            width={32}
-          />
+          <img alt="Logo" className="nav_inner_logo_img" src={theme === "light" ? "/assets/favicon_light.svg" : "/assets/favicon_dark.svg"} height={32} width={32} />
         </a>
 
         <ul className="nav_inner_links">
@@ -97,49 +84,19 @@ export default function Navbar() {
           </button> */}
 
           <div className="nav_lang">
-            <button
-              aria-current={locale === "es" ? "true" : undefined}
-              className={`nav_lang_link ${locale === "es" ? "nav_lang_current" : ""}`}
-              onClick={setLang("es")}
-              type="button"
-            >
+            <button aria-current={locale === "es" ? "true" : undefined} className={`nav_lang_link ${locale === "es" ? "nav_lang_current" : ""}`} onClick={setLang("es")} type="button">
               ES
             </button>
-            <button
-              aria-current={locale === "en" ? "true" : undefined}
-              className={`nav_lang_link ${locale === "en" ? "nav_lang_current" : ""}`}
-              onClick={setLang("en")}
-              type="button"
-            >
+            <button aria-current={locale === "en" ? "true" : undefined} className={`nav_lang_link ${locale === "en" ? "nav_lang_current" : ""}`} onClick={setLang("en")} type="button">
               EN
             </button>
-            <button
-              aria-current={locale === "pt" ? "true" : undefined}
-              className={`nav_lang_link ${locale === "pt" ? "nav_lang_current" : ""}`}
-              onClick={setLang("pt")}
-              type="button"
-            >
+            <button aria-current={locale === "pt" ? "true" : undefined} className={`nav_lang_link ${locale === "pt" ? "nav_lang_current" : ""}`} onClick={setLang("pt")} type="button">
               PT
             </button>
           </div>
 
-          <button
-            className={`nav_lite${liteMode ? " nav_lite--active" : ""}`}
-            onClick={toggleLiteMode}
-            aria-label={liteMode ? "Disable lite mode" : "Enable lite mode"}
-            aria-pressed={liteMode}
-            type="button"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+          <button className={`nav_lite${liteMode ? " nav_lite--active" : ""}`} onClick={toggleLiteMode} aria-label={liteMode ? "Disable lite mode" : "Enable lite mode"} aria-pressed={liteMode} type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
             </svg>
           </button>
@@ -156,12 +113,7 @@ export default function Navbar() {
 
           <div className="nav_mobile_lang">
             {(["en", "es", "pt"] as Locale[]).map((l) => (
-              <button
-                key={l}
-                className={`nav_lang_link ${locale === l ? "nav_lang_current" : ""}`}
-                onClick={setLang(l)}
-                type="button"
-              >
+              <button key={l} className={`nav_lang_link ${locale === l ? "nav_lang_current" : ""}`} onClick={setLang(l)} type="button">
                 {l.toUpperCase()}
               </button>
             ))}
