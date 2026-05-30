@@ -77,6 +77,63 @@
         }
       }
 
+      .hero_main_center_social {
+        display: flex;
+        gap: max(0.5vw, 8px);
+        margin-top: max(1.2vw, 18px);
+
+        .hero_main_center_social_link {
+          width: max(2.2vw, 36px);
+          height: max(2.2vw, 36px);
+          border-radius: 50%;
+          border: 1px solid var(--border);
+          background: transparent;
+          color: var(--muted);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease;
+
+          & > svg {
+            width: max(1vw, 16px);
+            height: max(1vw, 16px);
+          }
+
+          &::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 7px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: max(0.6vw, 10px);
+            font-family: inherit;
+            white-space: nowrap;
+            padding: 3px 8px;
+            border-radius: 6px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+          }
+
+          &:hover {
+            background: var(--chip-bg);
+            border-color: var(--entry-hover-border);
+            color: var(--text);
+
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
       .hero_main_center_actions {
         align-items: center;
         display: flex;

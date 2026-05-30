@@ -87,6 +87,7 @@
 }
 
 .pricing_entry {
+  backdrop-filter: blur(16px);
   background: var(--step-bg);
   border: 1px solid var(--border);
   border-radius: max(1vw, 16px);
@@ -144,7 +145,7 @@
     @include text-tiny;
     background: var(--accent);
     border-radius: 20px;
-    color: #000;
+    color: var(--accent-badge-text, #000);
     display: inline-block;
     font-weight: 700;
     letter-spacing: 0.5px;

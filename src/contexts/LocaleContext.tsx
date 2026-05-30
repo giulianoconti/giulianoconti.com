@@ -8,6 +8,10 @@ type Translations = {
     pricing: string;
     faq: string;
     experience: string;
+    tooltipLight: string;
+    tooltipDark: string;
+    tooltipLiteOn: string;
+    tooltipLiteOff: string;
   };
   home: {
     subheader: string;
@@ -100,6 +104,10 @@ const translations: Record<Locale, Translations> = {
       pricing: "PRICING",
       faq: "FAQ",
       experience: "EXPERIENCE",
+      tooltipLight: "Light mode",
+      tooltipDark: "Dark mode",
+      tooltipLiteOn: "Enable lite mode",
+      tooltipLiteOff: "Disable lite mode",
     },
     home: {
       subheader: "Software Engineer",
@@ -190,6 +198,10 @@ const translations: Record<Locale, Translations> = {
       pricing: "PRECIOS",
       faq: "FAQ",
       experience: "EXPERIENCIA",
+      tooltipLight: "Modo claro",
+      tooltipDark: "Modo oscuro",
+      tooltipLiteOn: "Activar modo lite",
+      tooltipLiteOff: "Desactivar modo lite",
     },
     home: {
       subheader: "Software Engineer",
@@ -280,6 +292,10 @@ const translations: Record<Locale, Translations> = {
       pricing: "PREÇOS",
       faq: "FAQ",
       experience: "EXPERIÊNCIA",
+      tooltipLight: "Modo claro",
+      tooltipDark: "Modo escuro",
+      tooltipLiteOn: "Ativar modo lite",
+      tooltipLiteOff: "Desativar modo lite",
     },
     home: {
       subheader: "Software Engineer",

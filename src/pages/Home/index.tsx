@@ -18,11 +18,11 @@ export default function Home() {
   const { liteMode } = useLiteMode();
 
   useEffect(() => {
-    const sections = ["experience", "proceso", "precios", "faq"];
+    const sections = ["experience", "process", "pricing", "faq"];
     const observed = new Set<string>();
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           const id = entry.target.id;
           if (entry.isIntersecting && !observed.has(id)) {
             observed.add(id);
@@ -32,7 +32,7 @@ export default function Home() {
       },
       { threshold: 0.4 },
     );
-    sections.forEach((id) => {
+    sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
