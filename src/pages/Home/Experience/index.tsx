@@ -12,6 +12,16 @@ import {
 } from "../../../icons";
 import { useLocale } from "../../../contexts/LocaleContext";
 import "./styles.scss";
+import {
+  CLINIS_WEBSITE_URL,
+  EXPERIENCE_CLINIS_ASSET,
+  EXPERIENCE_PORTAL_ASSET,
+  EXPERIENCE_WORMHOLESCAN_ASSET,
+  EXPERIENCE_XLABS_ASSET,
+  PORTAL_WEBSITE_URL,
+  WORMHOLESCAN_WEBSITE_URL,
+  XLABS_WEBSITE_URL,
+} from "../../../utils/constants";
 
 interface Technology {
   icon: ReactElement;
@@ -45,8 +55,8 @@ export default function Experience() {
     },
     {
       name: t.experience.clinis,
-      link: "https://clinis.com.ar",
-      image: "/assets/experience-clinis.png",
+      link: CLINIS_WEBSITE_URL,
+      image: EXPERIENCE_CLINIS_ASSET,
       description: t.experience.clinisDesc,
       technologies: [
         { icon: <ReactIcon />, name: "React" },
@@ -63,8 +73,8 @@ export default function Experience() {
     },
     {
       name: t.experience.wormholescan,
-      link: "https://wormholescan.io/",
-      image: "/assets/experience-wormholescan.png",
+      link: WORMHOLESCAN_WEBSITE_URL,
+      image: EXPERIENCE_WORMHOLESCAN_ASSET,
       description: t.experience.wormholescanDesc,
       technologies: [
         { icon: <ReactIcon />, name: "React" },
@@ -75,8 +85,8 @@ export default function Experience() {
     },
     {
       name: t.experience.portal,
-      link: "https://portalbridge.com/",
-      image: "/assets/experience-portal.png",
+      link: PORTAL_WEBSITE_URL,
+      image: EXPERIENCE_PORTAL_ASSET,
       description: t.experience.portalDesc,
       technologies: [
         { icon: <ReactIcon />, name: "React" },
@@ -87,8 +97,8 @@ export default function Experience() {
     },
     {
       name: t.experience.xlabsCompany,
-      link: "https://xlabs.xyz/",
-      image: "/assets/experience-xlabs.png",
+      link: XLABS_WEBSITE_URL,
+      image: EXPERIENCE_XLABS_ASSET,
       description: t.experience.xlabsDesc,
       technologies: [
         { icon: <NextJSIcon />, name: "Next.js" },
@@ -101,7 +111,7 @@ export default function Experience() {
   ];
 
   return (
-    <section className="experience">
+    <section className="experience" id="experience">
       <div className="experience_sticky">
         <div className="experience_sticky_row">
           <div className="experience_sticky_row_left">
@@ -119,9 +129,7 @@ export default function Experience() {
             {EXPERIENCE.map(experience =>
               "company" in experience ? (
                 <div className="experience_sticky_row_right_info" key={experience.company}>
-                  <h3 className="experience_sticky_row_right_info_company" id="experience">
-                    {experience.company}
-                  </h3>
+                  <h3 className="experience_sticky_row_right_info_company">{experience.company}</h3>
                   <p className="experience_sticky_row_right_info_role">{experience.role}</p>
                   <p className="experience_sticky_row_right_info_dates">{experience.dates}</p>
                 </div>

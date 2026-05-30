@@ -42,7 +42,6 @@
       .nav_inner_logo_img {
         display: block;
         height: max(3vw, 48px);
-        margin-right: max(2vw, 42px);
         width: max(3vw, 48px);
       }
     }
@@ -53,7 +52,7 @@
       background-color: rgba(20, 20, 20, 0.3);
       border-radius: 9999px;
       display: flex;
-      gap: max(2vw, 24px);
+      gap: max(2vw, 16px);
       list-style: none;
       padding: max(0.8vw, 12px) max(1.6vw, 24px);
 
@@ -78,9 +77,31 @@
       width: 100%;
 
       @include desktop {
+        justify-content: end;
         position: relative;
         top: unset;
-        width: auto;
+        width: max(3vw, 48px);
+      }
+
+      .nav_theme {
+        backdrop-filter: blur(16px);
+        background-color: rgba(20, 20, 20, 0.3);
+        border-radius: 9999px;
+        color: #fff;
+        display: flex;
+        padding: max(0.4vw, 6px);
+        position: absolute;
+        left: 16px;
+
+        @include desktop {
+          position: relative;
+          left: unset;
+        }
+
+        svg {
+          height: max(0.8vw, 12px);
+          width: max(0.8vw, 12px);
+        }
       }
 
       .nav_lang {
@@ -92,7 +113,7 @@
         gap: max(0.5vw, 8px);
         justify-content: center;
         list-style: none;
-        padding: max(0.4vw, 4px) max(0.8vw, 12px);
+        padding: max(0.4vw, 6px) max(0.8vw, 12px);
         width: max(5vw, 90px);
 
         .nav_lang_link {
@@ -110,12 +131,40 @@
         }
       }
 
+      .nav_tooltip {
+        &::after {
+          background: rgba(20, 20, 20, 0.85);
+          border-radius: 6px;
+          top: calc(100% + 8px);
+          color: #fff;
+          content: attr(data-tooltip);
+          font-size: 11px;
+          font-weight: 500;
+          left: 50%;
+          opacity: 0;
+          padding: 4px 8px;
+          pointer-events: none;
+          position: absolute;
+          transform: translateX(-50%) translateY(-4px);
+          transition:
+            opacity 0.15s ease,
+            transform 0.15s ease;
+          white-space: nowrap;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
       .nav_lite {
         backdrop-filter: blur(16px);
         background-color: rgba(20, 20, 20, 0.3);
         border-radius: 9999px;
+        color: #fff;
         display: flex;
-        padding: max(0.4vw, 4px);
+        padding: max(0.4vw, 6px);
         position: absolute;
         right: 16px;
 

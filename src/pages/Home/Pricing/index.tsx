@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocale } from "../../../contexts/LocaleContext";
 import QuoteModal from "./QuoteModal";
-import { SparklesIcon, SlidersHorizontalIcon } from "../../../icons";
+import { SparklesIcon, SlidersHorizontalIcon, FileIcon } from "../../../icons";
 import "./styles.scss";
 
 export default function Pricing() {
@@ -26,7 +26,7 @@ export default function Pricing() {
   }, [quoteOpen]);
 
   return (
-    <section className="pricing" id="precios">
+    <section className="pricing" id="pricing">
       <div className="pricing_inner">
         <div className="pricing_header">
           <h5 className="pricing_header_eyebrow">{t.pricing.label.toUpperCase()}</h5>
@@ -46,19 +46,17 @@ export default function Pricing() {
               rel="noopener noreferrer"
               className="pricing_content_pdfs_link"
             >
-              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
+              <FileIcon width={13} height={13} />
               {t.pricing.pdfLabel}
             </a>
           </div>
 
           <div className="pricing_content_entries">
-            <button type="button" className="pricing_entry pricing_entry--primary" onClick={() => openQuote("quiz")}>
+            <button
+              type="button"
+              className="pricing_entry pricing_entry--primary"
+              onClick={() => openQuote("quiz")}
+            >
               <div className="pricing_entry_icon">
                 <SparklesIcon />
               </div>

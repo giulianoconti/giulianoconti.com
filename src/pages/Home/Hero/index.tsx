@@ -1,12 +1,6 @@
-import { GithubIcon, LinkedInIcon } from "../../../icons";
-import {
-  SOCIAL_GITHUB_URL,
-  SOCIAL_LINKEDIN_URL,
-  SOCIAL_MAIL,
-  WA_MSG,
-} from "../../../utils/constants";
 import { useLocale } from "../../../contexts/LocaleContext";
-import { trackSocialClick } from "../../../utils/analytics";
+import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
+import { SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL, WA_MSG } from "../../../utils/constants";
 import "./styles.scss";
 
 export default function Hero() {
@@ -39,37 +33,21 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="hero_main_center_actions">
-            <a className="hero_main_center_actions_btn" href={`mailto:${SOCIAL_MAIL}`}>
-              {t.home.ctaEmail}
+          <div className="hero_main_center_social">
+            <a className="hero_main_center_social_link" href={`mailto:${SOCIAL_MAIL}`} aria-label="Email" data-tooltip="Email">
+              <MailIcon />
             </a>
-            <a
-              className="hero_main_center_actions_btn hero_main_center_actions_btn--wa"
-              href={WA_MSG(t.contact.waMsg)}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {t.home.ctaWa}
+            <a className="hero_main_center_social_link" href={WA_MSG(t.contact.waMsg)} rel="noopener noreferrer" target="_blank" aria-label="WhatsApp" data-tooltip="WhatsApp">
+              <WhatsAppIcon colorless />
             </a>
-            <a
-              className="hero_main_center_actions_link"
-              href={SOCIAL_LINKEDIN_URL}
-              rel="noopener noreferrer"
-              target="_blank"
-              onClick={() => trackSocialClick("linkedin", "hero")}
-            >
+            <a className="hero_main_center_social_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank" aria-label="LinkedIn" data-tooltip="LinkedIn">
               <LinkedInIcon />
             </a>
-            <a
-              className="hero_main_center_actions_link"
-              href={SOCIAL_GITHUB_URL}
-              rel="noopener noreferrer"
-              target="_blank"
-              onClick={() => trackSocialClick("github", "hero")}
-            >
+            <a className="hero_main_center_social_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank" aria-label="GitHub" data-tooltip="GitHub">
               <GithubIcon />
             </a>
           </div>
+
         </div>
       </div>
     </section>

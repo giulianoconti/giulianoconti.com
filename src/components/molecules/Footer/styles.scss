@@ -47,46 +47,63 @@
     }
   }
 
-  .footer_bottom {
-    display: flex;
+  .footer_actions {
     align-items: center;
+    display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    gap: 6px;
-    padding-top: 16px;
+    gap: max(0.5vw, 8px);
+    justify-content: center;
 
-    @include desktop {
-    }
-
-    .footer_bottom_mail {
-      @include text-h4;
-      margin-right: auto;
-      text-decoration: underline;
-      text-decoration-color: rgba(255, 255, 255, 0.08);
-      text-underline-offset: 0.18vw;
-
-      @include desktop {
-        @include text-small;
-      }
-
-      &:hover {
-        text-decoration-color: rgba(255, 255, 255);
-      }
-    }
-
-    .footer_bottom_link {
-      color: #fff;
+    .footer_actions_link {
+      width: max(2.2vw, 36px);
+      height: max(2.2vw, 36px);
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
       display: flex;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.1);
-      }
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 
       & > svg {
-        height: max(1.4vw, 24px);
-        width: max(1.4vw, 24px);
+        width: max(1vw, 16px);
+        height: max(1vw, 16px);
       }
+
+      &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: calc(100% + 7px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-size: max(0.6vw, 10px);
+        font-family: inherit;
+        white-space: nowrap;
+        padding: 3px 8px;
+        border-radius: 6px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.15s;
+      }
+
+      &:hover {
+        background: var(--chip-bg);
+        border-color: var(--entry-hover-border);
+        color: var(--text);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
     }
   }
 }

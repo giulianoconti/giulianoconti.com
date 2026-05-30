@@ -54,11 +54,12 @@
       }
 
       .process_steps {
+        backdrop-filter: blur(16px);
+        border-radius: 16px;
+        border: 1px solid var(--step-border);
         display: grid;
         gap: 1px;
         grid-template-columns: 1fr;
-        border: 1px solid var(--step-border);
-        border-radius: 16px;
         overflow: hidden;
 
         @include tablet {

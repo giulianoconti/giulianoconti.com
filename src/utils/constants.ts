@@ -13,19 +13,19 @@ export const ASSET_WAVE_PROFILE = "/assets/wave-profile.jpg";
 export const ASSET_CONTACT_CAT = "/assets/contact-cat.webp";
 export const ASSET_CONTACT_ROCKET = "/assets/contact-rocket.webp";
 
-export const XLABS_WEBSITE_URL = "https://xlabs.xyz";
+export const XLABS_WEBSITE_URL = "https://xlabs.github.io/xlabs-website";
 export const XLABS_GITHUB_URL = "https://github.com/XLabs/xlabs-website";
 export const WORMHOLESCAN_WEBSITE_URL = "https://wormholescan.io";
 export const WORMHOLESCAN_GITHUB_URL = "https://github.com/XLabs/wormscan-ui";
 export const PORTAL_WEBSITE_URL = "https://portalbridge.com";
 export const PORTAL_GITHUB_URL = "https://github.com/wormhole-foundation/wormhole-connect";
-export const CLINIS_WEBSITE_URL = "https://clinis-automotores.com";
+export const CLINIS_WEBSITE_URL = "https://clinis.com.ar";
 export const CLINIS_GITHUB_URL = "https://github.com/giulianoconti/clinis";
 
-export const EXPERIENCE_WORMHOLESCAN_ASSET = "/assets/experience-wormholescan.png";
-export const EXPERIENCE_PORTAL_ASSET = "/assets/experience-portal.png";
-export const EXPERIENCE_XLABS_ASSET = "/assets/experience-xlabs.png";
-export const EXPERIENCE_CLINIS_ASSET = "/assets/experience-clinis.png";
+export const EXPERIENCE_WORMHOLESCAN_ASSET = "/assets/experience-wormholescan.webp";
+export const EXPERIENCE_PORTAL_ASSET = "/assets/experience-portal.webp";
+export const EXPERIENCE_XLABS_ASSET = "/assets/experience-xlabs.webp";
+export const EXPERIENCE_CLINIS_ASSET = "/assets/experience-clinis.webp";
 
 export const PROJECT_BLACKJACK_URL = "https://g2-devlights-bootcamp.vercel.app/juego";
 export const PROJECT_BLACKJACK_GITHUB_URL = "https://github.com/giulianoconti/tp-final-devlights";
@@ -52,11 +52,13 @@ export const PROJECT_REMOVE_BG_GITHUB_URL = "https://github.com/giulianoconti/re
 export const PROJECT_REMOVE_BG_ASSET = "/assets/my-projects-removeBg.webp";
 
 export const PROJECT_GIULIAN_NEWS_URL = "https://github.com/giulianoconti/tp-info-react-2022/";
-export const PROJECT_GIULIAN_NEWS_GITHUB_URL = "https://github.com/giulianoconti/tp-info-react-2022";
+export const PROJECT_GIULIAN_NEWS_GITHUB_URL =
+  "https://github.com/giulianoconti/tp-info-react-2022";
 export const PROJECT_GIULIAN_NEWS_ASSET = "/assets/my-projects-news.webp";
 
 export const PROJECT_POKEMON_FINDER_URL = "https://giulianoconti.github.io/devlights-homework-2/";
-export const PROJECT_POKEMON_FINDER_GITHUB_URL = "https://github.com/giulianoconti/devlights-homework-2";
+export const PROJECT_POKEMON_FINDER_GITHUB_URL =
+  "https://github.com/giulianoconti/devlights-homework-2";
 export const PROJECT_POKEMON_FINDER_ASSET = "/assets/my-projects-pokemon.webp";
 
 export const PROJECT_WEATHER_TI_URL = "https://weather-ti.vercel.app/";
@@ -143,13 +145,67 @@ export function getCvAssetByLocale(locale: Locale) {
 }
 
 export const MAIN_PROJECTS = [
-  { key: "blackjack",    url: PROJECT_BLACKJACK_URL,     img: PROJECT_BLACKJACK_ASSET,     icons: ["react", "firebase"],           github: PROJECT_BLACKJACK_GITHUB_URL    },
-  { key: "sokoban",      url: PROJECT_SOKOBAN_URL,       img: PROJECT_SOKOBAN_ASSET,       icons: ["react", "css"],                github: PROJECT_SOKOBAN_GITHUB_URL      },
-  { key: "copicti",      url: PROJECT_COPICTI_URL,       img: PROJECT_COPICTI_ASSET,       icons: ["react", "firebase", "mongodb"], github: PROJECT_COPICTI_GITHUB_URL     },
-  { key: "portfolio3d",  url: PROJECT_PORTFOLIO3D_URL,   img: PROJECT_PORTFOLIO3D_ASSET,   icons: ["react", "threejs", "blender"], github: PROJECT_PORTFOLIO3D_GITHUB_URL  },
-  { key: "createResume", url: PROJECT_CREATE_RESUME_URL, img: PROJECT_CREATE_RESUME_ASSET, icons: ["react", "css"],                github: PROJECT_CREATE_RESUME_GITHUB_URL },
-  { key: "removeBg",     url: PROJECT_REMOVE_BG_URL,     img: PROJECT_REMOVE_BG_ASSET,     icons: ["react", "css"],                github: PROJECT_REMOVE_BG_GITHUB_URL    },
-  { key: "giulianNews",  url: PROJECT_GIULIAN_NEWS_URL,  img: PROJECT_GIULIAN_NEWS_ASSET,  icons: ["react", "tailwind"],           github: PROJECT_GIULIAN_NEWS_GITHUB_URL },
-  { key: "pokemonFinder",url: PROJECT_POKEMON_FINDER_URL,img: PROJECT_POKEMON_FINDER_ASSET,icons: ["react", "css"],                github: PROJECT_POKEMON_FINDER_GITHUB_URL },
-  { key: "weatherTI",    url: PROJECT_WEATHER_TI_URL,    img: PROJECT_WEATHER_TI_ASSET,    icons: ["react", "tailwind"],           github: PROJECT_WEATHER_TI_GITHUB_URL   },
+  {
+    key: "blackjack",
+    url: PROJECT_BLACKJACK_URL,
+    img: PROJECT_BLACKJACK_ASSET,
+    icons: ["react", "firebase"],
+    github: PROJECT_BLACKJACK_GITHUB_URL,
+  },
+  {
+    key: "sokoban",
+    url: PROJECT_SOKOBAN_URL,
+    img: PROJECT_SOKOBAN_ASSET,
+    icons: ["react", "css"],
+    github: PROJECT_SOKOBAN_GITHUB_URL,
+  },
+  {
+    key: "copicti",
+    url: PROJECT_COPICTI_URL,
+    img: PROJECT_COPICTI_ASSET,
+    icons: ["react", "firebase", "mongodb"],
+    github: PROJECT_COPICTI_GITHUB_URL,
+  },
+  {
+    key: "portfolio3d",
+    url: PROJECT_PORTFOLIO3D_URL,
+    img: PROJECT_PORTFOLIO3D_ASSET,
+    icons: ["react", "threejs", "blender"],
+    github: PROJECT_PORTFOLIO3D_GITHUB_URL,
+  },
+  {
+    key: "createResume",
+    url: PROJECT_CREATE_RESUME_URL,
+    img: PROJECT_CREATE_RESUME_ASSET,
+    icons: ["react", "css"],
+    github: PROJECT_CREATE_RESUME_GITHUB_URL,
+  },
+  {
+    key: "removeBg",
+    url: PROJECT_REMOVE_BG_URL,
+    img: PROJECT_REMOVE_BG_ASSET,
+    icons: ["react", "css"],
+    github: PROJECT_REMOVE_BG_GITHUB_URL,
+  },
+  {
+    key: "giulianNews",
+    url: PROJECT_GIULIAN_NEWS_URL,
+    img: PROJECT_GIULIAN_NEWS_ASSET,
+    icons: ["react", "tailwind"],
+    github: PROJECT_GIULIAN_NEWS_GITHUB_URL,
+  },
+  {
+    key: "pokemonFinder",
+    url: PROJECT_POKEMON_FINDER_URL,
+    img: PROJECT_POKEMON_FINDER_ASSET,
+    icons: ["react", "css"],
+    github: PROJECT_POKEMON_FINDER_GITHUB_URL,
+  },
+  {
+    key: "weatherTI",
+    url: PROJECT_WEATHER_TI_URL,
+    img: PROJECT_WEATHER_TI_ASSET,
+    icons: ["react", "tailwind"],
+    github: PROJECT_WEATHER_TI_GITHUB_URL,
+  },
 ] as const;

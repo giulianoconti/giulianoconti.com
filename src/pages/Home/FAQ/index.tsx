@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocale } from "../../../contexts/LocaleContext";
+import { PlusMinusIcon } from "../../../icons";
 import { FAQS } from "../../../utils/faqsData";
 import "./styles.scss";
 
@@ -23,22 +24,24 @@ export default function FAQ() {
 
           <div className="faq_list">
             {faqs.map(({ q, a }, i) => (
-              <div key={i} className="faq_item">
-                <button className="faq_item_btn" onClick={() => setOpen(open === i ? null : i)}>
-                  <span className="faq_item_q">{q}</span>
-                  <span className={`faq_item_icon${open === i ? " faq_item_icon--open" : ""}`}>
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
-                      <line x1="5" y1="1" x2="5" y2="9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      {open !== i && <line x1="1" y1="5" x2="9" y2="5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />}
-                    </svg>
+              <button
+                className={`faq_btn${open === i ? " faq_btn--open" : ""}`}
+                key={q}
+                onClick={() => setOpen(open === i ? null : i)}
+              >
+                <div className="faq_btn_question">
+                  <span className="faq_btn_question_text">{q}</span>
+                  <span className="faq_btn_question_icon">
+                    <PlusMinusIcon open={open === i} />
                   </span>
-                </button>
-                <div className={`faq_item_answer${open === i ? " faq_item_answer--open" : ""}`}>
-                  <div className="faq_item_answer_inner">
+                </div>
+
+                <div className="faq_btn_answer">
+                  <div className="faq_btn_answer_inner">
                     <p>{a}</p>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

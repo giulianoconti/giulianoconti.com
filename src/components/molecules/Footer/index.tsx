@@ -7,10 +7,12 @@ import {
   FirebaseIcon,
   GithubIcon,
   LinkedInIcon,
+  MailIcon,
   MongodbIcon,
   ReactIcon,
   TailwindIcon,
   ThreejsIcon,
+  WhatsAppIcon,
   WorldIcon,
 } from "../../../icons";
 import {
@@ -18,6 +20,7 @@ import {
   SOCIAL_GITHUB_URL,
   SOCIAL_LINKEDIN_URL,
   SOCIAL_MAIL,
+  WA_MSG,
 } from "../../../utils/constants.ts";
 import type { IconProps } from "../../../utils/interfaces.ts";
 import "./styles.scss";
@@ -65,31 +68,38 @@ export default function Footer() {
         />
       </a>
 
-      <div className="footer_bottom">
-        <a
-          className="footer_bottom_mail"
-          href={`mailto:${SOCIAL_MAIL}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {SOCIAL_MAIL}
+      <div className="footer_actions">
+        <a className="footer_actions_link" href={`mailto:${SOCIAL_MAIL}`} aria-label="Email" data-tooltip="Email">
+          <MailIcon />
         </a>
-
         <a
-          className="footer_bottom_link"
+          className="footer_actions_link footer_actions_link--wa"
+          href={WA_MSG(t.contact.waMsg)}
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label="WhatsApp"
+          data-tooltip="WhatsApp"
+        >
+          <WhatsAppIcon colorless />
+        </a>
+        <a
+          className="footer_actions_link"
           href={SOCIAL_LINKEDIN_URL}
           rel="noopener noreferrer"
           target="_blank"
+          aria-label="LinkedIn"
+          data-tooltip="LinkedIn"
           onClick={() => trackSocialClick("linkedin", "footer")}
         >
           <LinkedInIcon />
         </a>
-
         <a
-          className="footer_bottom_link"
+          className="footer_actions_link"
           href={SOCIAL_GITHUB_URL}
           rel="noopener noreferrer"
           target="_blank"
+          aria-label="GitHub"
+          data-tooltip="GitHub"
           onClick={() => trackSocialClick("github", "footer")}
         >
           <GithubIcon />

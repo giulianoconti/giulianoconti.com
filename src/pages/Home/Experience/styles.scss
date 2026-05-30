@@ -172,6 +172,21 @@
             @include desktop {
               flex-direction: row-reverse;
             }
+
+            // .experience_sticky_row_right_card_link_image {
+            //   background:
+            //     radial-gradient(
+            //       circle at bottom left,
+            //       color-mix(in srgb, var(--chip-bg) 50%, transparent),
+            //       transparent 40%
+            //     ),
+            //     radial-gradient(
+            //       circle at top right,
+            //       color-mix(in srgb, var(--chip-bg) 50%, transparent),
+            //       transparent 40%
+            //     ),
+            //     var(--card);
+            // }
           }
 
           .experience_sticky_row_right_card_link {
@@ -197,27 +212,39 @@
               border-color: var(--rule);
 
               .experience_sticky_row_right_card_link_image > img {
-                transform: scale(1.05);
+                transform: scale(1.25);
               }
             }
 
             .experience_sticky_row_right_card_link_image {
-              aspect-ratio: 4 / 3;
+              aspect-ratio: 3 / 2;
               border-radius: max(0.5vw, 8px);
               object-fit: cover;
               opacity: 0.85;
               width: 100%;
               overflow: hidden;
+              // background:
+              //   radial-gradient(
+              //     circle at top left,
+              //     color-mix(in srgb, var(--chip-bg) 50%, transparent),
+              //     transparent 40%
+              //   ),
+              //   radial-gradient(
+              //     circle at bottom right,
+              //     color-mix(in srgb, var(--chip-bg) 50%, transparent),
+              //     transparent 40%
+              //   ),
+              //   transparent;
 
               @include desktop {
                 width: 50%;
               }
 
               & > img {
-                aspect-ratio: 4 / 3;
+                aspect-ratio: 3 / 2;
                 border-radius: max(0.5vw, 8px);
                 object-fit: cover;
-                opacity: 0.85;
+                transform: scale(1.15);
                 transition: transform 0.2s ease;
                 width: 100%;
               }
