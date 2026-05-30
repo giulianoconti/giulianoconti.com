@@ -1,11 +1,11 @@
 import { useLocale } from "../contexts/LocaleContext";
 import { PRICING_T } from "./pricingTranslations";
 
-type PricingLang = "en" | "es";
+type PricingLang = "en" | "es" | "pt";
 
 export function usePricingLang(): PricingLang {
   const { locale } = useLocale();
-  return locale === "pt" ? "es" : locale;
+  return locale;
 }
 
 export function usePricingT(): (key: string) => string {

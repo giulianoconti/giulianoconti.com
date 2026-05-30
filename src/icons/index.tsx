@@ -358,10 +358,21 @@ export const MailIcon = ({ className = "", height = 24, width = 24 }: IconProps)
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3.75 5.25L3 6V18L3.75 18.75H20.25L21 18V6L20.25 5.25H3.75ZM4.5 7.6955V17.25H19.5V7.69525L11.9999 14.5136L4.5 7.6955ZM18.3099 6.75H5.68986L11.9999 12.4864L18.3099 6.75Z"
-      fill="currentColor"
+      d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7"
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect
+      x={3}
+      y={5}
+      width={18}
+      height={14}
+      rx={2}
+      stroke="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
     />
   </svg>
 );

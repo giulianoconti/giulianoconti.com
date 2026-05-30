@@ -21,18 +21,18 @@
 }
 
 .qm__overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.78);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  display: flex;
   align-items: flex-end;
+  animation: qm-fade 0.22s ease both;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  inset: 0;
   justify-content: center;
-  z-index: 1000;
   padding: 0;
   pointer-events: auto;
-  animation: qm-fade 0.22s ease both;
+  position: fixed;
+  z-index: 1000;
 
   &--out {
     animation: qm-fade 0.2s ease both reverse;
@@ -40,21 +40,21 @@
 
   @include tablet {
     align-items: center;
-    padding: 16px;
+    padding: max(1vw, 16px);
   }
 }
 
 .qm {
+  animation: qm-slide 0.22s ease both;
   background: var(--card);
-  border: 1px solid var(--border);
   border-radius: 20px 20px 0 0;
-  width: 100%;
-  max-height: 93vh;
-  max-height: 98dvh;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
+  max-height: 93vh;
+  max-height: 98dvh;
   overflow: hidden;
-  animation: qm-slide 0.22s ease both;
+  width: 100%;
 
   &--out {
     animation: qm-slide 0.2s ease both reverse;
@@ -68,25 +68,33 @@
 }
 
 .qm__header {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: max(1.2vw, 18px) max(1.5vw, 22px) 0;
+  display: flex;
   flex-shrink: 0;
-  min-height: 42px;
+  justify-content: space-between;
+  min-height: max(2.8vw, 42px);
+  padding: max(1.2vw, 18px) max(1.5vw, 22px) 0;
+  position: relative;
+
+  .qm__header__center {
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: max(1vw, 16px);
+  }
 }
 
 .qm__back {
-  display: inline-flex;
   align-items: center;
-  gap: 0.4em;
-  color: var(--muted);
   background: none;
   border: none;
-  padding: 0;
-  font-size: max(0.85vw, 13px);
-  font-family: inherit;
+  color: var(--muted);
   cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: max(0.85vw, 13px);
+  gap: 0.4em;
+  padding: 0;
   transition: color 0.15s;
 
   svg {
@@ -101,21 +109,20 @@
 }
 
 .qm__close {
-  width: max(2vw, 30px);
-  height: max(2vw, 30px);
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
   color: var(--muted);
+  cursor: pointer;
+  display: flex;
   font-size: max(0.85vw, 13px);
+  height: max(2vw, 30px);
+  justify-content: center;
+  width: max(2vw, 30px);
   transition:
     background 0.15s,
     color 0.15s;
-  margin-left: auto;
 
   svg {
     width: max(0.75vw, 11px);
@@ -129,63 +136,64 @@
 }
 
 .qm__title {
-  font-size: max(1.5vw, 22px);
-  font-weight: 700;
   color: var(--text);
-  line-height: 1.15;
-  text-align: center;
-  margin: 0;
   font-family: "HelveticaNow", sans-serif;
+  font-size: max(1.1vw, 17px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  text-align: center;
 
   @include tablet {
-    font-size: max(1.7vw, 26px);
+    font-size: max(1.2vw, 18px);
   }
 
   &--sm {
-    font-size: max(1.3vw, 20px);
+    font-size: max(1vw, 16px);
   }
 }
 
 .qm__sub {
-  font-size: max(0.85vw, 13px);
   color: var(--muted);
-  text-align: center;
-  margin: 6px 0 0;
   font-family: "HelveticaNow", sans-serif;
+  font-size: max(0.85vw, 13px);
+  margin: max(0.3vw, 4px) 0 0;
+  text-align: center;
 }
 
 .qm__quiz {
   display: flex;
   flex-direction: column;
-  padding: max(0.9vw, 14px) max(1.5vw, 22px) max(1.5vw, 22px);
   flex: 1;
   overflow-y: auto;
+  padding: max(0.9vw, 14px) max(1.5vw, 22px) max(1.5vw, 22px);
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
 .qm__progress {
-  height: 3px;
   background: var(--border);
   border-radius: 2px;
+  height: 3px;
   overflow: hidden;
 
   &__fill {
-    height: 100%;
     background: var(--accent);
     border-radius: 2px;
+    height: 100%;
     transition: width 0.3s ease;
   }
 
   &__label {
-    text-align: right;
-    font-size: 11px;
     color: var(--muted);
-    margin-top: 6px;
-    margin-bottom: 18px;
     font-family: "HelveticaNow", sans-serif;
+    font-size: max(0.62vw, 9px);
+    margin-bottom: max(1.2vw, 18px);
+    margin-top: max(0.3vw, 5px);
+    text-align: right;
   }
 }
 
@@ -193,26 +201,26 @@
   display: flex;
   flex-direction: column;
   gap: max(0.5vw, 8px);
-  margin-top: 18px;
+  margin-top: max(1.2vw, 18px);
 }
 
 .qm__option {
-  display: flex;
   align-items: center;
-  gap: max(0.9vw, 14px);
-  padding: max(0.8vw, 12px) max(0.9vw, 14px);
-  border: 1px solid var(--border);
-  border-radius: max(0.8vw, 12px);
-  outline: none;
   background: rgba(255, 255, 255, 0.02);
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  font-family: "HelveticaNow", sans-serif;
+  border-radius: max(0.8vw, 12px);
+  border: 1px solid var(--border);
   color: var(--text);
+  cursor: pointer;
+  display: flex;
+  font-family: "HelveticaNow", sans-serif;
+  gap: max(0.65vw, 10px);
+  outline: none;
+  padding: max(0.6vw, 9px) max(0.75vw, 11px);
+  text-align: left;
   transition:
     border-color 0.15s,
     background 0.15s;
+  width: 100%;
 
   &:hover {
     border-color: rgba(163, 230, 53, 0.35);
@@ -224,19 +232,19 @@
   }
 
   &__icon {
-    width: max(2.6vw, 40px);
-    height: max(2.6vw, 40px);
+    align-items: center;
     background: rgba(255, 255, 255, 0.06);
     border-radius: max(0.65vw, 10px);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: max(1.2vw, 18px);
     flex-shrink: 0;
+    font-size: max(1.2vw, 18px);
+    height: max(2vw, 32px);
+    justify-content: center;
+    width: max(2vw, 32px);
 
     svg {
-      width: max(1.3vw, 20px);
-      height: max(1.3vw, 20px);
+      width: max(1vw, 16px);
+      height: max(1vw, 16px);
     }
 
     .qm__option--selected & {
@@ -245,39 +253,39 @@
   }
 
   &__body {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 2px;
   }
   &__label {
-    font-size: max(0.9vw, 14px);
+    font-size: max(0.82vw, 12px);
     font-weight: 600;
   }
   &__desc {
-    font-size: max(0.8vw, 12px);
+    font-size: max(0.7vw, 10px);
     color: var(--muted);
   }
 
   &__radio {
-    width: 16px;
-    height: 16px;
     border-radius: 50%;
     border: 1.5px solid var(--border);
     flex-shrink: 0;
-    transition: all 0.15s;
+    height: max(1.1vw, 16px);
     position: relative;
+    transition: all 0.15s;
+    width: max(1.1vw, 16px);
 
     .qm__option--selected & {
       border-color: var(--accent);
       background: var(--accent);
 
       &::after {
-        content: "";
-        position: absolute;
-        inset: 3px;
         background: #000;
         border-radius: 50%;
+        content: "";
+        inset: 3px;
+        position: absolute;
       }
     }
   }
@@ -290,19 +298,14 @@
   overflow: hidden;
 }
 
-.qm__table-header {
-  padding: max(0.65vw, 10px) max(1.5vw, 22px) 0;
-  flex-shrink: 0;
-}
-
 .qm__model-tabs {
-  display: flex;
-  gap: 3px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: max(0.65vw, 10px);
-  padding: 3px;
-  margin: max(0.8vw, 12px) max(1.5vw, 22px) 0;
+  display: flex;
   flex-shrink: 0;
+  gap: 3px;
+  margin: max(0.8vw, 12px) max(1.5vw, 22px) 0;
+  padding: 3px;
 }
 
 .qm__model-tab {
@@ -311,13 +314,13 @@
   border: none;
   color: var(--muted);
   cursor: pointer;
-  outline: none;
   flex: 1;
   font-family: "HelveticaNow", sans-serif;
   font-size: max(0.65vw, 10px);
   font-weight: 500;
   height: max(2.2vw, 32px);
-  padding: 0 6px;
+  outline: none;
+  padding: 0 max(0.4vw, 6px);
   text-align: center;
   transition: all 0.15s;
 
@@ -332,36 +335,36 @@
   }
 
   &__badge {
+    background: var(--accent);
+    border-radius: 9999px;
+    color: var(--accent-badge-text, #000);
     display: inline-block;
-    margin-left: max(0.3vw, 5px);
     font-size: max(0.58vw, 9px);
     font-weight: 700;
     letter-spacing: 0.5px;
-    background: var(--accent);
-    color: var(--accent-badge-text, #000);
-    border-radius: 9999px;
+    line-height: 1.6;
+    margin-left: max(0.3vw, 5px);
     padding: 0 max(0.4vw, 6px);
     vertical-align: middle;
-    line-height: 1.6;
   }
 }
 
 .qm__tier-tabs {
   display: flex;
-  gap: 6px;
+  gap: max(0.4vw, 6px);
   margin: max(0.65vw, 10px) max(1.5vw, 22px) 0;
   flex-shrink: 0;
 }
 
 .qm__tier-tab {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
   border-radius: max(0.65vw, 10px);
+  border: 1px solid var(--border);
   color: var(--muted);
   cursor: pointer;
   display: flex;
-  flex: 1;
   flex-direction: column;
+  flex: 1;
   font-family: "HelveticaNow", sans-serif;
   gap: 2px;
   outline: none;
@@ -401,23 +404,35 @@
     font-size: max(0.52vw, 8px);
     font-weight: 700;
     letter-spacing: 0.5px;
-    padding: 1px 5px;
+    padding: max(0.06vw, 1px) max(0.3vw, 5px);
     position: absolute;
-    right: 6px;
+    right: max(0.4vw, 6px);
     text-transform: uppercase;
-    top: 6px;
+    top: max(0.4vw, 6px);
   }
 }
 
 .qm__model-note {
-  font-size: max(0.72vw, 11px);
   color: var(--muted);
-  text-align: center;
-  padding: max(0.52vw, 8px) max(1.5vw, 22px) 0;
   flex-shrink: 0;
-  line-height: 1.5;
-  text-wrap: pretty;
   font-family: "HelveticaNow", sans-serif;
+  font-size: max(0.72vw, 11px);
+  line-height: 1.5;
+  padding: max(0.52vw, 8px) max(1.5vw, 22px) 0;
+  position: relative;
+  text-align: center;
+  text-wrap: pretty;
+  z-index: 1;
+
+  &::after {
+    background: linear-gradient(to bottom, var(--card), transparent);
+    bottom: min(-2vh, -8px);
+    content: "";
+    height: max(2vh, 8px);
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
 }
 
 .qm__features {
@@ -437,35 +452,35 @@
 }
 
 .qm__group {
-  margin-bottom: 16px;
+  margin-bottom: max(0.65vw, 10px);
 
   &__label {
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-family: "HelveticaNow", sans-serif;
     font-size: max(0.65vw, 10px);
     font-weight: 600;
     letter-spacing: max(0.1vw, 1.5px);
-    color: var(--muted);
+    margin-bottom: max(0.2vw, 3px);
+    padding-bottom: max(0.35vw, 5px);
     text-transform: uppercase;
-    padding-bottom: 7px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 4px;
-    font-family: "HelveticaNow", sans-serif;
   }
 }
 
 .qm__row {
-  display: flex;
   align-items: center;
-  gap: max(0.65vw, 10px);
-  padding: max(0.45vw, 7px) max(0.5vw, 8px);
-  border-radius: max(0.5vw, 8px);
-  width: 100%;
   background: none;
+  border-radius: max(0.5vw, 8px);
   border: none;
-  outline: none;
   cursor: pointer;
+  display: flex;
   font-family: "HelveticaNow", sans-serif;
-  transition: background 0.12s;
+  gap: max(0.65vw, 10px);
+  outline: none;
+  padding: max(0.35vw, 6px) max(0.5vw, 8px);
   text-align: left;
+  transition: background 0.12s;
+  width: 100%;
 
   &:hover:not(&--locked) {
     background: rgba(255, 255, 255, 0.03);
@@ -488,16 +503,16 @@
   }
 
   &__check {
-    width: max(1.1vw, 16px);
-    height: max(1.1vw, 16px);
+    align-items: center;
     border-radius: max(0.25vw, 4px);
     border: 1.5px solid var(--border);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #000;
+    display: flex;
+    flex-shrink: 0;
+    height: max(1.1vw, 16px);
+    justify-content: center;
     transition: all 0.12s;
+    width: max(1.1vw, 16px);
 
     svg {
       width: max(0.7vw, 10px);
@@ -521,24 +536,23 @@
   }
 
   &__label {
-    display: block;
-    font-size: max(0.85vw, 13px);
-    font-weight: 500;
     color: var(--text);
-    white-space: nowrap;
+    display: block;
+    font-size: max(0.75vw, 11px);
+    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__desc {
-    display: block;
-    font-size: max(0.72vw, 11px);
+    font-size: max(0.6vw, 9px);
     color: var(--muted);
     margin-top: 1px;
   }
 
   &__price {
-    font-size: max(0.8vw, 12px);
+    font-size: max(0.7vw, 10px);
     font-weight: 500;
     color: var(--muted);
     flex-shrink: 0;
@@ -551,14 +565,14 @@
 }
 
 .qm__price-bar {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: max(0.8vw, 12px) max(1.5vw, 22px) max(1.2vw, 18px);
-  border-top: 1px solid var(--border);
   background: var(--card);
+  border-top: 1px solid var(--border);
+  display: flex;
   flex-shrink: 0;
+  gap: max(0.8vw, 12px);
+  justify-content: space-between;
+  padding: max(0.8vw, 12px) max(1.5vw, 22px) max(1.2vw, 18px);
 
   &__left {
     display: flex;
@@ -578,29 +592,35 @@
   &__amount {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: max(0.4vw, 6px);
   }
 
   &__amount strong {
+    color: var(--accent-text);
+    font-family: "HelveticaNow", sans-serif;
     font-size: max(1.3vw, 20px);
     font-weight: 700;
-    color: var(--accent-text);
     line-height: 1;
-    font-family: "HelveticaNow", sans-serif;
 
     @include tablet {
       font-size: max(1.6vw, 24px);
     }
   }
 
-  &__currency {
+  &__per {
     font-size: max(0.72vw, 11px);
-    color: var(--muted);
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  &__currency {
     background: none;
-    border: none;
     border-bottom: 1px solid var(--border);
+    border: none;
+    color: var(--muted);
     cursor: pointer;
     font-family: "HelveticaNow", sans-serif;
+    font-size: max(0.72vw, 11px);
     padding: 0;
     transition: color 0.15s;
 
@@ -618,18 +638,18 @@
 
   &__cta {
     background: var(--accent);
-    color: var(--accent-badge-text, #000);
-    border: none;
     border-radius: max(0.65vw, 10px);
-    padding: max(0.72vw, 11px) max(1.2vw, 18px);
+    border: none;
+    color: var(--accent-badge-text, #000);
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "HelveticaNow", sans-serif;
     font-size: max(0.85vw, 13px);
     font-weight: 700;
-    cursor: pointer;
+    padding: max(0.72vw, 11px) max(1.2vw, 18px);
     text-decoration: none;
-    white-space: nowrap;
-    font-family: "HelveticaNow", sans-serif;
     transition: opacity 0.15s;
-    flex-shrink: 0;
+    white-space: nowrap;
 
     &:hover {
       opacity: 0.88;
