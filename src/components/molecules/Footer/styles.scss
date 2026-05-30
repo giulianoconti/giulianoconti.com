@@ -4,19 +4,18 @@
 
 .footer {
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: center;
-  padding: 8px 16px 88px 16px;
+  padding: 16px 16px 88px 16px;
   position: relative;
   width: 100%;
   z-index: 10;
 
   @include desktop {
-    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 2vh 10vw;
@@ -103,7 +102,6 @@
           opacity: 1;
         }
       }
-
     }
   }
 }

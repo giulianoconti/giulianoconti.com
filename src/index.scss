@@ -49,6 +49,8 @@
   --entry-primary-bg: rgba(163, 230, 53, 0.04);
   --entry-primary-hover-border: rgba(163, 230, 53, 0.4);
   --entry-primary-hover-bg: rgba(163, 230, 53, 0.07);
+  --footer-bg: rgba(0, 0, 0, 0.1);
+  --footer-border: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="light"] {
@@ -90,6 +92,8 @@
   --entry-primary-bg: rgba(58, 110, 0, 0.05);
   --entry-primary-hover-border: rgba(58, 110, 0, 0.45);
   --entry-primary-hover-bg: rgba(58, 110, 0, 0.09);
+  --footer-bg: rgba(255, 255, 255, 0.1);
+  --footer-border: rgba(255, 255, 255, 0.2);
 }
 
 html {

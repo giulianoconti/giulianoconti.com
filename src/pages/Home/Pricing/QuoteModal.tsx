@@ -1,12 +1,23 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { BackIcon, CheckIcon, CloseIcon } from "../../../icons";
-import { CLOSE_MS, ARS_RATE, MULTIPLIER_EXPRESS, MONTHLY_TIERS, INFRA_COSTS } from "../../../utils/pricingData";
+import {
+  CLOSE_MS,
+  ARS_RATE,
+  MULTIPLIER_EXPRESS,
+  MONTHLY_TIERS,
+  INFRA_COSTS,
+} from "../../../utils/pricingData";
 import type { TierId } from "../../../utils/pricingData";
 import { WA_MSG } from "../../../utils/constants";
 import type { Feature } from "../../../utils/pricingData";
 import { usePricingLang, usePricingT } from "../../../utils/pricingLocale";
-import { getFeatures, getQuizSteps, getFeatureGroups, getGroupLabels } from "../../../utils/pricingTranslations";
+import {
+  getFeatures,
+  getQuizSteps,
+  getFeatureGroups,
+  getGroupLabels,
+} from "../../../utils/pricingTranslations";
 import "./QuoteModal.scss";
 
 type Model = "monthly" | "onetime";
@@ -25,7 +36,9 @@ function buildWaMessage(
 ): string {
   const setup = calcSetup(checked, model, timeline, features);
   const monthly = calcMonthly(model, tier, checked, features);
-  const selectedLabels = features.filter((f) => !f.locked && checked.has(f.id)).map((f) => `• ${f.label}`);
+  const selectedLabels = features
+    .filter(f => !f.locked && checked.has(f.id))
+    .map(f => `• ${f.label}`);
   const tierLabel = t(`qm_tier_${tier}_label`);
   const lines = [t("wa_greeting"), t("wa_name_line"), "", t("wa_intro"), ""];
   if (model === "monthly") {
@@ -48,7 +61,12 @@ function buildWaMessage(
   return lines.join("\n");
 }
 
-function calcSetup(checked: Set<string>, model: Model, timeline: Timeline, features: Feature[]): number {
+function calcSetup(
+  checked: Set<string>,
+  model: Model,
+  timeline: Timeline,
+  features: Feature[],
+): number {
   if (model === "monthly") return 0;
   let total = 0;
   for (const f of features) {
@@ -62,10 +80,17 @@ function calcInfra(checked: Set<string>): number {
   return INFRA_COSTS.base + (checked.has("db") ? INFRA_COSTS.supabase : 0);
 }
 
-function calcMonthly(model: Model, tier: TierId, checked: Set<string>, features: Feature[]): number {
+function calcMonthly(
+  model: Model,
+  tier: TierId,
+  checked: Set<string>,
+  features: Feature[],
+): number {
   if (model !== "monthly") return 0;
-  const featureSum = features.filter((f) => !f.locked && checked.has(f.id)).reduce((sum, f) => sum + f.price, 0);
-  const extra = MONTHLY_TIERS.find((t) => t.id === tier)!.extra;
+  const featureSum = features
+    .filter(f => !f.locked && checked.has(f.id))
+    .reduce((sum, f) => sum + f.price, 0);
+  const extra = MONTHLY_TIERS.find(t => t.id === tier)!.extra;
   return calcInfra(checked) + Math.round(featureSum / 20) + extra;
 }
 
@@ -129,7 +154,9 @@ export default function QuoteModal({ mode, onClose }: Props) {
   const [view, setView] = useState<"quiz" | "table">(mode);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
-  const [checked, setChecked] = useState<Set<string>>(() => (mode === "table" ? new Set(["p1"]) : new Set()));
+  const [checked, setChecked] = useState<Set<string>>(() =>
+    mode === "table" ? new Set(["p1"]) : new Set(),
+  );
   const [model, setModel] = useState<Model>("monthly");
   const [tier, setTier] = useState<TierId>("standard");
   const [timeline, setTimeline] = useState<Timeline>("normal");
@@ -176,17 +203,19 @@ export default function QuoteModal({ mode, onClose }: Props) {
   };
 
   const toggleFeature = (id: string, radio?: string) => {
-    setChecked((prev) => {
+    setChecked(prev => {
       const next = new Set(prev);
       if (radio) {
-        features.filter((f) => f.radio === radio).forEach((f) => next.delete(f.id));
+        features.filter(f => f.radio === radio).forEach(f => next.delete(f.id));
         next.add(id);
       } else if (next.has(id)) {
-        const requiredBy = features.some((f) => f.id !== id && next.has(f.id) && !!f.triggers?.includes(id));
+        const requiredBy = features.some(
+          f => f.id !== id && next.has(f.id) && !!f.triggers?.includes(id),
+        );
         if (!requiredBy) next.delete(id);
       } else {
         next.add(id);
-        features.find((f) => f.id === id)?.triggers?.forEach((tr) => next.add(tr));
+        features.find(f => f.id === id)?.triggers?.forEach(tr => next.add(tr));
       }
       return next;
     });
@@ -206,21 +235,29 @@ export default function QuoteModal({ mode, onClose }: Props) {
   };
 
   const setup = calcSetup(checked, model, timeline, features);
-  const featureSum = features.filter((f) => !f.locked && checked.has(f.id)).reduce((s, f) => s + f.price, 0);
+  const featureSum = features
+    .filter(f => !f.locked && checked.has(f.id))
+    .reduce((s, f) => s + f.price, 0);
   const monthly = calcMonthly(model, tier, checked, features);
 
   return createPortal(
     <div
       className={`qm__overlay${closing ? " qm__overlay--out" : ""}`}
-      onClick={(e) => e.target === e.currentTarget && handleClose()}
+      onClick={e => e.target === e.currentTarget && handleClose()}
     >
       <div className={`qm${closing ? " qm--out" : ""}`}>
         <div className="qm__header">
           {(view === "table" || step > 0) && (
-            <button className="qm__back" onClick={view === "table" ? resetToQuiz : () => setStep((s) => s - 1)}>
+            <button
+              className="qm__back"
+              onClick={view === "table" ? resetToQuiz : () => setStep(s => s - 1)}
+            >
               <BackIcon height={14} width={14} /> {t("qm_back")}
             </button>
           )}
+
+          {view === "table" && <h2 className="qm__header__center">{t("qm_title")}</h2>}
+
           <button className="qm__close" onClick={handleClose} aria-label="Cerrar">
             <CloseIcon height={14} width={14} />
           </button>
@@ -229,15 +266,22 @@ export default function QuoteModal({ mode, onClose }: Props) {
         {view === "quiz" && (
           <div className="qm__quiz" data-lenis-prevent>
             <div className="qm__progress">
-              <div className="qm__progress__fill" style={{ width: `${((step + 1) / quizSteps.length) * 100}%` }} />
+              <div
+                className="qm__progress__fill"
+                style={{ width: `${((step + 1) / quizSteps.length) * 100}%` }}
+              />
             </div>
+
             <div className="qm__progress__label">
               {step + 1} {t("qm_step_of")} {quizSteps.length}
             </div>
+
             <h2 className="qm__title">{quizSteps[step].title}</h2>
+
             <p className="qm__sub">{quizSteps[step].sub}</p>
+
             <div className="qm__options">
-              {quizSteps[step].options.map((opt) => (
+              {quizSteps[step].options.map(opt => (
                 <button
                   key={opt.value}
                   className={`qm__option${answers[quizSteps[step].key] === opt.value ? " qm__option--selected" : ""}`}
@@ -246,6 +290,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <div className="qm__option__icon">
                     <opt.icon height={20} width={20} />
                   </div>
+
                   <div className="qm__option__body">
                     <span className="qm__option__label">{opt.label}</span>
                     <span className="qm__option__desc">{opt.desc}</span>
@@ -259,10 +304,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
         {view === "table" && (
           <div className="qm__table-view">
-            <div className="qm__table-header">
-              <h2 className="qm__title qm__title--sm">{t("qm_title")}</h2>
-              <p className="qm__sub">{t("qm_sub")}</p>
-            </div>
             <div className="qm__model-tabs">
               <button
                 className={`qm__model-tab${model === "monthly" ? " qm__model-tab--active" : ""}`}
@@ -272,6 +313,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                 {t("qm_tab_monthly")}
                 <span className="qm__model-tab__badge">{t("qm_tab_badge")}</span>
               </button>
+
               <button
                 className={`qm__model-tab${model === "onetime" ? " qm__model-tab--active" : ""}`}
                 onClick={() => setModel("onetime")}
@@ -280,9 +322,10 @@ export default function QuoteModal({ mode, onClose }: Props) {
                 {t("qm_tab_onetime")}
               </button>
             </div>
+
             {model === "monthly" && (
               <div className="qm__tier-tabs">
-                {MONTHLY_TIERS.map((tr) => (
+                {MONTHLY_TIERS.map(tr => (
                   <button
                     key={tr.id}
                     className={`qm__tier-tab${tier === tr.id ? " qm__tier-tab--active" : ""}`}
@@ -294,22 +337,30 @@ export default function QuoteModal({ mode, onClose }: Props) {
                       {fmt(calcInfra(checked) + Math.round(featureSum / 20) + tr.extra, currency)}
                       {t("qm_monthly_per")}
                     </span>
-                    {tr.id === "standard" && <span className="qm__tier-tab__badge">{t("qm_tier_badge")}</span>}
+                    {tr.id === "standard" && (
+                      <span className="qm__tier-tab__badge">{t("qm_tier_badge")}</span>
+                    )}
                   </button>
                 ))}
               </div>
             )}
-            <p className="qm__model-note">{model === "monthly" ? t(`qm_tier_${tier}_note`) : t("qm_note_onetime")}</p>
+
+            <p className="qm__model-note">
+              {model === "monthly" ? t(`qm_tier_${tier}_note`) : t("qm_note_onetime")}
+            </p>
+
             <div className="qm__features" data-lenis-prevent>
               {featureGroups.map(([group, groupFeatures]) => (
                 <div key={group} className="qm__group">
                   <div className="qm__group__label">{groupLabels[group] ?? group}</div>
-                  {(groupFeatures as Feature[]).map((f) => {
+                  {(groupFeatures as Feature[]).map(f => {
                     const isChecked = !!f.locked || checked.has(f.id);
                     const isRequired =
                       !f.locked &&
                       checked.has(f.id) &&
-                      features.some((o) => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id));
+                      features.some(
+                        o => o.id !== f.id && checked.has(o.id) && !!o.triggers?.includes(f.id),
+                      );
                     return (
                       <button
                         key={f.id}
@@ -317,7 +368,9 @@ export default function QuoteModal({ mode, onClose }: Props) {
                         onClick={() => !f.locked && toggleFeature(f.id, f.radio)}
                         disabled={!!f.locked}
                       >
-                        <div className="qm__row__check">{isChecked && <CheckIcon height={10} width={10} />}</div>
+                        <div className="qm__row__check">
+                          {isChecked && <CheckIcon height={10} width={10} />}
+                        </div>
                         <div className="qm__row__info">
                           <span className="qm__row__label">{f.label}</span>
                           <span className="qm__row__desc">{f.desc}</span>
@@ -331,6 +384,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                 </div>
               ))}
             </div>
+
             <div className="qm__price-bar">
               <div className="qm__price-bar__left">
                 <span className="qm__price-bar__label">
@@ -340,15 +394,23 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <strong>
                     {model === "monthly" ? fmt(monthly, currency) : fmt(setup, currency)}
                     {model === "monthly" && (
-                      <span style={{ fontSize: "13px", fontWeight: 400, opacity: 0.7 }}>{t("qm_monthly_per")}</span>
+                      <span className="qm__price-bar__per">{t("qm_monthly_per")}</span>
                     )}
                   </strong>
-                  <button className="qm__price-bar__currency" onClick={toggleCurrency} aria-label="Cambiar moneda">
+
+                  <button
+                    className="qm__price-bar__currency"
+                    onClick={toggleCurrency}
+                    aria-label="Cambiar moneda"
+                  >
                     {currency.toUpperCase()}
                   </button>
                 </div>
-                {model === "onetime" && <span className="qm__price-bar__monthly">{t("qm_no_monthly")}</span>}
+                {model === "onetime" && (
+                  <span className="qm__price-bar__monthly">{t("qm_no_monthly")}</span>
+                )}
               </div>
+
               <a
                 className="qm__price-bar__cta"
                 href={WA_MSG(buildWaMessage(checked, model, timeline, tier, currency, t, features))}
