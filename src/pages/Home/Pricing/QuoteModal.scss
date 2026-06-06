@@ -94,6 +94,7 @@
   font-family: inherit;
   font-size: max(0.85vw, 13px);
   gap: 0.4em;
+  min-height: max(2vw, 32px);
   padding: 0;
   transition: color 0.15s;
 
@@ -117,9 +118,9 @@
   cursor: pointer;
   display: flex;
   font-size: max(0.85vw, 13px);
-  height: max(2vw, 30px);
+  height: max(2.2vw, 36px);
   justify-content: center;
-  width: max(2vw, 30px);
+  width: max(2.2vw, 36px);
   transition:
     background 0.15s,
     color 0.15s;

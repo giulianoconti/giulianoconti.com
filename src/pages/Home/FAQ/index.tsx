@@ -13,7 +13,7 @@ export default function FAQ() {
     <section className="faq" id="faq">
       <div className="faq_inner">
         <div className="faq_header">
-          <h5 className="faq_header_eyebrow">{t.faq.label.toUpperCase()}</h5>
+          <p className="faq_header_eyebrow">{t.faq.label.toUpperCase()}</p>
           <div className="faq_header_rule" />
         </div>
 

@@ -83,21 +83,21 @@ export default function Home() {
             <Scene />
           </Suspense>
           <div className="home_overlay home_overlay_grain1">
-            <img src="/assets/overlay.webp" alt="" />
+            <img src="/assets/overlay.webp" alt="" decoding="async" fetchPriority="low" />
           </div>
           <div className="home_overlay home_overlay_grain2">
-            <img src="/assets/overlay2.webp" alt="" />
+            <img src="/assets/overlay2.webp" alt="" decoding="async" fetchPriority="low" />
           </div>
         </>
       )}
 
-      <div id="page" className="home_page">
+      <main id="page" className="home_page">
         <Hero />
         <Experience />
         <Process />
         <Pricing />
         <FAQ />
-      </div>
+      </main>
 
       <a
         href={WA_MSG(t.contact.waMsg)}
