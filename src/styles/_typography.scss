@@ -2,28 +2,33 @@
   font-family: "HelveticaNow";
   font-weight: 300;
   src: url("/fonts/helveticanowdisplay-light.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "HelveticaNow";
   font-weight: 400;
   src: url("/fonts/helveticanowdisplay-regular.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "HelveticaNow";
   font-weight: 500;
   src: url("/fonts/helveticanowdisplay-medium.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "InstrumentSerif";
   font-weight: 400;
   font-style: normal;
   src: url("/fonts/instrumentserif-regular.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "InstrumentSerif";
   font-weight: 400;
   font-style: italic;
   src: url("/fonts/instrumentserif-italic.ttf") format("truetype");
+  font-display: swap;
 }
 
 @mixin type($size, $weight: 400, $family: "HelveticaNow") {

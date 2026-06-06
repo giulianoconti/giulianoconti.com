@@ -78,9 +78,9 @@ export default function Process() {
     <section className="process" id="process">
       <div className="process_inner">
         <div className="process_header">
-          <h5 className="process_header_eyebrow" id="process">
+          <p className="process_header_eyebrow" id="process">
             {t.process.label.toUpperCase()}
-          </h5>
+          </p>
           <div className="process_header_rule" />
         </div>
 

@@ -29,7 +29,7 @@ export default function Pricing() {
     <section className="pricing" id="pricing">
       <div className="pricing_inner">
         <div className="pricing_header">
-          <h5 className="pricing_header_eyebrow">{t.pricing.label.toUpperCase()}</h5>
+          <p className="pricing_header_eyebrow">{t.pricing.label.toUpperCase()}</p>
           <div className="pricing_header_rule" />
         </div>
 

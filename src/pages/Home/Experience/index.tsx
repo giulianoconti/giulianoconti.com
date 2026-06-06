@@ -116,9 +116,9 @@ export default function Experience() {
         <div className="experience_sticky_row">
           <div className="experience_sticky_row_left">
             <div className="experience_sticky_row_left_container">
-              <h5 className="experience_sticky_row_left_container_eyebrow">
+              <p className="experience_sticky_row_left_container_eyebrow">
                 {t.experience.title.toUpperCase()}
-              </h5>
+              </p>
               <h2 className="experience_sticky_row_left_container_title">
                 {t.experience.jobTitle}
               </h2>
@@ -142,7 +142,7 @@ export default function Experience() {
                     rel="noopener noreferrer"
                   >
                     <div className="experience_sticky_row_right_card_link_image">
-                      <img src={experience.image} alt={experience.name} />
+                      <img src={experience.image} alt={experience.name} loading="lazy" decoding="async" />
                     </div>
 
                     <div className="experience_sticky_row_right_card_link_content">
