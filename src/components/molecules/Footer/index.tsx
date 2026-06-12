@@ -53,6 +53,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
+            data-tooltip="LinkedIn"
             className="footer_cta_social_link"
             onClick={() => trackSocialClick("linkedin", "footer")}
           >
@@ -64,6 +65,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
+            data-tooltip="GitHub"
             className="footer_cta_social_link"
             onClick={() => trackSocialClick("github", "footer")}
           >

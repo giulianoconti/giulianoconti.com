@@ -180,6 +180,10 @@
 
         &.nav_lite--active {
           color: var(--accent);
+
+          @at-root [data-theme="light"] #{&} {
+            color: #aeff2c;
+          }
         }
       }
     }

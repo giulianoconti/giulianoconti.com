@@ -560,7 +560,7 @@
     white-space: nowrap;
 
     .qm__row--checked:not(.qm__row--locked) & {
-      color: var(--accent-text);
+      color: var(--accent);
     }
   }
 }
@@ -597,7 +597,7 @@
   }
 
   &__amount strong {
-    color: var(--accent-text);
+    color: var(--accent);
     font-family: "HelveticaNow", sans-serif;
     font-size: max(1.3vw, 20px);
     font-weight: 700;

@@ -30,7 +30,7 @@
 
       em {
         font-style: italic;
-        color: var(--accent-text);
+        color: var(--accent);
       }
     }
 
@@ -73,8 +73,8 @@
           font-weight: 500;
 
           &:hover {
-            background: var(--accent-text);
-            border-color: var(--accent-text);
+            background: var(--accent);
+            border-color: var(--accent);
             color: #000;
           }
         }
