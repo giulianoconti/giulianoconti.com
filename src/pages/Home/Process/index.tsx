@@ -6,7 +6,7 @@ const PROCESS_STEPS: Record<"en" | "es" | "pt", { n: string; title: string; desc
     {
       n: "01",
       title: "Hablamos",
-      desc: "Me contás el proyecto, qué necesitás y en qué plazo. Sin rodeos.",
+      desc: "Me contás el proyecto, qué necesitás y en qué plazo. Sin vueltas.",
     },
     {
       n: "02",

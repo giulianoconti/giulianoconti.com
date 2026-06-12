@@ -1,0 +1,126 @@
+@use "../../../styles/breakpoints" as *;
+@use "../../../styles/layout" as *;
+@use "../../../styles/typography" as *;
+
+.contact {
+  @include section-padding-x;
+  background: var(--card);
+  border-top: 1px solid var(--rule);
+  padding-top: max(6vw, 80px);
+  padding-bottom: max(6vw, 80px);
+  position: relative;
+  z-index: 5;
+
+  .contact_inner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: max(2vw, 28px);
+    text-align: center;
+
+    .contact_eyebrow {
+      @include text-eyebrow;
+      color: var(--eyebrow);
+    }
+
+    .contact_headline {
+      @include text-h2;
+      color: var(--text);
+      max-width: max(40vw, 320px);
+
+      em {
+        font-style: italic;
+        color: var(--accent-text);
+      }
+    }
+
+    .contact_actions {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: max(0.8vw, 10px);
+      justify-content: center;
+
+      .contact_action {
+        @include text-caption;
+        align-items: center;
+        border-radius: 9999px;
+        border: 1px solid var(--rule);
+        color: var(--text);
+        display: inline-flex;
+        gap: max(0.5vw, 7px);
+        padding: max(0.6vw, 10px) max(1.4vw, 20px);
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+
+        svg {
+          flex-shrink: 0;
+          height: max(0.9vw, 14px);
+          width: max(0.9vw, 14px);
+        }
+
+        &:hover {
+          background: var(--card-hover);
+          border-color: var(--entry-hover-border);
+        }
+
+        &--email {
+          background: var(--accent);
+          border-color: var(--accent);
+          color: #000;
+          font-weight: 500;
+
+          &:hover {
+            background: var(--accent-text);
+            border-color: var(--accent-text);
+            color: #000;
+          }
+        }
+
+        &--wa {
+          border-color: var(--wa-border);
+          color: var(--wa-text);
+
+          &:hover {
+            background: var(--wa-hover-bg);
+            border-color: var(--wa-border);
+            color: var(--wa-hover-text);
+          }
+        }
+      }
+    }
+
+    .contact_social {
+      align-items: center;
+      display: flex;
+      gap: max(0.6vw, 10px);
+      margin-top: max(0.5vw, 4px);
+
+      .contact_social_link {
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid var(--entry-hover-border);
+        color: var(--nav-text-active);
+        display: flex;
+        height: max(2.2vw, 36px);
+        justify-content: center;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease;
+        width: max(2.2vw, 36px);
+
+        svg {
+          height: max(1vw, 16px);
+          width: max(1vw, 16px);
+        }
+
+        &:hover {
+          background: var(--chip-bg);
+          border-color: var(--text);
+        }
+      }
+    }
+  }
+}

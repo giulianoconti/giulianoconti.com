@@ -1,4 +1,4 @@
-export const FAQS: Record<"en" | "es", { q: string; a: string }[]> = {
+export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
   es: [
     {
       q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
@@ -57,6 +57,36 @@ export const FAQS: Record<"en" | "es", { q: string; a: string }[]> = {
     {
       q: "Do you work with clients from other countries?",
       a: "Yes. I work 100% remotely from Resistencia, Argentina. I have experience collaborating with teams from the US, Europe and Latin America. We coordinate via WhatsApp, email or video call depending on your timezone.",
+    },
+  ],
+  pt: [
+    {
+      q: "Qual é a diferença entre Mensal e Pagamento Único?",
+      a: "No modelo Mensal, gerencio toda a infraestrutura nas minhas contas (Vercel, GitHub, Supabase, domínio, etc). Você só paga uma mensalidade fixa. Zero dores de cabeça técnicas. No Pagamento Único, entrego o projeto completo nas suas próprias contas. Você é dono absoluto do código, da infra e dos acessos desde o primeiro dia.",
+    },
+    {
+      q: "Quanto tempo leva um projeto?",
+      a: "Depende do tipo: landing page, 3–5 dias úteis. App web (multi-página + CMS), 1–2 semanas. App com login e painel admin, 2–3 semanas. Se precisar de prioridade, ofereço o modo Express (+40% sobre o preço base) que reduz o prazo pela metade.",
+    },
+    {
+      q: "O que é o modo Express?",
+      a: "Priorizo seu projeto acima de qualquer outro trabalho ativo até a entrega. O acréscimo de 40% é aplicado sobre o preço total do projeto. Na primeira consulta confirmamos se tenho disponibilidade para começar imediatamente.",
+    },
+    {
+      q: "O que acontece se eu quiser sair do plano Mensal?",
+      a: "Sem problema. Se você tiver mais de 1 ano no plano Mensal, a migração para suas próprias contas custa 50% do preço equivalente de pagamento único. Com menos de 1 ano, cobra-se o preço completo de pagamento único. Em ambos os casos você recebe tudo: código, acessos e documentação.",
+    },
+    {
+      q: "Como é feito o pagamento?",
+      a: "Aceito pagamentos em USD (cripto USDT/USDC) e em ARS com Mercadopago ou transferência bancária. Para projetos de Pagamento Único a estrutura é 50% adiantado para começar e 50% na entrega. O plano Mensal é cobrado mês a mês sem taxa de setup inicial.",
+    },
+    {
+      q: "Posso pedir alterações após a entrega?",
+      a: "Sim. Cada projeto inclui rodadas de revisão antes do fechamento. No plano Mensal, as alterações de conteúdo estão incluídas todo mês conforme o nível de manutenção escolhido. No Pagamento Único, podemos orçar alterações pontuais ou combinar um retainer mensal.",
+    },
+    {
+      q: "Você trabalha com clientes de outros países?",
+      a: "Sim. Trabalho 100% remoto de Resistência, Argentina. Tenho experiência colaborando com equipes dos EUA, Europa e América Latina. Nos coordenamos por WhatsApp, e-mail ou videochamada conforme seu fuso horário.",
     },
   ],
 };
