@@ -82,12 +82,12 @@ export default function Home() {
           <Suspense fallback={null}>
             <Scene />
           </Suspense>
-          <div className="home_overlay home_overlay_grain1">
+          {/* <div className="home_overlay home_overlay_grain1">
             <img src="/assets/overlay.webp" alt="" decoding="async" fetchPriority="low" />
           </div>
           <div className="home_overlay home_overlay_grain2">
             <img src="/assets/overlay2.webp" alt="" decoding="async" fetchPriority="low" />
-          </div>
+          </div> */}
         </>
       )}
 

@@ -204,7 +204,7 @@ const translations: Record<Locale, Translations> = {
       tooltipLiteOff: "Desactivar modo lite",
     },
     home: {
-      subheader: "Software Engineer",
+      subheader: "Ingeniero de Software",
       title: "Giuliano Conti",
       bio: "Soy Giuliano Conti, software engineer. Construyo sitios web y aplicaciones para negocios que quieren crecer online — rápidos, modernos y sin vueltas técnicas.",
       availableTag: "Proyecto en curso · Disponible en ~1 mes",
@@ -216,7 +216,7 @@ const translations: Record<Locale, Translations> = {
     },
     experience: {
       title: "Experiencia",
-      jobTitle: "Software Engineer",
+      jobTitle: "Ingeniero de Software",
       wormholescan: "WormholeScan",
       wormholescanDesc: "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
       portal: "Portal",
@@ -226,7 +226,7 @@ const translations: Record<Locale, Translations> = {
       xlabsRole: "Ingeniero Frontend",
       xlabsDate: "2023 - 2026",
       freelanceCompany: "Freelance",
-      freelancerJobRole: "Software Engineer",
+      freelancerJobRole: "Ingeniero de Software",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
       clinisDesc: "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
@@ -298,7 +298,7 @@ const translations: Record<Locale, Translations> = {
       tooltipLiteOff: "Desativar modo lite",
     },
     home: {
-      subheader: "Software Engineer",
+      subheader: "Engenheiro de Software",
       title: "Giuliano Conti",
       bio: "Sou Giuliano Conti, software engineer. Construo sites e aplicações web para negócios que querem crescer online — rápidos, modernos e sem dores de cabeça técnicas.",
       availableTag: "Projeto em andamento · Disponível em ~1 mês",
@@ -310,7 +310,7 @@ const translations: Record<Locale, Translations> = {
     },
     experience: {
       title: "Experiência",
-      jobTitle: "Software Engineer",
+      jobTitle: "Engenheiro de Software",
       wormholescan: "WormholeScan",
       wormholescanDesc: "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
       portal: "Portal",
@@ -320,7 +320,7 @@ const translations: Record<Locale, Translations> = {
       xlabsRole: "Engenheiro Frontend",
       xlabsDate: "2023 - 2026",
       freelanceCompany: "Freelance",
-      freelancerJobRole: "Software Engineer",
+      freelancerJobRole: "Engenheiro de Software",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
       clinisDesc: "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",

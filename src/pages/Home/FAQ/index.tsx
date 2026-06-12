@@ -7,7 +7,7 @@ import "./styles.scss";
 export default function FAQ() {
   const { t, locale } = useLocale();
   const [open, setOpen] = useState<number | null>(null);
-  const faqs = FAQS[locale === "pt" ? "es" : locale];
+  const faqs = FAQS[locale];
 
   return (
     <section className="faq" id="faq">
@@ -28,6 +28,7 @@ export default function FAQ() {
                 className={`faq_btn${open === i ? " faq_btn--open" : ""}`}
                 key={q}
                 onClick={() => setOpen(open === i ? null : i)}
+                aria-expanded={open === i}
               >
                 <div className="faq_btn_question">
                   <span className="faq_btn_question_text">{q}</span>

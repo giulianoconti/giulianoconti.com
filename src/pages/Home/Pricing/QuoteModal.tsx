@@ -258,7 +258,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
           {view === "table" && <h2 className="qm__header__center">{t("qm_title")}</h2>}
 
-          <button className="qm__close" onClick={handleClose} aria-label="Cerrar">
+          <button className="qm__close" onClick={handleClose} aria-label={t("qm_close")}>
             <CloseIcon height={14} width={14} />
           </button>
         </div>
@@ -401,7 +401,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
                   <button
                     className="qm__price-bar__currency"
                     onClick={toggleCurrency}
-                    aria-label="Cambiar moneda"
+                    aria-label={t("qm_currency_toggle")}
                   >
                     {currency.toUpperCase()}
                   </button>
