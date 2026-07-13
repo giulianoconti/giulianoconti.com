@@ -1,18 +1,16 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [{ "type": "query", "key": "lang", "value": "en" }],
-      "destination": "/index-en.html"
+      "dest": "/index-en.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [{ "type": "query", "key": "lang", "value": "pt" }],
-      "destination": "/index-pt.html"
+      "dest": "/index-pt.html"
     },
-    {
-      "source": "/((?!.*\\.).*)",
-      "destination": "/index.html"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
