@@ -5,8 +5,6 @@ import {
   LayersIcon,
   GlobeIcon,
   LockIcon,
-  ClockIcon,
-  ZapIcon,
   WrenchIcon,
   KeyIcon,
   PenToolIcon,
@@ -37,8 +35,7 @@ export interface QuizStep {
 }
 
 export const CLOSE_MS = 220;
-export const ARS_RATE = 1400;
-export const MULTIPLIER_EXPRESS = 1.4;
+export const ARS_RATE = 1500;
 
 export const INFRA_COSTS = {
   base: 10, // Vercel hosting + domain (~$18/yr)
@@ -58,35 +55,22 @@ export const FEATURES: Feature[] = [
   { id: "ssl",         label: "", desc: "", price: 0,   group: "base",    locked: true              },
   { id: "responsive",  label: "", desc: "", price: 0,   group: "base",    locked: true              },
   { id: "whatsapp",    label: "", desc: "", price: 0,   group: "base",    locked: true              },
-  { id: "contact",     label: "", desc: "", price: 0,   group: "base",    locked: true              },
   { id: "p1",          label: "", desc: "", price: 200, group: "paginas", radio: "pages"            },
-  { id: "p4",          label: "", desc: "", price: 290, group: "paginas", radio: "pages"            },
-  { id: "p10",         label: "", desc: "", price: 420, group: "paginas", radio: "pages"            },
+  { id: "p4",          label: "", desc: "", price: 300, group: "paginas", radio: "pages"            },
+  { id: "p10",         label: "", desc: "", price: 450, group: "paginas", radio: "pages"            },
   { id: "auth",        label: "", desc: "", price: 200, group: "backend", triggers: ["db"]          },
-  { id: "cms",         label: "", desc: "", price: 180, group: "backend", triggers: ["db"]          },
+  { id: "cms",         label: "", desc: "", price: 200, group: "backend", triggers: ["db"]          },
   { id: "db",          label: "", desc: "", price: 100, group: "backend"                            },
-  { id: "roles",       label: "", desc: "", price: 80,  group: "backend", triggers: ["auth", "db"]  },
+  { id: "roles",       label: "", desc: "", price: 100,  group: "backend", triggers: ["auth", "db"] },
   { id: "bookings",    label: "", desc: "", price: 200, group: "extras",  triggers: ["db", "auth"]  },
-  { id: "seo",         label: "", desc: "", price: 80,  group: "extras"                             },
-  { id: "maps",        label: "", desc: "", price: 30,  group: "extras"                             },
-  { id: "mercadopago", label: "", desc: "", price: 120, group: "extras"                             },
+  { id: "seo",         label: "", desc: "", price: 100,  group: "extras"                            },
   { id: "multilang",   label: "", desc: "", price: 150, group: "extras"                             },
-  { id: "animations",  label: "", desc: "", price: 80,  group: "extras"                             },
-];
-
-// prettier-ignore
-export const QUIZ_STEPS_BASE: Omit<QuizStep, "title" | "sub" | "options">[] = [
-  { key: "pages" },
-  { key: "auth" },
-  { key: "cms" },
-  { key: "timeline" },
-  { key: "infra" },
+  { id: "animations",  label: "", desc: "", price: 100,  group: "extras"                            },
 ];
 
 export const QUIZ_STEP_ICONS = [
   [FileIcon, LayoutIcon, LayersIcon],
   [GlobeIcon, LockIcon],
   [MonitorIcon, PenToolIcon],
-  [ClockIcon, ZapIcon],
   [WrenchIcon, KeyIcon],
 ] as const;

@@ -44,8 +44,6 @@ export const PRICING_T: Record<PricingLang, Record<string, string>> = {
     wa_plan_label: "Plan:",
     wa_model_monthly: "Mensual",
     wa_model_onetime: "Pago único",
-    wa_timeline_express: "Timeline: Express (+40%)",
-    wa_timeline_normal: "Timeline: Sin apuro",
     wa_closing: "Quedo a la espera. ¡Gracias!",
     group_base: "Siempre incluido",
     group_paginas: "Páginas del sitio · elegí una",
@@ -92,8 +90,6 @@ export const PRICING_T: Record<PricingLang, Record<string, string>> = {
     wa_plan_label: "Plan:",
     wa_model_monthly: "Monthly",
     wa_model_onetime: "One-time",
-    wa_timeline_express: "Timeline: Express (+40%)",
-    wa_timeline_normal: "Timeline: No rush",
     wa_closing: "Looking forward to hearing from you. Thank you!",
     group_base: "Always included",
     group_paginas: "Site pages · choose one",
@@ -124,7 +120,8 @@ export const PRICING_T: Record<PricingLang, Record<string, string>> = {
     qm_tier_basic_label: "Básico",
     qm_tier_standard_label: "Padrão",
     qm_tier_premium_label: "Premium",
-    qm_tier_basic_note: "Manutenção. Hospedagem, Supabase e domínio incluídos. Sem horas de alterações.",
+    qm_tier_basic_note:
+      "Manutenção. Hospedagem, Supabase e domínio incluídos. Sem horas de alterações.",
     qm_tier_standard_note: "Tudo do Básico + até 8 horas de alterações e melhorias por mês.",
     qm_tier_premium_note: "Tudo do Padrão + até 24 horas de trabalho por mês. Suporte prioritário.",
     wa_greeting: "Olá Giuliano!",
@@ -138,8 +135,6 @@ export const PRICING_T: Record<PricingLang, Record<string, string>> = {
     wa_plan_label: "Plano:",
     wa_model_monthly: "Mensal",
     wa_model_onetime: "Pagamento único",
-    wa_timeline_express: "Prazo: Express (+40%)",
-    wa_timeline_normal: "Prazo: Sem pressa",
     wa_closing: "Aguardo seu contato. Obrigado!",
     group_base: "Sempre incluído",
     group_paginas: "Páginas do site · escolha uma",
@@ -154,7 +149,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
     ssl: { label: "SSL / HTTPS gratis", desc: "Certificado de seguridad incluido" },
     responsive: { label: "Diseño responsive", desc: "Se adapta a móvil, tablet y escritorio" },
     whatsapp: { label: "Botón WhatsApp flotante", desc: "Acceso directo desde cualquier página" },
-    contact: { label: "Formulario de contacto", desc: "Email o WhatsApp al enviar" },
     p1: { label: "1 página (landing)", desc: "Una sola página de presentación" },
     p4: { label: "Hasta 4 páginas", desc: "Inicio, servicios, contacto, etc." },
     p10: { label: "Hasta 10 páginas", desc: "Sitio completo con múltiples secciones" },
@@ -164,11 +158,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
     roles: { label: "Roles y permisos", desc: "Admin, editor, usuario — control de acceso" },
     bookings: { label: "Sistema de turnos", desc: "Reservas online con calendario y gestión" },
     seo: { label: "SEO + Google Analytics", desc: "Optimización + tracking de visitas + GDPR" },
-    maps: { label: "Google Maps integrado", desc: "Mapa interactivo con tu ubicación" },
-    mercadopago: {
-      label: "Pagos con MercadoPago",
-      desc: "Checkout integrado — requiere cuenta MP tuya",
-    },
     multilang: { label: "Multi-idioma (ES + EN)", desc: "Soporte para dos o más idiomas" },
     animations: { label: "Animaciones premium", desc: "Scroll effects y micro-interacciones" },
   },
@@ -177,7 +166,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
     ssl: { label: "SSL / HTTPS", desc: "Free security certificate included" },
     responsive: { label: "Responsive design", desc: "Adapts to mobile, tablet and desktop" },
     whatsapp: { label: "WhatsApp button", desc: "Direct access from any page" },
-    contact: { label: "Contact form", desc: "Email or WhatsApp on submit" },
     p1: { label: "1 page (landing)", desc: "A single presentation page" },
     p4: { label: "Up to 4 pages", desc: "Home, services, contact, etc." },
     p10: { label: "Up to 10 pages", desc: "Complete site with multiple sections" },
@@ -187,11 +175,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
     roles: { label: "Roles & permissions", desc: "Admin, editor, user — access control" },
     bookings: { label: "Booking system", desc: "Online reservations with calendar and management" },
     seo: { label: "SEO + Google Analytics", desc: "Optimization + visit tracking + GDPR" },
-    maps: { label: "Google Maps", desc: "Interactive map with your location" },
-    mercadopago: {
-      label: "MercadoPago payments",
-      desc: "Integrated checkout — requires your MP account",
-    },
     multilang: { label: "Multi-language (ES + EN)", desc: "Support for two or more languages" },
     animations: { label: "Premium animations", desc: "Scroll effects and micro-interactions" },
   },
@@ -200,7 +183,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
     ssl: { label: "SSL / HTTPS grátis", desc: "Certificado de segurança incluído" },
     responsive: { label: "Design responsivo", desc: "Adapta para celular, tablet e desktop" },
     whatsapp: { label: "Botão WhatsApp flutuante", desc: "Acesso direto de qualquer página" },
-    contact: { label: "Formulário de contato", desc: "E-mail ou WhatsApp ao enviar" },
     p1: { label: "1 página (landing)", desc: "Uma única página de apresentação" },
     p4: { label: "Até 4 páginas", desc: "Início, serviços, contato, etc." },
     p10: { label: "Até 10 páginas", desc: "Site completo com múltiplas seções" },
@@ -210,11 +192,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
     roles: { label: "Papéis e permissões", desc: "Admin, editor, usuário — controle de acesso" },
     bookings: { label: "Sistema de agendamentos", desc: "Reservas online com calendário e gestão" },
     seo: { label: "SEO + Google Analytics", desc: "Otimização + rastreamento de visitas + GDPR" },
-    maps: { label: "Google Maps integrado", desc: "Mapa interativo com sua localização" },
-    mercadopago: {
-      label: "Pagamentos com MercadoPago",
-      desc: "Checkout integrado — requer sua conta MP",
-    },
     multilang: { label: "Multi-idioma (ES + EN)", desc: "Suporte para dois ou mais idiomas" },
     animations: { label: "Animações premium", desc: "Efeitos de scroll e micro-interações" },
   },
@@ -251,14 +228,6 @@ const QUIZ_STEP_TEXT: Record<
           label: "Sí, quiero panel admin",
           desc: "Necesito publicar contenido o administrar datos",
         },
-      ],
-    },
-    {
-      title: "¿Cuándo lo necesitás?",
-      sub: "El timeline afecta el precio solo en pago único",
-      options: [
-        { label: "Sin apuro", desc: "Entrega estándar" },
-        { label: "Express +40%", desc: "Prioridad absoluta hasta entregarlo" },
       ],
     },
     {
@@ -303,14 +272,6 @@ const QUIZ_STEP_TEXT: Record<
       ],
     },
     {
-      title: "When do you need it?",
-      sub: "Timeline only affects one-time payment price",
-      options: [
-        { label: "No rush", desc: "Standard delivery" },
-        { label: "Express +40%", desc: "Absolute priority until delivered" },
-      ],
-    },
-    {
       title: "How do you prefer the infrastructure?",
       sub: "Defines whether you pay monthly or once",
       options: [
@@ -349,14 +310,6 @@ const QUIZ_STEP_TEXT: Record<
       options: [
         { label: "Não, conteúdo fixo", desc: "O conteúdo não muda com frequência" },
         { label: "Sim, quero painel admin", desc: "Preciso publicar conteúdo ou gerenciar dados" },
-      ],
-    },
-    {
-      title: "Quando você precisa?",
-      sub: "O prazo afeta o preço apenas no pagamento único",
-      options: [
-        { label: "Sem pressa", desc: "Entrega padrão" },
-        { label: "Express +40%", desc: "Prioridade absoluta até a entrega" },
       ],
     },
     {
@@ -402,7 +355,7 @@ export function getFeatureGroups(lang: PricingLang): [string, Feature[]][] {
 export function getQuizSteps(lang: PricingLang): QuizStep[] {
   const iconSets = QUIZ_STEP_ICONS;
   return QUIZ_STEP_TEXT[lang].map((step, i) => ({
-    key: ["pages", "auth", "cms", "timeline", "infra"][i],
+    key: ["pages", "auth", "cms", "infra"][i],
     title: step.title,
     sub: step.sub,
     options: step.options.map((opt, j) => ({
@@ -410,7 +363,6 @@ export function getQuizSteps(lang: PricingLang): QuizStep[] {
         ["p1", "p4", "p10"],
         ["no", "yes"],
         ["no", "yes"],
-        ["normal", "express"],
         ["monthly", "onetime"],
       ][i][j],
       icon: iconSets[i][j] as QuizStep["options"][number]["icon"],

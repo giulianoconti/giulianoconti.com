@@ -1,13 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { BackIcon, CheckIcon, CloseIcon } from "../../../icons";
-import {
-  CLOSE_MS,
-  ARS_RATE,
-  MULTIPLIER_EXPRESS,
-  MONTHLY_TIERS,
-  INFRA_COSTS,
-} from "../../../utils/pricingData";
+import { CLOSE_MS, ARS_RATE, MONTHLY_TIERS, INFRA_COSTS } from "../../../utils/pricingData";
 import type { TierId } from "../../../utils/pricingData";
 import { WA_MSG } from "../../../utils/constants";
 import type { Feature } from "../../../utils/pricingData";
@@ -21,20 +15,18 @@ import {
 import "./QuoteModal.scss";
 
 type Model = "monthly" | "onetime";
-type Timeline = "normal" | "express";
 type Currency = "usd" | "ars";
 type QuizAnswers = Partial<Record<string, string>>;
 
 function buildWaMessage(
   checked: Set<string>,
   model: Model,
-  timeline: Timeline,
   tier: TierId,
   currency: Currency,
   t: (key: string) => string,
   features: Feature[],
 ): string {
-  const setup = calcSetup(checked, model, timeline, features);
+  const setup = calcSetup(checked, model, features);
   const monthly = calcMonthly(model, tier, checked, features);
   const selectedLabels = features
     .filter(f => !f.locked && checked.has(f.id))
@@ -47,7 +39,6 @@ function buildWaMessage(
   } else {
     lines.push(`${t("wa_setup_label")} ${fmt(setup, currency)}`);
     lines.push(t("wa_no_monthly"));
-    if (timeline === "express") lines.push(t("wa_timeline_express"));
   }
   lines.push(
     "",
@@ -61,18 +52,12 @@ function buildWaMessage(
   return lines.join("\n");
 }
 
-function calcSetup(
-  checked: Set<string>,
-  model: Model,
-  timeline: Timeline,
-  features: Feature[],
-): number {
+function calcSetup(checked: Set<string>, model: Model, features: Feature[]): number {
   if (model === "monthly") return 0;
   let total = 0;
   for (const f of features) {
     if (f.locked || checked.has(f.id)) total += f.price;
   }
-  if (timeline === "express") total = Math.round(total * MULTIPLIER_EXPRESS);
   return total;
 }
 
@@ -99,11 +84,9 @@ function fmt(n: number, currency: Currency): string {
   return "$" + n.toLocaleString("en-US");
 }
 
-function fmtFeature(price: number, currency: Currency, model: Model, timeline: Timeline): string {
-  if (model === "monthly") return "—";
-  let adjusted = price;
-  if (timeline === "express") adjusted = Math.round(adjusted * MULTIPLIER_EXPRESS);
-  return "+" + fmt(adjusted, currency);
+function fmtFeature(price: number, currency: Currency, model: Model, per: string): string {
+  if (model === "monthly") return "+" + fmt(Math.round(price / 20), currency) + per;
+  return "+" + fmt(price, currency);
 }
 
 function buildCheckedFromQuiz(answers: QuizAnswers): Set<string> {
@@ -159,7 +142,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
   );
   const [model, setModel] = useState<Model>("monthly");
   const [tier, setTier] = useState<TierId>("standard");
-  const [timeline, setTimeline] = useState<Timeline>("normal");
   const [currency, setCurrency] = useState<Currency>(() => {
     const saved = localStorage.getItem("lp-currency");
     if (saved === "ars" || saved === "usd") return saved as Currency;
@@ -174,7 +156,6 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
   const resetToQuiz = useCallback(() => {
     setAnswers({});
-    setTimeline("normal");
     setModel("monthly");
     setTier("standard");
     setStep(0);
@@ -228,13 +209,12 @@ export default function QuoteModal({ mode, onClose }: Props) {
       setTimeout(() => setStep(stepIdx + 1), 180);
     } else {
       setModel(newAnswers.infra === "onetime" ? "onetime" : "monthly");
-      setTimeline(newAnswers.timeline === "express" ? "express" : "normal");
       setChecked(buildCheckedFromQuiz(newAnswers));
       setTimeout(() => setView("table"), 180);
     }
   };
 
-  const setup = calcSetup(checked, model, timeline, features);
+  const setup = calcSetup(checked, model, features);
   const featureSum = features
     .filter(f => !f.locked && checked.has(f.id))
     .reduce((s, f) => s + f.price, 0);
@@ -376,7 +356,9 @@ export default function QuoteModal({ mode, onClose }: Props) {
                           <span className="qm__row__desc">{f.desc}</span>
                         </div>
                         <span className="qm__row__price">
-                          {f.price === 0 ? "inc." : fmtFeature(f.price, currency, model, timeline)}
+                          {f.price === 0
+                            ? "inc."
+                            : fmtFeature(f.price, currency, model, t("qm_monthly_per"))}
                         </span>
                       </button>
                     );
@@ -413,7 +395,7 @@ export default function QuoteModal({ mode, onClose }: Props) {
 
               <a
                 className="qm__price-bar__cta"
-                href={WA_MSG(buildWaMessage(checked, model, timeline, tier, currency, t, features))}
+                href={WA_MSG(buildWaMessage(checked, model, tier, currency, t, features))}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleClose}

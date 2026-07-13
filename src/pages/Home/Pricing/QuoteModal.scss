@@ -616,13 +616,13 @@
 
   &__currency {
     background: none;
-    border-bottom: 1px solid var(--border);
     border: none;
     color: var(--muted);
     cursor: pointer;
     font-family: "HelveticaNow", sans-serif;
     font-size: max(0.72vw, 11px);
     padding: 0;
+    text-decoration: underline;
     transition: color 0.15s;
 
     &:hover {

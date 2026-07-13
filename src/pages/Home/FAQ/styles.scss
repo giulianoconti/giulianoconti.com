@@ -120,6 +120,43 @@
               padding-bottom: 20px;
               text-align: left;
             }
+
+            .faq_comparison {
+              display: grid;
+              gap: max(0.6vw, 10px);
+              grid-template-columns: 1fr;
+              padding-bottom: 20px;
+
+              @include tablet {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+              }
+
+              .faq_comparison_card {
+                background: var(--step-bg);
+                border-radius: max(0.6vw, 10px);
+                border: 1px solid var(--border);
+                display: flex;
+                flex-direction: column;
+                gap: max(0.4vw, 6px);
+                padding: max(0.8vw, 12px) max(1vw, 14px);
+                text-align: left;
+
+                .faq_comparison_card_title {
+                  @include text-eyebrow;
+                  color: var(--accent);
+                  font-size: max(0.6vw, 10px);
+                  letter-spacing: 1px;
+                  text-transform: uppercase;
+                }
+
+                .faq_comparison_card_text {
+                  @include text-body;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  padding-bottom: 0;
+                }
+              }
+            }
           }
         }
       }

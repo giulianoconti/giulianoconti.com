@@ -2,7 +2,22 @@ import { useState } from "react";
 import { useLocale } from "../../../contexts/LocaleContext";
 import { PlusMinusIcon } from "../../../icons";
 import { FAQS } from "../../../utils/faqsData";
+import type { FaqAnswer } from "../../../utils/faqsData";
 import "./styles.scss";
+
+function Answer({ a }: { a: FaqAnswer }) {
+  if (typeof a === "string") return <p>{a}</p>;
+  return (
+    <div className="faq_comparison">
+      {a.items.map(item => (
+        <div key={item.title} className="faq_comparison_card">
+          <span className="faq_comparison_card_title">{item.title}</span>
+          <p className="faq_comparison_card_text">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function FAQ() {
   const { t, locale } = useLocale();
@@ -39,7 +54,7 @@ export default function FAQ() {
 
                 <div className="faq_btn_answer">
                   <div className="faq_btn_answer_inner">
-                    <p>{a}</p>
+                    <Answer a={a} />
                   </div>
                 </div>
               </button>

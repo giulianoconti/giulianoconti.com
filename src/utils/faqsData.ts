@@ -1,16 +1,32 @@
-export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
+type FaqItem = { title: string; text: string };
+export type FaqAnswer = string | { items: FaqItem[] };
+
+export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
   es: [
     {
       q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
-      a: "En el modelo Mensual, manejo toda la infraestructura en mis cuentas (Vercel, GitHub, Supabase, dominio, etc). Vos solo pagás una mensualidad fija. Cero dolores de cabeza técnicos. En el Pago Único, te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código, la infra y los accesos desde el día uno.",
+      a: {
+        items: [
+          {
+            title: "Mensual",
+            text: "Manejo toda la infraestructura en mis cuentas — Vercel, GitHub, Supabase, dominio. Vos solo pagás una mensualidad fija. Cero dolores de cabeza técnicos.",
+          },
+          {
+            title: "Pago Único",
+            text: "Te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código, la infra y los accesos desde el día uno.",
+          },
+        ],
+      },
     },
     {
       q: "¿Cuánto tarda un proyecto?",
-      a: "Depende del tipo: landing page, 3–5 días hábiles. App web (multi-página + CMS), 1–2 semanas. App con login y panel admin, 2–3 semanas. Si necesitás prioridad, ofrezco un modo Express (+40% sobre el precio base) que reduce los tiempos a la mitad.",
-    },
-    {
-      q: "¿Qué es el modo Express?",
-      a: "Priorizo tu proyecto por encima de cualquier otro trabajo activo hasta entregarlo. El recargo del 40% aplica sobre el precio total del proyecto. En la primera consulta confirmamos si tengo disponibilidad para arrancarlo de inmediato.",
+      a: {
+        items: [
+          { title: "Landing", text: "Una sola sección o página de presentación. Entrega en 3–5 días hábiles." },
+          { title: "Hasta 4 páginas", text: "Sitio con varias secciones, blog o CMS incluido. Entrega en 1–2 semanas." },
+          { title: "Hasta 10 páginas", text: "App web completa con login, panel admin y base de datos. Entrega en 2–3 semanas." },
+        ],
+      },
     },
     {
       q: "¿Qué pasa si quiero salir del plan Mensual?",
@@ -18,11 +34,21 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
     },
     {
       q: "¿Cómo se hace el pago?",
-      a: "Acepto pagos en USD (crypto USDT/USDC) y en ARS con Mercadopago o transferencia bancaria. Para proyectos de Pago Único la estructura es 50% adelantado para arrancar y 50% al momento de la entrega. El plan Mensual se abona mes a mes sin setup inicial.",
+      a: {
+        items: [
+          { title: "Pago Único", text: "50% adelantado para arrancar, 50% al momento de la entrega. Acepto USD (crypto USDT/USDC) y ARS (Mercadopago o transferencia)." },
+          { title: "Mensual", text: "Se abona mes a mes sin costo de setup inicial. Mismos métodos de pago." },
+        ],
+      },
     },
     {
       q: "¿Puedo pedirte cambios después de la entrega?",
-      a: "Sí. Cada proyecto incluye rondas de revisión antes del cierre. En el Mensual, los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido. En el Pago Único, podemos presupuestar cambios puntuales o acordar un retainer mensual.",
+      a: {
+        items: [
+          { title: "Mensual", text: "Los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido." },
+          { title: "Pago Único", text: "Incluye rondas de revisión antes del cierre. Cambios posteriores se presupuestan por separado o acordamos un retainer mensual." },
+        ],
+      },
     },
     {
       q: "¿Trabajás con clientes de otros países?",
@@ -32,15 +58,28 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
   en: [
     {
       q: "What's the difference between Monthly and One-time?",
-      a: "In the Monthly model, I manage all infrastructure in my accounts (Vercel, GitHub, Supabase, domain, etc). You just pay a fixed monthly fee. Zero technical headaches. In the One-time payment, I deliver the complete project to your own accounts. You own the code, infrastructure and access 100% from day one.",
+      a: {
+        items: [
+          {
+            title: "Monthly",
+            text: "I manage all infrastructure in my accounts — Vercel, GitHub, Supabase, domain. You just pay a fixed monthly fee. Zero technical headaches.",
+          },
+          {
+            title: "One-time",
+            text: "I deliver the complete project to your own accounts. You own the code, infrastructure and access 100% from day one.",
+          },
+        ],
+      },
     },
     {
       q: "How long does a project take?",
-      a: "It depends on the type: landing page, 3–5 business days. Web app (multi-page + CMS), 1–2 weeks. App with login and admin panel, 2–3 weeks. If you need priority, I offer Express mode (+40% over base price) which cuts delivery time in half.",
-    },
-    {
-      q: "What is Express mode?",
-      a: "I prioritize your project above any other active work until delivery. The 40% surcharge applies to the total project price. In the first consultation we confirm if I have availability to start immediately.",
+      a: {
+        items: [
+          { title: "Landing", text: "Single section or presentation page. Delivered in 3–5 business days." },
+          { title: "Up to 4 pages", text: "Multi-section site, blog or CMS included. Delivered in 1–2 weeks." },
+          { title: "Up to 10 pages", text: "Full web app with login, admin panel and database. Delivered in 2–3 weeks." },
+        ],
+      },
     },
     {
       q: "What happens if I want to leave the Monthly plan?",
@@ -48,11 +87,21 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
     },
     {
       q: "How is payment made?",
-      a: "I accept payments in USD (crypto USDT/USDC) and in ARS with Mercadopago or bank transfer. For One-time projects the structure is 50% upfront to start and 50% at delivery. The Monthly plan is billed month to month with no initial setup fee.",
+      a: {
+        items: [
+          { title: "One-time", text: "50% upfront to start, 50% at delivery. I accept USD (crypto USDT/USDC) and ARS (Mercadopago or bank transfer)." },
+          { title: "Monthly", text: "Billed month to month with no initial setup fee. Same payment methods." },
+        ],
+      },
     },
     {
       q: "Can I request changes after delivery?",
-      a: "Yes. Each project includes revision rounds before closing. In the Monthly plan, content changes are included each month according to the chosen maintenance level. In One-time, we can budget specific changes or arrange a monthly retainer.",
+      a: {
+        items: [
+          { title: "Monthly", text: "Content changes are included each month according to the chosen maintenance level." },
+          { title: "One-time", text: "Includes revision rounds before closing. Later changes are budgeted separately or we arrange a monthly retainer." },
+        ],
+      },
     },
     {
       q: "Do you work with clients from other countries?",
@@ -62,15 +111,28 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
   pt: [
     {
       q: "Qual é a diferença entre Mensal e Pagamento Único?",
-      a: "No modelo Mensal, gerencio toda a infraestrutura nas minhas contas (Vercel, GitHub, Supabase, domínio, etc). Você só paga uma mensalidade fixa. Zero dores de cabeça técnicas. No Pagamento Único, entrego o projeto completo nas suas próprias contas. Você é dono absoluto do código, da infra e dos acessos desde o primeiro dia.",
+      a: {
+        items: [
+          {
+            title: "Mensal",
+            text: "Gerencio toda a infraestrutura nas minhas contas — Vercel, GitHub, Supabase, domínio. Você só paga uma mensalidade fixa. Zero dores de cabeça técnicas.",
+          },
+          {
+            title: "Pagamento Único",
+            text: "Entrego o projeto completo nas suas próprias contas. Você é dono absoluto do código, da infra e dos acessos desde o primeiro dia.",
+          },
+        ],
+      },
     },
     {
       q: "Quanto tempo leva um projeto?",
-      a: "Depende do tipo: landing page, 3–5 dias úteis. App web (multi-página + CMS), 1–2 semanas. App com login e painel admin, 2–3 semanas. Se precisar de prioridade, ofereço o modo Express (+40% sobre o preço base) que reduz o prazo pela metade.",
-    },
-    {
-      q: "O que é o modo Express?",
-      a: "Priorizo seu projeto acima de qualquer outro trabalho ativo até a entrega. O acréscimo de 40% é aplicado sobre o preço total do projeto. Na primeira consulta confirmamos se tenho disponibilidade para começar imediatamente.",
+      a: {
+        items: [
+          { title: "Landing", text: "Uma seção ou página de apresentação. Entrega em 3–5 dias úteis." },
+          { title: "Até 4 páginas", text: "Site com várias seções, blog ou CMS incluído. Entrega em 1–2 semanas." },
+          { title: "Até 10 páginas", text: "App web completo com login, painel admin e banco de dados. Entrega em 2–3 semanas." },
+        ],
+      },
     },
     {
       q: "O que acontece se eu quiser sair do plano Mensal?",
@@ -78,11 +140,21 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: string }[]> = {
     },
     {
       q: "Como é feito o pagamento?",
-      a: "Aceito pagamentos em USD (cripto USDT/USDC) e em ARS com Mercadopago ou transferência bancária. Para projetos de Pagamento Único a estrutura é 50% adiantado para começar e 50% na entrega. O plano Mensal é cobrado mês a mês sem taxa de setup inicial.",
+      a: {
+        items: [
+          { title: "Pagamento Único", text: "50% adiantado para começar, 50% na entrega. Aceito USD (cripto USDT/USDC) e ARS (Mercadopago ou transferência bancária)." },
+          { title: "Mensal", text: "Cobrado mês a mês sem taxa de setup inicial. Mesmos métodos de pagamento." },
+        ],
+      },
     },
     {
       q: "Posso pedir alterações após a entrega?",
-      a: "Sim. Cada projeto inclui rodadas de revisão antes do fechamento. No plano Mensal, as alterações de conteúdo estão incluídas todo mês conforme o nível de manutenção escolhido. No Pagamento Único, podemos orçar alterações pontuais ou combinar um retainer mensal.",
+      a: {
+        items: [
+          { title: "Mensal", text: "As alterações de conteúdo estão incluídas todo mês conforme o nível de manutenção escolhido." },
+          { title: "Pagamento Único", text: "Inclui rodadas de revisão antes do fechamento. Alterações posteriores são orçadas separadamente ou combinamos um retainer mensal." },
+        ],
+      },
     },
     {
       q: "Você trabalha com clientes de outros países?",
