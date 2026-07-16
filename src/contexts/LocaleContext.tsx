@@ -4,7 +4,7 @@ export type Locale = "en" | "es" | "pt";
 
 type Translations = {
   nav: {
-    services: string;
+    process: string;
     pricing: string;
     faq: string;
     experience: string;
@@ -100,7 +100,7 @@ type Translations = {
 const translations: Record<Locale, Translations> = {
   en: {
     nav: {
-      services: "SERVICES",
+      process: "PROCESS",
       pricing: "PRICING",
       faq: "FAQ",
       experience: "EXPERIENCE",
@@ -194,7 +194,7 @@ const translations: Record<Locale, Translations> = {
   },
   es: {
     nav: {
-      services: "SERVICIOS",
+      process: "PROCESO",
       pricing: "PRECIOS",
       faq: "FAQ",
       experience: "EXPERIENCIA",
@@ -288,7 +288,7 @@ const translations: Record<Locale, Translations> = {
   },
   pt: {
     nav: {
-      services: "SERVIÇOS",
+      process: "PROCESSO",
       pricing: "PREÇOS",
       faq: "FAQ",
       experience: "EXPERIÊNCIA",
