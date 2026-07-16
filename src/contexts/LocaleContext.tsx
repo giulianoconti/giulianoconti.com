@@ -117,17 +117,20 @@ const translations: Record<Locale, Translations> = {
       statYearsLabel: "Years of experience",
       statProjectsLabel: "Projects delivered",
       statCurrentLabel: "Current work",
-      ctaEmail: "tech@giulianoconti.com",
+      ctaEmail: "giuliconti1@gmail.com",
       ctaWa: "WhatsApp",
     },
     experience: {
       title: "Experience",
       jobTitle: "Software Engineer",
       wormholescan: "WormholeScan",
-      wormholescanDesc: "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
+      wormholescanDesc:
+        "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
       portal: "Portal",
-      portalDesc: "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
-      xlabsDesc: "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
+      portalDesc:
+        "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
+      xlabsDesc:
+        "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
       xlabsCompany: "xLabs",
       xlabsRole: "Frontend Engineer",
       xlabsDate: "2023 - 2026",
@@ -135,7 +138,8 @@ const translations: Record<Locale, Translations> = {
       freelancerJobRole: "Software Engineer",
       freelancerJobDate: "2026 - Present",
       clinis: "Clinis",
-      clinisDesc: "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
+      clinisDesc:
+        "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
     },
     process: {
       label: "Process",
@@ -166,7 +170,7 @@ const translations: Record<Locale, Translations> = {
       headline: "Got a project",
       headline_2: "in mind?",
       ctaButton: "Get in Touch",
-      emailLabel: "tech@giulianoconti.com",
+      emailLabel: "giuliconti1@gmail.com",
       waLabel: "WhatsApp",
       waMsg: "Hi Giuliano! I'm interested in hiring you for a project. Can we talk?",
     },
@@ -211,17 +215,20 @@ const translations: Record<Locale, Translations> = {
       statYearsLabel: "Años de experiencia",
       statProjectsLabel: "Proyectos entregados",
       statCurrentLabel: "Trabajo actual",
-      ctaEmail: "tech@giulianoconti.com",
+      ctaEmail: "giuliconti1@gmail.com",
       ctaWa: "WhatsApp",
     },
     experience: {
       title: "Experiencia",
       jobTitle: "Ingeniero de Software",
       wormholescan: "WormholeScan",
-      wormholescanDesc: "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
+      wormholescanDesc:
+        "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
       portal: "Portal",
-      portalDesc: "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
-      xlabsDesc: "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
+      portalDesc:
+        "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
+      xlabsDesc:
+        "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
       xlabsCompany: "xLabs",
       xlabsRole: "Ingeniero Frontend",
       xlabsDate: "2023 - 2026",
@@ -229,7 +236,8 @@ const translations: Record<Locale, Translations> = {
       freelancerJobRole: "Ingeniero de Software",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
-      clinisDesc: "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
+      clinisDesc:
+        "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
     },
     process: {
       label: "Proceso",
@@ -260,7 +268,7 @@ const translations: Record<Locale, Translations> = {
       headline: "¿Tenés un proyecto",
       headline_2: "en mente?",
       ctaButton: "Escribime",
-      emailLabel: "tech@giulianoconti.com",
+      emailLabel: "giuliconti1@gmail.com",
       waLabel: "WhatsApp",
       waMsg: "Hola Giuliano! Me interesa contratarte para un proyecto. ¿Podemos hablar?",
     },
@@ -305,17 +313,20 @@ const translations: Record<Locale, Translations> = {
       statYearsLabel: "Anos de experiência",
       statProjectsLabel: "Projetos entregues",
       statCurrentLabel: "Trabalho atual",
-      ctaEmail: "tech@giulianoconti.com",
+      ctaEmail: "giuliconti1@gmail.com",
       ctaWa: "WhatsApp",
     },
     experience: {
       title: "Experiência",
       jobTitle: "Engenheiro de Software",
       wormholescan: "WormholeScan",
-      wormholescanDesc: "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
+      wormholescanDesc:
+        "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
       portal: "Portal",
-      portalDesc: "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
-      xlabsDesc: "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
+      portalDesc:
+        "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
+      xlabsDesc:
+        "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
       xlabsCompany: "xLabs",
       xlabsRole: "Engenheiro Frontend",
       xlabsDate: "2023 - 2026",
@@ -323,7 +334,8 @@ const translations: Record<Locale, Translations> = {
       freelancerJobRole: "Engenheiro de Software",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
-      clinisDesc: "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
+      clinisDesc:
+        "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
     },
     process: {
       label: "Processo",
@@ -354,7 +366,7 @@ const translations: Record<Locale, Translations> = {
       headline: "Tem um projeto",
       headline_2: "em mente?",
       ctaButton: "Entre em contato",
-      emailLabel: "tech@giulianoconti.com",
+      emailLabel: "giuliconti1@gmail.com",
       waLabel: "WhatsApp",
       waMsg: "Olá Giuliano! Tenho interesse em contratar você para um projeto. Podemos conversar?",
     },
@@ -435,7 +447,9 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const t = translations[locale];
-  return <LocaleContext.Provider value={{ locale, setLocale, t }}>{children}</LocaleContext.Provider>;
+  return (
+    <LocaleContext.Provider value={{ locale, setLocale, t }}>{children}</LocaleContext.Provider>
+  );
 }
 
 // eslint-disable-next-line react-refresh/only-export-components -- context hook is used with LocaleProvider

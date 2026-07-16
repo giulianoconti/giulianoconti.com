@@ -3,7 +3,7 @@ import type { Locale } from "../contexts/LocaleContext.tsx";
 export const SOCIAL_LINKEDIN_URL = "https://www.linkedin.com/in/giulianoconti";
 export const SOCIAL_GITHUB_URL = "https://github.com/giulianoconti";
 export const SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/giulianocontii";
-export const SOCIAL_MAIL = "tech@giulianoconti.com";
+export const SOCIAL_MAIL = "giuliconti1@gmail.com";
 export const PHONE = "5493624043228";
 export const WA_MSG = (msg: string) => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
 
