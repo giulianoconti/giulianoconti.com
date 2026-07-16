@@ -10,6 +10,12 @@
       "has": [{ "type": "query", "key": "lang", "value": "pt" }],
       "dest": "/index-pt.html"
     },
+    {
+      "src": "^/(pt|es|en)\\.html$",
+      "status": 301,
+      "headers": { "Location": "/" },
+      "dest": "/"
+    },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
