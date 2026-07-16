@@ -1,5 +1,7 @@
 # Giuliano's Portfolio
 
+#
+
 A modern, interactive 3D portfolio built with React, TypeScript, and Three.js. Features smooth animations, project showcases with interactive tooltips, and multi-language support.
 
 ## 🚀 Features
