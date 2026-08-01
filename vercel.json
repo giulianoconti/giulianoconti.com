@@ -1,22 +1,21 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "^/$",
+      "source": "/",
       "has": [{ "type": "query", "key": "lang", "value": "en" }],
-      "dest": "/index-en.html"
+      "destination": "/index-en.html"
     },
     {
-      "src": "^/$",
+      "source": "/",
       "has": [{ "type": "query", "key": "lang", "value": "pt" }],
-      "dest": "/index-pt.html"
-    },
+      "destination": "/index-pt.html"
+    }
+  ],
+  "redirects": [
     {
-      "src": "^/(pt|es|en)\\.html$",
-      "status": 301,
-      "headers": { "Location": "/" },
-      "dest": "/"
-    },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+      "source": "/:lang(pt|es|en).html",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }

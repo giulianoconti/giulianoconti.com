@@ -20,9 +20,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "#experience", label: t.nav.experience },
-    { href: "#process", label: t.nav.process },
-    { href: "#pricing", label: t.nav.pricing },
-    { href: "#faq", label: t.nav.faq },
+    { href: "#chat", label: t.nav.chat },
   ];
 
   return (

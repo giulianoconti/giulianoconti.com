@@ -1,14 +1,16 @@
 import { useLocale } from "../../../contexts/LocaleContext";
+import { useLiteMode } from "../../../contexts/LiteModeContext";
 import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
 import { SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL, WA_MSG } from "../../../utils/constants";
 import "./styles.scss";
 
 export default function Hero() {
   const { t } = useLocale();
+  const { liteMode } = useLiteMode();
 
   return (
     <section className="hero" id="home">
-      <div className="hero_main">
+      <div className={`hero_main${liteMode ? "" : " sr-only"}`}>
         <div className="hero_main_center">
           <div className="hero_main_center_available">
             <span className="hero_main_center_available_dot" />

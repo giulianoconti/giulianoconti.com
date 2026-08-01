@@ -17,12 +17,6 @@ export default function Footer() {
   return (
     <footer className="footer" id="footer">
       <div className="footer_cta">
-        <p className="footer_cta_eyebrow">{t.contact.ctaButton.toUpperCase()}</p>
-
-        <h2 className="footer_cta_headline">
-          {t.contact.headline} <em>{t.contact.headline_2}</em>
-        </h2>
-
         <div className="footer_cta_social">
           <a
             className="footer_cta_social_link"

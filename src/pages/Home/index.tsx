@@ -7,9 +7,7 @@ import { WA_MSG } from "../../utils/constants";
 const Scene = lazy(() => import("./Scene"));
 import Hero from "./Hero";
 import Experience from "./Experience";
-import Process from "./Process";
-import Pricing from "./Pricing";
-import FAQ from "./FAQ";
+import Chat from "./Chat";
 import { WhatsAppIcon } from "../../icons";
 import "./styles.scss";
 
@@ -18,7 +16,7 @@ export default function Home() {
   const { liteMode } = useLiteMode();
 
   useEffect(() => {
-    const sections = ["experience", "process", "pricing", "faq"];
+    const sections = ["experience", "chat"];
     const observed = new Set<string>();
     const observer = new IntersectionObserver(
       entries => {
@@ -94,9 +92,7 @@ export default function Home() {
       <main id="page" className="home_page">
         <Hero />
         <Experience />
-        <Process />
-        <Pricing />
-        <FAQ />
+        <Chat />
       </main>
 
       <a

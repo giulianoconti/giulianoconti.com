@@ -4,9 +4,7 @@ export type Locale = "en" | "es" | "pt";
 
 type Translations = {
   nav: {
-    process: string;
-    pricing: string;
-    faq: string;
+    chat: string;
     experience: string;
     tooltipLight: string;
     tooltipDark: string;
@@ -41,30 +39,17 @@ type Translations = {
     clinis: string;
     clinisDesc: string;
   };
-  process: {
+  chat: {
     label: string;
     h2pre: string;
     h2em: string;
     p: string;
-  };
-  pricing: {
-    label: string;
-    h2pre: string;
-    h2em: string;
-    p: string;
-    pdfLabel: string;
-    quizBadge: string;
-    quizTitle: string;
-    quizDesc: string;
-    quizCta: string;
-    tableTitle: string;
-    tableDesc: string;
-    tableCta: string;
-  };
-  faq: {
-    label: string;
-    h2pre: string;
-    h2em: string;
+    placeholder: string;
+    send: string;
+    greeting: string;
+    rateLimited: string;
+    networkError: string;
+    waFallback: string;
   };
   contact: {
     headline: string;
@@ -100,9 +85,7 @@ type Translations = {
 const translations: Record<Locale, Translations> = {
   en: {
     nav: {
-      process: "PROCESS",
-      pricing: "PRICING",
-      faq: "FAQ",
+      chat: "CHAT",
       experience: "EXPERIENCE",
       tooltipLight: "Light mode",
       tooltipDark: "Dark mode",
@@ -141,30 +124,18 @@ const translations: Record<Locale, Translations> = {
       clinisDesc:
         "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
     },
-    process: {
-      label: "Process",
-      h2pre: "How we",
-      h2em: "work",
-      p: "Four steps, no bureaucracy.",
-    },
-    pricing: {
-      label: "Pricing",
-      h2pre: "Build your website,",
-      h2em: "feature by feature",
-      p: "You pay exactly for what you need. No fixed packages. Prices in USD or ARS. No hidden costs.",
-      pdfLabel: "Collaboration terms and models",
-      quizBadge: "Recommended",
-      quizTitle: "Take the quiz",
-      quizDesc: "5 quick questions. We pre-configure the table based on your project.",
-      quizCta: "Start quiz →",
-      tableTitle: "Build directly",
-      tableDesc: "You know what you want. Enable features yourself and see the price instantly.",
-      tableCta: "View table →",
-    },
-    faq: {
-      label: "FAQ",
-      h2pre: "Frequently asked",
-      h2em: "questions",
+    chat: {
+      label: "Chat",
+      h2pre: "Tell me what",
+      h2em: "you need",
+      p: "Describe your project and I'll give you a rough price. Anything else, we can keep talking on WhatsApp.",
+      placeholder: "E.g: I need a landing page with a WhatsApp button...",
+      send: "Send",
+      greeting:
+        "Hi! Tell me what page you need — how many sections, login, admin panel, etc. — and I'll give you a rough estimate.",
+      rateLimited: "You've sent a lot of messages in a row. Wait a bit or message me directly on WhatsApp.",
+      networkError: "Something went wrong. Try again or message me directly on WhatsApp.",
+      waFallback: "Chat on WhatsApp",
     },
     contact: {
       headline: "Got a project",
@@ -198,9 +169,7 @@ const translations: Record<Locale, Translations> = {
   },
   es: {
     nav: {
-      process: "PROCESO",
-      pricing: "PRECIOS",
-      faq: "FAQ",
+      chat: "CHAT",
       experience: "EXPERIENCIA",
       tooltipLight: "Modo claro",
       tooltipDark: "Modo oscuro",
@@ -239,30 +208,18 @@ const translations: Record<Locale, Translations> = {
       clinisDesc:
         "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
     },
-    process: {
-      label: "Proceso",
-      h2pre: "Cómo",
-      h2em: "trabajamos",
-      p: "Cuatro pasos, sin burocracia.",
-    },
-    pricing: {
-      label: "Precios",
-      h2pre: "Armá tu web,",
-      h2em: "feature por feature",
-      p: "Pagás exactamente por lo que necesitás. Sin paquetes fijos. Precios en USD o ARS. Sin costos ocultos.",
-      pdfLabel: "Términos y modelos de colaboración",
-      quizBadge: "Recomendado",
-      quizTitle: "Hacé el quiz",
-      quizDesc: "5 preguntas rápidas. Pre-configuramos la tabla según tu proyecto.",
-      quizCta: "Empezar quiz →",
-      tableTitle: "Armar directo",
-      tableDesc: "Sabés lo que querés. Activá features vos mismo y ves el precio al instante.",
-      tableCta: "Ver tabla →",
-    },
-    faq: {
-      label: "FAQ",
-      h2pre: "Preguntas",
-      h2em: "frecuentes",
+    chat: {
+      label: "Chat",
+      h2pre: "Contame qué",
+      h2em: "necesitás",
+      p: "Describí tu proyecto y te tiro un precio aproximado. Cualquier otra duda, seguimos por WhatsApp.",
+      placeholder: "Ej: necesito una landing con botón de WhatsApp...",
+      send: "Enviar",
+      greeting:
+        "Hola! Contame qué página necesitás — cuántas secciones, si lleva login, panel de admin, etc. — y te doy un precio aproximado.",
+      rateLimited: "Mandaste muchos mensajes seguidos. Esperá un toque o escribime directo por WhatsApp.",
+      networkError: "Uy, algo falló. Probá de nuevo o escribime directo por WhatsApp.",
+      waFallback: "Hablar por WhatsApp",
     },
     contact: {
       headline: "¿Tenés un proyecto",
@@ -296,9 +253,7 @@ const translations: Record<Locale, Translations> = {
   },
   pt: {
     nav: {
-      process: "PROCESSO",
-      pricing: "PREÇOS",
-      faq: "FAQ",
+      chat: "CHAT",
       experience: "EXPERIÊNCIA",
       tooltipLight: "Modo claro",
       tooltipDark: "Modo escuro",
@@ -337,30 +292,18 @@ const translations: Record<Locale, Translations> = {
       clinisDesc:
         "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
     },
-    process: {
-      label: "Processo",
-      h2pre: "Como",
-      h2em: "trabalhamos",
-      p: "Quatro etapas, sem burocracia.",
-    },
-    pricing: {
-      label: "Preços",
-      h2pre: "Monte seu site,",
-      h2em: "feature por feature",
-      p: "Você paga exatamente pelo que precisa. Sem pacotes fixos. Preços em USD ou ARS. Sem custos ocultos.",
-      pdfLabel: "Termos e modelos de colaboração",
-      quizBadge: "Recomendado",
-      quizTitle: "Faça o quiz",
-      quizDesc: "5 perguntas rápidas. Pré-configuramos a tabela de acordo com seu projeto.",
-      quizCta: "Iniciar quiz →",
-      tableTitle: "Montar direto",
-      tableDesc: "Você sabe o que quer. Ative features você mesmo e veja o preço na hora.",
-      tableCta: "Ver tabela →",
-    },
-    faq: {
-      label: "FAQ",
-      h2pre: "Perguntas",
-      h2em: "frequentes",
+    chat: {
+      label: "Chat",
+      h2pre: "Me conta o que",
+      h2em: "você precisa",
+      p: "Descreva seu projeto e te dou um preço aproximado. Qualquer outra dúvida, seguimos pelo WhatsApp.",
+      placeholder: "Ex: preciso de uma landing com botão de WhatsApp...",
+      send: "Enviar",
+      greeting:
+        "Oi! Me conta que página você precisa — quantas seções, login, painel admin, etc. — e te dou um preço aproximado.",
+      rateLimited: "Você mandou muitas mensagens seguidas. Espera um pouco ou fala direto comigo no WhatsApp.",
+      networkError: "Algo deu errado. Tenta de novo ou fala direto comigo no WhatsApp.",
+      waFallback: "Falar no WhatsApp",
     },
     contact: {
       headline: "Tem um projeto",
