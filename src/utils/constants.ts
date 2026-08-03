@@ -141,7 +141,7 @@ export const PROJECTS_DATA = [
 ] as const;
 
 export function getCvAssetByLocale(locale: Locale) {
-  return `/assets/Giuliano_Conti_CV-${locale}.pdf`;
+  return `/assets/Frontend-Giuliano_Conti-${locale}.pdf`;
 }
 
 export const MAIN_PROJECTS = [

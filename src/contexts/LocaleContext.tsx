@@ -109,9 +109,9 @@ const translations: Record<Locale, Translations> = {
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
-      portal: "Portal",
+      portal: "Portal Bridge",
       portalDesc:
-        "Built the interface that uses Wormhole to transfer tokens between blockchains, making transactions, testing and fixing errors.",
+        "Improved the reliability of Portal Bridge by testing cross-chain transactions and fixing bugs.",
       xlabsDesc:
         "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
       xlabsCompany: "xLabs",
@@ -193,9 +193,9 @@ const translations: Record<Locale, Translations> = {
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
-      portal: "Portal",
+      portal: "Portal Bridge",
       portalDesc:
-        "Construí la interfaz que utiliza Wormhole para transferir tokens entre blockchains, haciendo transacciones, testeando y fixeando errores.",
+        "Mejoré la confiabilidad de Portal Bridge testeando transacciones cross-chain y corrigiendo errores.",
       xlabsDesc:
         "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
       xlabsCompany: "xLabs",
@@ -277,9 +277,9 @@ const translations: Record<Locale, Translations> = {
       wormholescan: "WormholeScan",
       wormholescanDesc:
         "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
-      portal: "Portal",
+      portal: "Portal Bridge",
       portalDesc:
-        "Desenvolvi a interface que utiliza Wormhole para transferir tokens entre blockchains, fazendo transações, testando e corrigindo erros.",
+        "Melhorei a confiabilidade do Portal Bridge testando transações cross-chain e corrigindo erros.",
       xlabsDesc:
         "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
       xlabsCompany: "xLabs",

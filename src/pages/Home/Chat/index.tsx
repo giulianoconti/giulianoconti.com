@@ -121,7 +121,12 @@ export default function Chat() {
           </h2>
           <p className="chat_content_desc">{t.chat.p}</p>
 
-          <div className="chat_panel">
+          <div
+            className="chat_panel"
+            onClick={() => {
+              if (messages.length === 0) textareaRef.current?.focus();
+            }}
+          >
             <div className="chat_panel_list" ref={listRef}>
               {messages.length === 0 && <p className="chat_panel_greeting">{t.chat.greeting}</p>}
 
@@ -162,6 +167,8 @@ export default function Chat() {
             <div className="chat_panel_input">
               <textarea
                 ref={textareaRef}
+                id="chat-input"
+                name="chat-input"
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={onKeyDown}
