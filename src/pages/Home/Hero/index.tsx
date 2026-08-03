@@ -1,11 +1,17 @@
 import { useLocale } from "../../../contexts/LocaleContext";
 import { useLiteMode } from "../../../contexts/LiteModeContext";
-import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
-import { SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL, WA_MSG } from "../../../utils/constants";
+import { CurriculumIcon, GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
+import {
+  getCvAssetByLocale,
+  SOCIAL_GITHUB_URL,
+  SOCIAL_LINKEDIN_URL,
+  SOCIAL_MAIL,
+  WA_MSG,
+} from "../../../utils/constants";
 import "./styles.scss";
 
 export default function Hero() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { liteMode } = useLiteMode();
 
   return (
@@ -36,20 +42,55 @@ export default function Hero() {
           </div>
 
           <div className="hero_main_center_social">
-            <a className="hero_main_center_social_link" href={`mailto:${SOCIAL_MAIL}`} aria-label="Email" data-tooltip="Email">
+            <a
+              className="hero_main_center_social_link"
+              href={`mailto:${SOCIAL_MAIL}`}
+              aria-label="Email"
+              data-tooltip="Email"
+            >
               <MailIcon />
             </a>
-            <a className="hero_main_center_social_link" href={WA_MSG(t.contact.waMsg)} rel="noopener noreferrer" target="_blank" aria-label="WhatsApp" data-tooltip="WhatsApp">
+            <a
+              className="hero_main_center_social_link"
+              href={WA_MSG(t.contact.waMsg)}
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="WhatsApp"
+              data-tooltip="WhatsApp"
+            >
               <WhatsAppIcon colorless />
             </a>
-            <a className="hero_main_center_social_link" href={SOCIAL_LINKEDIN_URL} rel="noopener noreferrer" target="_blank" aria-label="LinkedIn" data-tooltip="LinkedIn">
+            <a
+              className="hero_main_center_social_link"
+              href={getCvAssetByLocale(locale)}
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Curriculum"
+              data-tooltip="Curriculum"
+            >
+              <CurriculumIcon />
+            </a>
+            <a
+              className="hero_main_center_social_link"
+              href={SOCIAL_LINKEDIN_URL}
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="LinkedIn"
+              data-tooltip="LinkedIn"
+            >
               <LinkedInIcon />
             </a>
-            <a className="hero_main_center_social_link" href={SOCIAL_GITHUB_URL} rel="noopener noreferrer" target="_blank" aria-label="GitHub" data-tooltip="GitHub">
+            <a
+              className="hero_main_center_social_link"
+              href={SOCIAL_GITHUB_URL}
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="GitHub"
+              data-tooltip="GitHub"
+            >
               <GithubIcon />
             </a>
           </div>
-
         </div>
       </div>
     </section>

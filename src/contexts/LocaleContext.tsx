@@ -133,7 +133,8 @@ const translations: Record<Locale, Translations> = {
       send: "Send",
       greeting:
         "Hi! Tell me what page you need — how many sections, login, admin panel, etc. — and I'll give you a rough estimate.",
-      rateLimited: "You've sent a lot of messages in a row. Wait a bit or message me directly on WhatsApp.",
+      rateLimited:
+        "You've sent a lot of messages in a row. Wait a bit or message me directly on WhatsApp.",
       networkError: "Something went wrong. Try again or message me directly on WhatsApp.",
       waFallback: "Chat on WhatsApp",
     },
@@ -217,7 +218,8 @@ const translations: Record<Locale, Translations> = {
       send: "Enviar",
       greeting:
         "Hola! Contame qué página necesitás — cuántas secciones, si lleva login, panel de admin, etc. — y te doy un precio aproximado.",
-      rateLimited: "Mandaste muchos mensajes seguidos. Esperá un toque o escribime directo por WhatsApp.",
+      rateLimited:
+        "Mandaste muchos mensajes seguidos. Esperá un toque o escribime directo por WhatsApp.",
       networkError: "Uy, algo falló. Probá de nuevo o escribime directo por WhatsApp.",
       waFallback: "Hablar por WhatsApp",
     },
@@ -301,7 +303,8 @@ const translations: Record<Locale, Translations> = {
       send: "Enviar",
       greeting:
         "Oi! Me conta que página você precisa — quantas seções, login, painel admin, etc. — e te dou um preço aproximado.",
-      rateLimited: "Você mandou muitas mensagens seguidas. Espera um pouco ou fala direto comigo no WhatsApp.",
+      rateLimited:
+        "Você mandou muitas mensagens seguidas. Espera um pouco ou fala direto comigo no WhatsApp.",
       networkError: "Algo deu errado. Tenta de novo ou fala direto comigo no WhatsApp.",
       waFallback: "Falar no WhatsApp",
     },

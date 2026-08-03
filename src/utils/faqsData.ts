@@ -22,9 +22,18 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "¿Cuánto tarda un proyecto?",
       a: {
         items: [
-          { title: "Landing", text: "Una sola sección o página de presentación. Entrega en 3–5 días hábiles." },
-          { title: "Hasta 4 páginas", text: "Sitio con varias secciones, blog o CMS incluido. Entrega en 1–2 semanas." },
-          { title: "Hasta 10 páginas", text: "App web completa con login, panel admin y base de datos. Entrega en 2–3 semanas." },
+          {
+            title: "Landing",
+            text: "Una sola sección o página de presentación. Entrega en 3–5 días hábiles.",
+          },
+          {
+            title: "Hasta 4 páginas",
+            text: "Sitio con varias secciones, blog o CMS incluido. Entrega en 1–2 semanas.",
+          },
+          {
+            title: "Hasta 10 páginas",
+            text: "App web completa con login, panel admin y base de datos. Entrega en 2–3 semanas.",
+          },
         ],
       },
     },
@@ -36,8 +45,14 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "¿Cómo se hace el pago?",
       a: {
         items: [
-          { title: "Pago Único", text: "50% adelantado para arrancar, 50% al momento de la entrega. Acepto USD (crypto USDT/USDC) y ARS (Mercadopago o transferencia)." },
-          { title: "Mensual", text: "Se abona mes a mes sin costo de setup inicial. Mismos métodos de pago." },
+          {
+            title: "Pago Único",
+            text: "50% adelantado para arrancar, 50% al momento de la entrega. Acepto USD (crypto USDT/USDC) y ARS (Mercadopago o transferencia).",
+          },
+          {
+            title: "Mensual",
+            text: "Se abona mes a mes sin costo de setup inicial. Mismos métodos de pago.",
+          },
         ],
       },
     },
@@ -45,8 +60,14 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "¿Puedo pedirte cambios después de la entrega?",
       a: {
         items: [
-          { title: "Mensual", text: "Los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido." },
-          { title: "Pago Único", text: "Incluye rondas de revisión antes del cierre. Cambios posteriores se presupuestan por separado o acordamos un retainer mensual." },
+          {
+            title: "Mensual",
+            text: "Los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido.",
+          },
+          {
+            title: "Pago Único",
+            text: "Incluye rondas de revisión antes del cierre. Cambios posteriores se presupuestan por separado o acordamos un retainer mensual.",
+          },
         ],
       },
     },
@@ -75,9 +96,18 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "How long does a project take?",
       a: {
         items: [
-          { title: "Landing", text: "Single section or presentation page. Delivered in 3–5 business days." },
-          { title: "Up to 4 pages", text: "Multi-section site, blog or CMS included. Delivered in 1–2 weeks." },
-          { title: "Up to 10 pages", text: "Full web app with login, admin panel and database. Delivered in 2–3 weeks." },
+          {
+            title: "Landing",
+            text: "Single section or presentation page. Delivered in 3–5 business days.",
+          },
+          {
+            title: "Up to 4 pages",
+            text: "Multi-section site, blog or CMS included. Delivered in 1–2 weeks.",
+          },
+          {
+            title: "Up to 10 pages",
+            text: "Full web app with login, admin panel and database. Delivered in 2–3 weeks.",
+          },
         ],
       },
     },
@@ -89,8 +119,14 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "How is payment made?",
       a: {
         items: [
-          { title: "One-time", text: "50% upfront to start, 50% at delivery. I accept USD (crypto USDT/USDC) and ARS (Mercadopago or bank transfer)." },
-          { title: "Monthly", text: "Billed month to month with no initial setup fee. Same payment methods." },
+          {
+            title: "One-time",
+            text: "50% upfront to start, 50% at delivery. I accept USD (crypto USDT/USDC) and ARS (Mercadopago or bank transfer).",
+          },
+          {
+            title: "Monthly",
+            text: "Billed month to month with no initial setup fee. Same payment methods.",
+          },
         ],
       },
     },
@@ -98,8 +134,14 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "Can I request changes after delivery?",
       a: {
         items: [
-          { title: "Monthly", text: "Content changes are included each month according to the chosen maintenance level." },
-          { title: "One-time", text: "Includes revision rounds before closing. Later changes are budgeted separately or we arrange a monthly retainer." },
+          {
+            title: "Monthly",
+            text: "Content changes are included each month according to the chosen maintenance level.",
+          },
+          {
+            title: "One-time",
+            text: "Includes revision rounds before closing. Later changes are budgeted separately or we arrange a monthly retainer.",
+          },
         ],
       },
     },
@@ -128,9 +170,18 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "Quanto tempo leva um projeto?",
       a: {
         items: [
-          { title: "Landing", text: "Uma seção ou página de apresentação. Entrega em 3–5 dias úteis." },
-          { title: "Até 4 páginas", text: "Site com várias seções, blog ou CMS incluído. Entrega em 1–2 semanas." },
-          { title: "Até 10 páginas", text: "App web completo com login, painel admin e banco de dados. Entrega em 2–3 semanas." },
+          {
+            title: "Landing",
+            text: "Uma seção ou página de apresentação. Entrega em 3–5 dias úteis.",
+          },
+          {
+            title: "Até 4 páginas",
+            text: "Site com várias seções, blog ou CMS incluído. Entrega em 1–2 semanas.",
+          },
+          {
+            title: "Até 10 páginas",
+            text: "App web completo com login, painel admin e banco de dados. Entrega em 2–3 semanas.",
+          },
         ],
       },
     },
@@ -142,8 +193,14 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "Como é feito o pagamento?",
       a: {
         items: [
-          { title: "Pagamento Único", text: "50% adiantado para começar, 50% na entrega. Aceito USD (cripto USDT/USDC) e ARS (Mercadopago ou transferência bancária)." },
-          { title: "Mensal", text: "Cobrado mês a mês sem taxa de setup inicial. Mesmos métodos de pagamento." },
+          {
+            title: "Pagamento Único",
+            text: "50% adiantado para começar, 50% na entrega. Aceito USD (cripto USDT/USDC) e ARS (Mercadopago ou transferência bancária).",
+          },
+          {
+            title: "Mensal",
+            text: "Cobrado mês a mês sem taxa de setup inicial. Mesmos métodos de pagamento.",
+          },
         ],
       },
     },
@@ -151,8 +208,14 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       q: "Posso pedir alterações após a entrega?",
       a: {
         items: [
-          { title: "Mensal", text: "As alterações de conteúdo estão incluídas todo mês conforme o nível de manutenção escolhido." },
-          { title: "Pagamento Único", text: "Inclui rodadas de revisão antes do fechamento. Alterações posteriores são orçadas separadamente ou combinamos um retainer mensal." },
+          {
+            title: "Mensal",
+            text: "As alterações de conteúdo estão incluídas todo mês conforme o nível de manutenção escolhido.",
+          },
+          {
+            title: "Pagamento Único",
+            text: "Inclui rodadas de revisão antes do fechamento. Alterações posteriores são orçadas separadamente ou combinamos um retainer mensal.",
+          },
         ],
       },
     },

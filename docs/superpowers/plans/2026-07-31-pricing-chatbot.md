@@ -25,14 +25,17 @@
 ### Task 1: Add the Anthropic SDK dependency
 
 **Files:**
+
 - Modify: `package.json`
 
 **Interfaces:**
+
 - Produces: `@anthropic-ai/sdk` importable as `import Anthropic from "@anthropic-ai/sdk"` in Task 3.
 
 - [ ] **Step 1: Install the package**
 
 Run:
+
 ```bash
 npm install @anthropic-ai/sdk
 ```
@@ -54,9 +57,11 @@ git commit -m "chore: add @anthropic-ai/sdk dependency"
 ### Task 2: Extract pricing calculation functions into a shared module
 
 **Files:**
+
 - Create: `src/utils/pricingCalc.ts`
 
 **Interfaces:**
+
 - Consumes: `ARS_RATE`, `MONTHLY_TIERS`, `INFRA_COSTS` from `src/utils/pricingData.ts`; types `Feature`, `TierId` from the same file.
 - Produces: `calcInfra(checked: Set<string>): number`, `calcSetup(checked: Set<string>, model: Model, features: Feature[]): number`, `calcMonthly(model: Model, tier: TierId, checked: Set<string>, features: Feature[]): number`, `fmt(n: number, currency: Currency): string`, `buildWaMessage(checked: Set<string>, model: Model, tier: TierId, currency: Currency, t: (key: string) => string, features: Feature[]): string`, and types `Model = "monthly" | "onetime"`, `Currency = "usd" | "ars"`. These are consumed by Task 3 (`api/chat.ts`).
 
@@ -160,6 +165,7 @@ console.log('monthly standard:', calcMonthly('monthly', 'standard', checked, [
 ]));
 "
 ```
+
 Expected: prints a number (infra 10 + supabase 20 + round(600/20)=30 + tier extra 60 = 120). If Node's TS support via `--input-type=module` errors out on your Node version, skip this and rely on Step 2's type-check plus the end-to-end manual test in Task 9 instead — this step is a nice-to-have sanity check, not a hard gate.
 
 - [ ] **Step 4: Commit**
@@ -174,20 +180,25 @@ git commit -m "feat: extract pricing calculation logic into shared module"
 ### Task 3: Create the `/api/chat` Vercel Function
 
 **Files:**
+
 - Create: `api/chat.ts`
 - Modify: `tsconfig.json` (add `"api"` to `include` so this file gets type-checked)
 
 **Interfaces:**
+
 - Consumes: `FEATURES`, `TierId` from `src/utils/pricingData.ts`; `getFeatures`, `PRICING_T` from `src/utils/pricingTranslations.ts`; `calcSetup`, `calcMonthly`, `buildWaMessage` from `src/utils/pricingCalc.ts` (Task 2); `FAQS` from `src/utils/faqsData.ts`; `WA_MSG` from `src/utils/constants.ts`.
 - Produces: a POST endpoint at `/api/chat` accepting `{ messages: {role: "user"|"assistant", content: string}[], locale: "en"|"es"|"pt", currency: "usd"|"ars" }` and returning `{ reply: string, quote: QuoteResult | null }` on success — consumed by Task 5 (`Chat/index.tsx`).
 
 - [ ] **Step 1: Add `api` to the TypeScript project's included paths**
 
 In `tsconfig.json`, change:
+
 ```json
   "include": ["src"]
 ```
+
 to:
+
 ```json
   "include": ["src", "api"]
 ```
@@ -282,7 +293,8 @@ const GET_QUOTE_TOOL: Anthropic.Tool = {
       features: {
         type: "array",
         items: { type: "string", enum: FEATURES.filter(f => !f.locked).map(f => f.id) },
-        description: "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
+        description:
+          "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
       },
       model: { type: "string", enum: ["monthly", "onetime"], description: "Modelo de pago" },
       tier: {
@@ -433,9 +445,11 @@ git commit -m "feat: add /api/chat Vercel Function with quote tool"
 ### Task 4: Add chat translations and update the nav/section translation types
 
 **Files:**
+
 - Modify: `src/contexts/LocaleContext.tsx`
 
 **Interfaces:**
+
 - Produces: `t.chat.{label,h2pre,h2em,p,placeholder,send,greeting,rateLimited,networkError,waFallback}` and `t.nav.chat` — consumed by Task 5 (`Chat/index.tsx`) and Task 7 (`Navbar`).
 
 This task removes the now-unused `nav.process`/`nav.pricing`/`nav.faq` and the `process`/`pricing`/`faq` translation blocks (their only consumers, the old section components, are deleted in Task 8), and adds a `chat` block plus `nav.chat` in all three locales.
@@ -445,31 +459,31 @@ This task removes the now-unused `nav.process`/`nav.pricing`/`nav.faq` and the `
 In `src/contexts/LocaleContext.tsx`, replace the `nav` type (around line 6-15):
 
 ```typescript
-  nav: {
-    chat: string;
-    experience: string;
-    tooltipLight: string;
-    tooltipDark: string;
-    tooltipLiteOn: string;
-    tooltipLiteOff: string;
-  };
+nav: {
+  chat: string;
+  experience: string;
+  tooltipLight: string;
+  tooltipDark: string;
+  tooltipLiteOn: string;
+  tooltipLiteOff: string;
+}
 ```
 
 Replace the `process`/`pricing`/`faq` type blocks (around line 44-68) with a single `chat` block:
 
 ```typescript
-  chat: {
-    label: string;
-    h2pre: string;
-    h2em: string;
-    p: string;
-    placeholder: string;
-    send: string;
-    greeting: string;
-    rateLimited: string;
-    networkError: string;
-    waFallback: string;
-  };
+chat: {
+  label: string;
+  h2pre: string;
+  h2em: string;
+  p: string;
+  placeholder: string;
+  send: string;
+  greeting: string;
+  rateLimited: string;
+  networkError: string;
+  waFallback: string;
+}
 ```
 
 - [ ] **Step 2: Update the `es` translations**
@@ -555,10 +569,12 @@ git commit -m "feat: replace process/pricing/faq translations with chat translat
 ### Task 5: Build the Chat section component
 
 **Files:**
+
 - Create: `src/pages/Home/Chat/index.tsx`
 - Create: `src/pages/Home/Chat/styles.scss`
 
 **Interfaces:**
+
 - Consumes: `useLocale()` from `src/contexts/LocaleContext.tsx` (for `t.chat.*`, `t.nav.chat`, `locale`); `WA_MSG` from `src/utils/constants.ts`; `WhatsAppIcon` from `src/icons/index.tsx`; POSTs to `/api/chat` (Task 3), expecting `{ reply: string, quote: QuoteResult | null }`.
 - Produces: default export `Chat` — a `<section id="chat">` — consumed by Task 6 (`Home/index.tsx`).
 
@@ -948,42 +964,59 @@ git commit -m "feat: add Chat section component"
 ### Task 6: Wire the Chat section into the Home page
 
 **Files:**
+
 - Modify: `src/pages/Home/index.tsx`
 
 **Interfaces:**
+
 - Consumes: default export `Chat` from `./Chat` (Task 5).
 
 - [ ] **Step 1: Replace the Process/Pricing/FAQ imports and usage**
 
 In `src/pages/Home/index.tsx`, replace:
+
 ```typescript
 import Process from "./Process";
 import Pricing from "./Pricing";
 import FAQ from "./FAQ";
 ```
+
 with:
+
 ```typescript
 import Chat from "./Chat";
 ```
 
 Replace the commented-out render block:
+
 ```tsx
-        {/* <Process /> */}
-        {/* <Pricing /> */}
-        {/* <FAQ /> */}
+{
+  /* <Process /> */
+}
+{
+  /* <Pricing /> */
+}
+{
+  /* <FAQ /> */
+}
 ```
+
 with:
+
 ```tsx
-        <Chat />
+<Chat />
 ```
 
 - [ ] **Step 2: Update the section-view analytics IDs**
 
 In the same file, find:
+
 ```typescript
 const sections = ["experience", "process", "pricing", "faq"];
 ```
+
 Replace with:
+
 ```typescript
 const sections = ["experience", "chat"];
 ```
@@ -1005,28 +1038,33 @@ git commit -m "feat: replace Process/Pricing/FAQ with Chat in Home page"
 ### Task 7: Update the Navbar to link to the Chat section
 
 **Files:**
+
 - Modify: `src/components/molecules/Navbar/index.tsx`
 
 **Interfaces:**
+
 - Consumes: `t.nav.chat` (Task 4).
 
 - [ ] **Step 1: Replace the three nav links with one**
 
 In `src/components/molecules/Navbar/index.tsx`, replace:
+
 ```typescript
-  const navLinks = [
-    { href: "#experience", label: t.nav.experience },
-    { href: "#process", label: t.nav.process },
-    { href: "#pricing", label: t.nav.pricing },
-    { href: "#faq", label: t.nav.faq },
-  ];
+const navLinks = [
+  { href: "#experience", label: t.nav.experience },
+  { href: "#process", label: t.nav.process },
+  { href: "#pricing", label: t.nav.pricing },
+  { href: "#faq", label: t.nav.faq },
+];
 ```
+
 with:
+
 ```typescript
-  const navLinks = [
-    { href: "#experience", label: t.nav.experience },
-    { href: "#chat", label: t.nav.chat },
-  ];
+const navLinks = [
+  { href: "#experience", label: t.nav.experience },
+  { href: "#chat", label: t.nav.chat },
+];
 ```
 
 - [ ] **Step 2: Type-check**
@@ -1046,19 +1084,23 @@ git commit -m "feat: update nav links for the Chat section"
 ### Task 8: Delete the old Process, Pricing, and FAQ section directories
 
 **Files:**
+
 - Delete: `src/pages/Home/Process/` (entire directory)
 - Delete: `src/pages/Home/Pricing/` (entire directory, including `QuoteModal.tsx` / `QuoteModal.scss`)
 - Delete: `src/pages/Home/FAQ/` (entire directory)
 
 **Interfaces:**
+
 - None — these are unused after Tasks 6-7 removed their only references. `src/utils/pricingData.ts`, `src/utils/pricingTranslations.ts`, `src/utils/pricingLocale.ts`, and `src/utils/faqsData.ts` are **not** deleted — they're still used by `api/chat.ts` (Task 3).
 
 - [ ] **Step 1: Confirm nothing else references these directories**
 
 Run:
+
 ```bash
 grep -rn "from \"\.\./Process\"\|from \"\.\./Pricing\"\|from \"\.\./FAQ\"\|Home/Process\|Home/Pricing\|Home/FAQ\"" src
 ```
+
 Expected: no output (all references were removed in Task 6).
 
 - [ ] **Step 2: Delete the directories**
@@ -1089,9 +1131,11 @@ No automated test framework exists in this project (`package.json` has no `test`
 - [ ] **Step 1: Set up local env var**
 
 Create `.env.local` in the project root (already gitignored — confirm via `git check-ignore .env.local`) with:
+
 ```
 ANTHROPIC_API_KEY=sk-ant-...
 ```
+
 Get a real key from `console.anthropic.com` if you don't have one, or run `ant auth status` to check for an existing profile-based credential (see the Claude API skill's Authentication section) — if a profile is active, `ANTHROPIC_API_KEY` can be omitted locally.
 
 - [ ] **Step 2: Install the Vercel CLI if not present**
@@ -1106,6 +1150,7 @@ Follow the prompts to link the project (first run only). This serves both the Vi
 - [ ] **Step 4: Manual smoke tests in the browser**
 
 Open the local URL `vercel dev` prints, scroll to the Chat section, and check:
+
 - Cotización simple: escribir "necesito una landing page" → el bot pregunta lo mínimo y devuelve un precio + botón de WhatsApp.
 - Cotización con features: "quiero un sitio con login y panel de administración" → el precio refleja auth+cms+db.
 - Pregunta FAQ pura: "¿cuánto tarda un proyecto?" → responde usando el contenido de FAQ, sin llamar a la tool de precio.
@@ -1117,21 +1162,25 @@ Open the local URL `vercel dev` prints, scroll to the Chat section, and check:
 Rate limit — mandar más de 20 mensajes seguidos en la misma sesión de navegador y confirmar que a partir del mensaje 21 el chat muestra el mensaje de `rateLimited` con el link de WhatsApp de emergencia.
 
 Origin check — con el server de `vercel dev` corriendo, desde otra terminal:
+
 ```bash
 curl -i -X POST http://localhost:3000/api/chat \
   -H "content-type: application/json" \
   -H "origin: https://evil.example.com" \
   -d '{"messages":[{"role":"user","content":"hola"}],"locale":"es"}'
 ```
+
 Expected: `403` con `{"error":"forbidden_origin"}`.
 
 - [ ] **Step 6: Set the production env var on Vercel**
 
 Run (or do it via the Vercel dashboard → Project → Settings → Environment Variables):
+
 ```bash
 vercel env add ANTHROPIC_API_KEY production
 vercel env add ANTHROPIC_API_KEY preview
 ```
+
 Paste the same API key when prompted for each.
 
 - [ ] **Step 7: Final build check**

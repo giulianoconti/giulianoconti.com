@@ -7,6 +7,7 @@
     "dev": "vite --host",
     "build": "vite build && node scripts/generate-locales.mjs",
     "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,scss,css,html,md}\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "prettier": "^3.9.6",
     "typescript": "^6.0.3",
     "vite": "^8.0.4"
   }

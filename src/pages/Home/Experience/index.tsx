@@ -142,7 +142,12 @@ export default function Experience() {
                     rel="noopener noreferrer"
                   >
                     <div className="experience_sticky_row_right_card_link_image">
-                      <img src={experience.image} alt={experience.name} loading="lazy" decoding="async" />
+                      <img
+                        src={experience.image}
+                        alt={experience.name}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
 
                     <div className="experience_sticky_row_right_card_link_content">

@@ -20,7 +20,7 @@ export function LiteModeProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("liteMode", String(liteMode));
   }, [liteMode]);
 
-  const toggleLiteMode = useCallback(() => setLiteMode((v) => !v), []);
+  const toggleLiteMode = useCallback(() => setLiteMode(v => !v), []);
 
   return (
     <LiteModeContext.Provider value={{ liteMode, toggleLiteMode }}>

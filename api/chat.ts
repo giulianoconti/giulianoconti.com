@@ -85,7 +85,8 @@ const GET_QUOTE_TOOL: Anthropic.Tool = {
       features: {
         type: "array",
         items: { type: "string", enum: FEATURES.filter(f => !f.locked).map(f => f.id) },
-        description: "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
+        description:
+          "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
       },
       model: { type: "string", enum: ["monthly", "onetime"], description: "Modelo de pago" },
       tier: {

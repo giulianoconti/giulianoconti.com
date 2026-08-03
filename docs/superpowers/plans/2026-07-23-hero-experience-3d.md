@@ -34,10 +34,12 @@ Task 3 asume que este archivo ya existe en `public/fonts/helveticanowdisplay-med
 ### Task 1: Extraer helpers 3D compartidos de Scene a un módulo reusable
 
 **Files:**
+
 - Create: `src/pages/Home/Scene/shared.ts`
 - Modify: `src/pages/Home/Scene/index.tsx:1-115` (importar desde `shared.ts` en vez de definir localmente)
 
 **Interfaces:**
+
 - Produces: `shared.ts` exporta:
   - `type Keyframe = { ts: number[]; vs: number[] }`
   - `lerp(a: number, b: number, t: number): number`
@@ -76,7 +78,7 @@ export function sampleKF(kf: Keyframe, t: number): number {
 }
 
 export function applyMat(scene: THREE.Object3D, mat: THREE.Material): void {
-  scene.traverse((c) => {
+  scene.traverse(c => {
     if (c instanceof THREE.Mesh) {
       c.material = mat;
     }
@@ -86,19 +88,24 @@ export function applyMat(scene: THREE.Object3D, mat: THREE.Material): void {
 export function useMetalMaterial(): THREE.MeshStandardMaterial {
   const { theme } = useTheme();
 
-  return useMemo(() => new THREE.MeshStandardMaterial({
-    color:     theme === "dark" ? 0x797979 : 0x555555,
-    roughness: theme === "dark" ? 0 : 0.85,
-    metalness: theme === "dark" ? 1 : 0,
-    side: THREE.DoubleSide,
-    envMapIntensity: theme === "dark" ? 1 : 0,
-  }), [theme]);
+  return useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: theme === "dark" ? 0x797979 : 0x555555,
+        roughness: theme === "dark" ? 0 : 0.85,
+        metalness: theme === "dark" ? 1 : 0,
+        side: THREE.DoubleSide,
+        envMapIntensity: theme === "dark" ? 1 : 0,
+      }),
+    [theme],
+  );
 }
 ```
 
 - [ ] **Step 2: Actualizar `Scene/index.tsx` para importar desde `shared.ts` y borrar las definiciones locales duplicadas**
 
 En `src/pages/Home/Scene/index.tsx`:
+
 - Borrar las líneas 7-28 (interfaz `Keyframe`, `lerp`, `sampleKF`) y las líneas 74-111 (`applyMat`, `useMetalMaterial`) — ya viven en `shared.ts`.
 - Agregar el import al tope del archivo, después de los imports existentes:
 
@@ -125,11 +132,13 @@ git commit -m "refactor: extract shared 3D helpers from Scene for reuse in Hero/
 ### Task 2: Utilidad `.sr-only` global + wrapper de Hero (sr-only / liteMode) sin cambiar el 3D todavía
 
 **Files:**
+
 - Modify: `src/index.scss` (agregar clase `.sr-only`)
 - Modify: `src/pages/Home/Hero/index.tsx` (envolver el JSX existente con la clase condicional)
 - Modify: `src/pages/Home/Hero/styles.scss:1` (asegurar que `.hero` sigue funcionando visible cuando no tiene `.sr-only`)
 
 **Interfaces:**
+
 - Consumes: `useLiteMode()` de `src/contexts/LiteModeContext.tsx` (ya existe, expone `{ liteMode: boolean }`).
 - Produces: clase CSS `.sr-only` reusable por `Experience/index.tsx` en Task 6.
 
@@ -172,6 +181,7 @@ Y en el `export default function Hero()`, agregar `const { liteMode } = useLiteM
 
 Run: `npm run dev`, abrir `http://localhost:5173`.
 Expected:
+
 - Con `liteMode` apagado (default): el Hero visual desaparece de pantalla (el 3D de fondo sigue viéndose igual que siempre — todavía no hay `HeroContent` 3D, eso es Task 3-4), pero inspeccionando el DOM (`document.getElementById("home")`) el texto sigue ahí.
 - Activar `liteMode` (toggle existente en la UI, o `localStorage.setItem("liteMode", "true")` + reload): el Hero se ve exactamente igual que antes de este cambio.
 
@@ -187,9 +197,11 @@ git commit -m "feat: add sr-only utility and liteMode-aware Hero wrapper"
 ### Task 3: `HeroContent.tsx` — texto 3D del nombre/tagline/stats
 
 **Files:**
+
 - Create: `src/pages/Home/Hero/HeroContent.tsx`
 
 **Interfaces:**
+
 - Consumes: `sampleKF`, `useMetalMaterial` de `../Scene/shared`; `useLocale()` (`t.home.title`, `t.home.subheader`, `t.home.statYearsLabel`, `t.home.statProjectsLabel`, `t.home.statCurrentLabel`).
 - Produces: `export default function HeroContent({ scrollRef }: { scrollRef: RefObject<number> }): JSX.Element` — se monta desde `Scene/index.tsx` en Task 4.
 
@@ -283,9 +295,11 @@ git commit -m "feat: add HeroContent 3D component with metallic Text3D headline"
 ### Task 4: Montar `HeroContent` en `Scene.tsx`
 
 **Files:**
+
 - Modify: `src/pages/Home/Scene/index.tsx`
 
 **Interfaces:**
+
 - Consumes: `HeroContent` de `../Hero/HeroContent` (Task 3).
 
 - [ ] **Step 1: Importar y montar dentro de `SceneInner`**
@@ -335,10 +349,12 @@ git commit -m "feat: mount HeroContent inside Scene"
 ### Task 5: Íconos sociales como planos texturados clickeables en `HeroContent`
 
 **Files:**
+
 - Create: `src/pages/Home/Scene/svgTexture.ts`
 - Modify: `src/pages/Home/Hero/HeroContent.tsx`
 
 **Interfaces:**
+
 - Produces: `svgTexture.ts` exporta `useSvgTexture(svgMarkup: string): THREE.Texture` — hook que rasteriza un string SVG a una `CanvasTexture`, reusable por Task 8 (íconos de stack tech).
 
 - [ ] **Step 1: Crear el hook de rasterizado SVG → textura**
@@ -388,7 +404,12 @@ Agregar a `HeroContent.tsx`, después de los imports existentes:
 ```typescript
 import { renderToStaticMarkup } from "react-dom/server";
 import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
-import { SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL, WA_MSG } from "../../../utils/constants";
+import {
+  SOCIAL_GITHUB_URL,
+  SOCIAL_LINKEDIN_URL,
+  SOCIAL_MAIL,
+  WA_MSG,
+} from "../../../utils/constants";
 import { useSvgTexture } from "../Scene/svgTexture";
 ```
 
@@ -456,9 +477,11 @@ git commit -m "feat: add clickable social icons as textured planes in HeroConten
 ### Task 6: Wrapper sr-only / liteMode para Experience (mismo patrón que Task 2)
 
 **Files:**
+
 - Modify: `src/pages/Home/Experience/index.tsx`
 
 **Interfaces:**
+
 - Consumes: `useLiteMode()` (igual que Task 2).
 
 - [ ] **Step 1: Aplicar el mismo patrón que en `Hero/index.tsx`**
@@ -494,9 +517,11 @@ git commit -m "feat: add liteMode-aware Experience wrapper"
 ### Task 7: `ExperienceContent.tsx` — entries de empresa/rol en texto 3D
 
 **Files:**
+
 - Create: `src/pages/Home/Experience/ExperienceContent.tsx`
 
 **Interfaces:**
+
 - Consumes: `sampleKF`, `useMetalMaterial` de `../Scene/shared`; `useLocale()` (`t.experience.*`).
 - Produces: `export default function ExperienceContent({ scrollRef }: { scrollRef: RefObject<number> }): JSX.Element`, montado en Task 9 junto a `ProjectCard3D` (Task 8).
 
@@ -588,9 +613,11 @@ git commit -m "feat: add ExperienceContent 3D component with company entries"
 ### Task 8: Cards de proyecto con imagen texturada + stack tech en `ExperienceContent`
 
 **Files:**
+
 - Modify: `src/pages/Home/Experience/ExperienceContent.tsx`
 
 **Interfaces:**
+
 - Consumes: `useSvgTexture` de `../Scene/svgTexture` (Task 5); `EXPERIENCE_CLINIS_ASSET`, `EXPERIENCE_WORMHOLESCAN_ASSET`, `EXPERIENCE_PORTAL_ASSET`, `EXPERIENCE_XLABS_ASSET`, `CLINIS_WEBSITE_URL`, `WORMHOLESCAN_WEBSITE_URL`, `PORTAL_WEBSITE_URL`, `XLABS_WEBSITE_URL` de `../../../utils/constants`.
 
 - [ ] **Step 1: Agregar el subcomponente `ProjectCard3D`**
@@ -656,12 +683,32 @@ function ProjectCard3D({ name, desc, image, link, position, mat }: ProjectCard3D
 Dentro de `export default function ExperienceContent`, después del array `companies`, agregar:
 
 ```typescript
-  const projects: { name: string; desc: string; image: string; link: string }[] = [
-    { name: t.experience.clinis, desc: t.experience.clinisDesc, image: EXPERIENCE_CLINIS_ASSET, link: CLINIS_WEBSITE_URL },
-    { name: t.experience.wormholescan, desc: t.experience.wormholescanDesc, image: EXPERIENCE_WORMHOLESCAN_ASSET, link: WORMHOLESCAN_WEBSITE_URL },
-    { name: t.experience.portal, desc: t.experience.portalDesc, image: EXPERIENCE_PORTAL_ASSET, link: PORTAL_WEBSITE_URL },
-    { name: t.experience.xlabsCompany, desc: t.experience.xlabsDesc, image: EXPERIENCE_XLABS_ASSET, link: XLABS_WEBSITE_URL },
-  ];
+const projects: { name: string; desc: string; image: string; link: string }[] = [
+  {
+    name: t.experience.clinis,
+    desc: t.experience.clinisDesc,
+    image: EXPERIENCE_CLINIS_ASSET,
+    link: CLINIS_WEBSITE_URL,
+  },
+  {
+    name: t.experience.wormholescan,
+    desc: t.experience.wormholescanDesc,
+    image: EXPERIENCE_WORMHOLESCAN_ASSET,
+    link: WORMHOLESCAN_WEBSITE_URL,
+  },
+  {
+    name: t.experience.portal,
+    desc: t.experience.portalDesc,
+    image: EXPERIENCE_PORTAL_ASSET,
+    link: PORTAL_WEBSITE_URL,
+  },
+  {
+    name: t.experience.xlabsCompany,
+    desc: t.experience.xlabsDesc,
+    image: EXPERIENCE_XLABS_ASSET,
+    link: XLABS_WEBSITE_URL,
+  },
+];
 ```
 
 Y en el JSX del `return`, después del `.map` de `companies`, agregar:
@@ -704,9 +751,11 @@ git commit -m "feat: add clickable project cards with textured images to Experie
 ### Task 9: Íconos de stack tech en las cards de proyecto
 
 **Files:**
+
 - Modify: `src/pages/Home/Experience/ExperienceContent.tsx`
 
 **Interfaces:**
+
 - Consumes: `useSvgTexture` de `../Scene/svgTexture` (Task 5); íconos `ReactIcon`, `TypeScriptIcon`, `SupabaseIcon`, `SassIcon`, `MotionIcon`, `AvalancheIcon`, `SolanaIcon`, `NextJSIcon`, `MonadIcon` de `../../../icons`.
 
 - [ ] **Step 1: Agregar los íconos de stack a cada `ProjectCard3D`**
@@ -716,8 +765,15 @@ Agregar imports:
 ```typescript
 import { renderToStaticMarkup } from "react-dom/server";
 import {
-  AvalancheIcon, MonadIcon, MotionIcon, NextJSIcon, ReactIcon,
-  SassIcon, SolanaIcon, SupabaseIcon, TypeScriptIcon,
+  AvalancheIcon,
+  MonadIcon,
+  MotionIcon,
+  NextJSIcon,
+  ReactIcon,
+  SassIcon,
+  SolanaIcon,
+  SupabaseIcon,
+  TypeScriptIcon,
 } from "../../../icons";
 import { useSvgTexture } from "../Scene/svgTexture";
 ```

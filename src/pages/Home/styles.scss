@@ -82,11 +82,21 @@
   z-index: 10;
 
   &::before {
-    -webkit-mask: radial-gradient(circle 400px at var(--cx, -9999px) var(--cy, -9999px), transparent 0%, transparent 60px, black 400px);
+    -webkit-mask: radial-gradient(
+      circle 400px at var(--cx, -9999px) var(--cy, -9999px),
+      transparent 0%,
+      transparent 60px,
+      black 400px
+    );
     backdrop-filter: blur(6px);
     content: "";
     inset: 0;
-    mask: radial-gradient(circle 400px at var(--cx, -9999px) var(--cy, -9999px), transparent 0%, transparent 60px, black 400px);
+    mask: radial-gradient(
+      circle 400px at var(--cx, -9999px) var(--cy, -9999px),
+      transparent 0%,
+      transparent 60px,
+      black 400px
+    );
     pointer-events: none;
     position: fixed;
     z-index: -1;

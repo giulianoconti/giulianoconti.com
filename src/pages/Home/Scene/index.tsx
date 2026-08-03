@@ -32,10 +32,10 @@ function sampleKF(kf: Keyframe, t: number): number {
 const PI2 = Math.PI / 2; // 90° in radians
 const G1 = {
   // scroll:   START G1_MID G1_END
-  posX: { ts: [0, 0.25, 0.35], vs: [ 0,    2,     5 ] },
-  posY: { ts: [0, 0.25, 0.35], vs: [-1.4,  0,     0 ] },
-  posZ: { ts: [0, 0.25, 0.35], vs: [ 4.2,  5,     5 ] },
-  rotY: { ts: [0, 0.25, 0.35], vs: [ PI2, -PI2,  -1 ] },
+  posX: { ts: [0, 0.25, 0.35], vs: [0, 2, 5] },
+  posY: { ts: [0, 0.25, 0.35], vs: [-1.4, 0, 0] },
+  posZ: { ts: [0, 0.25, 0.35], vs: [4.2, 5, 5] },
+  rotY: { ts: [0, 0.25, 0.35], vs: [PI2, -PI2, -1] },
   // scl:  { ts: [0, 0.1, 0.2], vs: [ 2,    3,   3 ] },
 };
 
@@ -43,20 +43,22 @@ const G1 = {
 // Entra desde detrás de la niebla (posZ=-20), llega al centro,
 // luego en el footer se vuelca 90° y se agranda hasta llenar la pantalla como túnel.
 const G2 = {
-  posZ: { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [-20, -14, 0.7, -14, -20, -80,  0.7 ]},
-  rotX: { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [  0,   0, 0,    0,   0,   PI2, PI2 ]},
-  rotY: { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [  0,   0, 3,    6,   3,   3,   3   ]},
-  scl:  { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [  6,   6, 2,    6,   9,   40,  5   ]},
+  posZ: {
+    ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99],
+    vs: [-20, -14, 0.7, -14, -20, -80, 0.7],
+  },
+  rotX: { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [0, 0, 0, 0, 0, PI2, PI2] },
+  rotY: { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [0, 0, 3, 6, 3, 3, 3] },
+  scl: { ts: [0.2, 0.3, 0.45, 0.95, 0.951, 0.951001, 0.99], vs: [6, 6, 2, 6, 9, 40, 5] },
 };
-
 
 // ── Fondo — plano con video de caustics ───────────────────────────────
 // Se aleja rápido de la cámara cuando G1 sale de pantalla.
 const BG = {
   posZ: { ts: [0, 0.2, 0.3], vs: [-10, -10, -20] },
-  sclX: { ts: [0, 0.2, 0.3], vs: [ 27,  27,  40] },
-  sclY: { ts: [0, 0.2, 0.3], vs: [ 15,  15,  23] },
-  sclZ: { ts: [0, 0.2, 0.3], vs: [ 15,  15,  23] },
+  sclX: { ts: [0, 0.2, 0.3], vs: [27, 27, 40] },
+  sclY: { ts: [0, 0.2, 0.3], vs: [15, 15, 23] },
+  sclZ: { ts: [0, 0.2, 0.3], vs: [15, 15, 23] },
 };
 
 // ── Background color ──────────────────────────────────────────────────
@@ -73,7 +75,7 @@ const SPHERE = {
 
 // ── Apply metal material to all meshes in GLTF ────────────────────────
 function applyMat(scene: THREE.Object3D, mat: THREE.Material): void {
-  scene.traverse((c) => {
+  scene.traverse(c => {
     if (c instanceof THREE.Mesh) {
       c.material = mat;
     }
@@ -101,13 +103,17 @@ function useCausticsTexture(): THREE.VideoTexture {
 function useMetalMaterial(): THREE.MeshStandardMaterial {
   const { theme } = useTheme();
 
-  return useMemo(() => new THREE.MeshStandardMaterial({
-    color:     theme === "dark" ? 0x797979 : 0x555555,
-    roughness: theme === "dark" ? 0 : 0.85,
-    metalness: theme === "dark" ? 1 : 0,
-    side: THREE.DoubleSide,
-    envMapIntensity: theme === "dark" ? 1 : 0,
-  }), [theme]);
+  return useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: theme === "dark" ? 0x797979 : 0x555555,
+        roughness: theme === "dark" ? 0 : 0.85,
+        metalness: theme === "dark" ? 1 : 0,
+        side: THREE.DoubleSide,
+        envMapIntensity: theme === "dark" ? 1 : 0,
+      }),
+    [theme],
+  );
 }
 
 // ── Primary model ─────────────────────────────────────────────────────
@@ -125,7 +131,7 @@ function PrimaryModel({ mat, scrollRef }: ModelProps) {
     applyMat(scene, mat);
     scene.scale.setScalar(1.0323);
     scene.rotation.set(-Math.PI, 0, -Math.PI);
-    Object.values(actions).forEach((a) => {
+    Object.values(actions).forEach(a => {
       a!.timeScale = 0.6;
       a!.play();
     });
@@ -162,7 +168,7 @@ function SecondaryModel({ mat, scrollRef }: ModelProps) {
     applyMat(scene, mat);
     scene.scale.setScalar(1.0317);
     scene.position.set(0, -1.944, 0);
-    Object.values(actions).forEach((a) => {
+    Object.values(actions).forEach(a => {
       a!.timeScale = 0.8;
       a!.play();
     });
@@ -171,12 +177,12 @@ function SecondaryModel({ mat, scrollRef }: ModelProps) {
   useFrame(() => {
     if (!g.current) return;
     const sp = scrollRef.current;
-    g.current.position.x  =   0;
-    g.current.position.y  =   0;
-    g.current.position.z  =   sampleKF(G2.posZ, sp);
-    g.current.rotation.x  =   sampleKF(G2.rotX, sp);
-    g.current.rotation.y  =   sampleKF(G2.rotY, sp);
-    g.current.scale.setScalar(sampleKF(G2.scl , sp));
+    g.current.position.x = 0;
+    g.current.position.y = 0;
+    g.current.position.z = sampleKF(G2.posZ, sp);
+    g.current.rotation.x = sampleKF(G2.rotX, sp);
+    g.current.rotation.y = sampleKF(G2.rotY, sp);
+    g.current.scale.setScalar(sampleKF(G2.scl, sp));
   });
 
   return (
@@ -337,7 +343,6 @@ function ScrollSmoother({ scrollRef, targetRef }: ScrollSmootherProps) {
   });
   return null;
 }
-
 
 // ── Public component ──────────────────────────────────────────────────
 export default function Scene() {

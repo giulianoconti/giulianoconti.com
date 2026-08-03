@@ -1,8 +1,8 @@
 import { useLocale } from "../../../contexts/LocaleContext.tsx";
-import { useTheme } from "../../../contexts/ThemeContext.tsx";
 import { trackSocialClick } from "../../../utils/analytics.ts";
-import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
+import { CurriculumIcon, GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
 import {
+  getCvAssetByLocale,
   SOCIAL_GITHUB_URL,
   SOCIAL_LINKEDIN_URL,
   SOCIAL_MAIL,
@@ -11,8 +11,7 @@ import {
 import "./styles.scss";
 
 export default function Footer() {
-  const { t } = useLocale();
-  const { theme } = useTheme();
+  const { t, locale } = useLocale();
 
   return (
     <footer className="footer" id="footer">
@@ -40,6 +39,18 @@ export default function Footer() {
             onClick={() => trackSocialClick("whatsapp", "footer")}
           >
             <WhatsAppIcon colorless />
+          </a>
+
+          <a
+            href={getCvAssetByLocale(locale)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Curriculum"
+            data-tooltip="Curriculum"
+            className="footer_cta_social_link"
+            onClick={() => trackSocialClick("cv", "footer")}
+          >
+            <CurriculumIcon />
           </a>
 
           <a

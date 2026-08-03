@@ -1,6 +1,11 @@
 import { useLocale } from "../../../contexts/LocaleContext";
 import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
-import { SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL, WA_MSG } from "../../../utils/constants";
+import {
+  SOCIAL_GITHUB_URL,
+  SOCIAL_LINKEDIN_URL,
+  SOCIAL_MAIL,
+  WA_MSG,
+} from "../../../utils/constants";
 import "./styles.scss";
 
 export default function Contact() {

@@ -24,4 +24,3 @@ export function trackSocialClick(platform: string, location: "hero" | "footer"):
 export function trackProjectClick(project: string, language: Locale): void {
   track("project_click", { project, language });
 }
-
