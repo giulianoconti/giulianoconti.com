@@ -1,5 +1,5 @@
-import type { Feature, QuizStep } from "./pricingData.js";
-import { FEATURES, QUIZ_STEP_ICONS } from "./pricingData.js";
+import type { Feature } from "./pricingData.js";
+import { FEATURES } from "./pricingData.js";
 
 type PricingLang = "en" | "es" | "pt";
 
@@ -197,138 +197,6 @@ const FEATURE_LABELS: Record<PricingLang, Record<string, { label: string; desc: 
   },
 };
 
-const QUIZ_STEP_TEXT: Record<
-  PricingLang,
-  { title: string; sub: string; options: { label: string; desc: string }[] }[]
-> = {
-  es: [
-    {
-      title: "¿Cuántas páginas necesitás?",
-      sub: "Elegí la opción que mejor describe tu proyecto",
-      options: [
-        { label: "1 página", desc: "Solo necesito una landing page" },
-        { label: "2–4 páginas", desc: "Varias secciones para mi negocio" },
-        { label: "5–10 páginas", desc: "Sitio completo con múltiples secciones" },
-      ],
-    },
-    {
-      title: "¿Tus clientes necesitan iniciar sesión?",
-      sub: "Esto define si hay backend de usuarios",
-      options: [
-        { label: "No, es público", desc: "Solo info, contacto o catálogo" },
-        { label: "Sí, necesito login", desc: "Mis usuarios se registran y tienen perfil" },
-      ],
-    },
-    {
-      title: "¿Necesitás panel admin o CMS?",
-      sub: "Para publicar contenido y gestionar tu web",
-      options: [
-        { label: "No, contenido fijo", desc: "El contenido no cambia frecuentemente" },
-        {
-          label: "Sí, quiero panel admin",
-          desc: "Necesito publicar contenido o administrar datos",
-        },
-      ],
-    },
-    {
-      title: "¿Cómo preferís la infraestructura?",
-      sub: "Define si pagás mensual o una sola vez",
-      options: [
-        {
-          label: "Giuliano lo gestiona",
-          desc: "Solo mensualidad. Hosting, soporte y updates incluidos. Sin setup inicial",
-        },
-        {
-          label: "Mis propias cuentas",
-          desc: "Pago único. Hosting, soporte y cambios corren por tu cuenta",
-        },
-      ],
-    },
-  ],
-  en: [
-    {
-      title: "How many pages do you need?",
-      sub: "Choose the option that best describes your project",
-      options: [
-        { label: "1 page", desc: "Just a landing page" },
-        { label: "2–4 pages", desc: "Multiple sections for my business" },
-        { label: "5–10 pages", desc: "Complete site with multiple sections" },
-      ],
-    },
-    {
-      title: "Do your clients need to log in?",
-      sub: "This defines whether you need a user backend",
-      options: [
-        { label: "No, it's public", desc: "Just info, contact or catalog" },
-        { label: "Yes, I need login", desc: "My users register and have a profile" },
-      ],
-    },
-    {
-      title: "Do you need an admin panel or CMS?",
-      sub: "To publish content and manage your website",
-      options: [
-        { label: "No, fixed content", desc: "Content doesn't change frequently" },
-        { label: "Yes, I want an admin panel", desc: "I need to publish content or manage data" },
-      ],
-    },
-    {
-      title: "How do you prefer the infrastructure?",
-      sub: "Defines whether you pay monthly or once",
-      options: [
-        {
-          label: "Giuliano manages it",
-          desc: "Monthly fee only. Hosting, support and updates included. No setup fee",
-        },
-        {
-          label: "My own accounts",
-          desc: "One-time payment. Hosting, support and changes are your responsibility",
-        },
-      ],
-    },
-  ],
-  pt: [
-    {
-      title: "Quantas páginas você precisa?",
-      sub: "Escolha a opção que melhor descreve seu projeto",
-      options: [
-        { label: "1 página", desc: "Apenas uma landing page" },
-        { label: "2–4 páginas", desc: "Várias seções para meu negócio" },
-        { label: "5–10 páginas", desc: "Site completo com múltiplas seções" },
-      ],
-    },
-    {
-      title: "Seus clientes precisam fazer login?",
-      sub: "Isso define se há um backend de usuários",
-      options: [
-        { label: "Não, é público", desc: "Apenas info, contato ou catálogo" },
-        { label: "Sim, preciso de login", desc: "Meus usuários se cadastram e têm perfil" },
-      ],
-    },
-    {
-      title: "Precisa de painel admin ou CMS?",
-      sub: "Para publicar conteúdo e gerenciar seu site",
-      options: [
-        { label: "Não, conteúdo fixo", desc: "O conteúdo não muda com frequência" },
-        { label: "Sim, quero painel admin", desc: "Preciso publicar conteúdo ou gerenciar dados" },
-      ],
-    },
-    {
-      title: "Como prefere a infraestrutura?",
-      sub: "Define se paga mensalmente ou uma única vez",
-      options: [
-        {
-          label: "Giuliano gerencia",
-          desc: "Só mensalidade. Hospedagem, suporte e updates incluídos. Sem taxa de setup",
-        },
-        {
-          label: "Minhas próprias contas",
-          desc: "Pagamento único. Hospedagem, suporte e mudanças por sua conta",
-        },
-      ],
-    },
-  ],
-};
-
 export function getFeatures(lang: PricingLang): Feature[] {
   return FEATURES.map(f => ({ ...f, ...FEATURE_LABELS[lang][f.id] }));
 }
@@ -352,22 +220,3 @@ export function getFeatureGroups(lang: PricingLang): [string, Feature[]][] {
   );
 }
 
-export function getQuizSteps(lang: PricingLang): QuizStep[] {
-  const iconSets = QUIZ_STEP_ICONS;
-  return QUIZ_STEP_TEXT[lang].map((step, i) => ({
-    key: ["pages", "auth", "cms", "infra"][i],
-    title: step.title,
-    sub: step.sub,
-    options: step.options.map((opt, j) => ({
-      value: [
-        ["p1", "p4", "p10"],
-        ["no", "yes"],
-        ["no", "yes"],
-        ["monthly", "onetime"],
-      ][i][j],
-      icon: iconSets[i][j] as QuizStep["options"][number]["icon"],
-      label: opt.label,
-      desc: opt.desc,
-    })),
-  }));
-}

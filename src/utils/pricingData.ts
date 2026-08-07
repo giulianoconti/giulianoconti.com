@@ -1,16 +1,3 @@
-import type { ComponentType } from "react";
-import {
-  FileIcon,
-  LayoutIcon,
-  LayersIcon,
-  GlobeIcon,
-  LockIcon,
-  WrenchIcon,
-  KeyIcon,
-  PenToolIcon,
-  MonitorIcon,
-} from "../icons/index.js";
-
 export interface Feature {
   id: string;
   label: string;
@@ -20,18 +7,6 @@ export interface Feature {
   locked?: boolean;
   radio?: string;
   triggers?: string[];
-}
-
-export interface QuizStep {
-  title: string;
-  sub: string;
-  key: string;
-  options: {
-    value: string;
-    icon: ComponentType<{ className?: string; height?: number; width?: number }>;
-    label: string;
-    desc: string;
-  }[];
 }
 
 export const CLOSE_MS = 220;
@@ -67,10 +42,3 @@ export const FEATURES: Feature[] = [
   { id: "multilang",   label: "", desc: "", price: 150, group: "extras"                             },
   { id: "animations",  label: "", desc: "", price: 100,  group: "extras"                            },
 ];
-
-export const QUIZ_STEP_ICONS = [
-  [FileIcon, LayoutIcon, LayersIcon],
-  [GlobeIcon, LockIcon],
-  [MonitorIcon, PenToolIcon],
-  [WrenchIcon, KeyIcon],
-] as const;
