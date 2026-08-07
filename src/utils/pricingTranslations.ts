@@ -1,5 +1,5 @@
-import type { Feature, QuizStep } from "./pricingData";
-import { FEATURES, QUIZ_STEP_ICONS } from "./pricingData";
+import type { Feature, QuizStep } from "./pricingData.js";
+import { FEATURES, QUIZ_STEP_ICONS } from "./pricingData.js";
 
 type PricingLang = "en" | "es" | "pt";
 

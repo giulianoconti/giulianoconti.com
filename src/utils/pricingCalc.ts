@@ -1,5 +1,5 @@
-import { ARS_RATE, MONTHLY_TIERS, INFRA_COSTS } from "./pricingData";
-import type { Feature, TierId } from "./pricingData";
+import { ARS_RATE, MONTHLY_TIERS, INFRA_COSTS } from "./pricingData.js";
+import type { Feature, TierId } from "./pricingData.js";
 
 export type Model = "monthly" | "onetime";
 export type Currency = "usd" | "ars";

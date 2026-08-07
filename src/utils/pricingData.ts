@@ -9,7 +9,7 @@ import {
   KeyIcon,
   PenToolIcon,
   MonitorIcon,
-} from "../icons";
+} from "../icons/index.js";
 
 export interface Feature {
   id: string;

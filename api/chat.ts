@@ -1,11 +1,11 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { FEATURES } from "../src/utils/pricingData";
-import type { TierId } from "../src/utils/pricingData";
-import { getFeatures, PRICING_T } from "../src/utils/pricingTranslations";
-import { calcSetup, calcMonthly, buildWaMessage } from "../src/utils/pricingCalc";
-import { FAQS } from "../src/utils/faqsData";
-import { WA_MSG } from "../src/utils/constants";
+import { FEATURES } from "../src/utils/pricingData.js";
+import type { TierId } from "../src/utils/pricingData.js";
+import { getFeatures, PRICING_T } from "../src/utils/pricingTranslations.js";
+import { calcSetup, calcMonthly, buildWaMessage } from "../src/utils/pricingCalc.js";
+import { FAQS } from "../src/utils/faqsData.js";
+import { WA_MSG } from "../src/utils/constants.js";
 
 type Locale = "en" | "es" | "pt";
 type ChatMessage = { role: "user" | "assistant"; content: string };
