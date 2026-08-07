@@ -15,7 +15,8 @@ type Translations = {
     subheader: string;
     title: string;
     bio: string;
-    availableTag: string;
+    availableNow: string;
+    availableSoon: (months: number) => string;
     statYearsLabel: string;
     statProjectsLabel: string;
     statCurrentLabel: string;
@@ -43,7 +44,8 @@ type Translations = {
     label: string;
     h2pre: string;
     h2em: string;
-    p: string;
+    p1: string;
+    p2: string;
     placeholder: string;
     send: string;
     greeting: string;
@@ -52,33 +54,7 @@ type Translations = {
     waFallback: string;
   };
   contact: {
-    headline: string;
-    headline_2: string;
-    ctaButton: string;
-    emailLabel: string;
-    waLabel: string;
     waMsg: string;
-  };
-  projects: {
-    title: string;
-    blackjack: string;
-    blackjackDesc: string;
-    sokoban: string;
-    sokobanDesc: string;
-    copicti: string;
-    copictiDesc: string;
-    portfolio3d: string;
-    portfolio3dDesc: string;
-    createResume: string;
-    createResumeDesc: string;
-    removeBg: string;
-    removeBgDesc: string;
-    giulianNews: string;
-    giulianNewsDesc: string;
-    pokemonFinder: string;
-    pokemonFinderDesc: string;
-    weatherTI: string;
-    weatherTIDesc: string;
   };
 };
 
@@ -95,8 +71,9 @@ const translations: Record<Locale, Translations> = {
     home: {
       subheader: "Software Engineer",
       title: "Giuliano Conti",
-      bio: "I'm Giuliano Conti, software engineer. I build websites and web applications for businesses that want to grow online — fast, modern, and without the technical headaches.",
-      availableTag: "On a project · Available in ~1 month",
+      bio: "I'm Giuliano Conti, software engineer. I build websites and web applications for businesses that want to grow online, fast, modern, and without the technical headaches.",
+      availableNow: "Available",
+      availableSoon: months => `On a project · Available in ~${months} ${months === 1 ? "month" : "months"}`,
       statYearsLabel: "Years of experience",
       statProjectsLabel: "Projects delivered",
       statCurrentLabel: "Current work",
@@ -128,44 +105,19 @@ const translations: Record<Locale, Translations> = {
       label: "Chat",
       h2pre: "Tell me what",
       h2em: "you need",
-      p: "Describe your project and I'll give you a rough price. Anything else, we can keep talking on WhatsApp.",
+      p1: "Describe your project and I'll give you a rough price.",
+      p2: "Anything else, we can keep talking on WhatsApp.",
       placeholder: "E.g: I need a landing page with a WhatsApp button...",
       send: "Send",
       greeting:
-        "Hi! Tell me what page you need — how many sections, login, admin panel, etc. — and I'll give you a rough estimate.",
+        "Hi! Tell me what page you need, how many sections, login, admin panel, etc., and I'll give you a rough estimate.",
       rateLimited:
         "You've sent a lot of messages in a row. Wait a bit or message me directly on WhatsApp.",
       networkError: "Something went wrong. Try again or message me directly on WhatsApp.",
       waFallback: "Chat on WhatsApp",
     },
     contact: {
-      headline: "Got a project",
-      headline_2: "in mind?",
-      ctaButton: "Get in Touch",
-      emailLabel: "giuliconti1@gmail.com",
-      waLabel: "WhatsApp",
       waMsg: "Hi Giuliano! I'm interested in hiring you for a project. Can we talk?",
-    },
-    projects: {
-      title: "Projects",
-      blackjack: "Blackjack",
-      blackjackDesc: "Web card game built with React and Firebase.",
-      sokoban: "Sokoban",
-      sokobanDesc: "Classic puzzle game built in React.",
-      copicti: "Copicti",
-      copictiDesc: "Social app to share and discover content.",
-      portfolio3d: "Portfolio 3D",
-      portfolio3dDesc: "3D portfolio experience built with Three.js.",
-      createResume: "Create Resume",
-      createResumeDesc: "Online CV builder — generate and download your resume.",
-      removeBg: "RemoBG",
-      removeBgDesc: "AI-powered background remover for images.",
-      giulianNews: "News App",
-      giulianNewsDesc: "News aggregator built with React.",
-      pokemonFinder: "Pokémon Finder",
-      pokemonFinderDesc: "Search and explore Pokémon using the PokéAPI.",
-      weatherTI: "Weather TI",
-      weatherTIDesc: "Real-time weather forecast app.",
     },
   },
   es: {
@@ -180,8 +132,9 @@ const translations: Record<Locale, Translations> = {
     home: {
       subheader: "Ingeniero de Software",
       title: "Giuliano Conti",
-      bio: "Soy Giuliano Conti, software engineer. Construyo sitios web y aplicaciones para negocios que quieren crecer online — rápidos, modernos y sin vueltas técnicas.",
-      availableTag: "Proyecto en curso · Disponible en ~1 mes",
+      bio: "Soy Giuliano Conti, software engineer. Construyo sitios web y aplicaciones para negocios que quieren crecer online, rápidos, modernos y sin vueltas técnicas.",
+      availableNow: "Disponible",
+      availableSoon: months => `Proyecto en curso · Disponible en ~${months} ${months === 1 ? "mes" : "meses"}`,
       statYearsLabel: "Años de experiencia",
       statProjectsLabel: "Proyectos entregados",
       statCurrentLabel: "Trabajo actual",
@@ -213,44 +166,19 @@ const translations: Record<Locale, Translations> = {
       label: "Chat",
       h2pre: "Contame qué",
       h2em: "necesitás",
-      p: "Describí tu proyecto y te tiro un precio aproximado. Cualquier otra duda, seguimos por WhatsApp.",
+      p1: "Describí tu proyecto y te tiro un precio aproximado.",
+      p2: "Cualquier otra duda, seguimos por WhatsApp.",
       placeholder: "Ej: necesito una landing con botón de WhatsApp...",
       send: "Enviar",
       greeting:
-        "Hola! Contame qué página necesitás — cuántas secciones, si lleva login, panel de admin, etc. — y te doy un precio aproximado.",
+        "Hola! Contame qué página necesitás, cuántas secciones, si lleva login, panel de admin, etc., y te doy un precio aproximado.",
       rateLimited:
         "Mandaste muchos mensajes seguidos. Esperá un toque o escribime directo por WhatsApp.",
       networkError: "Uy, algo falló. Probá de nuevo o escribime directo por WhatsApp.",
       waFallback: "Hablar por WhatsApp",
     },
     contact: {
-      headline: "¿Tenés un proyecto",
-      headline_2: "en mente?",
-      ctaButton: "Escribime",
-      emailLabel: "giuliconti1@gmail.com",
-      waLabel: "WhatsApp",
       waMsg: "Hola Giuliano! Me interesa contratarte para un proyecto. ¿Podemos hablar?",
-    },
-    projects: {
-      title: "Proyectos",
-      blackjack: "Blackjack",
-      blackjackDesc: "Juego de cartas web construido con React y Firebase.",
-      sokoban: "Sokoban",
-      sokobanDesc: "Juego de puzzle clásico construido en React.",
-      copicti: "Copicti",
-      copictiDesc: "App social para compartir y descubrir contenido.",
-      portfolio3d: "Portfolio 3D",
-      portfolio3dDesc: "Portfolio 3D interactivo construido con Three.js.",
-      createResume: "Create Resume",
-      createResumeDesc: "Creador de CV online — generá y descargá tu currículum.",
-      removeBg: "RemoBG",
-      removeBgDesc: "Herramienta con IA para remover el fondo de imágenes.",
-      giulianNews: "News App",
-      giulianNewsDesc: "Agregador de noticias construido con React.",
-      pokemonFinder: "Pokémon Finder",
-      pokemonFinderDesc: "Buscá y explorá Pokémon usando la PokéAPI.",
-      weatherTI: "Weather TI",
-      weatherTIDesc: "App de pronóstico del tiempo en tiempo real.",
     },
   },
   pt: {
@@ -265,8 +193,9 @@ const translations: Record<Locale, Translations> = {
     home: {
       subheader: "Engenheiro de Software",
       title: "Giuliano Conti",
-      bio: "Sou Giuliano Conti, software engineer. Construo sites e aplicações web para negócios que querem crescer online — rápidos, modernos e sem dores de cabeça técnicas.",
-      availableTag: "Projeto em andamento · Disponível em ~1 mês",
+      bio: "Sou Giuliano Conti, software engineer. Construo sites e aplicações web para negócios que querem crescer online, rápidos, modernos e sem dores de cabeça técnicas.",
+      availableNow: "Disponível",
+      availableSoon: months => `Projeto em andamento · Disponível em ~${months} ${months === 1 ? "mês" : "meses"}`,
       statYearsLabel: "Anos de experiência",
       statProjectsLabel: "Projetos entregues",
       statCurrentLabel: "Trabalho atual",
@@ -298,44 +227,19 @@ const translations: Record<Locale, Translations> = {
       label: "Chat",
       h2pre: "Me conta o que",
       h2em: "você precisa",
-      p: "Descreva seu projeto e te dou um preço aproximado. Qualquer outra dúvida, seguimos pelo WhatsApp.",
+      p1: "Descreva seu projeto e te dou um preço aproximado.",
+      p2: "Qualquer outra dúvida, seguimos pelo WhatsApp.",
       placeholder: "Ex: preciso de uma landing com botão de WhatsApp...",
       send: "Enviar",
       greeting:
-        "Oi! Me conta que página você precisa — quantas seções, login, painel admin, etc. — e te dou um preço aproximado.",
+        "Oi! Me conta que página você precisa, quantas seções, login, painel admin, etc., e te dou um preço aproximado.",
       rateLimited:
         "Você mandou muitas mensagens seguidas. Espera um pouco ou fala direto comigo no WhatsApp.",
       networkError: "Algo deu errado. Tenta de novo ou fala direto comigo no WhatsApp.",
       waFallback: "Falar no WhatsApp",
     },
     contact: {
-      headline: "Tem um projeto",
-      headline_2: "em mente?",
-      ctaButton: "Entre em contato",
-      emailLabel: "giuliconti1@gmail.com",
-      waLabel: "WhatsApp",
       waMsg: "Olá Giuliano! Tenho interesse em contratar você para um projeto. Podemos conversar?",
-    },
-    projects: {
-      title: "Projetos",
-      blackjack: "Blackjack",
-      blackjackDesc: "Jogo de cartas web construído com React e Firebase.",
-      sokoban: "Sokoban",
-      sokobanDesc: "Jogo de puzzle clássico construído em React.",
-      copicti: "Copicti",
-      copictiDesc: "App social para compartilhar e descobrir conteúdo.",
-      portfolio3d: "Portfolio 3D",
-      portfolio3dDesc: "Portfólio 3D interativo construído com Three.js.",
-      createResume: "Create Resume",
-      createResumeDesc: "Criador de CV online — gere e baixe seu currículo.",
-      removeBg: "RemoBG",
-      removeBgDesc: "Ferramenta com IA para remover o fundo de imagens.",
-      giulianNews: "News App",
-      giulianNewsDesc: "Agregador de notícias construído com React.",
-      pokemonFinder: "Pokémon Finder",
-      pokemonFinderDesc: "Busque e explore Pokémon usando a PokéAPI.",
-      weatherTI: "Weather TI",
-      weatherTIDesc: "App de previsão do tempo em tempo real.",
     },
   },
 };

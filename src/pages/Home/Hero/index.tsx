@@ -8,19 +8,24 @@ import {
   SOCIAL_MAIL,
   WA_MSG,
 } from "../../../utils/constants";
+import { getMonthsUntilAvailable } from "../../../utils/availability";
 import "./styles.scss";
 
 export default function Hero() {
   const { t, locale } = useLocale();
   const { liteMode } = useLiteMode();
+  const monthsUntilAvailable = getMonthsUntilAvailable();
+  const isAvailable = monthsUntilAvailable === 0;
 
   return (
     <section className="hero" id="home">
       <div className={`hero_main${liteMode ? "" : " sr-only"}`}>
         <div className="hero_main_center">
           <div className="hero_main_center_available">
-            <span className="hero_main_center_available_dot" />
-            {t.home.availableTag}
+            <span
+              className={`hero_main_center_available_dot${isAvailable ? " hero_main_center_available_dot--available" : ""}`}
+            />
+            {isAvailable ? t.home.availableNow : t.home.availableSoon(monthsUntilAvailable)}
           </div>
 
           <h1 className="hero_main_center_headline">{t.home.title}</h1>
@@ -31,7 +36,6 @@ export default function Hero() {
               [
                 ["+3", t.home.statYearsLabel],
                 ["+5", t.home.statProjectsLabel],
-                ["Freelance", t.home.statCurrentLabel],
               ] as [string, string][]
             ).map(([v, l]) => (
               <div className="hero_main_center_stats_item" key={l}>

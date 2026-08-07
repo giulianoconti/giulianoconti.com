@@ -183,6 +183,11 @@ function SecondaryModel({ mat, scrollRef }: ModelProps) {
     g.current.rotation.x = sampleKF(G2.rotX, sp);
     g.current.rotation.y = sampleKF(G2.rotY, sp);
     g.current.scale.setScalar(sampleKF(G2.scl, sp));
+
+    const targetTimeScale = sp >= 0.95 ? 0.4 : 0.8;
+    Object.values(actions).forEach(a => {
+      if (a!.timeScale !== targetTimeScale) a!.timeScale = targetTimeScale;
+    });
   });
 
   return (

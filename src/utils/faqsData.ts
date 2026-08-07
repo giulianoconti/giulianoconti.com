@@ -9,7 +9,7 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
         items: [
           {
             title: "Mensual",
-            text: "Manejo toda la infraestructura en mis cuentas — Vercel, GitHub, Supabase, dominio. Vos solo pagás una mensualidad fija. Cero dolores de cabeza técnicos.",
+            text: "Manejo toda la infraestructura en mis cuentas: Vercel, GitHub, Supabase, dominio. Vos solo pagás una mensualidad fija. Cero dolores de cabeza técnicos.",
           },
           {
             title: "Pago Único",
@@ -83,7 +83,7 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
         items: [
           {
             title: "Monthly",
-            text: "I manage all infrastructure in my accounts — Vercel, GitHub, Supabase, domain. You just pay a fixed monthly fee. Zero technical headaches.",
+            text: "I manage all infrastructure in my accounts: Vercel, GitHub, Supabase, domain. You just pay a fixed monthly fee. Zero technical headaches.",
           },
           {
             title: "One-time",
@@ -157,7 +157,7 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
         items: [
           {
             title: "Mensal",
-            text: "Gerencio toda a infraestrutura nas minhas contas — Vercel, GitHub, Supabase, domínio. Você só paga uma mensalidade fixa. Zero dores de cabeça técnicas.",
+            text: "Gerencio toda a infraestrutura nas minhas contas: Vercel, GitHub, Supabase, domínio. Você só paga uma mensalidade fixa. Zero dores de cabeça técnicas.",
           },
           {
             title: "Pagamento Único",

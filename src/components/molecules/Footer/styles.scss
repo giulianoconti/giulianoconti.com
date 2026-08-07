@@ -3,18 +3,11 @@
 @use "../../../styles/typography" as *;
 
 .footer {
+  @include blur-panel(32px, transparent);
   background: var(--footer-bg);
   border-top: 1px solid var(--rule);
   position: relative;
   z-index: 20;
-
-  &::before {
-    backdrop-filter: blur(32px);
-    content: "";
-    inset: 0;
-    position: absolute;
-    z-index: -1;
-  }
 
   .footer_cta {
     @include section-padding-x;

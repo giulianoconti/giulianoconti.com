@@ -1,76 +1,67 @@
 @font-face {
-  font-family: "HelveticaNow";
-  font-weight: 300;
-  src: url("/fonts/helveticanowdisplay-light.ttf") format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "HelveticaNow";
-  font-weight: 400;
-  src: url("/fonts/helveticanowdisplay-regular.ttf") format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "HelveticaNow";
-  font-weight: 500;
-  src: url("/fonts/helveticanowdisplay-medium.ttf") format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "InstrumentSerif";
-  font-weight: 400;
+  font-family: "Roboto";
+  font-weight: 100 900;
   font-style: normal;
-  src: url("/fonts/instrumentserif-regular.ttf") format("truetype");
+  src: url("/fonts/roboto-var.woff2") format("woff2-variations");
   font-display: swap;
 }
 @font-face {
-  font-family: "InstrumentSerif";
-  font-weight: 400;
-  font-style: italic;
-  src: url("/fonts/instrumentserif-italic.ttf") format("truetype");
+  font-family: "RobotoMono";
+  font-weight: 100 700;
+  font-style: normal;
+  src: url("/fonts/robotomono-var.woff2") format("woff2-variations");
   font-display: swap;
 }
 
-@mixin type($size, $weight: 400, $family: "HelveticaNow") {
-  font-family: $family, sans-serif;
+@mixin type($size, $weight: 400, $family: "Roboto") {
+  font-family:
+    $family,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   font-size: $size;
   font-weight: $weight;
 }
 
 @mixin text-h1 {
-  @include type(max(5.6vw, 56px), 400, "InstrumentSerif");
+  @include type(max(40px, 4vw), 400);
+  letter-spacing: -2.8px;
   line-height: 1;
 }
 
 @mixin text-h2 {
-  @include type(max(3.2vw, 32px), 300, "InstrumentSerif");
+  @include type(max(24px, 2.2vw), 400);
+  letter-spacing: 0;
+  line-height: 1.15;
 }
 
 @mixin text-h3 {
-  @include type(max(2.4vw, 24px), 400, "InstrumentSerif");
+  @include type(max(22px, 1.6vw), 400);
+  letter-spacing: -0.01em;
 }
 
 @mixin text-h4 {
-  @include type(max(1.6vw, 16px), 400, "InstrumentSerif");
+  @include type(max(16px, 1.2vw), 400);
+  letter-spacing: -0.01em;
 }
 
 @mixin text-eyebrow {
-  @include type(max(0.8vw, 12px), 400, "HelveticaNow");
-  letter-spacing: max(0.2vw, 3px);
+  @include type(max(0.8vw, 12px), 200, "RobotoMono");
+  letter-spacing: max(0.15vw, 2px);
 }
 
 @mixin text-body {
-  @include type(max(1vw, 16px), 400, "HelveticaNow");
+  @include type(max(1vw, 16px), 300);
 }
 
 @mixin text-caption {
-  @include type(max(0.8vw, 14px), 300, "HelveticaNow");
+  @include type(max(0.8vw, 14px), 200);
 }
 
 @mixin text-small {
-  @include type(max(0.7vw, 12px), 400, "HelveticaNow");
+  @include type(max(0.7vw, 12px), 200, "RobotoMono");
 }
 
 @mixin text-tiny {
-  @include type(max(0.6vw, 10px), 400, "HelveticaNow");
+  @include type(max(0.6vw, 10px), 200, "RobotoMono");
 }

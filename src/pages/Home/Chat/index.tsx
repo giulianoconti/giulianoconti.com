@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, type KeyboardEvent } from "react";
 import { useLocale } from "../../../contexts/LocaleContext";
 import { WA_MSG } from "../../../utils/constants";
-import { WhatsAppIcon } from "../../../icons";
+import { SendIcon, WhatsAppIcon } from "../../../icons";
 import "./styles.scss";
 
 type QuoteResult = {
@@ -62,7 +62,7 @@ export default function Chat() {
     const el = textareaRef.current;
     if (!el) return;
     el.style.height = "auto";
-    el.style.height = `${el.scrollHeight}px`;
+    if (input) el.style.height = `${el.scrollHeight}px`;
   }, [input]);
 
   const send = async () => {
@@ -119,7 +119,10 @@ export default function Chat() {
           <h2 className="chat_content_title">
             {t.chat.h2pre} <em>{t.chat.h2em}</em>
           </h2>
-          <p className="chat_content_desc">{t.chat.p}</p>
+
+          <p className="chat_content_desc">{t.chat.p1}</p>
+
+          <p className="chat_content_desc">{t.chat.p2}</p>
 
           <div
             className="chat_panel"
@@ -165,20 +168,30 @@ export default function Chat() {
             </div>
 
             <div className="chat_panel_input">
-              <textarea
-                ref={textareaRef}
-                id="chat-input"
-                name="chat-input"
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                onKeyDown={onKeyDown}
-                placeholder={t.chat.placeholder}
-                rows={1}
-                maxLength={500}
-              />
-              <button type="button" onClick={send} disabled={loading || !input.trim()}>
-                {t.chat.send}
-              </button>
+              <div className="chat_panel_input_field">
+                <textarea
+                  ref={textareaRef}
+                  id="chat-input"
+                  name="chat-input"
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyDown={onKeyDown}
+                  placeholder={t.chat.placeholder}
+                  rows={1}
+                  maxLength={500}
+                />
+              </div>
+              {input.trim() && (
+                <button
+                  type="button"
+                  className="chat_panel_input_send"
+                  onClick={send}
+                  disabled={loading}
+                  aria-label={t.chat.send}
+                >
+                  <SendIcon width={18} height={18} />
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@
     pointer-events: auto;
     position: absolute;
     right: 0;
-    top: max(6vw, 80px);
+    top: max(5vw, 80px);
 
     .hero_main_center {
       align-items: center;
@@ -39,18 +39,26 @@
           display: inline-block;
           height: max(0.4vw, 6px);
           width: max(0.4vw, 6px);
+
+          &--available {
+            background: var(--accent);
+          }
         }
       }
 
       .hero_main_center_headline {
         @include text-h1;
         color: var(--text);
+        text-shadow:
+          0 1px 1px rgba(0, 0, 0, 0.4),
+          0 8px 32px rgba(0, 0, 0, 0.55);
       }
 
       .hero_main_center_subhead {
         @include text-h2;
         color: var(--muted);
         text-align: center;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       }
 
       .hero_main_center_stats {
