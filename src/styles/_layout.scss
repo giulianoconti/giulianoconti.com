@@ -1,14 +1,15 @@
 @use "./breakpoints" as *;
 
-// backdrop-filter on a fixed/positioned element sometimes fails to blur in
-// Chromium when the backdrop itself is composited on a different layer
-// (e.g. behind a smooth-scroll wrapper). Isolating the blur on its own
-// ::before layer forces a fresh compositing pass and fixes it reliably.
+// Puts the blur on its own ::before layer instead of directly on the
+// element, so content padding/background can stay separate from the blur.
+// IMPORTANT: no `isolation: isolate` here — that creates a new backdrop
+// root and cuts off backdrop-filter from sampling anything outside this
+// element (e.g. the fixed 3D canvas behind it), which kills the blur
+// entirely. The negative z-index alone is enough to paint the pseudo
+// below the element's own in-flow content.
 // Caller must already set its own `position` (relative/absolute/fixed) —
-// this mixin only adds the isolated blur layer, it doesn't touch layout.
+// this mixin only adds the blur layer, it doesn't touch layout.
 @mixin blur-panel($blur: 16px, $bg: rgba(20, 20, 20, 0.3)) {
-  isolation: isolate;
-
   &::before {
     background-color: $bg;
     backdrop-filter: blur($blur);
