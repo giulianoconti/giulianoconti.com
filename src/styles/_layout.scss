@@ -12,8 +12,8 @@
 @mixin blur-panel($blur: 16px, $bg: rgba(20, 20, 20, 0.3)) {
   &::before {
     background-color: $bg;
-    backdrop-filter: blur($blur);
     -webkit-backdrop-filter: blur($blur);
+    backdrop-filter: blur($blur);
     border-radius: inherit;
     content: "";
     inset: 0;
