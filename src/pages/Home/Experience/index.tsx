@@ -125,9 +125,10 @@ export default function Experience() {
               <p className="experience_sticky_row_left_container_bio">{t.home.bio}</p>
             </div>
           </div>
-          <div className="experience_sticky_row_right">
-            {EXPERIENCE.map(experience =>
-              "company" in experience ? (
+          <div className="experience_sticky_row_right_wrap">
+            <div className="experience_sticky_row_right">
+              {EXPERIENCE.map(experience =>
+                "company" in experience ? (
                 <div className="experience_sticky_row_right_info" key={experience.company}>
                   <h3 className="experience_sticky_row_right_info_company">{experience.company}</h3>
                   <p className="experience_sticky_row_right_info_role">{experience.role}</p>
@@ -172,8 +173,10 @@ export default function Experience() {
                     </div>
                   </a>
                 </div>
-              ),
-            )}
+                ),
+              )}
+            </div>
+            <div className="experience_sticky_row_right_fade" aria-hidden="true" />
           </div>
         </div>
       </div>

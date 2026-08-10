@@ -85,47 +85,94 @@
         }
       }
 
-      .experience_sticky_row_right {
-        align-items: start;
-        display: flex;
+      // Positioning context for the scroll row + its fade overlay. The fade
+      // lives here (not inside the scroll row) so it stays pinned to the
+      // visible edges while the row scrolls, instead of scrolling away with
+      // the content.
+      .experience_sticky_row_right_wrap {
         flex: 1;
-        gap: max(1vw, 16px);
-        mask-image: linear-gradient(
-          to right,
-          transparent 4px,
-          black 16px,
-          black calc(100% - 16px),
-          transparent calc(100% - 4px)
-        );
-        overflow-x: auto;
-        padding: 0 16px;
-        pointer-events: auto;
+        margin-left: -16px;
+        margin-right: -16px;
         position: relative;
-        scroll-snap-type: x mandatory;
-        transform: translateX(-16px);
         width: calc(100% + 32px);
 
         @include tablet {
-          mask-image: linear-gradient(
-            to right,
-            transparent 16px,
-            black 60px,
-            black calc(100% - 60px),
-            transparent calc(100% - 16px)
-          );
-          padding: 0 60px;
-          transform: translateX(-60px);
+          margin-left: -60px;
+          margin-right: -60px;
           width: calc(100% + 120px);
         }
 
         @include desktop {
-          -webkit-mask-image: none;
+          margin: 0;
+          width: 50%;
+        }
+      }
+
+      // Edge fade uses a gradient overlay instead of `mask-image` on the
+      // scroll row: masking the row would force it (and the cards'
+      // backdrop-filter inside it) into an isolated compositing group,
+      // cutting the blur off from the fixed 3D canvas behind it. Same class
+      // of bug as `isolation: isolate` in the blur-panel mixin. This overlay
+      // is a non-scrolling sibling of the row so it stays pinned to the
+      // visible edges instead of scrolling away with the content.
+      .experience_sticky_row_right_fade {
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+
+        &::before,
+        &::after {
+          bottom: 0;
+          content: "";
+          position: absolute;
+          top: 0;
+          width: 24px;
+        }
+
+        &::before {
+          background: linear-gradient(to right, var(--bg), transparent);
+          left: 0;
+        }
+
+        &::after {
+          background: linear-gradient(to left, var(--bg), transparent);
+          right: 0;
+        }
+
+        @include tablet {
+          &::before,
+          &::after {
+            width: 60px;
+          }
+        }
+
+        @include desktop {
+          display: none;
+        }
+      }
+
+      .experience_sticky_row_right {
+        align-items: start;
+        display: flex;
+        gap: max(1vw, 16px);
+        overflow-x: auto;
+        padding: 0 16px;
+        pointer-events: auto;
+        scroll-snap-type: x mandatory;
+        width: 100%;
+
+        @include tablet {
+          padding: 0 60px;
+        }
+
+        @include desktop {
           flex-direction: column;
           justify-content: center;
-          mask-image: none;
           padding: 0;
-          transform: unset;
-          width: 50%;
         }
 
         .experience_sticky_row_right_info {
@@ -190,6 +237,7 @@
           }
 
           .experience_sticky_row_right_card_link {
+            -webkit-backdrop-filter: blur(16px);
             backdrop-filter: blur(16px);
             background: var(--step-bg);
             border: 1px solid var(--step-border);

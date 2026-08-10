@@ -85,7 +85,7 @@ const translations: Record<Locale, Translations> = {
       jobTitle: "Software Engineer",
       wormholescan: "WormholeScan",
       wormholescanDesc:
-        "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, and analytics.",
+        "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, analytics.",
       portal: "Portal Bridge",
       portalDesc:
         "Improved the reliability of Portal Bridge by testing cross-chain transactions and fixing bugs.",
@@ -146,7 +146,7 @@ const translations: Record<Locale, Translations> = {
       jobTitle: "Ingeniero de Software",
       wormholescan: "WormholeScan",
       wormholescanDesc:
-        "Co-desarrollé la interfaz de usuario para WormholeScan, un explorador utilizado para ver millones de transacciones, gráficas y análisis.",
+        "Co-desarrollé la interfaz para WormholeScan, un explorador para ver millones de transacciones, gráficas y analíticas.",
       portal: "Portal Bridge",
       portalDesc:
         "Mejoré la confiabilidad de Portal Bridge testeando transacciones cross-chain y corrigiendo errores.",
