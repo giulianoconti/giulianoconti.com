@@ -147,13 +147,22 @@
               align-items: center;
               background: var(--accent);
               border-radius: 999px;
+              box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 45%, transparent);
               color: var(--accent-badge-text);
               display: inline-flex;
               font-weight: 600;
-              gap: 6px;
-              margin-top: 10px;
-              padding: 8px 16px;
+              gap: 8px;
+              margin-top: 12px;
+              padding: 10px 20px;
               text-decoration: none;
+              transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease;
+
+              &:hover {
+                box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 55%, transparent);
+                transform: translateY(-1px);
+              }
             }
           }
 
@@ -191,11 +200,11 @@
           }
 
           textarea {
+            @include text-body;
             background: transparent;
             border: none;
             color: var(--text);
             display: block;
-            font: inherit;
             max-height: 120px;
             outline: none;
             overflow-y: auto;

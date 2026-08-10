@@ -107,7 +107,7 @@ const translations: Record<Locale, Translations> = {
       h2em: "you need",
       p1: "Describe your project and I'll give you a rough price.",
       p2: "Anything else, we can keep talking on WhatsApp.",
-      placeholder: "E.g: I need a landing page with a WhatsApp button...",
+      placeholder: "Describe your project...",
       send: "Send",
       greeting:
         "Hi! Tell me what page you need, how many sections, login, admin panel, etc., and I'll give you a rough estimate.",
@@ -168,7 +168,7 @@ const translations: Record<Locale, Translations> = {
       h2em: "necesitás",
       p1: "Describí tu proyecto y te tiro un precio aproximado.",
       p2: "Cualquier otra duda, seguimos por WhatsApp.",
-      placeholder: "Ej: necesito una landing con botón de WhatsApp...",
+      placeholder: "Describí tu proyecto...",
       send: "Enviar",
       greeting:
         "Hola! Contame qué página necesitás, cuántas secciones, si lleva login, panel de admin, etc., y te doy un precio aproximado.",
@@ -229,7 +229,7 @@ const translations: Record<Locale, Translations> = {
       h2em: "você precisa",
       p1: "Descreva seu projeto e te dou um preço aproximado.",
       p2: "Qualquer outra dúvida, seguimos pelo WhatsApp.",
-      placeholder: "Ex: preciso de uma landing com botão de WhatsApp...",
+      placeholder: "Descreva seu projeto...",
       send: "Enviar",
       greeting:
         "Oi! Me conta que página você precisa, quantas seções, login, painel admin, etc., e te dou um preço aproximado.",
