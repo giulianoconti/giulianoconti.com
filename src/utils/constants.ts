@@ -10,11 +10,13 @@ export const XLABS_WEBSITE_URL = "https://xlabs.github.io/xlabs-website";
 export const WORMHOLESCAN_WEBSITE_URL = "https://wormholescan.io";
 export const PORTAL_WEBSITE_URL = "https://portalbridge.com";
 export const CLINIS_WEBSITE_URL = "https://clinis.com.ar";
+export const MERCAT_WEBSITE_URL = "https://mercat.cl";
 
 export const EXPERIENCE_WORMHOLESCAN_ASSET = "/assets/experience-wormholescan.webp";
 export const EXPERIENCE_PORTAL_ASSET = "/assets/experience-portal.webp";
 export const EXPERIENCE_XLABS_ASSET = "/assets/experience-xlabs.webp";
 export const EXPERIENCE_CLINIS_ASSET = "/assets/experience-clinis.webp";
+export const EXPERIENCE_MERCAT_ASSET = "/assets/experience-cc-mercat.webp";
 
 export function getCvAssetByLocale(locale: Locale) {
   return `/assets/Giuliano_Conti_Frontend_Engineer_CV_${locale.toUpperCase()}.pdf`;

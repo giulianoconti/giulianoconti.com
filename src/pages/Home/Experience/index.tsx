@@ -9,15 +9,18 @@ import {
   SolanaIcon,
   SupabaseIcon,
   TypeScriptIcon,
+  ZapIcon,
 } from "../../../icons";
 import { useLocale } from "../../../contexts/LocaleContext";
 import "./styles.scss";
 import {
   CLINIS_WEBSITE_URL,
   EXPERIENCE_CLINIS_ASSET,
+  EXPERIENCE_MERCAT_ASSET,
   EXPERIENCE_PORTAL_ASSET,
   EXPERIENCE_WORMHOLESCAN_ASSET,
   EXPERIENCE_XLABS_ASSET,
+  MERCAT_WEBSITE_URL,
   PORTAL_WEBSITE_URL,
   WORMHOLESCAN_WEBSITE_URL,
   XLABS_WEBSITE_URL,
@@ -48,6 +51,23 @@ export default function Experience() {
   const { t } = useLocale();
 
   const EXPERIENCE: ExperienceEntry[] = [
+    {
+      company: t.experience.gleniCompany,
+      role: t.experience.gleniRole,
+      dates: t.experience.gleniDate,
+    },
+    {
+      name: t.experience.mercat,
+      link: MERCAT_WEBSITE_URL,
+      image: EXPERIENCE_MERCAT_ASSET,
+      description: t.experience.mercatDesc,
+      technologies: [
+        { icon: <ReactIcon />, name: "React" },
+        { icon: <TypeScriptIcon />, name: "TypeScript" },
+        { icon: <SassIcon />, name: "Sass" },
+        { icon: <ZapIcon />, name: "Vite" },
+      ],
+    },
     {
       company: t.experience.freelanceCompany,
       role: t.experience.freelancerJobRole,

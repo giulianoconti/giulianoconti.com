@@ -39,6 +39,11 @@ type Translations = {
     freelancerJobDate: string;
     clinis: string;
     clinisDesc: string;
+    gleniCompany: string;
+    gleniRole: string;
+    gleniDate: string;
+    mercat: string;
+    mercatDesc: string;
   };
   chat: {
     label: string;
@@ -73,7 +78,8 @@ const translations: Record<Locale, Translations> = {
       title: "Giuliano Conti",
       bio: "I'm Giuliano Conti, software engineer. I build websites and web applications for businesses that want to grow online, fast, modern, and without the technical headaches.",
       availableNow: "Available",
-      availableSoon: months => `On a project · Available in ~${months} ${months === 1 ? "month" : "months"}`,
+      availableSoon: months =>
+        `On a project · Available in ~${months} ${months === 1 ? "month" : "months"}`,
       statYearsLabel: "Years of experience",
       statProjectsLabel: "Projects delivered",
       statCurrentLabel: "Current work",
@@ -100,6 +106,12 @@ const translations: Record<Locale, Translations> = {
       clinis: "Clinis",
       clinisDesc:
         "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
+      gleniCompany: "Gleni",
+      gleniRole: "Software Engineer",
+      gleniDate: "2026 - Present",
+      mercat: "Mercat - Command Center",
+      mercatDesc:
+        "Refactored Mercat's admin panel, migrating it to TypeScript and adding role-based permissions, with deploys 7.5x faster.",
     },
     chat: {
       label: "Chat",
@@ -134,7 +146,8 @@ const translations: Record<Locale, Translations> = {
       title: "Giuliano Conti",
       bio: "Soy Giuliano Conti, software engineer. Construyo sitios web y aplicaciones para negocios que quieren crecer online, rápidos, modernos y sin vueltas técnicas.",
       availableNow: "Disponible",
-      availableSoon: months => `Proyecto en curso · Disponible en ~${months} ${months === 1 ? "mes" : "meses"}`,
+      availableSoon: months =>
+        `Proyecto en curso · Disponible en ~${months} ${months === 1 ? "mes" : "meses"}`,
       statYearsLabel: "Años de experiencia",
       statProjectsLabel: "Proyectos entregados",
       statCurrentLabel: "Trabajo actual",
@@ -161,6 +174,12 @@ const translations: Record<Locale, Translations> = {
       clinis: "Clinis",
       clinisDesc:
         "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
+      gleniCompany: "Gleni",
+      gleniRole: "Ingeniero de Software",
+      gleniDate: "2026 - Presente",
+      mercat: "Mercat - Command Center",
+      mercatDesc:
+        "Refactoricé el panel de administración migrándolo a TypeScript, con permisos por rol y deploys 7,5x más rápidos.",
     },
     chat: {
       label: "Chat",
@@ -195,7 +214,8 @@ const translations: Record<Locale, Translations> = {
       title: "Giuliano Conti",
       bio: "Sou Giuliano Conti, software engineer. Construo sites e aplicações web para negócios que querem crescer online, rápidos, modernos e sem dores de cabeça técnicas.",
       availableNow: "Disponível",
-      availableSoon: months => `Projeto em andamento · Disponível em ~${months} ${months === 1 ? "mês" : "meses"}`,
+      availableSoon: months =>
+        `Projeto em andamento · Disponível em ~${months} ${months === 1 ? "mês" : "meses"}`,
       statYearsLabel: "Anos de experiência",
       statProjectsLabel: "Projetos entregues",
       statCurrentLabel: "Trabalho atual",
@@ -222,6 +242,12 @@ const translations: Record<Locale, Translations> = {
       clinis: "Clinis",
       clinisDesc:
         "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
+      gleniCompany: "Gleni",
+      gleniRole: "Engenheiro de Software",
+      gleniDate: "2026 - Presente",
+      mercat: "Mercat - Command Center",
+      mercatDesc:
+        "Refatorei o painel de administração migrando para TypeScript, com permissões por perfil e deploys 7,5x mais rápidos.",
     },
     chat: {
       label: "Chat",
