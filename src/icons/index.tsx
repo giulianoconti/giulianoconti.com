@@ -153,27 +153,9 @@ export const LinkedInIcon = ({ className = "", height = 24, width = 24 }: IconPr
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M8 11l0 5"
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M8 8l0 .01"
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M12 16l0 -5"
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M8 11l0 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8 8l0 .01" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 16l0 -5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M16 16v-3a2 2 0 0 0 -4 0"
       stroke="currentColor"
@@ -201,16 +183,7 @@ export const MailIcon = ({ className = "", height = 24, width = 24 }: IconProps)
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <rect
-      x={3}
-      y={5}
-      width={18}
-      height={14}
-      rx={2}
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-    />
+    <rect x={3} y={5} width={18} height={14} rx={2} stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
   </svg>
 );
 
@@ -276,11 +249,7 @@ export const NextJSIcon = ({ className = "", height = 24, width = 24 }: IconProp
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g
-      transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)"
-      fill="currentColor"
-      stroke="none"
-    >
+    <g transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
       <path d="M1065 2394 c-168 -26 -282 -62 -418 -132 -317 -162 -546 -464 -623 -822 -26 -118 -26 -362 0 -480 102 -474 462 -834 936 -936 118 -26 362 -26 480 0 473 102 834 462 936 936 26 118 26 362 0 480 -101 467 -454 826 -916 931 -83 19 -327 33 -395 23z m282 -155 c179 -24 386 -117 528 -236 232 -195 375 -501 375 -803 0 -229 -86 -473 -232 -657 -60 -76 -158 -167 -169 -156 -4 4 -202 285 -439 623 -238 338 -441 624 -451 635 -15 15 -36 20 -92 23 -67 4 -76 2 -103 -21 l-29 -25 0 -470 c0 -448 1 -471 19 -491 13 -14 31 -21 57 -21 70 0 69 -7 69 444 0 343 2 398 14 386 8 -8 197 -276 421 -594 l408 -579 -22 -18 c-28 -23 -165 -76 -261 -100 -41 -11 -122 -22 -180 -26 -472 -27 -905 267 -1053 716 -76 228 -76 434 0 662 103 315 347 558 662 663 162 54 312 68 478 45z" />
       <path d="M1520 1663 c-8 -3 -23 -12 -32 -21 -16 -14 -18 -41 -18 -307 0 -321 -1 -314 62 -330 22 -6 33 -1 58 23 l30 30 0 277 0 277 -29 29 c-29 29 -42 33 -71 22z" />
     </g>
@@ -493,25 +462,11 @@ export const WhatsAppIcon = ({
   >
     {!colorless && (
       <defs>
-        <linearGradient
-          id="b"
-          x1="85.915"
-          x2="86.535"
-          y1="32.567"
-          y2="137.092"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
           <stop offset={0} stopColor="#57d163" />
           <stop offset={1} stopColor="#23b33a" />
         </linearGradient>
-        <filter
-          id="a"
-          width="1.115"
-          height="1.114"
-          x="-.057"
-          y="-.057"
-          colorInterpolationFilters="sRGB"
-        >
+        <filter id="a" width="1.115" height="1.114" x="-.057" y="-.057" colorInterpolationFilters="sRGB">
           <feGaussianBlur stdDeviation="3.531" />
         </filter>
       </defs>

@@ -84,8 +84,7 @@ const translations: Record<Locale, Translations> = {
       title: "Giuliano Conti",
       bio: "I'm Giuliano Conti, software engineer. I build websites and web applications for businesses that want to grow online, fast, modern, and without the technical headaches.",
       availableNow: "Available",
-      availableSoon: months =>
-        `On a project · Available in ~${months} ${months === 1 ? "month" : "months"}`,
+      availableSoon: months => `On a project · Available in ~${months} ${months === 1 ? "month" : "months"}`,
       statYearsLabel: "Years of experience",
       statProjectsLabel: "Projects delivered",
       statCurrentLabel: "Current work",
@@ -99,8 +98,7 @@ const translations: Record<Locale, Translations> = {
       wormholescanDesc:
         "Co-built WormholeScan's UI, a cross-chain explorer for millions of transactions and analytics.",
       portal: "Portal Bridge",
-      portalDesc:
-        "Improved the reliability of Portal Bridge by testing cross-chain transactions and fixing bugs.",
+      portalDesc: "Improved the reliability of Portal Bridge by testing cross-chain transactions and fixing bugs.",
       xlabsDesc:
         "Built the xLabs website for staking (e.g. SOL), collaborating on improving its features and interface.",
       xlabsCompany: "xLabs",
@@ -121,11 +119,9 @@ const translations: Record<Locale, Translations> = {
       gleniRole: "Software Engineer",
       gleniDate: "2026 - Present",
       mercat: "Mercat - Command Center",
-      mercatDesc:
-        "Migrated Mercat's admin panel to TypeScript, adding role-based permissions and 7.5x faster deploys.",
+      mercatDesc: "Migrated Mercat's admin panel to TypeScript, adding role-based permissions and 7.5x faster deploys.",
       uwigo: "UWIGO",
-      uwigoDesc:
-        "Modernizing UWIGO, a Chilean accounting ERP: Django REST API and a new Next.js frontend.",
+      uwigoDesc: "Modernizing UWIGO, a Chilean accounting ERP: Django REST API and a new Next.js frontend.",
     },
     chat: {
       label: "Chat",
@@ -137,8 +133,7 @@ const translations: Record<Locale, Translations> = {
       send: "Send",
       greeting:
         "Hi! Tell me what page you need, how many sections, login, admin panel, etc., and I'll give you a rough estimate.",
-      rateLimited:
-        "You've sent a lot of messages in a row. Wait a bit or message me directly on WhatsApp.",
+      rateLimited: "You've sent a lot of messages in a row. Wait a bit or message me directly on WhatsApp.",
       networkError: "Something went wrong. Try again or message me directly on WhatsApp.",
       waFallback: "Chat on WhatsApp",
     },
@@ -160,8 +155,7 @@ const translations: Record<Locale, Translations> = {
       title: "Giuliano Conti",
       bio: "Soy Giuliano Conti, software engineer. Construyo sitios web y aplicaciones para negocios que quieren crecer online, rápidos, modernos y sin vueltas técnicas.",
       availableNow: "Disponible",
-      availableSoon: months =>
-        `Proyecto en curso · Disponible en ~${months} ${months === 1 ? "mes" : "meses"}`,
+      availableSoon: months => `Proyecto en curso · Disponible en ~${months} ${months === 1 ? "mes" : "meses"}`,
       statYearsLabel: "Años de experiencia",
       statProjectsLabel: "Proyectos entregados",
       statCurrentLabel: "Trabajo actual",
@@ -172,13 +166,10 @@ const translations: Record<Locale, Translations> = {
       title: "Experiencia",
       jobTitle: "Ingeniero de Software",
       wormholescan: "WormholeScan",
-      wormholescanDesc:
-        "Co-desarrollé la UI del explorador WormholeScan: millones de transacciones y métricas.",
+      wormholescanDesc: "Co-desarrollé la UI del explorador WormholeScan: millones de transacciones y métricas.",
       portal: "Portal Bridge",
-      portalDesc:
-        "Mejoré la confiabilidad de Portal Bridge testeando transacciones cross-chain y corrigiendo errores.",
-      xlabsDesc:
-        "Desarrollé la web de staking de xLabs (ej. SOL), mejorando sus funcionalidades y su interfaz.",
+      portalDesc: "Mejoré la confiabilidad de Portal Bridge testeando transacciones cross-chain y corrigiendo errores.",
+      xlabsDesc: "Desarrollé la web de staking de xLabs (ej. SOL), mejorando sus funcionalidades y su interfaz.",
       xlabsCompany: "xLabs",
       xlabsRole: "Ingeniero Frontend",
       xlabsDate: "2023 - 2026",
@@ -186,22 +177,18 @@ const translations: Record<Locale, Translations> = {
       freelancerJobRole: "Ingeniero de Software",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
-      clinisDesc:
-        "Creé un catálogo web de vehículos usados y 0km a la venta, generando mayor visibilidad y ventas.",
+      clinisDesc: "Creé un catálogo web de vehículos usados y 0km a la venta, generando mayor visibilidad y ventas.",
       landings: "Landings",
-      landingsDesc:
-        "Sitios estáticos para profesionales locales: carga instantánea, SEO local y turnos por WhatsApp.",
+      landingsDesc: "Sitios estáticos para profesionales locales: carga instantánea, SEO local y turnos por WhatsApp.",
       landingGiane: "Kinesiología",
       landingMati: "Estudio jurídico",
       gleniCompany: "Gleni",
       gleniRole: "Ingeniero de Software",
       gleniDate: "2026 - Presente",
       mercat: "Mercat - Command Center",
-      mercatDesc:
-        "Migré el panel admin de Mercat a TypeScript, con permisos por rol y deploys 7,5x más rápidos.",
+      mercatDesc: "Migré el panel admin de Mercat a TypeScript, con permisos por rol y deploys 7,5x más rápidos.",
       uwigo: "UWIGO",
-      uwigoDesc:
-        "Modernizo UWIGO, un ERP contable chileno: backend Django a API REST y nuevo front en Next.js.",
+      uwigoDesc: "Modernizo UWIGO, un ERP contable chileno: backend Django a API REST y nuevo front en Next.js.",
     },
     chat: {
       label: "Chat",
@@ -213,8 +200,7 @@ const translations: Record<Locale, Translations> = {
       send: "Enviar",
       greeting:
         "Hola! Contame qué página necesitás, cuántas secciones, si lleva login, panel de admin, etc., y te doy un precio aproximado.",
-      rateLimited:
-        "Mandaste muchos mensajes seguidos. Esperá un toque o escribime directo por WhatsApp.",
+      rateLimited: "Mandaste muchos mensajes seguidos. Esperá un toque o escribime directo por WhatsApp.",
       networkError: "Uy, algo falló. Probá de nuevo o escribime directo por WhatsApp.",
       waFallback: "Hablar por WhatsApp",
     },
@@ -236,8 +222,7 @@ const translations: Record<Locale, Translations> = {
       title: "Giuliano Conti",
       bio: "Sou Giuliano Conti, software engineer. Construo sites e aplicações web para negócios que querem crescer online, rápidos, modernos e sem dores de cabeça técnicas.",
       availableNow: "Disponível",
-      availableSoon: months =>
-        `Projeto em andamento · Disponível em ~${months} ${months === 1 ? "mês" : "meses"}`,
+      availableSoon: months => `Projeto em andamento · Disponível em ~${months} ${months === 1 ? "mês" : "meses"}`,
       statYearsLabel: "Anos de experiência",
       statProjectsLabel: "Projetos entregues",
       statCurrentLabel: "Trabalho atual",
@@ -248,13 +233,10 @@ const translations: Record<Locale, Translations> = {
       title: "Experiência",
       jobTitle: "Engenheiro de Software",
       wormholescan: "WormholeScan",
-      wormholescanDesc:
-        "Co-desenvolvi a UI do WormholeScan, explorador de milhões de transações e análises.",
+      wormholescanDesc: "Co-desenvolvi a UI do WormholeScan, explorador de milhões de transações e análises.",
       portal: "Portal Bridge",
-      portalDesc:
-        "Melhorei a confiabilidade do Portal Bridge testando transações cross-chain e corrigindo erros.",
-      xlabsDesc:
-        "Desenvolvi o site de staking da xLabs (ex. SOL), melhorando suas funcionalidades e a interface.",
+      portalDesc: "Melhorei a confiabilidade do Portal Bridge testando transações cross-chain e corrigindo erros.",
+      xlabsDesc: "Desenvolvi o site de staking da xLabs (ex. SOL), melhorando suas funcionalidades e a interface.",
       xlabsCompany: "xLabs",
       xlabsRole: "Engenheiro Frontend",
       xlabsDate: "2023 - 2026",
@@ -262,22 +244,18 @@ const translations: Record<Locale, Translations> = {
       freelancerJobRole: "Engenheiro de Software",
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
-      clinisDesc:
-        "Criei um catálogo web de veículos usados e 0km à venda, gerando maior visibilidade e vendas.",
+      clinisDesc: "Criei um catálogo web de veículos usados e 0km à venda, gerando maior visibilidade e vendas.",
       landings: "Landings",
-      landingsDesc:
-        "Sites estáticos para profissionais: carga instantânea, SEO local e agendamentos por WhatsApp.",
+      landingsDesc: "Sites estáticos para profissionais: carga instantânea, SEO local e agendamentos por WhatsApp.",
       landingGiane: "Fisioterapia",
       landingMati: "Escritório de advocacia",
       gleniCompany: "Gleni",
       gleniRole: "Engenheiro de Software",
       gleniDate: "2026 - Presente",
       mercat: "Mercat - Command Center",
-      mercatDesc:
-        "Migrei o painel admin da Mercat para TypeScript, com permissões e deploys 7,5x mais rápidos.",
+      mercatDesc: "Migrei o painel admin da Mercat para TypeScript, com permissões e deploys 7,5x mais rápidos.",
       uwigo: "UWIGO",
-      uwigoDesc:
-        "Modernizo o UWIGO, um ERP contábil chileno: backend Django em API REST e novo front em Next.js.",
+      uwigoDesc: "Modernizo o UWIGO, um ERP contábil chileno: backend Django em API REST e novo front em Next.js.",
     },
     chat: {
       label: "Chat",
@@ -289,8 +267,7 @@ const translations: Record<Locale, Translations> = {
       send: "Enviar",
       greeting:
         "Oi! Me conta que página você precisa, quantas seções, login, painel admin, etc., e te dou um preço aproximado.",
-      rateLimited:
-        "Você mandou muitas mensagens seguidas. Espera um pouco ou fala direto comigo no WhatsApp.",
+      rateLimited: "Você mandou muitas mensagens seguidas. Espera um pouco ou fala direto comigo no WhatsApp.",
       networkError: "Algo deu errado. Tenta de novo ou fala direto comigo no WhatsApp.",
       waFallback: "Falar no WhatsApp",
     },
@@ -353,9 +330,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const t = translations[locale];
-  return (
-    <LocaleContext.Provider value={{ locale, setLocale, t }}>{children}</LocaleContext.Provider>
-  );
+  return <LocaleContext.Provider value={{ locale, setLocale, t }}>{children}</LocaleContext.Provider>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components -- context hook is used with LocaleProvider

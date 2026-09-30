@@ -207,12 +207,8 @@ export default function Experience() {
         <div className="experience_sticky_row">
           <div className="experience_sticky_row_left">
             <div className="experience_sticky_row_left_container">
-              <p className="experience_sticky_row_left_container_eyebrow">
-                {t.experience.title.toUpperCase()}
-              </p>
-              <h2 className="experience_sticky_row_left_container_title">
-                {t.experience.jobTitle}
-              </h2>
+              <p className="experience_sticky_row_left_container_eyebrow">{t.experience.title.toUpperCase()}</p>
+              <h2 className="experience_sticky_row_left_container_title">{t.experience.jobTitle}</h2>
               <p className="experience_sticky_row_left_container_bio">{t.home.bio}</p>
             </div>
           </div>
@@ -221,9 +217,7 @@ export default function Experience() {
               {EXPERIENCE.map((experience, i) =>
                 "company" in experience ? (
                   <div className="experience_sticky_row_right_info" key={experience.company}>
-                    <h3 className="experience_sticky_row_right_info_company">
-                      {experience.company}
-                    </h3>
+                    <h3 className="experience_sticky_row_right_info_company">{experience.company}</h3>
                     <p className="experience_sticky_row_right_info_role">{experience.role}</p>
                     <p className="experience_sticky_row_right_info_dates">{experience.dates}</p>
                   </div>
@@ -243,12 +237,7 @@ export default function Experience() {
                             target="_blank"
                           >
                             <div className="experience_sticky_row_right_card_link_image">
-                              <img
-                                src={item.image}
-                                alt={item.name}
-                                loading="lazy"
-                                decoding="async"
-                              />
+                              <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
                             </div>
                             <div className="experience_sticky_row_right_card_link_group_item_meta">
                               <span className="experience_sticky_row_right_card_link_group_item_meta_name">
@@ -264,12 +253,8 @@ export default function Experience() {
                       </div>
 
                       <div className="experience_sticky_row_right_card_link_content">
-                        <h4 className="experience_sticky_row_right_card_link_content_name">
-                          {experience.name}
-                        </h4>
-                        <p className="experience_sticky_row_right_card_link_content_desc">
-                          {experience.description}
-                        </p>
+                        <h4 className="experience_sticky_row_right_card_link_content_name">{experience.name}</h4>
+                        <p className="experience_sticky_row_right_card_link_content_desc">{experience.description}</p>
 
                         <div className="experience_sticky_row_right_card_link_content_technologies">
                           {experience.technologies.map(tech => (
@@ -297,21 +282,12 @@ export default function Experience() {
                       rel="noopener noreferrer"
                     >
                       <div className="experience_sticky_row_right_card_link_image">
-                        <img
-                          src={experience.image}
-                          alt={experience.name}
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        <img src={experience.image} alt={experience.name} loading="lazy" decoding="async" />
                       </div>
 
                       <div className="experience_sticky_row_right_card_link_content">
-                        <h4 className="experience_sticky_row_right_card_link_content_name">
-                          {experience.name}
-                        </h4>
-                        <p className="experience_sticky_row_right_card_link_content_desc">
-                          {experience.description}
-                        </p>
+                        <h4 className="experience_sticky_row_right_card_link_content_name">{experience.name}</h4>
+                        <p className="experience_sticky_row_right_card_link_content_desc">{experience.description}</p>
 
                         <div className="experience_sticky_row_right_card_link_content_technologies">
                           {experience.technologies.map(tech => (

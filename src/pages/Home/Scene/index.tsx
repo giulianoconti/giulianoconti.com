@@ -210,21 +210,13 @@ function CausticsBackground({ tex, scrollRef }: BackgroundProps) {
   useFrame(() => {
     const sp = scrollRef.current;
     if (matRef.current) {
-      matRef.current.color.setRGB(
-        sampleKF(BG_COL.r, sp),
-        sampleKF(BG_COL.g, sp),
-        sampleKF(BG_COL.b, sp),
-      );
+      matRef.current.color.setRGB(sampleKF(BG_COL.r, sp), sampleKF(BG_COL.g, sp), sampleKF(BG_COL.b, sp));
     }
     if (meshRef.current) {
       // Before first BG keyframe, stay at base z
       meshRef.current.position.z = sp < BG.posZ.ts[0] ? -10 : sampleKF(BG.posZ, sp);
 
-      meshRef.current.scale.set(
-        sampleKF(BG.sclX, sp),
-        sampleKF(BG.sclY, sp),
-        sampleKF(BG.sclZ, sp),
-      );
+      meshRef.current.scale.set(sampleKF(BG.sclX, sp), sampleKF(BG.sclY, sp), sampleKF(BG.sclZ, sp));
     }
   });
 
