@@ -4,9 +4,9 @@
 
 .chat {
   @include section-padding-x;
-  padding-top: max(14vw, 250px);
+  padding-top: max(20vw, 200px);
   padding-bottom: max(6vw, 60px);
-  min-height: 105dvh;
+  min-height: 120dvh;
 
   .chat_inner {
     display: flex;

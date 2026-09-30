@@ -20,6 +20,19 @@ export const AvalancheIcon = ({ className = "", height = 24, width = 24 }: IconP
 
 // C
 
+export const CssIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
+  <svg
+    className={className}
+    fill="currentColor"
+    height={height}
+    viewBox="0 0 24 24"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" />
+  </svg>
+);
+
 export const CurriculumIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
   <svg
     className={className}
@@ -35,6 +48,38 @@ export const CurriculumIcon = ({ className = "", height = 24, width = 24 }: Icon
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+  </svg>
+);
+
+// D
+
+export const DjangoIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
+  <svg
+    className={className}
+    fill="currentColor"
+    height={height}
+    viewBox="0 0 24 24"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M11.146 0h3.924v18.166c-2.013.382-3.491.535-5.096.535-4.791 0-7.288-2.166-7.288-6.32 0-4.002 2.65-6.6 6.753-6.6.637 0 1.121.05 1.707.203zm0 9.143a3.894 3.894 0 00-1.325-.204c-1.988 0-3.134 1.223-3.134 3.365 0 2.09 1.096 3.236 3.109 3.236.433 0 .79-.025 1.35-.102V9.142zM21.314 6.06v9.098c0 3.134-.229 4.638-.917 5.937-.637 1.249-1.478 2.039-3.211 2.905l-3.644-1.733c1.733-.815 2.574-1.53 3.109-2.625.561-1.121.739-2.421.739-5.835V6.059h3.924zM17.39.021h3.924v4.026H17.39z" />
+  </svg>
+);
+
+// E
+
+export const ExternalLinkIcon = ({ className = "", height = 16, width = 16 }: IconProps) => (
+  <svg
+    aria-hidden="true"
+    className={className}
+    fill="currentColor"
+    height={height}
+    viewBox="0 0 16 16"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M8.66669 2L10.862 4.19533L6.19535 8.862L7.13802 9.80467L11.8047 5.138L14 7.33333V2H8.66669Z" />
+    <path d="M12.6667 12.6667H3.33333V3.33333H8L6.66667 2H3.33333C2.598 2 2 2.598 2 3.33333V12.6667C2 13.402 2.598 14 3.33333 14H12.6667C13.402 14 14 13.402 14 12.6667V9.33333L12.6667 8V12.6667Z" />
   </svg>
 );
 
@@ -56,6 +101,36 @@ export const GithubIcon = ({ className = "", height = 24, width = 24 }: IconProp
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+  </svg>
+);
+
+// H
+
+export const HtmlIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
+  <svg
+    className={className}
+    fill="currentColor"
+    height={height}
+    viewBox="0 0 24 24"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" />
+  </svg>
+);
+
+// J
+
+export const JavaScriptIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
+  <svg
+    className={className}
+    fill="currentColor"
+    height={height}
+    viewBox="0 0 24 24"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z" />
   </svg>
 );
 
@@ -369,6 +444,19 @@ export const SendIcon = ({ className = "", height = 24, width = 24 }: IconProps)
 );
 
 // T
+
+export const TailwindIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
+  <svg
+    className={className}
+    fill="currentColor"
+    height={height}
+    viewBox="0 0 24 24"
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+  </svg>
+);
 
 export const TypeScriptIcon = ({ className = "", height = 24, width = 24 }: IconProps) => (
   <svg

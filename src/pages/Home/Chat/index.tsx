@@ -5,11 +5,8 @@ import { SendIcon, WhatsAppIcon } from "../../../icons";
 import "./styles.scss";
 
 type QuoteResult = {
-  model: "monthly" | "onetime";
-  tier: "basic" | "standard" | "premium";
   currency: "usd" | "ars";
-  setupPriceUsd: number | null;
-  monthlyPriceUsd: number | null;
+  priceUsd: number;
   selectedFeatures: string[];
   whatsappLink: string;
 } | null;

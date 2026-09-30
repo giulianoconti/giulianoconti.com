@@ -40,19 +40,19 @@ src/
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm dev
 
 # Build for production
-npm run build
+pnpm build
 
 # Preview production build
-npm run preview
+pnpm preview
 
 # Lint code
-npm lint
+pnpm lint
 ```
 
 ## 🎨 Tech Stack
@@ -65,12 +65,12 @@ npm lint
 
 ## 📋 Scripts
 
-| Command           | Description                      |
-| ----------------- | -------------------------------- |
-| `npm run dev`     | Start Vite dev server            |
-| `npm run build`   | Build for production             |
-| `npm run preview` | Preview production build locally |
-| `npm lint`        | Run ESLint                       |
+| Command        | Description                      |
+| -------------- | -------------------------------- |
+| `pnpm dev`     | Start Vite dev server            |
+| `pnpm build`   | Build for production             |
+| `pnpm preview` | Preview production build locally |
+| `pnpm lint`    | Run ESLint                       |
 
 ## 🌐 Localization
 

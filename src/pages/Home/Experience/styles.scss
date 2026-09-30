@@ -2,6 +2,10 @@
 @use "../../../styles/layout" as *;
 @use "../../../styles/typography" as *;
 
+// Cards go image-beside-text only from here: below it the text column would
+// drop under 34ch and descriptions would wrap past 3 lines.
+$card-row-breakpoint: 1280px;
+
 .experience {
   @include section-padding-x;
   align-items: center;
@@ -156,7 +160,8 @@
       }
 
       .experience_sticky_row_right {
-        align-items: start;
+        // Carousel: every card as tall as the tallest one.
+        align-items: stretch;
         display: flex;
         gap: max(1vw, 16px);
         overflow-x: auto;
@@ -170,6 +175,7 @@
         }
 
         @include desktop {
+          align-items: start;
           flex-direction: column;
           justify-content: center;
           padding: 0;
@@ -210,13 +216,16 @@
 
           @include desktop {
             flex-direction: column;
+            // The row is align-items: start, so without this each card would
+            // shrink to its content now that descriptions have a fixed measure.
+            width: 100%;
           }
 
           min-width: 320px;
           pointer-events: auto;
 
-          &:nth-child(odd) .experience_sticky_row_right_card_link {
-            @include desktop {
+          &.experience_sticky_row_right_card--reverse .experience_sticky_row_right_card_link {
+            @media only screen and (min-width: $card-row-breakpoint) {
               flex-direction: row-reverse;
             }
 
@@ -236,6 +245,14 @@
             // }
           }
 
+          &.experience_sticky_row_right_card--group
+            .experience_sticky_row_right_card_link:hover
+            .experience_sticky_row_right_card_link_group_item:not(:hover)
+            .experience_sticky_row_right_card_link_image
+            > img {
+            transform: scale(1.15);
+          }
+
           .experience_sticky_row_right_card_link {
             -webkit-backdrop-filter: blur(16px);
             backdrop-filter: blur(16px);
@@ -251,7 +268,7 @@
               background 0.3s,
               border-color 0.2s;
 
-            @include desktop {
+            @media only screen and (min-width: $card-row-breakpoint) {
               flex-direction: row;
             }
 
@@ -284,7 +301,7 @@
               //   ),
               //   transparent;
 
-              @include desktop {
+              @media only screen and (min-width: $card-row-breakpoint) {
                 width: 50%;
               }
 
@@ -298,11 +315,83 @@
               }
             }
 
+            // Several small projects (e.g. landings) sharing one card: each
+            // item is its own link, so the card itself is not an <a>.
+            .experience_sticky_row_right_card_link_group {
+              align-content: start;
+              display: grid;
+              gap: max(0.8vw, 12px);
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              width: 100%;
+
+              @media only screen and (min-width: $card-row-breakpoint) {
+                width: 50%;
+              }
+
+              .experience_sticky_row_right_card_link_group_item {
+                display: flex;
+                flex-direction: column;
+                gap: max(0.4vw, 6px);
+                text-decoration: none;
+
+                .experience_sticky_row_right_card_link_image {
+                  width: 100%;
+                }
+
+                &:hover {
+                  .experience_sticky_row_right_card_link_image > img {
+                    transform: scale(1.25);
+                  }
+
+                  .experience_sticky_row_right_card_link_group_item_meta_name {
+                    color: var(--text);
+                  }
+                }
+
+                .experience_sticky_row_right_card_link_group_item_meta {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2px;
+                  min-width: 0;
+
+                  .experience_sticky_row_right_card_link_group_item_meta_name {
+                    @include text-caption;
+                    color: var(--muted);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    transition: color 0.2s;
+
+                    svg {
+                      height: 0.9em;
+                      margin-left: 0.3em;
+                      vertical-align: -0.05em;
+                      width: 0.9em;
+                    }
+                  }
+
+                  .experience_sticky_row_right_card_link_group_item_meta_tag {
+                    @include text-tiny;
+                    color: var(--muted);
+                    opacity: 0.7;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+                }
+              }
+            }
+
             .experience_sticky_row_right_card_link_content {
               display: flex;
               flex: 1;
               flex-direction: column;
               gap: max(0.5vw, 8px);
+              justify-content: end;
+
+              @include desktop {
+                justify-content: flex-start;
+              }
 
               .experience_sticky_row_right_card_link_content_name {
                 @include text-body;
@@ -312,6 +401,9 @@
               .experience_sticky_row_right_card_link_content_desc {
                 @include text-caption;
                 color: var(--muted);
+                // Fixed measure so line count depends only on the copy, not
+                // the viewport: every description must fill exactly 3 lines.
+                max-width: 34ch;
               }
 
               .experience_sticky_row_right_card_link_content_technologies {

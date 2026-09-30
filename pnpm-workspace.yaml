@@ -1,0 +1,8 @@
+allowBuilds:
+  "@parcel/watcher": true
+  esbuild: true
+
+# pnpm 10 equivalent of allowBuilds (e.g. on Vercel)
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - esbuild

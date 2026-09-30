@@ -39,11 +39,17 @@ type Translations = {
     freelancerJobDate: string;
     clinis: string;
     clinisDesc: string;
+    landings: string;
+    landingsDesc: string;
+    landingGiane: string;
+    landingMati: string;
     gleniCompany: string;
     gleniRole: string;
     gleniDate: string;
     mercat: string;
     mercatDesc: string;
+    uwigo: string;
+    uwigoDesc: string;
   };
   chat: {
     label: string;
@@ -91,12 +97,12 @@ const translations: Record<Locale, Translations> = {
       jobTitle: "Software Engineer",
       wormholescan: "WormholeScan",
       wormholescanDesc:
-        "Co-developed the user interface for WormholeScan, a cross-chain explorer used to view millions of transactions, charts, analytics.",
+        "Co-built WormholeScan's UI, a cross-chain explorer for millions of transactions and analytics.",
       portal: "Portal Bridge",
       portalDesc:
         "Improved the reliability of Portal Bridge by testing cross-chain transactions and fixing bugs.",
       xlabsDesc:
-        "Developed the xLabs website for staking (e.g. SOL), collaborating on functional and interface improvements.",
+        "Built the xLabs website for staking (e.g. SOL), collaborating on improving its features and interface.",
       xlabsCompany: "xLabs",
       xlabsRole: "Frontend Engineer",
       xlabsDate: "2023 - 2026",
@@ -105,13 +111,21 @@ const translations: Record<Locale, Translations> = {
       freelancerJobDate: "2026 - Present",
       clinis: "Clinis",
       clinisDesc:
-        "Created a website to show the catalog of vehicles for sale, generating more visibility and sales.",
+        "Built a catalog website for used and new vehicles for sale, boosting the dealer's visibility and sales.",
+      landings: "Landings",
+      landingsDesc:
+        "Static sites for local professionals: instant loading, local SEO and bookings straight via WhatsApp.",
+      landingGiane: "Physiotherapy",
+      landingMati: "Law firm",
       gleniCompany: "Gleni",
       gleniRole: "Software Engineer",
       gleniDate: "2026 - Present",
       mercat: "Mercat - Command Center",
       mercatDesc:
-        "Refactored Mercat's admin panel, migrating it to TypeScript and adding role-based permissions, with deploys 7.5x faster.",
+        "Migrated Mercat's admin panel to TypeScript, adding role-based permissions and 7.5x faster deploys.",
+      uwigo: "UWIGO",
+      uwigoDesc:
+        "Modernizing UWIGO, a Chilean accounting ERP: Django REST API and a new Next.js frontend.",
     },
     chat: {
       label: "Chat",
@@ -159,12 +173,12 @@ const translations: Record<Locale, Translations> = {
       jobTitle: "Ingeniero de Software",
       wormholescan: "WormholeScan",
       wormholescanDesc:
-        "Co-desarrollé la interfaz para WormholeScan, un explorador para ver millones de transacciones, gráficas y analíticas.",
+        "Co-desarrollé la UI del explorador WormholeScan: millones de transacciones y métricas.",
       portal: "Portal Bridge",
       portalDesc:
         "Mejoré la confiabilidad de Portal Bridge testeando transacciones cross-chain y corrigiendo errores.",
       xlabsDesc:
-        "Desarrollé la web de xLabs para staking (ej. SOL), colaborando en mejorar funcionalidades y la interfaz.",
+        "Desarrollé la web de staking de xLabs (ej. SOL), mejorando sus funcionalidades y su interfaz.",
       xlabsCompany: "xLabs",
       xlabsRole: "Ingeniero Frontend",
       xlabsDate: "2023 - 2026",
@@ -173,13 +187,21 @@ const translations: Record<Locale, Translations> = {
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
       clinisDesc:
-        "Creé un sitio web para mostrar el catálogo de vehículos a la venta, generando mayor visibilidad y ventas.",
+        "Creé un catálogo web de vehículos usados y 0km a la venta, generando mayor visibilidad y ventas.",
+      landings: "Landings",
+      landingsDesc:
+        "Sitios estáticos para profesionales locales: carga instantánea, SEO local y turnos por WhatsApp.",
+      landingGiane: "Kinesiología",
+      landingMati: "Estudio jurídico",
       gleniCompany: "Gleni",
       gleniRole: "Ingeniero de Software",
       gleniDate: "2026 - Presente",
       mercat: "Mercat - Command Center",
       mercatDesc:
-        "Refactoricé el panel de administración migrándolo a TypeScript, con permisos por rol y deploys 7,5x más rápidos.",
+        "Migré el panel admin de Mercat a TypeScript, con permisos por rol y deploys 7,5x más rápidos.",
+      uwigo: "UWIGO",
+      uwigoDesc:
+        "Modernizo UWIGO, un ERP contable chileno: backend Django a API REST y nuevo front en Next.js.",
     },
     chat: {
       label: "Chat",
@@ -227,12 +249,12 @@ const translations: Record<Locale, Translations> = {
       jobTitle: "Engenheiro de Software",
       wormholescan: "WormholeScan",
       wormholescanDesc:
-        "Desenvolvi a interface de usuário para WormholeScan, um explorador utilizado para ver milhões de transações, gráficas e análises.",
+        "Co-desenvolvi a UI do WormholeScan, explorador de milhões de transações e análises.",
       portal: "Portal Bridge",
       portalDesc:
         "Melhorei a confiabilidade do Portal Bridge testando transações cross-chain e corrigindo erros.",
       xlabsDesc:
-        "Desenvolvi o site xLabs para staking (ex. SOL), colaborando em melhorias funcionais e de interface.",
+        "Desenvolvi o site de staking da xLabs (ex. SOL), melhorando suas funcionalidades e a interface.",
       xlabsCompany: "xLabs",
       xlabsRole: "Engenheiro Frontend",
       xlabsDate: "2023 - 2026",
@@ -241,13 +263,21 @@ const translations: Record<Locale, Translations> = {
       freelancerJobDate: "2026 - Presente",
       clinis: "Clinis",
       clinisDesc:
-        "Criei um site para mostrar o catálogo de veículos à venda, gerando maior visibilidade e vendas.",
+        "Criei um catálogo web de veículos usados e 0km à venda, gerando maior visibilidade e vendas.",
+      landings: "Landings",
+      landingsDesc:
+        "Sites estáticos para profissionais: carga instantânea, SEO local e agendamentos por WhatsApp.",
+      landingGiane: "Fisioterapia",
+      landingMati: "Escritório de advocacia",
       gleniCompany: "Gleni",
       gleniRole: "Engenheiro de Software",
       gleniDate: "2026 - Presente",
       mercat: "Mercat - Command Center",
       mercatDesc:
-        "Refatorei o painel de administração migrando para TypeScript, com permissões por perfil e deploys 7,5x mais rápidos.",
+        "Migrei o painel admin da Mercat para TypeScript, com permissões e deploys 7,5x mais rápidos.",
+      uwigo: "UWIGO",
+      uwigoDesc:
+        "Modernizo o UWIGO, um ERP contábil chileno: backend Django em API REST e novo front em Next.js.",
     },
     chat: {
       label: "Chat",

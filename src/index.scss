@@ -108,7 +108,13 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Roboto", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Roboto",
+    -apple-system,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
   font-weight: 400;
   overflow-x: hidden;
   scrollbar-width: none;

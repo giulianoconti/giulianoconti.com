@@ -12,18 +12,6 @@ export interface Feature {
 export const CLOSE_MS = 220;
 export const ARS_RATE = 1500;
 
-export const INFRA_COSTS = {
-  base: 10, // Vercel hosting + domain (~$18/yr)
-  supabase: 20, // Supabase Pro
-};
-
-export const MONTHLY_TIERS = [
-  { id: "basic", extra: 0 }, // infra only
-  { id: "standard", extra: 60 }, // infra + 8h/mo
-  { id: "premium", extra: 140 }, // infra + 24h/mo
-] as const;
-export type TierId = (typeof MONTHLY_TIERS)[number]["id"];
-
 // prettier-ignore
 export const FEATURES: Feature[] = [
   { id: "deploy",      label: "", desc: "", price: 0,   group: "base",    locked: true              },

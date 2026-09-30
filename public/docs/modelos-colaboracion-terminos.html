@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modelos de Colaboración Tecnológica — giulianoconti.com</title>
+    <title>Modalidad de Colaboración Tecnológica — giulianoconti.com</title>
     <style>
       *,
       *::before,
@@ -139,71 +139,6 @@
         font-weight: 700;
       }
 
-      /* Tiers */
-      .tiers {
-        display: flex;
-        gap: 12px;
-        margin: 20px 0 8px;
-        flex-wrap: wrap;
-      }
-      .tier {
-        flex: 1;
-        min-width: 140px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 12px 14px;
-        background: #fafafa;
-      }
-      .tier-name {
-        font-size: 13px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 2px;
-      }
-      .tier-desc {
-        font-size: 11px;
-        color: #777;
-        line-height: 1.4;
-      }
-
-      /* Comparison table */
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 16px;
-        font-size: 14px;
-      }
-      thead tr {
-        background: #1a1a1a;
-        color: #fff;
-      }
-      thead th {
-        padding: 12px 16px;
-        text-align: left;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-      }
-      tbody tr {
-        border-bottom: 1px solid #ececec;
-      }
-      tbody td {
-        padding: 12px 16px;
-        vertical-align: top;
-      }
-      .td-action {
-        color: #1a1a1a;
-        font-weight: 500;
-      }
-      .td-monthly {
-        color: #6ab800;
-        font-weight: 500;
-      }
-      .td-onetime {
-        color: #555;
-      }
-
       /* Terms */
       .term {
         display: flex;
@@ -282,64 +217,18 @@
         </div>
       </header>
 
-      <h1>Modelos de Colaboración Tecnológica</h1>
+      <h1>Modalidad de Colaboración Tecnológica</h1>
       <p class="intro">
-        Este documento describe las dos modalidades de trabajo disponibles para el desarrollo y
-        mantenimiento de tu solución web, junto con los términos aplicables a cada una.
+        Este documento describe la modalidad de trabajo para el desarrollo de tu solución web, junto
+        con los términos aplicables.
       </p>
 
-      <div class="section-label">Los dos modelos</div>
+      <div class="section-label">Modalidad de trabajo</div>
 
       <div class="model-card">
-        <div class="model-eyebrow">Modelo 1 · Mensual</div>
-        <div class="model-title">Plan Mensual</div>
-        <span class="badge">Ideal para no técnicos</span>
-        <p class="model-desc">
-          Yo asumo la administración total de la infraestructura. El sitio se despliega y mantiene
-          bajo mis cuentas profesionales. El cliente no necesita crear cuentas ni gestionar
-          contraseñas. <strong>Sin setup inicial.</strong>
-        </p>
-
-        <div class="tiers">
-          <div class="tier">
-            <div class="tier-name">Básico</div>
-            <div class="tier-desc">
-              Solo mantenimiento. Cubro hosting, dominio y Supabase si aplica. Sin horas de cambios.
-            </div>
-          </div>
-          <div class="tier">
-            <div class="tier-name">Estándar</div>
-            <div class="tier-desc">
-              Todo el Básico + hasta 8 horas de cambios y mejoras por mes.
-            </div>
-          </div>
-          <div class="tier">
-            <div class="tier-name">Premium</div>
-            <div class="tier-desc">
-              Todo el Estándar + hasta 24 horas de trabajo por mes. Soporte prioritario.
-            </div>
-          </div>
-        </div>
-
-        <ul class="model-list">
-          <li>
-            <strong>Propiedad:</strong> El cliente es dueño del contenido y la marca. El código
-            queda bajo licencia de uso mientras dure el contrato.
-          </li>
-          <li><strong>Pago:</strong> Solo cuota mensual fija. Sin setup inicial.</li>
-          <li>
-            <strong>Transferencia:</strong> Si en el futuro el cliente desea migrar a sus propias
-            cuentas: menos de 1 año pagando → precio de pago único completo; 1 año o más → 50% de
-            ese valor.
-          </li>
-          <li><strong>Rescisión:</strong> Con 30 días de aviso.</li>
-        </ul>
-      </div>
-
-      <div class="model-card">
-        <div class="model-eyebrow">Modelo 2 · Pago Único</div>
+        <div class="model-eyebrow">Por proyecto · Pago Único</div>
         <div class="model-title">Pago Único</div>
-        <span class="badge">Ideal para dueños que quieren autonomía</span>
+        <span class="badge">Sin mensualidades</span>
         <p class="model-desc">
           Las cuentas se crean a nombre del cliente. Se otorga acceso temporal durante el
           desarrollo. Al entregar, el cliente cambia todas las contraseñas y el desarrollador pierde
@@ -360,51 +249,6 @@
 
       <hr class="rule" />
 
-      <div class="section-label">Comparativa rápida</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Acción</th>
-            <th>Mensual</th>
-            <th>Pago Único</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="td-action">Configuración inicial</td>
-            <td class="td-monthly">0 min. Yo me encargo de todo.</td>
-            <td class="td-onetime">15–120 min. El cliente crea la cuenta.</td>
-          </tr>
-          <tr>
-            <td class="td-action">Gestión de contraseñas</td>
-            <td class="td-monthly">No necesitás guardar nuevas claves.</td>
-            <td class="td-onetime">El cliente lo administra.</td>
-          </tr>
-          <tr>
-            <td class="td-action">Actualizaciones futuras</td>
-            <td class="td-monthly">Incluidas según el plan.</td>
-            <td class="td-onetime">Se presupuestan por separado.</td>
-          </tr>
-          <tr>
-            <td class="td-action">Responsabilidad técnica</td>
-            <td class="td-monthly">Recae sobre el desarrollador.</td>
-            <td class="td-onetime">Recae sobre el cliente.</td>
-          </tr>
-          <tr>
-            <td class="td-action">Propiedad del código</td>
-            <td class="td-monthly">Licencia de uso.</td>
-            <td class="td-onetime">Transferencia total al finalizar.</td>
-          </tr>
-          <tr>
-            <td class="td-action">Setup inicial</td>
-            <td class="td-monthly">Ninguno.</td>
-            <td class="td-onetime">Incluido en el precio del proyecto.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <hr class="rule" />
-
       <div class="section-label">Términos y condiciones generales</div>
 
       <div class="term">
@@ -413,8 +257,8 @@
           <h3>Propiedad Intelectual</h3>
           <p>
             La propiedad intelectual de los activos de marca (logos, textos, imágenes) pertenece al
-            Cliente en todas las modalidades. En los modelos de Pago Único, la propiedad del código
-            fuente se transfiere al Cliente tras la liquidación total de los honorarios.
+            Cliente. La propiedad del código fuente se transfiere al Cliente tras la liquidación
+            total de los honorarios.
           </p>
         </div>
       </div>
@@ -437,9 +281,8 @@
           <h3>Servicios de Terceros</h3>
           <p>
             El funcionamiento del sitio depende de GitHub, Vercel, Supabase y Google Analytics. El
-            Cliente acepta los términos de dichos proveedores. En el plan Mensual, los costos de
-            hosting, dominio y Supabase están incluidos en la cuota. Cualquier cargo por uso
-            excedente en estas plataformas es responsabilidad del Cliente.
+            Cliente acepta los términos de dichos proveedores. Las cuentas quedan a nombre del
+            Cliente, y los costos de hosting, dominio y Supabase (si aplica) corren por su cuenta.
           </p>
         </div>
       </div>
@@ -462,8 +305,8 @@
           <h3>Garantía y Soporte Post-Entrega</h3>
           <p>
             Se incluye garantía técnica de 14 días para resolución de bugs de código. Modificaciones
-            estéticas o nuevas funcionalidades posteriores se presupuestan por separado en Pago
-            Único, o se incluyen en el plan según las horas disponibles del tier en Mensual.
+            estéticas o nuevas funcionalidades posteriores se presupuestan por separado como un
+            nuevo proyecto.
           </p>
         </div>
       </div>
@@ -474,17 +317,16 @@
           <h3>Moneda y Ajuste de Precios (Argentina)</h3>
           <p>
             Los precios se expresan en USD. Los pagos en ARS se calculan al tipo de cambio vigente
-            al momento del pago. En el plan Mensual, la cuota se revisará cada 6 meses por acuerdo
-            entre las partes.
+            al momento del pago.
           </p>
         </div>
       </div>
 
       <div class="footer-note">
-        <strong>Nota:</strong> En todos los modelos, la propiedad intelectual del contenido
-        proporcionado pertenece al Cliente. Los términos de servicio y costos de terceros (Vercel,
-        Supabase, Google) están sujetos a sus propias políticas de uso. En modelos de Pago Único, el
-        soporte técnico posterior a la entrega se cotizará de forma independiente.
+        <strong>Nota:</strong> La propiedad intelectual del contenido proporcionado pertenece al
+        Cliente. Los términos de servicio y costos de terceros (Vercel, Supabase, Google) están
+        sujetos a sus propias políticas de uso. El soporte técnico posterior a la entrega se
+        cotizará de forma independiente.
         <div class="footer-meta">
           giulianoconti.com · giuliconti1@gmail.com · Resistencia, Chaco, Argentina · Documento
           informativo — no constituye contrato. Se firmará contrato de prestación de servicios

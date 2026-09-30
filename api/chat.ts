@@ -1,9 +1,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { FEATURES } from "../src/utils/pricingData.js";
-import type { TierId } from "../src/utils/pricingData.js";
 import { getFeatures, PRICING_T } from "../src/utils/pricingTranslations.js";
-import { calcSetup, calcMonthly, buildWaMessage } from "../src/utils/pricingCalc.js";
+import { calcSetup, buildWaMessage } from "../src/utils/pricingCalc.js";
 import { FAQS } from "../src/utils/faqsData.js";
 import { WA_MSG } from "../src/utils/constants.js";
 
@@ -65,11 +64,12 @@ Tu trabajo:
 2. Antes de preguntar algo, releé todo el historial de la conversación: si el usuario ya lo dijo (aunque haya sido de forma implícita, por ejemplo "login y panel de admin" ya implica que sí hay base de datos), no lo vuelvas a preguntar. Hacé como máximo 1-2 preguntas de clarificación en total, solo sobre lo que realmente falta.
 3. Cuando tengas info suficiente, llamá SIEMPRE a la tool "get_quote" para calcular el precio, nunca inventes ni calcules números vos mismo.
 4. Presentá el precio devuelto por la tool de forma clara y breve, y mencioná que puede seguir la conversación por WhatsApp (el link ya se muestra aparte, no lo repitas en el texto).
-5. También podés responder preguntas generales (plazos, forma de pago, diferencia entre planes, etc.) usando este contexto de FAQ:
+5. Giuliano trabaja solo por proyecto con pago único (50% al arrancar, 50% al entregar). No ofrece planes mensuales, suscripciones ni retainers: si preguntan, aclaralo con amabilidad. El proyecto se entrega en cuentas del cliente.
+6. También podés responder preguntas generales (plazos, forma de pago, etc.) usando este contexto de FAQ:
 
 ${faqs}
 
-Features disponibles y sus precios base (USD, plan mensual estándar):
+Features disponibles y sus precios (USD, pago único):
 ${features}
 
 Sé breve, directo y amigable. Es un chat, no un email, nada de markdown pesado ni listas largas. Nunca uses la raya "—" en tus respuestas, usá coma o punto en su lugar.`;
@@ -88,26 +88,17 @@ const GET_QUOTE_TOOL: Anthropic.Tool = {
         description:
           "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
       },
-      model: { type: "string", enum: ["monthly", "onetime"], description: "Modelo de pago" },
-      tier: {
-        type: "string",
-        enum: ["basic", "standard", "premium"],
-        description: "Solo aplica si model=monthly",
-      },
       currency: { type: "string", enum: ["usd", "ars"] },
     },
-    required: ["features", "model", "currency"],
+    required: ["features", "currency"],
   },
 };
 
-type QuoteInput = { features: string[]; model: string; tier?: string; currency: string };
+type QuoteInput = { features: string[]; currency: string };
 
 type QuoteResult = {
-  model: "monthly" | "onetime";
-  tier: TierId;
   currency: "usd" | "ars";
-  setupPriceUsd: number | null;
-  monthlyPriceUsd: number | null;
+  priceUsd: number;
   selectedFeatures: string[];
   whatsappLink: string;
 };
@@ -122,23 +113,15 @@ function runQuoteTool(input: QuoteInput, locale: Locale): QuoteResult {
     f?.triggers?.forEach(tr => checked.add(tr));
   }
 
-  const model = input.model === "onetime" ? "onetime" : "monthly";
-  const tier: TierId = (["basic", "standard", "premium"] as const).includes(input.tier as TierId)
-    ? (input.tier as TierId)
-    : "standard";
   const currency = input.currency === "ars" ? "ars" : "usd";
 
-  const setup = calcSetup(checked, model, features);
-  const monthly = calcMonthly(model, tier, checked, features);
+  const price = calcSetup(checked, features);
   const t = (key: string) => PRICING_T[locale][key] ?? key;
-  const waMessage = buildWaMessage(checked, model, tier, currency, t, features);
+  const waMessage = buildWaMessage(checked, currency, t, features);
 
   return {
-    model,
-    tier,
     currency,
-    setupPriceUsd: model === "onetime" ? setup : null,
-    monthlyPriceUsd: model === "monthly" ? monthly : null,
+    priceUsd: price,
     selectedFeatures: features.filter(f => !f.locked && checked.has(f.id)).map(f => f.label),
     whatsappLink: WA_MSG(waMessage),
   };

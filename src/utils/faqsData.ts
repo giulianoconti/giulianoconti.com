@@ -4,19 +4,8 @@ export type FaqAnswer = string | { items: FaqItem[] };
 export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
   es: [
     {
-      q: "¿Cuál es la diferencia entre Mensual y Pago Único?",
-      a: {
-        items: [
-          {
-            title: "Mensual",
-            text: "Manejo toda la infraestructura en mis cuentas: Vercel, GitHub, Supabase, dominio. Vos solo pagás una mensualidad fija. Cero dolores de cabeza técnicos.",
-          },
-          {
-            title: "Pago Único",
-            text: "Te entrego el proyecto completo en tus propias cuentas. Sos dueño absoluto del código, la infra y los accesos desde el día uno.",
-          },
-        ],
-      },
+      q: "¿Cómo trabajás?",
+      a: "Trabajo por proyecto con pago único, sin mensualidades. Te entrego todo en tus propias cuentas (Vercel, GitHub, Supabase, dominio) y sos dueño absoluto del código, la infra y los accesos desde el día uno.",
     },
     {
       q: "¿Cuánto tarda un proyecto?",
@@ -38,38 +27,12 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       },
     },
     {
-      q: "¿Qué pasa si quiero salir del plan Mensual?",
-      a: "Sin problema. Si llevás más de 1 año en el plan Mensual, la migración a tus propias cuentas tiene un costo del 50% del precio de pago único equivalente. Si todavía no llegaste al año, se cobra el precio completo de pago único. En ambos casos te entrego todo: código, accesos y documentación.",
-    },
-    {
       q: "¿Cómo se hace el pago?",
-      a: {
-        items: [
-          {
-            title: "Pago Único",
-            text: "50% adelantado para arrancar, 50% al momento de la entrega. Acepto USD (crypto USDT/USDC) y ARS (Mercadopago o transferencia).",
-          },
-          {
-            title: "Mensual",
-            text: "Se abona mes a mes sin costo de setup inicial. Mismos métodos de pago.",
-          },
-        ],
-      },
+      a: "50% adelantado para arrancar, 50% al momento de la entrega. Acepto USD (crypto USDT/USDC) y ARS (Mercadopago o transferencia).",
     },
     {
       q: "¿Puedo pedirte cambios después de la entrega?",
-      a: {
-        items: [
-          {
-            title: "Mensual",
-            text: "Los cambios de contenido están incluidos cada mes según el nivel de mantenimiento elegido.",
-          },
-          {
-            title: "Pago Único",
-            text: "Incluye rondas de revisión antes del cierre. Cambios posteriores se presupuestan por separado o acordamos un retainer mensual.",
-          },
-        ],
-      },
+      a: "Sí. El proyecto incluye rondas de revisión antes del cierre y 14 días de garantía para bugs. Cambios o funcionalidades nuevas después de la entrega se presupuestan por separado como un proyecto nuevo.",
     },
     {
       q: "¿Trabajás con clientes de otros países?",
@@ -78,19 +41,8 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
   ],
   en: [
     {
-      q: "What's the difference between Monthly and One-time?",
-      a: {
-        items: [
-          {
-            title: "Monthly",
-            text: "I manage all infrastructure in my accounts: Vercel, GitHub, Supabase, domain. You just pay a fixed monthly fee. Zero technical headaches.",
-          },
-          {
-            title: "One-time",
-            text: "I deliver the complete project to your own accounts. You own the code, infrastructure and access 100% from day one.",
-          },
-        ],
-      },
+      q: "How do you work?",
+      a: "I work per project with a one-time payment, no monthly fees. I deliver everything to your own accounts (Vercel, GitHub, Supabase, domain) and you fully own the code, infrastructure and access from day one.",
     },
     {
       q: "How long does a project take?",
@@ -112,38 +64,12 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       },
     },
     {
-      q: "What happens if I want to leave the Monthly plan?",
-      a: "No problem. If you've been on the Monthly plan for over 1 year, migration to your own accounts costs 50% of the equivalent one-time project price. Under 1 year, the full one-time price applies. Either way you get everything: code, access and documentation.",
-    },
-    {
       q: "How is payment made?",
-      a: {
-        items: [
-          {
-            title: "One-time",
-            text: "50% upfront to start, 50% at delivery. I accept USD (crypto USDT/USDC) and ARS (Mercadopago or bank transfer).",
-          },
-          {
-            title: "Monthly",
-            text: "Billed month to month with no initial setup fee. Same payment methods.",
-          },
-        ],
-      },
+      a: "50% upfront to start, 50% at delivery. I accept USD (crypto USDT/USDC) and ARS (Mercadopago or bank transfer).",
     },
     {
       q: "Can I request changes after delivery?",
-      a: {
-        items: [
-          {
-            title: "Monthly",
-            text: "Content changes are included each month according to the chosen maintenance level.",
-          },
-          {
-            title: "One-time",
-            text: "Includes revision rounds before closing. Later changes are budgeted separately or we arrange a monthly retainer.",
-          },
-        ],
-      },
+      a: "Yes. The project includes revision rounds before closing and a 14-day bug warranty. Changes or new features after delivery are quoted separately as a new project.",
     },
     {
       q: "Do you work with clients from other countries?",
@@ -152,19 +78,8 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
   ],
   pt: [
     {
-      q: "Qual é a diferença entre Mensal e Pagamento Único?",
-      a: {
-        items: [
-          {
-            title: "Mensal",
-            text: "Gerencio toda a infraestrutura nas minhas contas: Vercel, GitHub, Supabase, domínio. Você só paga uma mensalidade fixa. Zero dores de cabeça técnicas.",
-          },
-          {
-            title: "Pagamento Único",
-            text: "Entrego o projeto completo nas suas próprias contas. Você é dono absoluto do código, da infra e dos acessos desde o primeiro dia.",
-          },
-        ],
-      },
+      q: "Como você trabalha?",
+      a: "Trabalho por projeto com pagamento único, sem mensalidades. Entrego tudo nas suas próprias contas (Vercel, GitHub, Supabase, domínio) e você é dono absoluto do código, da infra e dos acessos desde o primeiro dia.",
     },
     {
       q: "Quanto tempo leva um projeto?",
@@ -186,38 +101,12 @@ export const FAQS: Record<"en" | "es" | "pt", { q: string; a: FaqAnswer }[]> = {
       },
     },
     {
-      q: "O que acontece se eu quiser sair do plano Mensal?",
-      a: "Sem problema. Se você tiver mais de 1 ano no plano Mensal, a migração para suas próprias contas custa 50% do preço equivalente de pagamento único. Com menos de 1 ano, cobra-se o preço completo de pagamento único. Em ambos os casos você recebe tudo: código, acessos e documentação.",
-    },
-    {
       q: "Como é feito o pagamento?",
-      a: {
-        items: [
-          {
-            title: "Pagamento Único",
-            text: "50% adiantado para começar, 50% na entrega. Aceito USD (cripto USDT/USDC) e ARS (Mercadopago ou transferência bancária).",
-          },
-          {
-            title: "Mensal",
-            text: "Cobrado mês a mês sem taxa de setup inicial. Mesmos métodos de pagamento.",
-          },
-        ],
-      },
+      a: "50% adiantado para começar, 50% na entrega. Aceito USD (cripto USDT/USDC) e ARS (Mercadopago ou transferência bancária).",
     },
     {
       q: "Posso pedir alterações após a entrega?",
-      a: {
-        items: [
-          {
-            title: "Mensal",
-            text: "As alterações de conteúdo estão incluídas todo mês conforme o nível de manutenção escolhido.",
-          },
-          {
-            title: "Pagamento Único",
-            text: "Inclui rodadas de revisão antes do fechamento. Alterações posteriores são orçadas separadamente ou combinamos um retainer mensal.",
-          },
-        ],
-      },
+      a: "Sim. O projeto inclui rodadas de revisão antes do fechamento e 14 dias de garantia para bugs. Alterações ou novas funcionalidades após a entrega são orçadas separadamente como um novo projeto.",
     },
     {
       q: "Você trabalha com clientes de outros países?",
