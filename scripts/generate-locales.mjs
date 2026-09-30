@@ -43,18 +43,12 @@ for (const [lang, meta] of Object.entries(locales)) {
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`);
   html = html.replace(/(<meta name="description" content=")[^"]*"/, `$1${meta.description}"`);
   html = html.replace(/(<meta property="og:title" content=")[^"]*"/, `$1${meta.title}"`);
-  html = html.replace(
-    /(<meta property="og:description" content=")[^"]*"/,
-    `$1${meta.ogDescription}"`,
-  );
+  html = html.replace(/(<meta property="og:description" content=")[^"]*"/, `$1${meta.ogDescription}"`);
   html = html.replace(/(<meta property="og:image" content=")[^"]*"/, `$1${meta.ogImage}"`);
   html = html.replace(/(<meta property="og:image:alt" content=")[^"]*"/, `$1${meta.ogAlt}"`);
   html = html.replace(/(<meta property="og:locale" content=")[^"]*"/, `$1${meta.ogLocale}"`);
   html = html.replace(/(<meta name="twitter:title" content=")[^"]*"/, `$1${meta.title}"`);
-  html = html.replace(
-    /(<meta name="twitter:description" content=")[^"]*"/,
-    `$1${meta.ogDescription}"`,
-  );
+  html = html.replace(/(<meta name="twitter:description" content=")[^"]*"/, `$1${meta.ogDescription}"`);
   html = html.replace(/(<meta name="twitter:image" content=")[^"]*"/, `$1${meta.ogImage}"`);
   html = html.replace(/(<meta name="twitter:image:alt" content=")[^"]*"/, `$1${meta.ogAlt}"`);
   // JSON-LD: jobTitle
@@ -62,10 +56,7 @@ for (const [lang, meta] of Object.entries(locales)) {
   // JSON-LD: Person.description (first "description" key in the LD block)
   html = html.replace(/("description": ")[^"]*Resistencia[^"]*/, `$1${meta.jsonLdDescription}`);
   // JSON-LD: Person.image
-  html = html.replace(
-    /("image": "https:\/\/giulianoconti\.com\/assets\/og-image)[^"]*/,
-    `$1-${lang}.png`,
-  );
+  html = html.replace(/("image": "https:\/\/giulianoconti\.com\/assets\/og-image)[^"]*/, `$1-${lang}.png`);
 
   writeFileSync(resolve(dist, `index-${lang}.html`), html);
   console.log(`✓ dist/index-${lang}.html`);

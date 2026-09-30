@@ -45,8 +45,7 @@ const MAX_MESSAGES = 20;
 function buildSystemPrompt(locale: Locale): string {
   const faqs = FAQS[locale]
     .map(
-      ({ q, a }) =>
-        `Q: ${q}\nA: ${typeof a === "string" ? a : a.items.map(i => `${i.title}: ${i.text}`).join(" | ")}`,
+      ({ q, a }) => `Q: ${q}\nA: ${typeof a === "string" ? a : a.items.map(i => `${i.title}: ${i.text}`).join(" | ")}`,
     )
     .join("\n\n");
 
@@ -85,8 +84,7 @@ const GET_QUOTE_TOOL: Anthropic.Tool = {
       features: {
         type: "array",
         items: { type: "string", enum: FEATURES.filter(f => !f.locked).map(f => f.id) },
-        description:
-          "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
+        description: "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
       },
       currency: { type: "string", enum: ["usd", "ars"] },
     },

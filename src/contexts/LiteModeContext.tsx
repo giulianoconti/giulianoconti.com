@@ -22,11 +22,7 @@ export function LiteModeProvider({ children }: { children: ReactNode }) {
 
   const toggleLiteMode = useCallback(() => setLiteMode(v => !v), []);
 
-  return (
-    <LiteModeContext.Provider value={{ liteMode, toggleLiteMode }}>
-      {children}
-    </LiteModeContext.Provider>
-  );
+  return <LiteModeContext.Provider value={{ liteMode, toggleLiteMode }}>{children}</LiteModeContext.Provider>;
 }
 
 export function useLiteMode() {

@@ -23,9 +23,7 @@ export function buildWaMessage(
   features: Feature[],
 ): string {
   const setup = calcSetup(checked, features);
-  const selectedLabels = features
-    .filter(f => !f.locked && checked.has(f.id))
-    .map(f => `• ${f.label}`);
+  const selectedLabels = features.filter(f => !f.locked && checked.has(f.id)).map(f => `• ${f.label}`);
   const lines = [
     t("wa_greeting"),
     t("wa_name_line"),

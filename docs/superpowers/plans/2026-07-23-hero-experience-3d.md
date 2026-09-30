@@ -404,12 +404,7 @@ Agregar a `HeroContent.tsx`, después de los imports existentes:
 ```typescript
 import { renderToStaticMarkup } from "react-dom/server";
 import { GithubIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "../../../icons";
-import {
-  SOCIAL_GITHUB_URL,
-  SOCIAL_LINKEDIN_URL,
-  SOCIAL_MAIL,
-  WA_MSG,
-} from "../../../utils/constants";
+import { SOCIAL_GITHUB_URL, SOCIAL_LINKEDIN_URL, SOCIAL_MAIL, WA_MSG } from "../../../utils/constants";
 import { useSvgTexture } from "../Scene/svgTexture";
 ```
 

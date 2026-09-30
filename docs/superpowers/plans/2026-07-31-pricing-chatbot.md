@@ -90,16 +90,9 @@ export function calcSetup(checked: Set<string>, model: Model, features: Feature[
   return total;
 }
 
-export function calcMonthly(
-  model: Model,
-  tier: TierId,
-  checked: Set<string>,
-  features: Feature[],
-): number {
+export function calcMonthly(model: Model, tier: TierId, checked: Set<string>, features: Feature[]): number {
   if (model !== "monthly") return 0;
-  const featureSum = features
-    .filter(f => !f.locked && checked.has(f.id))
-    .reduce((sum, f) => sum + f.price, 0);
+  const featureSum = features.filter(f => !f.locked && checked.has(f.id)).reduce((sum, f) => sum + f.price, 0);
   const extra = MONTHLY_TIERS.find(t => t.id === tier)!.extra;
   return calcInfra(checked) + Math.round(featureSum / 20) + extra;
 }
@@ -119,9 +112,7 @@ export function buildWaMessage(
 ): string {
   const setup = calcSetup(checked, model, features);
   const monthly = calcMonthly(model, tier, checked, features);
-  const selectedLabels = features
-    .filter(f => !f.locked && checked.has(f.id))
-    .map(f => `• ${f.label}`);
+  const selectedLabels = features.filter(f => !f.locked && checked.has(f.id)).map(f => `• ${f.label}`);
   const tierLabel = t(`qm_tier_${tier}_label`);
   const lines = [t("wa_greeting"), t("wa_name_line"), "", t("wa_intro"), ""];
   if (model === "monthly") {
@@ -254,8 +245,7 @@ const MAX_MESSAGES = 20;
 function buildSystemPrompt(locale: Locale): string {
   const faqs = FAQS[locale]
     .map(
-      ({ q, a }) =>
-        `Q: ${q}\nA: ${typeof a === "string" ? a : a.items.map(i => `${i.title}: ${i.text}`).join(" | ")}`,
+      ({ q, a }) => `Q: ${q}\nA: ${typeof a === "string" ? a : a.items.map(i => `${i.title}: ${i.text}`).join(" | ")}`,
     )
     .join("\n\n");
 
@@ -293,8 +283,7 @@ const GET_QUOTE_TOOL: Anthropic.Tool = {
       features: {
         type: "array",
         items: { type: "string", enum: FEATURES.filter(f => !f.locked).map(f => f.id) },
-        description:
-          "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
+        description: "IDs de features elegidas. Para páginas web, elegí exactamente una de: p1, p4, p10.",
       },
       model: { type: "string", enum: ["monthly", "onetime"], description: "Modelo de pago" },
       tier: {
@@ -688,12 +677,7 @@ export default function Chat() {
                 <div key={i} className={`chat_msg chat_msg--${m.role}`}>
                   <p>{m.content}</p>
                   {m.quote && (
-                    <a
-                      className="chat_msg_cta"
-                      href={m.quote.whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a className="chat_msg_cta" href={m.quote.whatsappLink} target="_blank" rel="noopener noreferrer">
                       <WhatsAppIcon width={16} height={16} /> {t.chat.waFallback}
                     </a>
                   )}

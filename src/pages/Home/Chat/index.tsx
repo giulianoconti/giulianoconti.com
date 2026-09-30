@@ -134,12 +134,7 @@ export default function Chat() {
                 <div key={i} className={`chat_msg chat_msg--${m.role}`}>
                   <p>{m.content}</p>
                   {m.quote && (
-                    <a
-                      className="chat_msg_cta"
-                      href={m.quote.whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a className="chat_msg_cta" href={m.quote.whatsappLink} target="_blank" rel="noopener noreferrer">
                       <WhatsAppIcon width={16} height={16} /> {t.chat.waFallback}
                     </a>
                   )}
