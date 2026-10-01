@@ -11,7 +11,7 @@ const locales = {
       "Software Engineer based in Resistencia, Argentina. I build websites and web apps for businesses — landing pages, login and admin panels. Available for projects.",
     ogDescription:
       "I build websites and web apps for businesses that want to grow online — fast, modern, and no technical hassle. Available for new projects.",
-    ogImage: "https://giulianoconti.com/assets/og-image-en.png",
+    ogImage: "https://giulianoconti.com/assets/og-image-en.jpg",
     ogLocale: "en_US",
     ogAlt: "Giuliano Conti - Software Engineer — portfolio preview",
     jobTitle: "Software Engineer",
@@ -25,7 +25,7 @@ const locales = {
       "Engenheiro de Software em Resistência, Argentina. Construo sites e apps para negócios — landing pages, login e painel admin. Disponível para novos projetos.",
     ogDescription:
       "Construo sites e aplicações para negócios que querem crescer online — rápidos, modernos e sem complicações técnicas. Disponível para novos projetos.",
-    ogImage: "https://giulianoconti.com/assets/og-image-pt.png",
+    ogImage: "https://giulianoconti.com/assets/og-image-pt.jpg",
     ogLocale: "pt_BR",
     ogAlt: "Giuliano Conti - Engenheiro de Software — prévia do portfólio",
     jobTitle: "Engenheiro de Software",
@@ -56,7 +56,7 @@ for (const [lang, meta] of Object.entries(locales)) {
   // JSON-LD: Person.description (first "description" key in the LD block)
   html = html.replace(/("description": ")[^"]*Resistencia[^"]*/, `$1${meta.jsonLdDescription}`);
   // JSON-LD: Person.image
-  html = html.replace(/("image": "https:\/\/giulianoconti\.com\/assets\/og-image)[^"]*/, `$1-${lang}.png`);
+  html = html.replace(/("image": "https:\/\/giulianoconti\.com\/assets\/og-image)[^"]*/, `$1-${lang}.jpg`);
 
   writeFileSync(resolve(dist, `index-${lang}.html`), html);
   console.log(`✓ dist/index-${lang}.html`);

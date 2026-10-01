@@ -2,10 +2,6 @@
 @use "../../../styles/layout" as *;
 @use "../../../styles/typography" as *;
 
-// Cards go image-beside-text only from here: below it the text column would
-// drop under 34ch and descriptions would wrap past 3 lines.
-$card-row-breakpoint: 1280px;
-
 .experience {
   @include section-padding-x;
   align-items: center;
@@ -26,8 +22,10 @@ $card-row-breakpoint: 1280px;
     position: static;
     width: 100%;
 
+    // min-height, not height: with a fixed height, content taller than it
+    // overflows both ways (justify-content: center) and bleeds up into Hero.
     @include desktop {
-      height: 150dvh;
+      min-height: 150dvh;
     }
 
     .experience_sticky_row {
@@ -225,7 +223,7 @@ $card-row-breakpoint: 1280px;
           pointer-events: auto;
 
           &.experience_sticky_row_right_card--reverse .experience_sticky_row_right_card_link {
-            @media only screen and (min-width: $card-row-breakpoint) {
+            @include desktop {
               flex-direction: row-reverse;
             }
 
@@ -268,7 +266,7 @@ $card-row-breakpoint: 1280px;
               background 0.3s,
               border-color 0.2s;
 
-            @media only screen and (min-width: $card-row-breakpoint) {
+            @include desktop {
               flex-direction: row;
             }
 
@@ -301,7 +299,7 @@ $card-row-breakpoint: 1280px;
               //   ),
               //   transparent;
 
-              @media only screen and (min-width: $card-row-breakpoint) {
+              @include desktop {
                 width: 50%;
               }
 
@@ -324,7 +322,7 @@ $card-row-breakpoint: 1280px;
               grid-template-columns: repeat(2, minmax(0, 1fr));
               width: 100%;
 
-              @media only screen and (min-width: $card-row-breakpoint) {
+              @include desktop {
                 width: 50%;
               }
 
