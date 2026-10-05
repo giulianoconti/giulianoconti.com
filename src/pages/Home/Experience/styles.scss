@@ -50,8 +50,11 @@
         justify-content: space-between;
         width: 100%;
 
+        // Stretch to the row's height (set by the cards column) so the
+        // sticky container below has room to travel. `height: 100%` doesn't
+        // work here: the row's height is auto and it uses align-items: start.
         @include desktop {
-          height: 100%;
+          align-self: stretch;
           width: 50%;
         }
 
