@@ -43,6 +43,8 @@ type Translations = {
     landingsDesc: string;
     landingGiane: string;
     landingMati: string;
+    protelab: string;
+    protelabDesc: string;
     gleniCompany: string;
     gleniRole: string;
     gleniDate: string;
@@ -115,6 +117,8 @@ const translations: Record<Locale, Translations> = {
         "Static sites for local professionals: instant loading, local SEO and bookings straight via WhatsApp.",
       landingGiane: "Physiotherapy",
       landingMati: "Law firm",
+      protelab: "ProteLab",
+      protelabDesc: "Built ProteLab's online store for sports supplements, with Mercado Pago checkout and an admin panel.",
       gleniCompany: "Gleni",
       gleniRole: "Software Engineer",
       gleniDate: "2026 - Present",
@@ -182,6 +186,8 @@ const translations: Record<Locale, Translations> = {
       landingsDesc: "Sitios estáticos para profesionales locales: carga instantánea, SEO local y turnos por WhatsApp.",
       landingGiane: "Kinesiología",
       landingMati: "Estudio jurídico",
+      protelab: "ProteLab",
+      protelabDesc: "Creé la tienda online de suplementos de ProteLab, con pagos por Mercado Pago y panel de admin.",
       gleniCompany: "Gleni",
       gleniRole: "Ingeniero de Software",
       gleniDate: "2026 - Presente",
@@ -249,6 +255,8 @@ const translations: Record<Locale, Translations> = {
       landingsDesc: "Sites estáticos para profissionais: carga instantânea, SEO local e agendamentos por WhatsApp.",
       landingGiane: "Fisioterapia",
       landingMati: "Escritório de advocacia",
+      protelab: "ProteLab",
+      protelabDesc: "Criei a loja online de suplementos da ProteLab, com pagamentos via Mercado Pago e painel admin.",
       gleniCompany: "Gleni",
       gleniRole: "Engenheiro de Software",
       gleniDate: "2026 - Presente",

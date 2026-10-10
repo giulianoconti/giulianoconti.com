@@ -14,6 +14,7 @@ export const MATI_WEBSITE_URL = "https://estudiojuridicorrg.com.ar";
 export const GIANE_WEBSITE_URL = "https://kinegiane.com.ar";
 export const MERCAT_WEBSITE_URL = "https://mercat.cl";
 export const UWIGO_WEBSITE_URL = "https://app.uwigo.com";
+export const PROTELAB_WEBSITE_URL = "https://protelab.com.ar";
 
 export const EXPERIENCE_WORMHOLESCAN_ASSET = "/assets/experience-wormholescan.webp";
 export const EXPERIENCE_PORTAL_ASSET = "/assets/experience-portal.webp";
@@ -23,6 +24,7 @@ export const EXPERIENCE_MATI_ASSET = "/assets/experience-mati.webp";
 export const EXPERIENCE_GIANE_ASSET = "/assets/experience-giane.webp";
 export const EXPERIENCE_MERCAT_ASSET = "/assets/experience-cc-mercat.webp";
 export const EXPERIENCE_UWIGO_ASSET = "/assets/experience-uwigo.webp";
+export const EXPERIENCE_PROTELAB_ASSET = "/assets/experience-protelab.webp";
 
 export function getCvAssetByLocale(locale: Locale) {
   return `/assets/Giuliano_Conti_Frontend_Engineer_CV_${locale.toUpperCase()}.pdf`;

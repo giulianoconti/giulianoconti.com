@@ -24,9 +24,9 @@ export const FEATURES: Feature[] = [
   { id: "auth",        label: "", desc: "", price: 200, group: "backend", triggers: ["db"]          },
   { id: "cms",         label: "", desc: "", price: 200, group: "backend", triggers: ["db"]          },
   { id: "db",          label: "", desc: "", price: 100, group: "backend"                            },
-  { id: "roles",       label: "", desc: "", price: 100,  group: "backend", triggers: ["auth", "db"] },
+  { id: "roles",       label: "", desc: "", price: 100, group: "backend", triggers: ["auth", "db"]  },
   { id: "bookings",    label: "", desc: "", price: 200, group: "extras",  triggers: ["db", "auth"]  },
-  { id: "seo",         label: "", desc: "", price: 100,  group: "extras"                            },
+  { id: "seo",         label: "", desc: "", price: 100, group: "extras"                             },
   { id: "multilang",   label: "", desc: "", price: 150, group: "extras"                             },
-  { id: "animations",  label: "", desc: "", price: 100,  group: "extras"                            },
+  { id: "animations",  label: "", desc: "", price: 100, group: "extras"                             },
 ];
