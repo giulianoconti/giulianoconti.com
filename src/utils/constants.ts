@@ -27,5 +27,5 @@ export const EXPERIENCE_UWIGO_ASSET = "/assets/experience-uwigo.webp";
 export const EXPERIENCE_PROTELAB_ASSET = "/assets/experience-protelab.webp";
 
 export function getCvAssetByLocale(locale: Locale) {
-  return `/assets/Giuliano_Conti_Frontend_Engineer_CV_${locale.toUpperCase()}.pdf`;
+  return `/assets/Giuliano_Conti_CV-${locale}.pdf`;
 }
