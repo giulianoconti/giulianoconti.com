@@ -114,6 +114,19 @@ export default function Experience() {
       dates: t.experience.freelancerJobDate,
     },
     {
+      name: t.experience.protelab,
+      link: PROTELAB_WEBSITE_URL,
+      image: EXPERIENCE_PROTELAB_ASSET,
+      description: t.experience.protelabDesc,
+      technologies: [
+        { icon: <NextJSIcon />, name: "Next.js" },
+        { icon: <TypeScriptIcon />, name: "TypeScript" },
+        { icon: <SupabaseIcon />, name: "Supabase" },
+        { icon: <TailwindIcon />, name: "Tailwind" },
+        { icon: <MotionIcon />, name: "Motion" },
+      ],
+    },
+    {
       name: t.experience.clinis,
       link: CLINIS_WEBSITE_URL,
       image: EXPERIENCE_CLINIS_ASSET,
@@ -147,19 +160,6 @@ export default function Experience() {
           link: MATI_WEBSITE_URL,
           image: EXPERIENCE_MATI_ASSET,
         },
-      ],
-    },
-    {
-      name: t.experience.protelab,
-      link: PROTELAB_WEBSITE_URL,
-      image: EXPERIENCE_PROTELAB_ASSET,
-      description: t.experience.protelabDesc,
-      technologies: [
-        { icon: <NextJSIcon />, name: "Next.js" },
-        { icon: <TypeScriptIcon />, name: "TypeScript" },
-        { icon: <SupabaseIcon />, name: "Supabase" },
-        { icon: <TailwindIcon />, name: "Tailwind" },
-        { icon: <MotionIcon />, name: "Motion" },
       ],
     },
     {
