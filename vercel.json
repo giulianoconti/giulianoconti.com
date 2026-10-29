@@ -16,6 +16,16 @@
       "source": "/:lang(pt|es|en).html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/:file(.*\\.pdf)",
+      "destination": "/docs/modelos-colaboracion-terminos.html",
+      "permanent": true
     }
   ]
 }

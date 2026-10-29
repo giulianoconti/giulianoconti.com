@@ -39,7 +39,13 @@ const base = readFileSync(resolve(dist, "index.html"), "utf-8");
 for (const [lang, meta] of Object.entries(locales)) {
   let html = base;
 
+  const pageUrl = `https://giulianoconti.com/?lang=${lang}`;
+
   html = html.replace(/(<html[^>]*lang=")[^"]*"/, `$1${meta.htmlLang}"`);
+  // Self-referencing canonical/URLs so Google indexes each locale separately (hreflang requires it)
+  html = html.replace(/(<link rel="canonical" href=")[^"]*"/, `$1${pageUrl}"`);
+  html = html.replace(/(<meta property="og:url" content=")[^"]*"/, `$1${pageUrl}"`);
+  html = html.replace(/(<meta name="twitter:url" content=")[^"]*"/, `$1${pageUrl}"`);
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`);
   html = html.replace(/(<meta name="description" content=")[^"]*"/, `$1${meta.description}"`);
   html = html.replace(/(<meta property="og:title" content=")[^"]*"/, `$1${meta.title}"`);
