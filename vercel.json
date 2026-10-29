@@ -1,16 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [{ "type": "query", "key": "lang", "value": "en" }],
-      "destination": "/index-en.html"
-    },
-    {
-      "source": "/",
-      "has": [{ "type": "query", "key": "lang", "value": "pt" }],
-      "destination": "/index-pt.html"
-    }
-  ],
   "redirects": [
     {
       "source": "/:lang(pt|es|en).html",
